@@ -1,0 +1,574 @@
+/* 
+** Copyright 2005 TEI Consortium
+
+$Id: tei.css 7024 2009-11-29 18:26:33Z rahtz $
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+ This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+ You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the 
+Free Software Foundation, Inc., 
+59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+*/
+
+
+/* main layout */
+
+body.simple {
+   color: #000000;
+   background-color: #FFFFFF;
+}
+
+body{
+   color: #000000;
+   background-color: #FFFFFF;
+   font-family: Verdana, Tahoma, Geneva, Arial, Helvetica, sans-serif;
+}
+
+body.pagetable {
+   color: #000000;
+   background-color: #FFFFFF;
+}
+
+/* 3 columns allowed for, or just a right and left */  
+#col1{
+   background: #FFFFFF;
+   color: #000066;
+   position : absolute;
+}
+
+#col2{
+   background: #FFFFFF;
+   color: #333333;
+   left: 22%;
+   position : absolute;
+}
+
+#col3{
+   left: 75%;
+   color: #000066;
+   background: #FFFFFF;
+   position : absolute;
+}
+
+#lh-col{
+   color: #000000;
+   background-color: #FFFFFF;
+   font-weight:normal;
+}
+
+#rh-col{
+   background-color: #FFFFFF;
+   color: #333333;
+   font-weight:normal;
+}
+
+
+/* now the layers of the header */
+
+/* the main title */
+div.stdheader {
+}
+
+#hdr{
+   background-repeat : no-repeat;
+   overflow : inherit;
+}
+
+/* a navigation bar */
+#hdr2{
+   color: #000000;
+   font-family: Arial,Helvetica,sans-serif;
+   font-weight: bold;
+   background-color : #99CCFF;
+}
+
+/* a breadcrumb trail */
+#hdr3{
+   color: #000000;
+   background-color : #AD06BC;
+   font-family: Arial,Helvetica,sans-serif;
+   font-weight : bold;
+}
+
+.bannerright {
+   position : absolute;
+   right : 5px;
+   color: #FFFFFF;
+   font-family : Arial, Helvetica, sans-serif;
+   font-size : 0.8em;
+   font-weight : bold;
+   text-decoration: none;
+}
+
+/* section headings */
+#hdr h1 { color: red; }
+h1 {
+   font-weight: bold;
+}
+
+h2 {
+   font-weight: bold;
+}
+
+h3 {
+   font-weight: bold;
+   font-style: italic;
+   color: #C63904;
+}
+
+
+h1.maintitle {
+   font-family: Arial,Helvetica,sans-serif;
+   font-weight: bold;
+   bottom: 5px;
+}
+
+h1.title {
+   font-family: Arial,Helvetica,sans-serif;
+   font-weight: bold;
+   bottom: 5px;
+}
+
+h2.institution {
+   font-family: Arial,Helvetica,sans-serif;
+}
+
+h2.department {
+   font-family: Arial,Helvetica,sans-serif;
+}
+
+h2.subtitle {
+   font-family: Arial,Helvetica,sans-serif;
+   font-weight: bold;
+}
+
+.footer {
+   text-align : center;
+   font-family: Arial,Helvetica,sans-serif; 
+   font-size : 0.8em;
+}
+
+
+
+/* components of the breadcrumb trail */
+a.breadcrumb{
+   color: #FFFFFF;
+   text-decoration: none;
+   font-family: Arial,Helvetica,sans-serif;
+   font-weight : bold;
+   font-size : 0.8em;
+}
+
+ul.breadcrumb
+{
+   display: inline;
+}
+
+li.breadcrumb
+{
+   display: inline;
+   color: #000000;
+   background: url(/images/rightarrow.gif);
+   background-repeat: no-repeat;
+   background-position: left;
+}
+li.breadcrumb-first
+{
+   display: inline;
+   color: #000000;
+   background: url(/images/rightarrow.gif);
+   background-repeat: no-repeat;
+   background-position: left;
+}
+
+div.breadcrumb {
+   display: inline;
+}
+
+.skiplinks{
+   font-family: arial, sans-serif;
+   color: #FFFFFF;
+   font-weight : bold;
+   font-size : 0.8em;
+   text-decoration: none;
+}
+
+.tocontent{
+   color : #000066;
+   display : none;
+}
+
+.hide{
+   display : none;
+}
+
+.framestdlink {
+   color: red;
+   font-weight: bold;
+}
+
+a:hover
+{
+   text-decoration: underline;
+}
+
+a.navbar:link
+{
+   color: #FFFFFF;
+   text-decoration: none;
+}
+
+a.navbar:visited
+{
+   color: #FFFFFF;
+   text-decoration: none;
+}
+
+a.navbar:hover {
+   color: #FFFFFF;
+   text-decoration: underline;
+}
+
+
+/* for use when making pages using a table */
+td.hdr2 {
+   color: #000000;
+   background-color : #99CCFF;
+}
+td.hdr3 {
+   background-color : #AD06BC;
+}
+
+td.sidetext {
+}
+td.maintext p {
+   font-family: Arial,Helvetica,sans-serif;
+}
+
+td.maintext {
+   background-color: #FFFFFF;
+   font-family: Arial,Helvetica,sans-serif;
+   color: #000000;
+}
+
+table.wovenodd td,p.wovenodd {
+   background-color: #FFFFFF;
+}
+
+/* an inner <text>, eg inside a <q> */
+div.innertext {
+}
+/* literal code */
+
+div.cdata {
+    white-space: pre;
+}
+
+div.pre,pre	{ 
+ background-color: #FFFFCC;  
+ font-family: monospace ;
+ white-space: pre;
+}
+
+div.pre_eg,pre.eg {
+ font-family: monospace ;
+ background-color: #DDDDDD;
+ white-space: pre;
+}
+
+
+/* table of contents */
+ul.toc {list-style: none;}
+li.toc {list-style: none;}
+
+/* table of contents links */
+
+a.inlinetoc:link,a.inlinetoc:visited
+{
+   color: #7A7A7A;
+   text-decoration: none;
+}
+
+a.inlinetoc-this:visited,a.inlinetoc-this:link
+{   
+   color: #000000;
+   font-weight: bold; 
+   text-decoration: underline;
+}
+
+a.inlinetoc-sub:visited,a.inlinetoc-sub:link
+{
+   text-decoration: none;
+   color: #000000;
+   font-weight: normal;
+}
+
+span.toclist{
+   font-family: Arial,Helvetica,sans-serif;
+   font-weight: bold;
+}
+
+p.toclist0 {
+}
+
+p.toclist1 {
+}
+
+p.toclist2 {
+}
+
+p.toclist3 {
+}
+
+span.toclist-this {
+   color: red;
+}
+
+a.toclist:visited,a.toclist:link
+{
+   font-weight: bold; 
+   color: #000000;
+   text-decoration: none;
+}
+
+
+
+/* notes */
+div.noteHeading {
+   font-weight: bold;
+}
+div.noteBody {
+  display:inline;
+}
+
+div.note {
+}
+
+/* images */
+img.display {
+   display: block;
+}
+p.caption {
+   font-style: italic;
+}
+
+.floatimage {
+   float : left;
+   vertical-align : top;
+}
+/* specialized divs */
+div.letter {
+}
+/* title page */
+div.titlePage {
+   text-align: center;
+}
+div.docImprint {
+   font-style: italic;    
+}
+div.docDate {
+   font-style: italic;    
+}
+div.docTitle {
+    font-weight: bold;
+}
+div.docAuthor {
+    font-style: italic;
+}
+
+div.byline {
+}   
+
+div.dateline{
+   text-align: right;
+}
+/* verse */
+div.lg {
+}
+
+div.centerbold {
+    text-align:center;
+    font-weight: bold;
+}
+div.center {
+    text-align:center;
+}
+div.right {
+    text-align:right;
+}
+div.left {
+    text-align:left;
+}
+div.l {
+    text-align:left;
+}
+p.center {
+    text-align:center;
+}
+p.right {
+    text-align:right;
+}
+p.left {
+    text-align:left;
+}
+div.indent1 {
+}
+div.indent2 {
+}
+div.indent3 {
+}
+div.indent4 {
+}
+div.indent5 {
+}
+div.indent6 {
+}
+/* misc */
+.plain {
+   font-weight: bold;
+   text-decoration: none;
+   font-family: Arial,Helvetica,sans-serif;
+   color: #C63904;
+}
+
+p.box {
+}
+
+.small {
+}
+
+td.label {
+   font-weight: bold;
+   background-color: #AAAAAA;
+}
+tr.label td {
+   font-weight: bold;
+   background-color: #AAAAAA;
+}
+
+span.label {
+    font-weight: bold;
+}
+
+h5 {    
+}
+h6 {    
+}
+
+div.tocFront {
+}
+div.tocBack {
+}
+div.tocBody {
+}
+/* a listBibl rend='labels' */
+div.listBibl {
+}
+div.bibl {
+}
+span.biblLabel {
+	       font-weight: bold;
+}
+
+/* a <bibl> inside a <cit> */
+div.citbibl {
+   text-align:right;
+}
+/* a <quote> inside a <cit> */
+div.citquote {
+}
+
+/* gloss lists with bold labels */
+dt {
+   font-weight: bold;
+}
+div.blockquote {
+}
+
+/* generic <hi> */
+span.hi {
+   font-weight: bold;
+}
+
+/* from drama */
+span.actor {  
+	   font-style:italic;
+}
+span.camera {
+ font-style: italic;
+}
+span.caption {
+ font-style: italic;
+}
+span.role {
+ font-style: italic;
+}
+span.set {
+ font-style: italic;
+}
+span.sound {
+ font-style: italic;
+}
+span.stage {
+ font-style: italic;
+}
+span.tech {
+ font-style: italic;
+}
+span.view {
+ font-style: italic;
+}
+span.mentioned {
+   font-style: italic;
+}
+span.nextLink {
+   font-style: italic;
+}
+span.previousLink {
+   font-style: italic;
+}
+span.upLink {
+   font-style: italic;
+}
+p, div.p {
+}
+/* bibl */
+span.titlem {
+    font-style: italic;
+}
+span.titleu {
+}
+span.titles {
+}
+
+span.margnote {
+             display: block;
+	     font-style: italic;
+}
+
+div.floatingText_back {
+}
+div.floatingText_front {
+}
+div.floatingText {
+}
+span.pagebreak {
+    background-color: green;
+    font-weight: bold;
+}
+div.pagebreak {
+    display: block;
+}
+span.element {
+    font-weight: bold;
+    color: black;
+}
+

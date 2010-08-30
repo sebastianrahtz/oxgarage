@@ -1,0 +1,2444 @@
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                ENCODED ARCHIVAL DESCRIPTION                -->
+<!--                  DOCUMENT TYPE DEFINITION                  -->
+<!--                     BASIC DECLARATIONS                     -->
+<!--                        VERSION 1.0                         -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--               Prepared and Maintained by the               -->
+<!--         Encoded Archival Description Working Group         -->
+<!--            of the Society of American Archivists           -->
+<!--                          and the                           -->
+<!--        Network Development and MARC Standards Office       -->
+<!--                 of the Library of Congress                 -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--               Society of American Archivists               -->
+<!--                      Chicago, Illinois                     -->
+<!--                            1998                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--       Encoded Archival Description Basic Declarations      -->
+<!--                                                            -->
+<!--            EAD Technical Document No. 1, Part 3            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--This file constitutes a component of version 1.0 of the     -->
+<!--Encoded Archival Description Document Type Definition (DTD),-->
+<!--released in August 1998.  Version 1.0 of the DTD supersedes -->
+<!--the beta version made available via the EAD Internet site   -->
+<!--beginning in 1996.                                          -->
+<!--                                                            -->
+<!--                                                            -->
+<!--The SAA Encoded Archival Description Working Group is       -->
+<!--responsible for updating and editing the EAD DTD (EAD       -->
+<!--Technical Document No. 1) and tag library (EAD Technical    -->
+<!--Document No. 2).                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--The LC Network Development and MARC Standards Office serves -->
+<!--as the maintenance agency for online EAD documentation,     -->
+<!--including storage and delivery of electronic files and      -->
+<!--maintenance of the EAD Internet site, located at            -->
+<!--http://www.loc.gov/ead/.                                    -->
+<!--                                                            -->
+<!--                                                            -->
+<!--Published by the Society of American Archivists.            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--Tag Library available from:                                 -->
+<!--                Society of American Archivists              -->
+<!--                527 S. Wells Street, 5th floor              -->
+<!--                Chicago, IL 60607                           -->
+<!--                                                            -->
+<!--                Phone:    312/922-0140                      -->
+<!--                Fax:      312/347-1452                      -->
+<!--                Internet: info@archivists.org               -->
+<!--                                                            -->
+<!--                                                            -->
+<!--(c) Society of American Archivists, 1998.                   -->
+<!-- All rights reserved.                                       -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          PUBLIC IDENTIFIER FOR EADBASE.ENT                 -->
+<!--************************************************************-->
+
+<!--
+
+"-//Society of American Archivists//DTD eadbase.ent (Encoded Archival Description (EAD) Basic Declarations Version 1.0)//EN"
+
+                                                                -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--************************************************************-->
+<!--          INTRODUCTION                                      -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--  NAME:      Encoded Archival Description Basic Declarations-->
+<!--                    File name = eadbase.ent                 -->
+<!--                    Version = 1.0                           -->
+<!--                    Version date = 980824                   -->
+<!--                                                            -->
+<!--  EDITOR:    Daniel V. Pitti                                -->
+<!--             Institute for Advanced Technology in the       -->
+<!--             Humanities, University of Virginia             -->
+<!--                                                            -->
+<!--  PURPOSE:   Provides basic element and attribute           -->
+<!--             declarations for ead.dtd and eadgrp.dtd.       -->
+<!--                                                            -->
+<!--  CONTACT:   EAD listserv of the Library of Congress Network-->
+<!--             Development and MARC Standards Office.         -->
+<!--             To subscribe to this listserv, send a one-line -->
+<!--             message to LISTSERV@LOC.GOV containing the     -->
+<!--             text:  SUBSCRIBE EAD YourName. Once subscribed,-->
+<!--             submit messages to EAD@LOC.GOV.                -->
+<!--                                                            -->
+<!--             EAD Internet site, located at                  -->
+<!--             http://www.loc.gov/ead/                        -->
+<!--                                                            -->
+<!--  DEPENDENCIES:                                             -->
+<!--             None.                                          -->
+<!--                                                            -->
+<!--************************************************************-->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          CHANGE HISTORY (POST VERSION 1.0 CHANGES)         -->
+<!--************************************************************-->
+<!-- 
+NUM  DESCRIPTION OF CHANGE                                MM/DD/YY
+
+
+                                                                -->
+<!--************************************************************-->
+<!--          END CHANGE HISTORY                                -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          PARAMETER ENTITY DECLARATIONS                     -->
+<!--************************************************************-->
+<!--                                                            -->
+<!-- Conventions:                                               -->
+<!--              m.     content model components               -->
+<!--              cm.    complete content model                 -->
+<!--              a.     attribute model components             -->
+<!--              av.    attribute declared value               -->
+<!--                       name-token-groups                    -->
+<!--                                                            -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          CONTENT MODEL COMPONENTS                          -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          BASIC COMPONENTS                                  -->
+
+<!--          RENDER ELEMENTS                                   -->
+
+<!ENTITY % m.render             'emph | lb'                       >
+
+<!ENTITY % m.ptrs               'ptr | extptr'                    >
+
+<!ENTITY % m.refs               'ref | extref | linkgrp |
+                                 bibref | title | archref'        >
+
+<!ENTITY % m.access             'corpname | famname | geogname |
+                                 name | occupation | persname |
+                                 subject | genreform | function'  >
+
+<!ENTITY % m.data               '%m.access; | date | num |
+                                 origination | repository |
+                                 unitdate | unittitle'            >
+
+<!--************************************************************-->
+<!--     PHRASE COMPONENT                                       -->
+<!--************************************************************-->
+<!-- Phrase component models are widely used groups of elements.
+     The models are defined progessively, the models progress from
+     the least complex to the most complex.                     -->
+
+<!--     BARE PHRASE                                            -->
+
+<!ENTITY % m.phrase.bare        '%m.ptrs; | %m.render;'           >
+
+
+<!--     BASIC PHRASE                                           -->
+
+
+<!-- m.phrase.basic.norefs is used in content model of bibref
+     and archref, and in the model used by ref and archref,
+     where inclusion of ref elements is selective               -->
+
+<!ENTITY % m.phrase.basic.norefs
+                                '%m.phrase.bare; | abbr | expan'  >
+
+
+
+<!ENTITY % m.phrase.basic       '%m.phrase.basic.norefs; |
+                                 %m.refs;'                        >
+
+<!--     PHRASE PLUS ELEMENTS                                   -->
+
+<!-- m.phrase.plus.norefs used in content model of
+     para.content.norefs which is used in content model of ref
+     and archref, where inclusion of ref elements is selective. -->
+
+<!ENTITY % m.phrase.plus.norefs '%m.phrase.basic.norefs; |
+                                 %m.data;'                        >
+
+
+<!ENTITY % m.phrase.plus        '%m.phrase.basic.norefs; |
+                                 %m.data; | %m.refs;'             >
+
+
+
+<!--************************************************************-->
+<!--          INTERMEDIATE-LEVEL COMPONENTS                     -->
+<!--************************************************************-->
+<!-- Elements that can occur within or among paragraphs.        -->
+
+<!ENTITY % m.inter.noquote      'address | chronlist | list |
+                                 note | table'                    >
+
+<!ENTITY % m.inter              '%m.inter.noquote; | blockquote'  >
+
+
+
+
+<!--************************************************************-->
+<!--          PARAGRAPH-LEVEL COMPONENTS                        -->
+<!--************************************************************-->
+<!-- Elements that can occur at the same level as a paragraph.  -->
+
+<!ENTITY % m.blocks             '%m.inter; | p'                   >
+
+
+<!-- m.block.noquote used in content model of blockquote        -->
+
+<!ENTITY % m.blocks.noquote     '%m.inter.noquote; | p'           >
+
+
+<!--************************************************************-->
+<!--          COMPONENTS FOR DESCRIPTIVE ELEMENTS               -->
+<!--************************************************************-->
+
+<!--     DESCRIPTIVE IDENTIFICATION ELEMENTS                    -->
+
+<!ENTITY % m.did                'abstract | physdesc | note |
+                                 repository | origination |
+                                 unitdate | unitid | unittitle |
+                                 container | physloc |
+                                 dao | daogrp'                    >
+
+<!--     DESCRIPTIVE ELEMENTS                                   -->
+
+<!-- m.desc.base used in dentry                                 -->
+
+<!ENTITY % m.desc.base          'admininfo | bioghist |
+                                 controlaccess | odd |
+                                 scopecontent | organization |
+                                 arrangement | add'               >
+
+
+<!ENTITY % m.desc.full          '%m.desc.base; | dsc |
+                                 dao | daogrp | note'             >
+
+
+<!--     ADMINISTRATIVE INFORMATION                             -->
+
+<!ENTITY % m.admininfo          'accessrestrict | acqinfo |
+                                 altformavail | appraisal |
+                                 custodhist | prefercite |
+                                 processinfo | userestrict |
+                                 accruals'                        >
+
+<![%tabular;[
+
+<!--     DISPLAY ENTRY                                          -->
+
+<!ENTITY % m.dentry             '%m.did; | %m.desc.base;'         >
+
+]]>
+
+<!--************************************************************-->
+<!--          INSIDE PARAGRAPHS AND NOTES                       -->
+<!--************************************************************-->
+
+<!--                             PARAGRAPH CONTENT
+                                 Elements that can occur inside a
+                                 paragraph
+-->
+<!ENTITY % m.para.content       '%m.phrase.plus; | %m.inter;'     >
+
+<!-- para.content.norefs used in content model of ref elements,
+     where inclusion of ref elements is selective               -->
+
+<!ENTITY % m.para.content.norefs
+                                '%m.phrase.plus.norefs; |
+                                 %m.inter;'                       >
+
+<!--************************************************************-->
+<!--          INSIDE TABLE ENTRY                                -->
+<!--************************************************************-->
+
+<!ENTITY % m.table.entry        '%m.phrase.plus; | address |
+                                 list | note'                     >
+
+
+
+<!--************************************************************-->
+<!--          COMPLETE CONTENT MODELS                           -->
+<!--************************************************************-->
+
+
+<!--                             HEADS AND PARAGRAPHS           -->
+<!ENTITY % cm.head.n.para       '(head?, (%m.blocks;)*)'          >
+
+
+
+<!--************************************************************-->
+<!--          PARAMETER ENTITIES FOR ATTRIBUTE LISTS            -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          PARAMETER ENTITIES FOR CLUSTERS OF VALUES         -->
+<!--************************************************************-->
+
+<!ENTITY % av.level             'series | collection | file |
+                                 fonds | item | otherlevel |
+                                 recordgrp |  subgrp | subseries' >
+
+<!ENTITY % av.render            'bold | italic | bolditalic |
+                                 boldunderline | boldsmcaps |
+                                 boldquoted | nonproport |
+                                 altrender | quoted | smcaps |
+                                 sub | super | underline'         >
+
+<!--     SOURCE ATTRIBUTE VALUES:
+
+         aat      = Art and Architecture Thesaurus
+         aacr2    = Anglo-American Cataloging rules, 2nd edition,
+                     revised
+         cdwa     = Categories for the Description of Works of Art
+         dot      = Dictionary of Occupational Titles
+         gmgpc    = Thesaurus for Graphic Materials II
+         lcnaf    = Library of Congress Name Authority File
+         lcsh     = Library of Congress Subject Headings
+         lctgm    = Thesaurus for Graphic Materials I
+         local    = heading from a locally maintained list of
+                     index terms
+         mesh     = Medical Subject Headings
+         mim      = Moving Image Materials
+         ncarules = National Council of Archives, Rules for the
+                     Construction of Personal, Corporate and Place
+                     Names
+         nmc      = Revised Nomenclature for Museum Cataloging
+         rad      = Rules for Archival Description
+         rbgenr   = Genre Terms
+         tgn      = Thesaurus of Geographic Names
+         ulan     = Union List of Artist Names
+
+-->
+
+<!ENTITY % av.sources           'aat | aacr2 | cdwa | dot |
+                                 gmgpc | lcnaf | lcsh | lctgm |
+                                 local | mesh | mim | ncarules |
+                                 nmc | rad | rbgenr | tgn | ulan |
+                                 othersource'                     >
+
+<!ENTITY % av.container         'carton | box | folder | reel |
+                                 frame | oversize | reel-frame |
+                                 volume | map-case | box-folder |
+                                 page | folio | othertype'        >
+
+
+<!--************************************************************-->
+<!--          COMMON ATTRIBUTES                                 -->
+<!--************************************************************-->
+<!--  Attributes used on most ead elements                      -->
+
+<!ENTITY % a.common
+         'id                ID                       #IMPLIED
+          altrender         CDATA                    #IMPLIED
+          audience          (external | internal)    #IMPLIED'    >
+
+
+<!--************************************************************-->
+<!--          ACCESS ATTRIBUTES                                 -->
+<!--************************************************************-->
+<!-- Attributes shared by all access elements.                  -->
+
+<!ENTITY % a.access
+         'source             (%av.sources;)          #IMPLIED
+          othersource        CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED
+          authfilenumber     CDATA                   #IMPLIED
+          normal             CDATA                   #IMPLIED'    >
+
+
+<!--************************************************************-->
+<!--          DESCRIPTION ATTRIBUTES                            -->
+<!--************************************************************-->
+<!-- Descriptive attributes shared by archdesc and c's.         -->
+
+<!ENTITY % a.desc.base
+         'otherlevel         CDATA                      #IMPLIED
+          langmaterial       CDATA                      #IMPLIED
+          legalstatus        (public | private |
+                              otherlegalstatus)         #IMPLIED
+          otherlegalstatus   CDATA                      #IMPLIED' >
+
+<!-- Archdesc (add REQUIRED level attribute)                    -->
+
+<!ENTITY % a.desc.all
+         'level              (%av.level;)               #REQUIRED
+          %a.desc.base;'                                          >
+
+<!-- Components (add IMPLIED level attribute)                   -->
+
+<!ENTITY % a.component
+         'level              (%av.level;)               #IMPLIED
+          %a.desc.base;'                                          >
+
+
+<!--************************************************************-->
+<!--************************************************************-->
+<!--          LINKING AND POINTING ATTRIBUTES WITH XLINK        -->
+<!--************************************************************-->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          XLINK ATTRIBUTE SETS                              -->
+<!--************************************************************-->
+
+<![%xlink;[
+
+
+<!ENTITY % simple
+         'xlink:form          CDATA     #FIXED       "simple"'    >
+
+<!ENTITY % extended
+         'xlink:form          CDATA     #FIXED       "extended"'  >
+
+<!ENTITY % locator
+         'xlink:form          CDATA     #FIXED       "locator"'   >
+]]>
+
+<![%noxlink;[
+
+
+<!ENTITY % simple
+         ''                                                       >
+
+<!ENTITY % extended
+         ''                                                       >
+
+<!ENTITY % locator
+         ''                                                       >
+
+]]>
+
+<!ENTITY % locator.att
+         'href                CDATA                  #IMPLIED'    >
+
+<!ENTITY % link-semantics.att
+         'inline              (true|false)           "true"
+          role                CDATA                  #IMPLIED'    >
+
+<!ENTITY % simple-link-semantics.att
+         'inline              (true|false)           "true"'      >
+
+<!ENTITY % remote-resource-semantics.att
+         'role                CDATA                  #IMPLIED
+          title               CDATA                  #IMPLIED
+          show                (embed|replace|new)    #IMPLIED
+          actuate             (auto|user)            #IMPLIED
+          behavior            CDATA                  #IMPLIED'    >
+
+<!ENTITY % local-resource-semantics.att
+         'content-role        CDATA                  #IMPLIED
+          content-title       CDATA                  #IMPLIED'    >
+
+
+<!--************************************************************-->
+<!--          END XLINK ATTRIBUTE SETS                          -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          EAD LINKING AND POINTING ATTRIBUTES               -->
+<!--************************************************************-->
+
+<!ENTITY % a.internal.ptr
+         'target              IDREF                  #IMPLIED
+          xpointer            CDATA                  #IMPLIED
+          %simple;
+          %locator.att;
+          %remote-resource-semantics.att;
+          %local-resource-semantics.att;
+          %simple-link-semantics.att;'                            >
+
+
+
+<!ENTITY % a.external.ptr
+         'entityref           ENTITY                 #IMPLIED
+          xpointer            CDATA                  #IMPLIED
+          %simple;
+          %locator.att;
+          %remote-resource-semantics.att;
+          %local-resource-semantics.att;
+          %simple-link-semantics.att;'                            >
+
+
+<!ENTITY % a.linkgrp
+         '%extended;
+          %link-semantics.att;
+          %local-resource-semantics.att;'                         >
+
+<!ENTITY % a.loc.internal.ptr
+         'target              IDREF                  #IMPLIED
+          xpointer            CDATA                  #IMPLIED
+          %locator;
+          %locator.att;
+          %remote-resource-semantics.att;'                        >
+
+<!ENTITY % a.loc.external.ptr
+         'entityref           ENTITY                 #IMPLIED
+          xpointer            CDATA                  #IMPLIED
+          %locator;
+          %locator.att;
+          %remote-resource-semantics.att;'                        >
+
+
+<!--************************************************************-->
+<!--          END LINKING AND POINTING ATTRIBUTES WITH XLINK    -->
+<!--************************************************************-->
+
+
+
+<!--************************************************************-->
+<!--************************************************************-->
+<!--          ENCODED ARCHIVAL DESCRIPTION                      -->
+<!--          ELEMENT DECLARATIONS                              -->
+<!--************************************************************-->
+<!--************************************************************-->
+
+
+<!ELEMENT ead                (eadheader, frontmatter?, archdesc)  >
+
+<!ATTLIST ead
+          %a.common;
+          relatedencoding     CDATA                  #IMPLIED     >
+
+
+
+
+<!--************************************************************-->
+<!--           EAD HEADER                                       -->
+<!--************************************************************-->
+
+
+<!ELEMENT eadheader          (eadid, filedesc, profiledesc?,
+                              revisiondesc?)                      >
+<!ATTLIST eadheader
+          %a.common;
+          langencoding       CDATA                   #IMPLIED
+          relatedencoding    CDATA                   #IMPLIED
+          findaidstatus      (unverified-partial-draft |
+                             unverified-full-draft |
+                             edited-partial-draft |
+                             edited-full-draft)      #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           EAD ID                                           -->
+
+<!ELEMENT eadid              (#PCDATA)                            >
+
+<!ATTLIST eadid
+          systemid           CDATA                   #IMPLIED
+          source             CDATA                   #IMPLIED
+          type               CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           FILE DESCRIPTION ELEMENTS                        -->
+
+<!ELEMENT filedesc           (titlestmt, editionstmt?,
+                              publicationstmt?, seriesstmt?,
+                              notestmt?)                          >
+
+<!ATTLIST filedesc
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           TITLE STATEMENT                                  -->
+
+<!ELEMENT titlestmt          (titleproper+, subtitle*, author?,
+                              sponsor?)                           >
+
+<!ATTLIST titlestmt
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           TITLE PROPER                                     -->
+
+<!ELEMENT titleproper        (#PCDATA | %m.phrase.bare; | abbr |
+                              date | expan | num)*                >
+
+<!ATTLIST titleproper
+          %a.common;
+          extent             (all | part |
+                              unknown-extent)        #IMPLIED
+          pubstatus          (pub | unpub |
+                              unknown-pub)           #IMPLIED
+          render             (%av.render;)           #IMPLIED
+          type               CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           SUBTITLE                                         -->
+
+<!ELEMENT subtitle           (#PCDATA | %m.phrase.bare; | abbr |
+                              date | expan | num)*                >
+
+<!ATTLIST subtitle
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           AUTHOR                                           -->
+
+<!ELEMENT author             (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST author
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           SPONSOR                                          -->
+
+<!ELEMENT sponsor            (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST sponsor
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           EDITION STATEMENT                                -->
+
+<!ELEMENT editionstmt        (edition | p)+                       >
+
+<!ATTLIST editionstmt
+          %a.common;
+          encodinganalog      CDATA                  #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           PUBLICATION STATEMENT                            -->
+
+<!ELEMENT publicationstmt
+                              (publisher | date | address | num
+                                  | p)+                           >
+
+<!ATTLIST publicationstmt
+          %a.common;
+          encodinganalog     CDATA                  #IMPLIED      >
+
+
+<!--************************************************************-->
+<!--           SERIES STATEMENT                                 -->
+
+<!ELEMENT seriesstmt         (titleproper | num | p)+             >
+
+<!ATTLIST seriesstmt
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           NOTE STATEMENT                                   -->
+
+<!ELEMENT notestmt           (note)+                              >
+
+<!ATTLIST notestmt
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           PROFILE DESCRIPTION                              -->
+
+<!ELEMENT profiledesc        (creation?, langusage?)              >
+
+<!ATTLIST profiledesc
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           CREATION                                         -->
+
+<!ELEMENT creation           (#PCDATA | %m.phrase.basic; | date)* >
+
+<!ATTLIST creation
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           LANGUAGE USAGE                                   -->
+
+<!ELEMENT langusage          (#PCDATA | %m.phrase.basic; |
+                              language)*                          >
+
+<!ATTLIST langusage
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           LANGUAGE (of description)                        -->
+
+<!ELEMENT language           (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST language
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           REVISION DESCRIPTION                             -->
+
+
+<!ELEMENT revisiondesc       (list | change+)                     >
+
+<!ATTLIST revisiondesc
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           CHANGE                                           -->
+
+<!ELEMENT change             (date, item+)                        >
+
+<!ATTLIST change
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+
+
+
+<!--************************************************************-->
+<!--           FRONT MATTER ELEMENTS                            -->
+<!--************************************************************-->
+
+
+<!ELEMENT frontmatter         (titlepage?, div*)                  >
+
+<!ATTLIST frontmatter
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--           TITLE PAGE                                       -->
+
+<!ELEMENT titlepage           (%m.blocks; | author | date |
+                                edition | num | publisher |
+                                bibseries | sponsor |
+                                titleproper | subtitle)*          >
+
+<!ATTLIST titlepage
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--           DIVISION                                         -->
+
+
+<!ELEMENT div                 (head?, (%m.blocks;)*, div*)        >
+
+<!ATTLIST div
+          %a.common;                                              >
+
+
+
+<!--************************************************************-->
+<!--           ARCHIVAL DESCRIPTION                             -->
+<!--************************************************************-->
+
+
+<!ELEMENT archdesc           (runner*, did, (%m.desc.full;)*)     >
+
+<!ATTLIST archdesc
+          %a.common;
+          type               (inventory | register |
+                              othertype)             #IMPLIED
+          othertype          CDATA                   #IMPLIED
+          %a.desc.all;
+          encodinganalog     CDATA                   #IMPLIED
+          relatedencoding    CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           RUNNER                                           -->
+
+<!ELEMENT runner              (#PCDATA | %m.phrase.bare;)*        >
+
+<!ATTLIST runner
+          %a.common;
+          placement           (header | footer |
+                               watermark)            #IMPLIED
+          role                CDATA                  #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           DESCRIPTIVE IDENTIFICATION                       -->
+
+<!ELEMENT did                (head?, (%m.did;)*)                  >
+
+<!ATTLIST did
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           PHYSICAL DESCRIPTION                             -->
+
+<!ELEMENT physdesc           (#PCDATA | %m.phrase.basic; |
+                              dimensions | physfacet | extent |
+                              date | %m.access;)*                 >
+
+<!ATTLIST physdesc
+          %a.common;
+          source             (%av.sources;)          #IMPLIED
+          othersource        CDATA                   #IMPLIED
+          label              CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           DIMENSIONS                                       -->
+
+<!ELEMENT dimensions         (#PCDATA | %m.phrase.basic; |
+                              dimensions)*                        >
+
+<!ATTLIST dimensions
+          %a.common;
+          type               CDATA                   #IMPLIED
+          unit               CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           PHYSICAL FACET                                   -->
+
+<!ELEMENT physfacet          (#PCDATA | %m.phrase.basic; |
+                              %m.access; | date)*                 >
+
+<!ATTLIST physfacet
+          %a.common;
+          type               CDATA                   #IMPLIED
+          unit               CDATA                   #IMPLIED
+          source             (%av.sources;)          #IMPLIED
+          othersource        CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           EXTENT                                           -->
+
+<!ELEMENT extent             (#PCDATA | %m.phrase.basic;)*        >
+
+<!ATTLIST extent
+          %a.common;
+          type               CDATA                   #IMPLIED
+          unit               CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           ORIGINATION                                      -->
+
+<!ELEMENT origination        (#PCDATA | %m.phrase.basic;|
+                              corpname | famname | name |
+                              persname)*                          >
+
+<!ATTLIST origination
+          %a.common;
+          label              CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           REPOSITORY                                       -->
+
+<!ELEMENT repository         (#PCDATA | %m.phrase.basic; |
+                              address | corpname | name |
+                              subarea)*                           >
+
+<!ATTLIST repository
+          %a.common;
+          label              CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           SUBAREA                                          -->
+
+<!ELEMENT subarea            (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST subarea
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           UNIT DATE                                        -->
+
+<!ELEMENT unitdate           (#PCDATA | %m.phrase.basic;)*        >
+
+<!ATTLIST unitdate
+          %a.common;
+          label              CDATA                   #IMPLIED
+          type               (bulk | inclusive |
+                              single)                #IMPLIED
+          certainty          CDATA                   #IMPLIED
+          normal             CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           UNIT IDENTIFICATION                              -->
+
+<!ELEMENT unitid             (#PCDATA | %m.phrase.basic;)*        >
+
+<!ATTLIST unitid
+          %a.common;
+          label              CDATA                   #IMPLIED
+          type               CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED
+          countrycode        CDATA                   #IMPLIED
+          repositorycode     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           REPOSITORY                                       -->
+
+<!ELEMENT container          (#PCDATA | %m.phrase.basic;)*        >
+
+<!ATTLIST container
+          %a.common;
+          label              CDATA                   #IMPLIED
+          type               (%av.container;)        #IMPLIED
+          othertype          CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED
+          parent             IDREFS                  #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           PHYSICAL LOCATION                                -->
+
+<!ELEMENT physloc            (#PCDATA | %m.phrase.basic;)*        >
+
+<!ATTLIST physloc
+          %a.common;
+          label              CDATA                   #IMPLIED
+          type               CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED
+          parent             IDREFS                  #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           UNIT TITLE                                       -->
+
+<!ELEMENT unittitle          (#PCDATA | %m.phrase.basic; |
+                              %m.access; | unitdate | num | date)*>
+
+<!ATTLIST unittitle
+          %a.common;
+          label              CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED
+          type               CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           ABSTRACT                                         -->
+
+<!ELEMENT abstract           (#PCDATA | %m.phrase.basic;)*        >
+
+<!ATTLIST abstract
+          %a.common;
+          label           CDATA                        #IMPLIED
+          encodinganalog  CDATA                        #IMPLIED
+          type            CDATA                        #IMPLIED   >
+
+
+
+<!--************************************************************-->
+<!--           ADMINISTRATIVE INFORMATION ELEMENTS              -->
+
+<!ELEMENT admininfo          (head?, (%m.blocks; |
+                              %m.admininfo; | admininfo)+)        >
+<!ATTLIST admininfo
+          %a.common;
+          type               CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           ACCRUALS                                         -->
+
+<!ELEMENT accruals           %cm.head.n.para;                     >
+
+<!ATTLIST accruals
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           ACCESS RESTRICTIONS                              -->
+
+<!ELEMENT accessrestrict     %cm.head.n.para;                     >
+
+<!ATTLIST accessrestrict
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           ACQUISTIONS INFORMATION                          -->
+
+<!ELEMENT acqinfo            %cm.head.n.para;                     >
+
+<!ATTLIST acqinfo
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           ALTERNATIVE FORM AVAILABLE                       -->
+
+<!ELEMENT altformavail       %cm.head.n.para;                     >
+
+<!ATTLIST altformavail
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED
+          type               CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           APPRAISAL                                        -->
+
+<!ELEMENT appraisal          %cm.head.n.para;                     >
+
+<!ATTLIST appraisal
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           CUSTODIAL HISTORY                                -->
+
+<!ELEMENT custodhist         (head?, (%m.blocks; | acqinfo)*)     >
+
+<!ATTLIST custodhist
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           PREFERRED CITATION                               -->
+
+<!ELEMENT prefercite         %cm.head.n.para;                     >
+
+<!ATTLIST prefercite
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           PROCESSING INFORMATION                           -->
+
+<!ELEMENT processinfo        %cm.head.n.para;                     >
+
+<!ATTLIST processinfo
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           USE RESTRICTIONS                                 -->
+
+<!ELEMENT userestrict        %cm.head.n.para;                     >
+
+<!ATTLIST userestrict
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+
+<!--************************************************************-->
+<!--           BIOGRAPHICAL HISTORY                             -->
+
+<!ELEMENT bioghist           (head?, (%m.blocks; | bioghist |
+                              dao | daogrp)+)                     >
+
+<!ATTLIST bioghist
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+
+<!--************************************************************-->
+<!--           CONTROLLED ACCESS ELEMENTS                       -->
+
+
+<!ELEMENT controlaccess      (head?, (%m.blocks;| %m.access; |
+                              title | controlaccess)+)            >
+
+<!ATTLIST controlaccess
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           OTHER DESCRIPTIVE DATA                           -->
+
+<!ELEMENT odd                (head?, (%m.blocks; | dao |
+                              daogrp | odd)*)                     >
+
+<!ATTLIST odd
+          %a.common;
+          type               CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+
+<!--************************************************************-->
+<!--           SCOPE AND CONTENT                                -->
+
+<!ELEMENT scopecontent       (head?, (%m.blocks; |
+                              arrangement | organization |
+                              scopecontent | dao | daogrp)+)      >
+
+<!ATTLIST scopecontent
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+
+<!--************************************************************-->
+<!--           ARRANGEMENT                                      -->
+
+<!ELEMENT arrangement        (head?, (%m.blocks; | arrangement)*) >
+
+<!ATTLIST arrangement
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+
+<!--************************************************************-->
+<!--           ORGANIZAITON                                     -->
+
+<!ELEMENT organization       (head?, (%m.blocks; | organization)*)>
+
+<!ATTLIST organization
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+
+
+<!--************************************************************-->
+<!--           DESCRIPTION OF SUBORDINATE COMPONENTS            -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--           TABULAR MODEL                                    -->
+
+<![%tabular;[
+
+
+<!ELEMENT dsc                ((head?, tspec?, (%m.blocks;)*),
+                              ((thead?, (c* | c01*))* | dsc*))    >
+
+<!ATTLIST dsc
+          %a.common;
+          type               (analyticover |
+                              combined |
+                              in-depth |
+                              othertype)             #REQUIRED
+          othertype          CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           TABLE SPECIFICATION                              -->
+
+<!ELEMENT tspec              (colspec+, spanspec*)                >
+
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (RECURSIVE)                -->
+
+
+<!ELEMENT c                  ((head?, did, (%m.desc.full;)*,
+                              (thead?, c+)*) | (drow+, c*))       >
+
+<!ATTLIST c
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           DESCRIPTIVE ROW                                  -->
+
+<!ELEMENT drow               (dentry+)                            >
+
+<!ATTLIST drow
+          %a.common;
+          rowsep             CDATA                   #IMPLIED
+          valign             (top|middle|bottom)     #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           DESCRIPTIVE ENTRY                                -->
+
+<!ELEMENT dentry             (%m.dentry;)*                        >
+
+<!ATTLIST dentry
+          %a.common;
+          colname            NMTOKEN                 #IMPLIED
+          namest             NMTOKEN                 #IMPLIED
+          nameend            NMTOKEN                 #IMPLIED
+          spanname           NMTOKEN                 #IMPLIED
+          morerows           CDATA                   "0"
+          colsep             CDATA                   #IMPLIED
+          rowsep             CDATA                   #IMPLIED
+          rotate             CDATA                   "0"
+          valign            (top|middle|bottom)      #IMPLIED
+          align             (left|right|center|
+                             justify|char)           #IMPLIED
+          charoff           CDATA                    #IMPLIED
+          char              CDATA                    #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 1)  -->
+
+<!ELEMENT c01                ((head?, did, (%m.desc.full;)*,
+                              (thead?, c02+)*) | (drow+, c02*))   >
+
+<!ATTLIST c01
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 2)  -->
+
+<!ELEMENT c02                ((head?, did, (%m.desc.full;)*,
+                              (thead?, c03+)*) | (drow+, c03*))   >
+
+<!ATTLIST c02
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 3)  -->
+
+<!ELEMENT c03                ((head?, did, (%m.desc.full;)*,
+                              (thead?, c04+)*) | (drow+, c04*))   >
+<!ATTLIST c03
+          %a.common;
+          %a.component;
+          encodinganalog CDATA           #IMPLIED                 >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 4)  -->
+
+<!ELEMENT c04                ((head?, did, (%m.desc.full;)*,
+                              (thead?, c05+)*) | (drow+, c05*))   >
+<!ATTLIST c04
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 5)  -->
+
+<!ELEMENT c05                ((head?, did, (%m.desc.full;)*,
+                              (thead?, c06+)*) | (drow+, c06*))   >
+<!ATTLIST c05
+          %a.common;
+          %a.component;
+          encodinganalog CDATA                       #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 6)  -->
+
+<!ELEMENT c06                ((head?, did, (%m.desc.full;)*,
+                              (thead?, c07+)*) | (drow+, c07*))   >
+<!ATTLIST c06
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 7)  -->
+
+<!ELEMENT c07                ((head?, did, (%m.desc.full;)*,
+                              (thead?, c08+)*) | (drow+, c08*))   >
+<!ATTLIST c07
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 8)  -->
+
+<!ELEMENT c08                ((head?, did, (%m.desc.full;)*,
+                              (thead?, c09+)*) | (drow+, c09*))   >
+<!ATTLIST c08
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 9)  -->
+
+<!ELEMENT c09                ((head?, did, (%m.desc.full;)*,
+                              (thead?, c10+)*) | (drow+, c10*))   >
+<!ATTLIST c09
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 10) -->
+
+<!ELEMENT c10                ((head?, did, (%m.desc.full;)*,
+                              (thead?, c11+)*) | (drow+, c11*))   >
+<!ATTLIST c10
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 11) -->
+
+<!ELEMENT c11                ((head?, did, (%m.desc.full;)*,
+                              (thead?, c12+)*) | (drow+, c12*))   >
+<!ATTLIST c11
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 12) -->
+
+<!ELEMENT c12                ((head?, did, (%m.desc.full;)*) |
+                              (drow+))                            >
+<!ATTLIST c12
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+]]>
+
+
+
+<!--************************************************************-->
+<!--           NONTABULAR MODEL                                 -->
+
+<![%nontabular;[
+
+
+<!ELEMENT dsc                ((head?, (%m.blocks;)*),
+                              ((thead?, (c* | c01*))* | dsc*))    >
+
+<!ATTLIST dsc
+          %a.common;
+          type               (analyticover |
+                              combined |
+                              in-depth |
+                              othertype)             #REQUIRED
+          othertype          CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (RECURSIVE)                -->
+
+<!ELEMENT c                  (head?, did, (%m.desc.full;)*,
+                              (thead?, c+)*)                       >
+
+<!ATTLIST c
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 1)  -->
+
+<!ELEMENT c01                (head?, did, (%m.desc.full;)*,
+                              (thead?, c02+)*)                    >
+
+
+<!ATTLIST c01
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 2)  -->
+
+<!ELEMENT c02                (head?, did, (%m.desc.full;)*,
+                              (thead?, c03+)*)                    >
+
+<!ATTLIST c02
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 3)  -->
+
+<!ELEMENT c03                (head?, did, (%m.desc.full;)*,
+                              (thead?, c04+)*)                    >
+
+<!ATTLIST c03
+          %a.common;
+          %a.component;
+          encodinganalog CDATA           #IMPLIED                 >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 4)  -->
+
+<!ELEMENT c04                (head?, did, (%m.desc.full;)*,
+                              (thead?, c05+)*)                    >
+
+<!ATTLIST c04
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 5)  -->
+
+<!ELEMENT c05                (head?, did, (%m.desc.full;)*,
+                              (thead?, c06+)*)                    >
+
+<!ATTLIST c05
+          %a.common;
+          %a.component;
+          encodinganalog CDATA                       #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 6)  -->
+
+<!ELEMENT c06                (head?, did, (%m.desc.full;)*,
+                              (thead?, c07+)*)                    >
+
+<!ATTLIST c06
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 7)  -->
+
+<!ELEMENT c07                (head?, did, (%m.desc.full;)*,
+                              (thead?, c08+)*)                    >
+
+<!ATTLIST c07
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 8)  -->
+
+<!ELEMENT c08                (head?, did, (%m.desc.full;)*,
+                              (thead?, c09+)*)                    >
+
+<!ATTLIST c08
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 9)  -->
+
+<!ELEMENT c09                (head?, did, (%m.desc.full;)*,
+                              (thead?, c10+)*)                    >
+
+<!ATTLIST c09
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 10) -->
+
+<!ELEMENT c10                (head?, did, (%m.desc.full;)*,
+                              (thead?, c11+)*)                    >
+
+<!ATTLIST c10
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 11) -->
+
+<!ELEMENT c11                (head?, did, (%m.desc.full;)*,
+                              (thead?, c12+)*)                    >
+
+<!ATTLIST c11
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           COMPONENT DESCRIPTION (ENUMERATIVE COMPONENT 12) -->
+
+<!ELEMENT c12                ((head?, did, (%m.desc.full;)*))     >
+
+<!ATTLIST c12
+          %a.common;
+          %a.component;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+]]>
+
+
+<!--************************************************************-->
+<!--           ADJUNCT DESCRIPTIVE DATA                         -->
+
+
+<!ELEMENT add                (head?, (%m.blocks; | bibliography |
+                              fileplan | index | relatedmaterial |
+                              separatedmaterial | add |
+                              otherfindaid)*)                     >
+
+<!ATTLIST add
+          %a.common;
+          type               CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           BIBLIOGRAPHY                                     -->
+
+<!ELEMENT bibliography       (head?, (%m.blocks; | %m.refs; |
+                              bibliography)*)                     >
+
+<!ATTLIST bibliography
+          %a.common;
+          numbered           (yes | no)              #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           FILE PLAN                                        -->
+
+<!ELEMENT fileplan           (head?, (%m.blocks; | fileplan)*)    >
+
+<!ATTLIST fileplan
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           RELATED MATERIAL                                 -->
+
+<!ELEMENT relatedmaterial    (head?, (%m.blocks; | %m.refs; |
+                              relatedmaterial)*)                  >
+
+<!ATTLIST relatedmaterial
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           SEPARATED MATERIAL                               -->
+
+<!ELEMENT separatedmaterial  (head?, (%m.blocks; |%m.refs; |
+                              separatedmaterial)*)                >
+
+<!ATTLIST separatedmaterial
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           OTHER FINDING AID                                -->
+
+<!ELEMENT otherfindaid       (head?, (%m.blocks; | %m.refs; |
+                              otherfindaid)*)                     >
+
+<!ATTLIST otherfindaid
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           INDEX                                            -->
+
+<!ELEMENT index              (head?,(%m.blocks;)*,
+                              ((((listhead)?), indexentry+) |
+                              index*))                            >
+
+<!ATTLIST index
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           INDEX ENTRY                                      -->
+
+<!ELEMENT indexentry         ((namegrp | %m.access;),
+                              (ptrgrp | ptr | ref)?, indexentry*) >
+
+<!ATTLIST indexentry
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--           NAME GROUP                                       -->
+
+<!ELEMENT namegrp            (%m.access; | note)+                 >
+
+<!ATTLIST namegrp
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--           POINTER GROUP                                    -->
+
+<!ELEMENT ptrgrp             (ptr | ref)+                         >
+
+<!ATTLIST ptrgrp
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--************************************************************-->
+<!--           SHARED ELEMENTS                                  -->
+<!--************************************************************-->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--           HEAD                                             -->
+
+<!ELEMENT head               (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST head
+          %a.common;
+          althead            CDATA                   #IMPLIED     >
+
+<!--************************************************************-->
+<!--           PARAGRAPH                                        -->
+
+<!ELEMENT p                  (#PCDATA | %m.para.content;)*        >
+
+<!ATTLIST p
+          %a.common;                                              >
+
+
+
+<!--************************************************************-->
+<!--            RENDER ELEMENTS                                 -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--           EMPHASIS                                         -->
+
+<!ELEMENT emph               (#PCDATA | %m.phrase.basic;)*        >
+
+<!ATTLIST emph
+          render             (%av.render;)           #IMPLIED
+          id                 ID                      #IMPLIED
+          altrender          CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           LINEBREAK                                        -->
+
+<!ELEMENT lb                 EMPTY                                >
+
+
+<!--************************************************************-->
+<!--           LINKING AND REFERENCE ELEMENTS                   -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--           DIGITAL ARCHIVAL OBJECT                          -->
+
+<!ELEMENT dao                (daodesc?)                           >
+
+<!ATTLIST dao
+          %a.common;
+          %a.external.ptr;                                        >
+
+
+<!--************************************************************-->
+<!--          DIGITAL ARCHIVAL OBJECT LOCATOR                   -->
+<!--          (xlink:form "locator")                            -->
+
+<!ELEMENT daoloc             (daodesc?)                           >
+
+<!ATTLIST daoloc
+          %a.common;
+          %a.loc.external.ptr;                                    >
+
+
+<!--************************************************************-->
+<!--          DIGITAL ARCHIVAL OBJECT DESCRIPTION               -->
+
+<!ELEMENT daodesc            %cm.head.n.para;                     >
+
+<!ATTLIST daodesc
+          %a.common;                                              >
+
+
+
+<!--************************************************************-->
+<!--          DIGITAL ARCHIVAL OBJECT GROUP                     -->
+<!--          (xlink:form: "extended")                          -->
+
+<!ELEMENT daogrp             (daodesc?, (daoloc | ptrloc |
+                              extptrloc | refloc | extrefloc)*)   >
+
+
+<!ATTLIST daogrp
+          %a.common;
+          %a.linkgrp;                                             >
+
+
+<!--************************************************************-->
+<!--          POINTER ELEMENTS                                  -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          POINTER                                           -->
+<!--          (xlink:form "simple")                             -->
+
+<!ELEMENT ptr                EMPTY                                >
+
+<!ATTLIST ptr
+          %a.common;
+          %a.internal.ptr;                                        >
+
+
+<!--************************************************************-->
+<!--          POINTER LOCATOR                                   -->
+<!--          (xlink:form "locator")                            -->
+
+<!ELEMENT ptrloc             EMPTY                                >
+
+<!ATTLIST ptrloc
+          %a.common;
+          %a.loc.internal.ptr;                                    >
+
+
+<!--************************************************************-->
+<!--          EXTERNAL POINTER                                  -->
+<!--          (xlink:form "simple"                              -->
+
+<!ELEMENT extptr             EMPTY                                >
+
+<!ATTLIST extptr
+          %a.common;
+          %a.external.ptr;                                        >
+
+
+<!--************************************************************-->
+<!--          EXTERNAL POINTER LOCATOR                          -->
+<!--          (xlink:form "locator")                            -->
+
+<!ELEMENT extptrloc          EMPTY                                >
+
+<!ATTLIST extptrloc
+          %a.common;
+          %a.loc.external.ptr;                                    >
+
+
+<!--************************************************************-->
+<!--          REFERENCE ELEMENTS                                -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          REFERENCE                                         -->
+<!--          (xlink:form "simple")                             -->
+
+<!ELEMENT ref                (#PCDATA | %m.para.content.norefs; |
+                              bibref | title | extref | archref)* >
+
+<!ATTLIST ref
+          %a.common;
+          %a.internal.ptr;                                        >
+
+
+<!--************************************************************-->
+<!--          REFERENCE LOCATOR                                 -->
+<!--          (xlink:form "locator"                             -->
+
+<!ELEMENT refloc              (#PCDATA | %m.para.content.norefs; |
+                               bibref | title | extref |
+                               archref)*                          >
+
+<!ATTLIST refloc
+          %a.common;
+          %a.loc.internal.ptr;                                    >
+
+
+
+<!--************************************************************-->
+<!--          EXTERNAL REFERENCE                                -->
+<!--          (xlink:form "simple")                             -->
+
+<!ELEMENT extref             (#PCDATA | %m.para.content.norefs; |
+                              bibref | ref | title | archref)*    >
+
+<!ATTLIST extref
+          %a.common;
+          %a.external.ptr;                                        >
+
+
+<!--************************************************************-->
+<!--          EXTERNAL REFERENCE LOCATOR                        -->
+<!--          (xlink:form "locator")                            -->
+
+<!ELEMENT extrefloc          (#PCDATA | %m.para.content.norefs; |
+                              bibref | ref | title | archref)*    >
+
+<!ATTLIST extrefloc
+          %a.common;
+          %a.loc.external.ptr;                                    >
+
+
+
+<!--************************************************************-->
+<!--          LINK GROUP                                        -->
+<!--          (xlink:form "extended")                           -->
+
+<!ELEMENT linkgrp            (ptrloc | extptrloc | refloc |
+                              extrefloc)*                         >
+
+<!ATTLIST linkgrp
+          %a.common;
+          %a.linkgrp;                                             >
+
+<!--************************************************************-->
+<!--          TITLE                                             -->
+
+<!ELEMENT title              (#PCDATA | %m.phrase.bare; | date |
+                              num)*                               >
+
+<!ATTLIST title
+          %a.common;
+          %a.access;
+          %a.external.ptr;
+          render             (%av.render;)           #IMPLIED
+          extent             (all | part |
+                              unknown-extent)        #IMPLIED
+          pubstatus          (pub | unpub |
+                              unknown-pub)           #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--          ARCHIVAL REFERENCE                                -->
+
+<!ELEMENT archref            (#PCDATA | %m.phrase.basic.norefs; |
+                              bibref | ref | title | extref |
+                              %m.did;)*                           >
+
+<!ATTLIST archref
+          %a.common;
+          %a.external.ptr;                                        >
+
+
+<!--************************************************************-->
+<!--          BIBLIOGRAPHIC REFERENCE                           -->
+
+<!ELEMENT bibref             (#PCDATA | %m.phrase.basic.norefs; |
+                              edition | imprint | name | num |
+                              bibseries | ref | title |
+                              famname | persname | corpname |
+                              extref | archref)*                  >
+
+<!ATTLIST bibref
+          %a.common;
+          %a.external.ptr;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--          EDITION                                           -->
+
+<!ELEMENT edition            (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST edition
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+
+<!--************************************************************-->
+<!--          BIBLIOGRAPHIC SERIES                              -->
+
+<!ELEMENT bibseries          (#PCDATA | %m.phrase.bare; | title |
+                              num)*                               >
+
+<!ATTLIST bibseries
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--          IMPRINT                                           -->
+
+<!ELEMENT imprint            (#PCDATA | %m.phrase.bare; |
+                              publisher | geogname | date)*       >
+
+<!ATTLIST imprint
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--          PUBLISHER                                         -->
+
+<!ELEMENT publisher          (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST publisher
+          %a.common;
+          encodinganalog     CDATA                    #IMPLIED    >
+
+
+<!--************************************************************-->
+<!--          ACCESS ELEMENTS                                   -->
+<!--************************************************************-->
+
+<!--          CORPORATE NAME                                    -->
+
+<!ELEMENT corpname           (#PCDATA | %m.phrase.bare; |
+                              subarea)*                           >
+
+<!ATTLIST corpname
+          %a.common;
+          %a.access;
+          role               CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--          FAMILY NAME                                       -->
+
+<!ELEMENT famname            (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST famname
+          %a.common;
+          %a.access;
+          role               CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--          GEOGRAPHICAL NAME                                 -->
+
+<!ELEMENT geogname           (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST geogname
+          %a.common;
+          %a.access;
+          role               CDATA                    #IMPLIED    >
+
+
+<!--************************************************************-->
+<!--          GENRE FORM                                        -->
+
+<!ELEMENT genreform          (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST genreform
+          %a.common;
+          %a.access;                                              >
+
+
+<!--************************************************************-->
+<!--          NAME                                              -->
+
+<!ELEMENT name               (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST name
+          %a.common;
+          %a.access;
+          role               CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--          OCCUPATION                                        -->
+
+<!ELEMENT occupation         (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST occupation
+          %a.common;
+          %a.access;                                              >
+
+
+<!--************************************************************-->
+<!--          FUNCTION                                          -->
+
+<!ELEMENT function           (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST function
+          %a.common;
+          %a.access;                                              >
+
+<!--************************************************************-->
+<!--          PERSONAL NAME                                     -->
+
+<!ELEMENT persname           (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST persname
+          %a.common;
+          %a.access;
+          role               CDATA                   #IMPLIED     >
+
+<!--************************************************************-->
+<!--          SUBJECT                                           -->
+
+<!ELEMENT subject            (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST subject
+          %a.common;
+          %a.access;                                              >
+
+
+<!--************************************************************-->
+<!--          DATA ELEMENTS                                     -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--           DATE                                             -->
+
+<!ELEMENT date               (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST date
+          %a.common;
+          type               CDATA                   #IMPLIED
+          normal             CDATA                   #IMPLIED
+          certainty          CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           NUMBER                                           -->
+
+<!ELEMENT num                (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST num
+          %a.common;
+          type               CDATA                   #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           ABBREVIATION                                     -->
+
+<!ELEMENT abbr               (#PCDATA)                            >
+
+<!ATTLIST abbr
+          %a.common;
+          expan              CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           EXPANSION                                        -->
+
+<!ELEMENT expan              (#PCDATA)                            >
+
+<!ATTLIST expan
+          %a.common;
+          abbr               CDATA                   #IMPLIED     >
+
+
+
+<!--************************************************************-->
+<!--           INTERMEDIATE LEVEL ELEMENTS                      -->
+<!--************************************************************-->
+
+
+<!--************************************************************-->
+<!--           ADDRESS                                          -->
+
+<!ELEMENT address            (addressline+)                       >
+
+<!ATTLIST address
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--           ADDRESS LINE                                     -->
+
+<!ELEMENT addressline        (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST addressline
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--          CHRONOLOGICAL LIST                                -->
+
+<!ELEMENT chronlist          (head?, (listhead)?, (chronitem)+)   >
+
+<!ATTLIST chronlist
+          %a.common;
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--          CHRONOLOGICAL ITEM                                -->
+
+<!ELEMENT chronitem          (date, (event | eventgrp))           >
+
+<!ATTLIST chronitem
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--          EVENT                                             -->
+
+<!ELEMENT event              (#PCDATA | %m.para.content;)*        >
+
+<!ATTLIST event
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--          EVENT GROUP                                       -->
+
+<!ELEMENT eventgrp           (event+)                             >
+
+<!ATTLIST eventgrp
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--           LIST                                             -->
+
+<!ELEMENT list               (head?, (item+ | (listhead?,
+                              defitem+)))                         >
+
+<!ATTLIST list
+          %a.common;
+          type               (simple | deflist |
+                              marked | ordered)      #IMPLIED
+          mark               CDATA                   #IMPLIED
+          numeration         (arabic |
+                              upperalpha |
+                              loweralpha |
+                              upperroman |
+                              lowerroman)            #IMPLIED
+          continuation       (continues | starts)    #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           LIST HEAD                                        -->
+
+<!ELEMENT listhead           (head01?, head02?)                   >
+
+<!ATTLIST listhead
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--           HEAD 01                                          -->
+
+<!ELEMENT head01             (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST head01
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--           HEAD 02                                          -->
+
+<!ELEMENT head02             (#PCDATA | %m.phrase.bare;)*         >
+
+<!ATTLIST head02
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--           ITEM                                             -->
+
+<!ELEMENT item               (#PCDATA | %m.para.content;)*        >
+
+<!ATTLIST item
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--           LABEL                                            -->
+
+<!ELEMENT label              (#PCDATA | %m.phrase.plus;)*         >
+
+<!ATTLIST label
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--           DEFINITION ITEM                                  -->
+
+<!ELEMENT defitem            (label, item)                        >
+
+<!ATTLIST defitem
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--           BLOCK QUOTE                                      -->
+
+<!ELEMENT blockquote         (%m.blocks.noquote;)*                >
+
+<!ATTLIST blockquote
+          %a.common;                                              >
+
+
+<!--************************************************************-->
+<!--           NOTE                                             -->
+
+<!ELEMENT note               (%m.blocks;)*                        >
+
+<!ATTLIST note
+          %a.common;
+          label              CDATA                   #IMPLIED
+          show               (embed|new)             #IMPLIED
+          actuate            (auto|user)             #IMPLIED
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+
+<!--************************************************************-->
+<!--           TABLE ELEMENT DECLARATIONS (CALS)                -->
+
+
+<!--************************************************************-->
+<!--           TABLE                                            -->
+
+<!ELEMENT table              (head?,tgroup+)                      >
+
+<!ATTLIST table
+          %a.common;
+          tabstyle           NMTOKEN                 #IMPLIED
+          tocentry           CDATA                   "1"
+          shortentry         CDATA                   #IMPLIED
+          frame              (top | bottom |
+                              topbot | all |
+                              sides | none)          #IMPLIED
+          colsep             CDATA                   #IMPLIED
+          rowsep             CDATA                   #IMPLIED
+          orient             (port|land)             #IMPLIED
+          pgwide             CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           TABLE GROUP                                      -->
+
+<!ELEMENT tgroup             (colspec*, spanspec*, thead?,
+                              tfoot?, tbody)                      >
+
+<!ATTLIST tgroup
+          %a.common;
+          cols               CDATA                   #REQUIRED
+          tgroupstyle        NMTOKEN                 #IMPLIED
+          colsep             CDATA                   #IMPLIED
+          rowsep             CDATA                   #IMPLIED
+          align              (left | right |
+                              center | justify |
+                              char)                  "left"
+          charoff            CDATA                   "50"
+          char               CDATA                   ""           >
+
+
+<!--************************************************************-->
+<!--           TABLE COLUMN SPECIFICATION                       -->
+
+<!ELEMENT colspec            EMPTY                                >
+
+<!ATTLIST colspec
+          colnum             CDATA                   #IMPLIED
+          colname            NMTOKEN                 #IMPLIED
+          align              (left | right |
+                              center | justify |
+                              char)                  #IMPLIED
+          charoff            CDATA                   #IMPLIED
+          char               CDATA                   #IMPLIED
+          colwidth           CDATA                   #IMPLIED
+          colsep             CDATA                   #IMPLIED
+          rowsep             CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           TABLE SPANNING COLUMN SPECIFICATION              -->
+
+<!ELEMENT spanspec           EMPTY                                >
+
+<!ATTLIST spanspec
+          namest             NMTOKEN                 #REQUIRED
+          nameend            NMTOKEN                 #REQUIRED
+          spanname           NMTOKEN                 #REQUIRED
+          align              (left | right |
+                              center | justify |
+                              char)                  #IMPLIED
+          charoff            CDATA                   #IMPLIED
+          char               CDATA                   #IMPLIED
+          colsep             CDATA                   #IMPLIED
+          rowsep             CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           TABLE HEAD                                       -->
+
+<!ELEMENT thead              (row+)                               >
+
+<!ATTLIST thead
+          %a.common;
+          valign             (top|middle|bottom)     "bottom"     >
+
+
+<!--************************************************************-->
+<!--           TABLE FOOT                                       -->
+
+<!ELEMENT tfoot              (colspec*, row+)                     >
+
+<!ATTLIST tfoot
+          %a.common;
+          valign             (top | middle | bottom) "top"        >
+
+
+<!--************************************************************-->
+<!--           TABLE BODY                                       -->
+
+<!ELEMENT tbody              (row+)                               >
+<!ATTLIST tbody
+          %a.common;
+          valign             (top | middle | bottom) "top"        >
+
+
+<!--************************************************************-->
+<!--           ROW                                              -->
+
+<!ELEMENT row                (entry)+                             >
+
+<!ATTLIST row
+          %a.common;
+          valign             (top | middle | bottom) #IMPLIED
+          rowsep             CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           ENTRY                                            -->
+
+<!ELEMENT entry              (#PCDATA | %m.table.entry;)*         >
+
+<!ATTLIST entry
+          %a.common;
+          colname            NMTOKEN                 #IMPLIED
+          namest             NMTOKEN                 #IMPLIED
+          nameend            NMTOKEN                 #IMPLIED
+          spanname           NMTOKEN                 #IMPLIED
+          morerows           CDATA                   "0"
+          colsep             CDATA                   #IMPLIED
+          rowsep             CDATA                   #IMPLIED
+          rotate             CDATA                   "0"
+          valign             (top | middle | bottom) #IMPLIED
+          align              (left | right | center |
+                              justify | char)        #IMPLIED
+          charoff            CDATA                   #IMPLIED
+          char               CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--           END OF EADTABLE DTD                              -->
+
+<!--************************************************************-->
+<!--          END of EAD BASIC DECLARATIONS                     -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--************************************************************-->
+<!--          END eadbase                                       -->
+<!--************************************************************-->
+<!--************************************************************-->

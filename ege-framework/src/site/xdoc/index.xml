@@ -1,0 +1,16 @@
+<document>
+  <properties>
+    <title>About EGE Framework</title>
+  </properties>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="About EGE Framework">
+      <!-- Within sections, any XHTML can be used -->
+	  <p>EGE Framework is a basic reference implementation of EGE API. Implementation creates plugin mechanism for conversion, validation and recognition.
+	  Plugin mechanism is based on <a href="http://jpf.sourceforge.net/">JPF(Java Plugin Framework)</a>. 
+	  <p>More about EGE API can be found at : <a href="../../usage.html">API Overview</a>.</p>
+	  </p>
+	  <p>You can download <b>EGE Framework</b> sources and binaries from <a href="download.html">here</a></p>
+	</section>
+  </body>
+</document>

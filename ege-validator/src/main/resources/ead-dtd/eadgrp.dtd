@@ -1,0 +1,310 @@
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                ENCODED ARCHIVAL DESCRIPTION                -->
+<!--                  DOCUMENT TYPE DEFINITION                  -->
+<!--                           GROUP                            -->
+<!--                        VERSION 1.0                         -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--               Prepared and Maintained by the               -->
+<!--         Encoded Archival Description Working Group         -->
+<!--            of the Society of American Archivists           -->
+<!--                          and the                           -->
+<!--        Network Development and MARC Standards Office       -->
+<!--                 of the Library of Congress                 -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--               Society of American Archivists               -->
+<!--                      Chicago, Illinois                     -->
+<!--                            1998                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--    Encoded Archival Description Document Type Definition   -->
+<!--                          Group                             -->
+<!--                                                            -->
+<!--            EAD Technical Document No. 1, Part 2            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--This file constitutes a component of version 1.0 of the     -->
+<!--Encoded Archival Description Document Type Definition (DTD),-->
+<!--released in August 1998.  Version 1.0 of the DTD supersedes -->
+<!--the beta version made available via the EAD Internet site   -->
+<!--beginning in 1996.                                          -->
+<!--                                                            -->
+<!--                                                            -->
+<!--The SAA Encoded Archival Description Working Group is       -->
+<!--responsible for updating and editing the EAD DTD (EAD       -->
+<!--Technical Document No. 1) and tag library (EAD Technical    -->
+<!--Document No. 2).                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--The LC Network Development and MARC Standards Office serves -->
+<!--as the maintenance agency for online EAD documentation,     -->
+<!--including storage and delivery of electronic files and      -->
+<!--maintenance of the EAD Internet site, located at            -->
+<!--http://www.loc.gov/ead/.                                    -->
+<!--                                                            -->
+<!--                                                            -->
+<!--Published by the Society of American Archivists.            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--Tag Library available from:                                 -->
+<!--                Society of American Archivists              -->
+<!--                527 S. Wells Street, 5th floor              -->
+<!--                Chicago, IL 60607                           -->
+<!--                                                            -->
+<!--                Phone:    312/922-0140                      -->
+<!--                Fax:      312/347-1452                      -->
+<!--                Internet: info@archivists.org               -->
+<!--                                                            -->
+<!--                                                            -->
+<!--(c) Society of American Archivists, 1998.                   -->
+<!-- All rights reserved.                                       -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          PUBLIC IDENTIFIER FOR EADGRP.DTD                  -->
+<!--************************************************************-->
+
+<!--
+
+"-//Society of American Archivists//DTD eadgrp.dtd (Encoded Archival Description (EAD) Group Version 1.0)//EN"
+
+                                                                -->
+<!--************************************************************-->
+<!--************************************************************-->
+
+
+<!--************************************************************-->
+<!--          INTRODUCTION                                      -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--  NAME:      Encoded Archival Description Document Type     -->
+<!--              Definition Group                              -->
+<!--                    File name = eadgrp.dtd                  -->
+<!--                    Version = 1.0                           -->
+<!--                    Version date = 980824                   -->
+<!--                                                            -->
+<!--                                                            -->
+<!--  PURPOSE:   To enable combining two or more EAD instances  --> 
+<!--             created by two or more administratively        -->
+<!--             distinct units into a single document.         -->
+<!--                                                            -->
+<!--                                                            -->
+<!--  CONTACT:   EAD listserv of the Library of Congress Network-->
+<!--             Development and MARC Standards Office.         -->
+<!--             To subscribe to this listserv, send a one-line -->
+<!--             message to LISTSERV@LOC.GOV containing the     -->
+<!--             text:  SUBSCRIBE EAD YourName. Once subscribed,-->
+<!--             submit messages to EAD@LOC.GOV.                -->
+<!--                                                            -->
+<!--  DEPENDENCIES:                                             -->
+<!--             References ead.base                            -->
+<!--             For SGML applications:                         -->
+<!--              References: eadnotat.ent and eadchars.ent     -->
+<!--              SGML declaration: eadsgml.dcl                 -->
+<!--                                                            -->
+<!--************************************************************-->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          CHANGE HISTORY (POST VERSION 1.0 CHANGES)         -->
+<!--************************************************************-->
+<!-- 
+NUM  DESCRIPTION OF CHANGE                                MM/DD/YY
+
+
+                                                                -->
+<!--************************************************************-->
+<!--          END CHANGE HISTORY                                -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--************************************************************-->
+<!--          XLINK INCLUSION/EXCLUSION                         -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--     NOTE: by default, XLink options are ignored or not     -->
+<!--     recognized by the SGML or XML parser. When XLink       -->
+<!--     software becomes available, it will be necessary to    -->
+<!--     include the xlink:form attributes. To include these    -->
+<!--     attributes, change the entity value for "xlink" to     -->
+<!--     "INCLUDE" and the entity value for "noxlink" to        -->
+<!--     "IGNORE".                                              -->
+<!--                                                            -->
+<!--************************************************************-->
+ 
+<!ENTITY % xlink          'IGNORE'                                
+                                                                  >
+<!ENTITY % noxlink        'INCLUDE'                               
+                                                                  >
+
+<!--************************************************************-->
+<!--                  END XLINK INCLUSION/EXCLUSION             -->
+<!--************************************************************-->
+
+
+
+
+<!--************************************************************-->
+<!--          TABULAR DSC INCLUSION/EXCLUSION                   -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--     NOTE: by default, TABULAR version of DSC is excluded   -->
+<!--     or not recognized by the SGML or XML parser. To enable -->
+<!--     tabular features in the DSC, change the entity value   -->
+<!--     for "tabular" to "INCLUDE" and the entity value for    -->
+<!--     "nontabular" to "IGNORE".                              -->
+<!--************************************************************-->
+
+<!ENTITY % tabular        'IGNORE'                               
+                                                                  >
+<!ENTITY % nontabular     'INCLUDE'                               
+                                                                  >
+
+<!--************************************************************-->
+<!--          END TABULAR DSC INCLUSION/EXCLUSION               -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          SGML EADNOTAT AND EADCHARS INCLUSION/EXCLUSION    -->
+<!--************************************************************-->
+<!--                                                            -->
+<!--     NOTE 1: eadchars.ent should only be invoked for SGML   -->
+<!--     applications. For XML, use Unicode &#xN; where "N"     -->
+<!--     is the Unicode Hexadecimal value assigned by the       -->
+<!--     standard.                                              -->
+<!--                                                            -->
+<!--     NOTE 2: eadnotat.ent should only be invoked for SGML   -->
+<!--     applications. For XML, the eadnotat.ent file should be -->
+<!--     invoked in the declaration subset of individual        -->
+<!--     instance.                                              -->
+<!--                                                            -->
+<!--     For more information, see Extensible Markup Language   -->
+<!--     (XML) 1.0: http://www.w3.org/TR/1998/REC-xml-19980210  -->
+<!--                                                            -->
+<!--************************************************************-->
+
+<!ENTITY % sgml           'INCLUDE'                               
+                                                                  >
+
+<!--************************************************************-->
+<!--          END EADNOTAT AND EADCHARS INCLUSION/EXCLUSION     -->
+<!--************************************************************-->
+
+
+<!ENTITY % eadbase               PUBLIC
+"-//Society of American Archivists//DTD eadbase.ent (Encoded Archival Description (EAD) Basic Declarations Version 1.0)//EN" 
+"eadbase.ent"
+>
+
+
+%eadbase; 
+
+<![%sgml;[
+<!--************************************************************-->
+<!--          INVOKE EADCHARS AND EADNOTAT FOR SGML APPLICATIONS-->
+<!--************************************************************-->
+
+<!ENTITY % eadchars              PUBLIC
+"-//Society of American Archivists//DTD eadchars.ent (Encoded Archival Description (EAD) Special Characters Version 1.0)//EN"
+"eadchars.ent"
+>
+
+%eadchars;
+
+<!ENTITY % eadnotat              PUBLIC
+"-//Society of American Archivists//DTD eadnotat.ent (Encoded Archival Description (EAD) Notation Declarations Version 1.0)//EN"
+"eadnotat.ent"
+>
+
+%eadnotat;
+
+]]>
+
+<!--************************************************************-->
+<!--        ENCODED ARCHIVAL DESCRIPTION (EAD) GROUP ELEMENTS   -->
+<!--************************************************************-->
+
+<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!-- MAINTENANCE NOTE: see eadbase.ent for definitions of all   -->
+<!--                   other elements.                          -->
+<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+
+<!ELEMENT eadgrp              (eadheader, frontmatter?, 
+                               archdescgrp+)                      >
+
+<!ATTLIST eadgrp            
+          %a.common;
+          relatedencoding     CDATA                  #IMPLIED     >
+
+<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!-- MAINTENANCE NOTE: see eadbase.ent for definitions of all   -->
+<!--                   other elements.                          -->
+<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+<!--************************************************************-->
+<!--          ARCHIVAL DESCRIPTION GROUP                        -->
+<!--************************************************************-->
+
+
+<!ELEMENT archdescgrp         (runner*, did, (%m.desc.base; | 
+                               dscgrp | dao | daogrp | note)*)    >
+
+<!ATTLIST archdescgrp         
+          %a.common;
+          type               (inventory | register | 
+                              othertype)             #IMPLIED  
+          othertype          CDATA                   #IMPLIED
+          %a.desc.all;
+          encodinganalog     CDATA                   #IMPLIED
+          relatedencoding    CDATA                   #IMPLIED     >
+
+
+<!--************************************************************-->
+<!--          DESCRIPTION OF SUBORDINATE COMPONENETS GROUP      -->
+<!--************************************************************-->
+
+
+<!ELEMENT dscgrp		            (head?, (%m.blocks;)*, ead+)     >
+
+<!ATTLIST dscgrp           
+          %a.common; 
+          encodinganalog     CDATA                   #IMPLIED     >
+
+
+<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!-- MAINTENANCE NOTE: see eadbase.ent for definitions of all   -->
+<!--                   other elements.                          -->
+<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+<!--************************************************************-->
+<!--          END of EAD GROUP DTD                              -->
+<!--************************************************************-->

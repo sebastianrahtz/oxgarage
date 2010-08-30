@@ -1,0 +1,33 @@
+﻿<document>
+  <properties>
+    <title>Download</title>
+  </properties>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="Download EGE web client">
+      <!-- Within sections, any XHTML can be used -->
+		<p>Download EGE web client: 
+			<ul><li>Binaries : <a href="http://dl.psnc.pl/software/EGE/download/ege-webclient-0.3.zip">EGE web client ver 0.3 (2009.10.01)</a>
+			</li>
+			<li>Sources : <a href="http://dl.psnc.pl/software/EGE/download/ege-webclient-0.3-src.zip">EGE web client ver 0.3 (2009.10.01)</a></li>
+			</ul>
+		</p>
+	</section>
+	<section name="Installing and configuring EGE web client">
+		<p>Before starting EGE web client it is necessary to configure URL address of EGE RESTful web service in web.xml.</p>
+		<p><b>web.xml</b> file can be found in /WEB-INF folder of EGE web client project. There is XML entry in configuration : 
+		<source>
+		&lt;context-param&gt;
+			&lt;description&gt;
+				EGE RESTful web service URL. 
+			&lt;/description&gt;
+			&lt;param-name&gt;webservice.url&lt;/param-name&gt;
+			&lt;param-value&gt;http://localhost:8080/ege-webservice/&lt;/param-value&gt;
+		&lt;/context-param&gt;
+		</source>
+		Address to web service is specified inside <b>param-value</b> entity. By default there is &quot;http://localhost:8080/ege-webservice/&quot; .
+		</p>
+		<p><b>Important: EGE web client extensively uses AJAX requests and therefore it has to be run over the same domain as EGE RESTful web service.</b></p>
+	</section>
+  </body>
+</document>

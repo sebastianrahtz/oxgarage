@@ -1,0 +1,326 @@
+\documentclass[11pt,twoside]{article}\makeatletter
+
+\IfFileExists{xcolor.sty}%
+  {\RequirePackage{xcolor}}%
+  {\RequirePackage{color}}
+\usepackage{colortbl}
+      
+\IfFileExists{utf8x.def}%
+ {\usepackage[utf8x]{inputenc}}%
+ {\usepackage[utf8]{inputenc}}
+
+\usepackage[english]{babel}
+
+\usepackage[T1]{fontenc}
+\usepackage[]{ucs}
+\uc@dclc{8421}{default}{\textbackslash }
+\uc@dclc{10100}{default}{\{}
+\uc@dclc{10101}{default}{\}}
+\uc@dclc{8491}{default}{\AA{}}
+\uc@dclc{8239}{default}{\,}
+\uc@dclc{20154}{default}{ }
+\def\textschwa{\rotatebox{-90}{e}}
+\def\textJapanese{}
+\def\textChinese{}
+
+\DeclareTextSymbol{\textpi}{OML}{25}
+\usepackage{relsize}
+\def\textsubscript#1{%
+  \@textsubscript{\selectfont#1}}
+\def\@textsubscript#1{%
+  {\m@th\ensuremath{_{\mbox{\fontsize\sf@size\z@#1}}}}}
+\def\textquoted#1{‘#1’}
+\def\textcal#1{\ensuremath{\mathcal{#1}}}
+\def\textsmall#1{{\small #1}}
+\def\textlarge#1{{\large #1}}
+\def\textoverbar#1{\ensuremath{\overline{#1}}}
+\def\textgothic#1{\ensuremath{\mathscr{#1}}}
+\RequirePackage{array}
+\def\@testpach{\@chclass
+ \ifnum \@lastchclass=6 \@ne \@chnum \@ne \else
+  \ifnum \@lastchclass=7 5 \else
+   \ifnum \@lastchclass=8 \tw@ \else
+    \ifnum \@lastchclass=9 \thr@@
+   \else \z@
+   \ifnum \@lastchclass = 10 \else
+   \edef\@nextchar{\expandafter\string\@nextchar}%
+   \@chnum
+   \if \@nextchar c\z@ \else
+    \if \@nextchar l\@ne \else
+     \if \@nextchar r\tw@ \else
+   \z@ \@chclass
+   \if\@nextchar |\@ne \else
+    \if \@nextchar !6 \else
+     \if \@nextchar @7 \else
+      \if \@nextchar (8 \else
+       \if \@nextchar )9 \else
+  10
+  \@chnum
+  \if \@nextchar m\thr@@\else
+   \if \@nextchar p4 \else
+    \if \@nextchar b5 \else
+   \z@ \@chclass \z@ \@preamerr \z@ \fi \fi \fi \fi
+   \fi \fi  \fi  \fi  \fi  \fi  \fi \fi \fi \fi \fi \fi}
+
+\gdef\arraybackslash{\let\\=\@arraycr}
+\def\Panel#1#2#3#4{\multicolumn{#3}{){\columncolor{#2}}#4}{#1}}
+\gdef\arraybackslash{\let\\=\@arraycr}
+
+\newcolumntype{L}[1]{){\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{){\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{){\raggedleft\arraybackslash}p{#1}}
+\newcolumntype{P}[1]{){\arraybackslash}p{#1}}
+\newcolumntype{B}[1]{){\arraybackslash}b{#1}}
+\newcolumntype{M}[1]{){\arraybackslash}m{#1}}
+\definecolor{label}{gray}{0.75}
+\newenvironment{reflist}{%
+  \begin{raggedright}\begin{list}{}
+  {%
+   \setlength{\topsep}{0pt}%
+   \setlength{\rightmargin}{0.25in}%
+   \setlength{\itemsep}{0pt}%
+   \setlength{\itemindent}{0pt}%
+   \setlength{\parskip}{0pt}%
+   \setlength{\parsep}{2pt}%
+   \def\makelabel##1{\itshape ##1}}%
+  }
+  {\end{list}\end{raggedright}}
+\newenvironment{sansreflist}{%
+  \begin{raggedright}\begin{list}{}
+  {%
+   \setlength{\topsep}{0pt}%
+   \setlength{\rightmargin}{0.25in}%
+   \setlength{\itemindent}{0pt}%
+   \setlength{\parskip}{0pt}%
+   \setlength{\itemsep}{0pt}%
+   \setlength{\parsep}{2pt}%
+   \def\makelabel##1{\upshape\sffamily ##1}}%
+  }
+  {\end{list}\end{raggedright}}
+\newenvironment{specHead}[2]%
+ {\vspace{20pt}\hrule\vspace{10pt}%
+  \hypertarget{#1}{}%
+  \markright{#2}%
+  \pdfbookmark[2]{#2}{#1}%
+  \hspace{-0.75in}{\bfseries\fontsize{16pt}{18pt}\selectfont#2}%
+  }{}
+\DeclareRobustCommand*{\xref}{\hyper@normalise\xref@}
+\def\xref@#1#2{\hyper@linkurl{#2}{#1}}
+\def\Div[#1]#2{\section*{#2}}
+\catcode`\_=12\relax
+
+\usepackage[a4paper,twoside,lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\usepackage{framed}
+\definecolor{shadecolor}{gray}{0.95}
+\usepackage{longtable}
+\usepackage[normalem]{ulem}
+\usepackage{fancyvrb}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+\def\Gin@extensions{.pdf,.png,.jpg,.mps,.tif}
+
+\IfFileExists{tipa.sty}{\usepackage{tipa}}{}
+\usepackage{times}
+
+  \pagestyle{fancy} 
+
+	 \paperwidth210mm
+	 \paperheight297mm
+              
+\def\@pnumwidth{1.55em}
+\def\@tocrmarg {2.55em}
+\def\@dotsep{4.5}
+\setcounter{tocdepth}{3}
+\clubpenalty=8000
+\emergencystretch 3em
+\hbadness=4000
+\hyphenpenalty=400
+\pretolerance=750
+\tolerance=2000
+\vbadness=4000
+\widowpenalty=10000
+
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+     {-1.75ex \@plus -0.5ex \@minus -.2ex}%
+     {0.5ex \@plus .2ex}%
+     {\reset@font\Large\bfseries\sffamily}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+     {-1.75ex\@plus -0.5ex \@minus- .2ex}%
+     {0.5ex \@plus .2ex}%
+     {\reset@font\Large\sffamily}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+     {-1.5ex\@plus -0.35ex \@minus -.2ex}%
+     {0.5ex \@plus .2ex}%
+     {\reset@font\large\sffamily}}
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+     {-1ex \@plus-0.35ex \@minus -0.2ex}%
+     {0.5ex \@plus .2ex}%
+     {\reset@font\normalsize\sffamily}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+     {1.5ex \@plus1ex \@minus .2ex}%
+     {-1em}%
+     {\reset@font\normalsize\bfseries}}
+
+
+\def\l@section#1#2{\addpenalty{\@secpenalty} \addvspace{1.0em plus 1pt}
+ \@tempdima 1.5em \begingroup
+ \parindent \z@ \rightskip \@pnumwidth 
+ \parfillskip -\@pnumwidth 
+ \bfseries \leavevmode #1\hfil \hbox to\@pnumwidth{\hss #2}\par
+ \endgroup}
+\def\l@subsection{\@dottedtocline{2}{1.5em}{2.3em}}
+\def\l@subsubsection{\@dottedtocline{3}{3.8em}{3.2em}}
+\def\l@paragraph{\@dottedtocline{4}{7.0em}{4.1em}}
+\def\l@subparagraph{\@dottedtocline{5}{10em}{5em}}
+\@ifundefined{c@section}{\newcounter{section}}{}
+\@ifundefined{c@chapter}{\newcounter{chapter}}{}
+\newif\if@mainmatter 
+\@mainmattertrue
+\def\chaptername{Chapter}
+\def\frontmatter{%
+  \pagenumbering{roman}
+  \def\thechapter{\@roman\c@chapter}
+  \def\theHchapter{\alph{chapter}}
+  \def\@chapapp{}%
+}
+\def\mainmatter{%
+  \cleardoublepage
+  \def\thechapter{\@arabic\c@chapter}
+  \setcounter{chapter}{0}
+  \setcounter{section}{0}
+  \pagenumbering{arabic}
+  \setcounter{secnumdepth}{6}
+  \def\@chapapp{\chaptername}%
+  \def\theHchapter{\arabic{chapter}}
+}
+\def\backmatter{%
+  \cleardoublepage
+  \setcounter{chapter}{0}
+  \setcounter{section}{0}
+  \setcounter{secnumdepth}{0}
+  \def\@chapapp{\appendixname}%
+  \def\thechapter{\@Alph\c@chapter}
+  \def\theHchapter{\Alph{chapter}}
+  \appendix
+}
+\newenvironment{bibitemlist}[1]{%
+   \list{\@biblabel{\@arabic\c@enumiv}}%
+       {\settowidth\labelwidth{\@biblabel{#1}}%
+        \leftmargin\labelwidth
+        \advance\leftmargin\labelsep
+        \@openbib@code
+        \usecounter{enumiv}%
+        \let\p@enumiv\@empty
+        \renewcommand\theenumiv{\@arabic\c@enumiv}%
+	}%
+  \sloppy
+  \clubpenalty4000
+  \@clubpenalty \clubpenalty
+  \widowpenalty4000%
+  \sfcode`\.\@m}%
+  {\def\@noitemerr
+    {\@latex@warning{Empty `bibitemlist' environment}}%
+    \endlist}
+
+\def\tableofcontents{\section*{\contentsname}\@starttoc{toc}}
+\usepackage[pdftitle={Undefined Document},
+ pdfauthor={Vesta}]{hyperref}
+\hyperbaseurl{}
+\parskip0pt
+\parindent1em
+\@ifundefined{chapter}{%
+    \def\DivI{\section}
+    \def\DivII{\subsection}
+    \def\DivIII{\subsubsection}
+    \def\DivIV{\paragraph}
+    \def\DivV{\subparagraph}
+    \def\DivIStar[#1]#2{\section*{#2}}
+    \def\DivIIStar[#1]#2{\subsection*{#2}}
+    \def\DivIIIStar[#1]#2{\subsubsection*{#2}}
+    \def\DivIVStar[#1]#2{\paragraph*{#2}}
+    \def\DivVStar[#1]#2{\subparagraph*{#2}}
+}{%
+    \def\DivI{\chapter}
+    \def\DivII{\section}
+    \def\DivIII{\subsection}
+    \def\DivIV{\subsubsection}
+    \def\DivV{\paragraph}
+    \def\DivIStar[#1]#2{\chapter*{#2}}
+    \def\DivIIStar[#1]#2{\section*{#2}}
+    \def\DivIIIStar[#1]#2{\subsection*{#2}}
+    \def\DivIVStar[#1]#2{\subsubsection*{#2}}
+    \def\DivVStar[#1]#2{\paragraph*{#2}}
+}
+\def\TheFullDate{2010-05-19}
+\def\TheID{\makeatother }
+\def\TheDate{2010-05-19}
+\title{Undefined Document}
+\author{Vesta}\let\tabcellsep&
+      \catcode`\&=12\relax \makeatletter 
+\makeatletter
+\thispagestyle{plain}\markright{\@title}\markboth{\@title}{\@author}
+\renewcommand\small{\@setfontsize\small{9pt}{11pt}\abovedisplayskip 8.5\p@ plus3\p@ minus4\p@
+   \belowdisplayskip \abovedisplayskip
+   \abovedisplayshortskip \z@ plus2\p@
+   \belowdisplayshortskip 4\p@ plus2\p@ minus2\p@
+   \def\@listi{\leftmargin\leftmargini
+               \topsep 2\p@ plus1\p@ minus1\p@
+               \parsep 2\p@ plus\p@ minus\p@
+               \itemsep 1pt}
+}
+\makeatother
+\fvset{frame=single,numberblanklines=false,xleftmargin=5mm,xrightmargin=5mm}
+\fancyhf{} 
+\setlength{\headheight}{14pt}
+\fancyhead[LE]{\bfseries\leftmark} 
+\fancyhead[RO]{\bfseries\rightmark} 
+\fancyfoot[RO]{\TheFullDate}
+\fancyfoot[CO]{\thepage}
+\fancyfoot[LO]{\TheID}
+\fancyfoot[LE]{\TheFullDate}
+\fancyfoot[CE]{\thepage}
+\fancyfoot[RE]{\TheID}
+\hypersetup{linkbordercolor=0.75 0.75 0.75,urlbordercolor=0.75 0.75 0.75,bookmarksnumbered=true}
+\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}}\makeatother 
+\begin{document}
+
+\makeatletter
+\noindent\parbox[b]{.75\textwidth}{\fontsize{14pt}{16pt}\bfseries\raggedright\sffamily\selectfont \@title}
+\vskip20pt
+\par\noindent{\fontsize{11pt}{13pt}\sffamily\itshape\raggedright\selectfont\@author\hfill\TheDate}
+\vspace{18pt}
+\makeatother
+
+\catcode`\$=12\relax
+\catcode`\^=12\relax
+\catcode`\~=12\relax
+\catcode`\#=12\relax
+\catcode`\%=12\relax
+\par \textit{The Future of the Past}
+\DivI[Vision]{Vision}\par By using the using the latest technologies, and collaborating closely with ICT experts within the University and elsewhere \textit{The Future of the Past} will explore and expose the art and architecture of our common past (initially archaeological and art material dating 8000BC to 500AD, but readily applicable to subsequent periods) and bring it to the broadest possible public. The material can be been found all over the world, in museums and\textit{ in situ,} and it records the human state in ways anyone can understand and from which people of all ages and statuses can benefit. The Internet offers us the possibility of making the high quality content created by our academic research communities —that can offer real substance to learning and genuine stimulation — readily accessible and intelligible to the non-specialist. Since the future will see us living longer and having more leisure time one of society's great challenges will be to direct that time towards improving the intellectual quality of people's lives. Since the past shapes our understanding of the present and determines how we approach the future, bringing our common past to the global community will promote greater understanding.\par We will build \textit{The Future of the Past} on arguably the richest and most highly structured subject in the Humanities, the classical art of ancient Greece and Rome — the art that fired the Renaissance and then travelled the globe. Traditionally the objects and data from our material heritage have been accessible through institutions which were visited by a relatively modest percentage of the population. Today there is much that is visible on the web and available to everyone, but in disconnected ways and without the wealth of information hidden in universities and research institutes. \textit{The Future of the Past} will bring these scholarly resources to everyone by leveraging the power of semantic web technologies, innovative interfaces, and rich visualizations to make sense of the information and tailor it to an individual's needs, whether he/she is at home, in schools and libraries, touring an archaeological site or visiting a museum.\par \textit{The Future of the Past} will embrace attitudes, technologies and methodologies (Open Source software, Open Educational Content, mobile devices, visual searching, and rapid innovation) which encourage sharing, quick access, and interdisciplinary collaboration. We already have an interdisciplinary model for content, which we have made available with assistance from MPLS, OeRC, OII and OUCS. To it we will bring science-based archaeology (School of Archaeology and Research Laboratory for Archaeology and the History of Art), offering considerable potential for collaboration with other parts of the James Martin School.  \par \textit{The}\textit{Future of the Past} will broker interoperability among existing digital resources in the University, initially in faculties and museums, and in the longer term the museums of the world.  It will apply international museum community developments, firstly to the Ashmolean Museum data, combining these with work undertaken by the Oxford Internet Institute, Oxford Zoology, Engineering Science, and others to create a conversational, multi-modal user interface to make the content accessible to scholars and a broad public.  This will include purely visual approaches to finding information, and with audio-visual, avatar-mediated interfaces for exploring and understanding the data. \par \textit{The Future of the Past} will be built on a solid foundation of collaboration between art and science that developed during 2008/9 when the CLAROS initiative (\xref{http://www.clarosnet.org}{http://www.clarosnet.org}), led by the Beazley Archive (\xref{http://www.beazley.ox.ac.uk}{http://www.beazley.ox.ac.uk}), was supported by the University’s Fell Fund and the OeRC. It virtually integrated more than 2,000,000 records and images, from the Faculty of Classics and major European research centres, using semantic web technologies (with expertise developed in Zoology), image recognition (techniques pioneered in Engineering Science) and Artificial Intelligence (OII). 
+\DivI[New methodologies, attitudes, and tools]{New methodologies, attitudes, and tools}\par Our vision for \textit{The Future of the Past} starts with linking fragmented online information about cultural artifacts onto a more-or-less coherent body of cross-linked data, while preserving the richness of detail and purpose embodied in the original sources.  We then aim to build upon this by providing new ways to explore, interact with and augment this information, to create a living, universally accessible resource for access to cultural knowledge.  Computers and internet technology provide us with a basis for universal access, but we aim to find ways to make 'dry data about dead objects' live, and to become more relevant to the broad audience who may interact with it.  To this end, we will investigate visual search, multi-modal conversational interfaces, techniques for open public augmentation of data while preserving academic integrity, mobile access and ubiquitous computing, 3-dimensional visualization and rendering, and other forms of augmented reality interface. \par Making high quality information available to the public free of charge using the principles of Open Educational Resources (OER) is now widely promoted, and is the laudable goal of Oxford’s existing project \textit{Open Spires}. At its recent (20/4/10) event in SBS Jan Hylėn (OECD) spoke of the need to develop models that can generate revenue for the institution while respecting the academic dedication to free public education. The School of the 21st Century offers an ideal platform for such development. \par As part of our engagement with the public we are, as an example, developing virtual tours with Google Earth, Screenflow, etc. In one we fly over the course of the Nile, from its source in the highlands of central Africa to the Mediterranean; in others we fly over the Tigris and Euphrates, the Yellow River and the Yangtze, etc. As we travel we document major archaeological sites, collating high quality data from the web and exploiting the potential of social networking sites such as Facebook, Flickr and YouTube, with 100's of 1000's of images of sites and objects that can now be 'mashed' to create 3D reconstructions of sites (Microsoft Polysynth). These tours could be offered free to the public, with their underlying valuable academic content (prepared within the University) carefully managed so that its potential for enhancing value (e.g. in tourism) is retained by the University. We would also like to develop (with Engineering Science) applications for the mobile devices (such as the iPhone and iPad) that the University (e.g., Ashmolean) could have 'free for the public' while retaining copyright for commercialization. We would also like to develop (with Engineering Science) applications for the mobile devices (such as the iPhone and iPad) that the University (e.g., Ashmolean) could have 'free for the public'make use of while retaining copyright for commercialization.
+\DivI[Resources and research programme]{Resources and research programme}\par \textit{The Future of the Past} will engage in five main research activities, each aligned with different areas of advanced IT, and all combining to make a coherent programme of work to make the past accessible to the future. \par \textit{Outputs and outcomes:}\begin{itemize}
+
+\item Production-ready image searching
+\item Mobile systems to guide museum access
+\item Geographically-based visualizations of world culture
+\item Avatar Companions to assist access at all levels
+\item Management of integrated Humanities data web for Oxford
+\item Monthly research seminars for Oxford digital humanists
+\item Summer training school for Humanities academics
+\end{itemize} \par The research team required consists of the Director (20%), two Research Managers (50%), Senior Developer (100%), and 4 Research Assistants (100%).
+\DivII[Image-based searching and analysis.]{Image-based searching and analysis. }\par A key element of the next generation user interface is use of mobile devices to record images and offer them as search terms. We will combine ongoing research in Engineering in image analysis with the very large pre-analyzed training data sets available from the cultural heritage world to provide new methods of access to knowledge.\par \textit{Staffing:} research manager and research assistant in Engineering.
+\DivII[Open and linked data.]{Open and linked data. }\par In collaboration with the existing CLAROS project, and its links with the Computing Laboratory, we will work alongside the Future of Computing \textit{Ubiquitous Web Data} theme, the Zoology Bioinformatics Research Group, and the Web Science initiative to draw together material and textual data in common ontologies from a wide variety of Oxford and global projects.\par \textit{Staffing:} research manager, senior developer, and research assistant in Zoology and Computing Services.
+\DivII[Virtual assistants.]{Virtual assistants. }\par In collaboration with the OII, we will work to provide a layer of interaction over conventional searching and questioning with the use of tailored avatars.\par \textit{Staffing:} research assistant in OII with Professor Wilks.
+\DivII[Mobile access.]{Mobile access. }\par Working with the Mobile Oxford initiative at the Computing Services, and the\textit{ Autonomous Ubiquitous Sensing }theme of the Future of Computing, we will investigate ways in which the technological possibilities of portable devices, including enhanced reality. \par \textit{Staffing:} research manager, and senior developer.
+\DivII[Taking the big picture.]{Taking the big picture. }\par We will work with technologies such as Google Earth and Second Life to create teaching and educational gateways to the mass of Humanities digital information across stored ouravailable from institution.\par \textit{Staffing}: director, research manager, and research assistant in Classics.
+\DivI[Benefits to the James Martin School]{Benefits to the James Martin School }\par The University has remarkable resources for ICT (integrated through OeRC) and the study of the societal effects of the internet (OII). It also has museums, libraries, archives and research centres for \textit{The Future of the Past }that have no equal elsewhere in the world. The 21{st} Century School offers a cross-disciplinary platform that goes beyond OeRC's inter-disciplinary technology-base to enable new research.\par The \textit{Future of the Past} will integrate these resources for the School, the University and the global community, transforming research and greatly improving outreach in a subject that has huge ‘impact potential’ for the University. We offer a genuine opportunity to bring together the digital (datasets, digitised images and documents), material (objects in museum and archive collections) and human resources. The School of Archaeology alone has more than 50 members drawn from three faculties and two divisions. We offer an established and highly successful team from Zoology, Engineering Science, ComLab, Computing Services, OII, and OeRC.\par The \textit{Future of the Past} also has a major role to play in the recently announced Web Science initiative. It already has massive underlying datasets in a Linked Data Web and it is already actively engaged in the challenges presented by performance of large (millions) of triple stores of highly complex data that require refine-grained searching. \par The \textit{Future of the Past} could also enter into discussions with other Institutes on collaborative research. We give some examples: \begin{itemize}
+
+\item Illicit trade in antiquities: the UNESCO 1970 Convention on the Means of Prohibiting and Preventing the Illicit Import, Export and Transfer of Ownership of Cultural Property has been largely ineffectual. The CLAROS model of scholarly data infrastructure and public accessibility lends itself to emerging Cloud computing which lends itself to individual participation. Digital cameras and mobile phones are increasingly common in source countries. Empowering/educating the individual is the first step towards protecting the cultural heritage, and our common past. Cf. \textit{Law and Ethics.}
+\item Understanding the past, and the catastrophes that have befallen us, can help us to plan for the future. While the government sees STEM as a funding priority we can argue that broad public access to high quality information on the web, particularly in the Humanities, is what will really transform all of our lives. Cf. \textit{Institute for Humanity}. 
+\item The forthcoming \textit{Web Science} Institute is also a natural collaborator, and with existing links in OeRC and OII, \textit{The Future of the Past} can anticipate fruitful collaboration with both the social science and computer science of Web Science.  
+\item Many of the world’s archaeological sites are now threatened by environmental change and many are submerged beneath the sea. Cf. \textit{Environmental Change and Oceans.}
+\end{itemize} \par \textit{The Future of the Past} will use the close working relationship with OERC to bridge from \textit{The Institute of the Future of Computing} into the University’s museums, its researchers and the public. \par \textit{The Future of the Past} will also work with OeRC to enable the use of multi-touch and multi-user computers (\textit{e.g.} Microsoft Surface, Mitsubishi table), which are ideal for archaeological and art objects, whether in museums, class rooms, or homes. Large scale and readily portable devices such as the iPad offer even more exciting possibilities for visits to museum and archaeological sites. \par \textit{The Future of the Past} will be represented at the workshops of the Institute to ensure that opportunities are created to allow the integration of new technologies in extreme computing, ubiquitous computing and in web-based data. 
+\DivI[Management]{Management}\par The \textit{Future of the Past }is a collaboration between Classics, Archaeology, Zoology, Engineering Science and the Computing Laboratory, with Computing Services, OeRC and OII. The Beazley Archivist (Classics) will be Director, with Andrew Zisserman (Engineering) and Sebastian Rahtz (OUCS) as Research Managers. A Steering Committee will comprise directors of major collaborative projects: Andrew Wilson (Classics), Jeremy Worth (Archaeology), Antoni Uceler (Oriental Studies), David Shotton (Zoology), Ian Horrocks (ComLab), Yorick Wilks (OII), and Susan Walker (Ashmolean Museum), with Paul Jeffreys (ODIT), Anne Trefethen (OeRC), and representatives from the other parts of the School.\par Donna Kurtz, Beazley Archive\par Sebastian Rahtz, OUCS\par 18 May 2010\par \par Dear Sophie,\par I thought that I should send the proposal to you now since I will be in Jerusalem from Friday 21 May until Friday 28th (the beginning of a Bank Holiday weekend).  Sally told me last month that you needed it by mid-May and that your meeting took place in early June.  She has read and commented on earlier versions,  as have Anne Trefethen, Paul Jeffreys, Andrew Zisserman, Yorick Wilks and Jeremy Worth. \par If you would like anything to be changed Sebastian and Andrew can edit the text in my absence.  I expect to have access to email, but one can never be quite sure - despite the marvels of technology! \par This is, as you said, a new departure, and I think that explains why we have not yet been able to obtain guidance on costs. We outline our research themes in the proposal and we indicate the posts required. We rely on Andrew Fairweather-Tall for the financials.\par With thanks,
+\end{document}

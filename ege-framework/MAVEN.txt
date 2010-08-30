@@ -1,0 +1,15 @@
+----------------------------
+Building JPF using maven
+----------------------------
+
+The command 'mvn -F jpf-pom.xml install' will 
+build and install the new artifact net.sf.jpf:jpf:1.5,
+which can now be used as dependecy in other projects.
+
+----------------------------------------
+Building JPF Boot library using maven
+----------------------------------------
+
+The command 'mvn -F jpf-boot-pom.xml install' will 
+build and install the new artifact net.sf.jpf:jpf-boot:1.5,
+which can now be used as dependecy in other projects.

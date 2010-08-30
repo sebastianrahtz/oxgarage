@@ -1,0 +1,23 @@
+<document>
+  <properties>
+    <title>Download</title>
+  </properties>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="Download EGE framework">
+      <!-- Within sections, any XHTML can be used -->
+		<p>Download EGE framework: </p>
+			<ul><li>Binaries : <a href="http://dl.psnc.pl/software/EGE/download/ege-framework-0.3.zip">EGE framework ver 0.3 (2009.11.02)</a>
+			</li>
+			<li>Sources : <a href="http://dl.psnc.pl/software/EGE/download/ege-framework-0.3-src.zip">EGE framework ver 0.3 (2009.11.02)</a></li>
+			</ul>
+		
+		<p>Download older versions EGE framework : </p>
+			<ul><li>Binaries : <a href="http://dl.psnc.pl/software/EGE/download/ege-framework-0.2.zip">EGE framework ver 0.2 (2009.10.01)</a>
+			</li>
+			<li>Sources : <a href="http://dl.psnc.pl/software/EGE/download/ege-framework-0.2-src.zip">EGE framework ver 0.2 (2009.10.01)</a></li>
+			</ul>
+		
+	</section>
+  </body>
+</document>

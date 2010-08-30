@@ -1,0 +1,14 @@
+<document>
+  <properties>
+    <title>About EGE validator</title>
+  </properties>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="About EGE validator">
+      <!-- Within sections, any XHTML can be used -->
+	  <p>EGE framework validator plugin. Plugin is able to validate : TEI(text/xml), MASTER(text/xml) and EAD(text/xml) formats.</p>
+	  <p>More about EGE extensions mechanism can be found at : <a href="../../creation.html">Creating EGE extensions</a>.</p>
+	  <p>You can download <b>EGE validator</b> sources and binaries from <a href="download.html">here</a></p>
+	</section>
+  </body>
+</document>

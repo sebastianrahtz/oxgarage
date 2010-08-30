@@ -1,0 +1,14 @@
+﻿<document>
+  <properties>
+    <title>About EGE API</title>
+  </properties>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="About EGE API">
+      <!-- Within sections, any XHTML can be used -->
+	  <p>EGE API is a major part of Enrich Garage Engine implementation. API contains basic classes, interfaces and exceptions necessary for any reference implementation of EGE.</p>
+	  <p>More about EGE API specification can be found at : <a href="../../usage.html">API Overview</a>.</p>
+	  <p>You can download <b>EGE API</b> sources and binaries from <a href="download.html">here</a></p>
+	</section>
+  </body>
+</document>

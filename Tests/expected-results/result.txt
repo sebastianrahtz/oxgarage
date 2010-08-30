@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- *********************************************************************************************************** -->
+<!-- *********************************************************************************************************** -->
+<error msg="task did not complete within timeout" exclass="class pl.psnc.dl.ege.exception.ConverterException" >pl.psnc.dl.ege.exception.ConverterException: task did not complete within timeout
+	at uk.ac.ox.oucs.oxgarage.oo.OOConverter.convert(OOConverter.java:85)
+	at pl.psnc.dl.ege.component.NamedConverter.convert(NamedConverter.java:44)
+	at pl.psnc.dl.ege.ConversionPerformer.run(ConversionPerformer.java:44)
+	at java.lang.Thread.run(Thread.java:619)
+</error>
+
+<!-- *********************************************************************************************************** -->
+<!-- *********************************************************************************************************** -->

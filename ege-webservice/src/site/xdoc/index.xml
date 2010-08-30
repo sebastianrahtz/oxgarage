@@ -1,0 +1,14 @@
+﻿<document>
+  <properties>
+    <title>About EGE web service</title>
+  </properties>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="About EGE web service">
+      <!-- Within sections, any XHTML can be used -->
+	  <p>EGE RESTful web service - web application which provides interface for EGE functionality in a RESTful web service manner.</p>
+	  <p>More about EGE RESTful web service can be found at : <a href="../../restws.html">EGE RESTful WebService</a>.</p>
+	  <p>You can download <b>EGE web service</b> sources and binaries from <a href="download.html">here</a></p>
+	</section>
+  </body>
+</document>

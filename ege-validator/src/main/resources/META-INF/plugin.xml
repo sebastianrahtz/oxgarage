@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.4" "http://jpf.sourceforge.net/plugin_0_7.dtd">
+<plugin id="pl.psnc.dlteam.ege.validator" version="1.0">
+	<requires>
+		<import plugin-id="pl.psnc.dl.ege.root"/>
+	</requires>
+	<extension plugin-id="pl.psnc.dl.ege.root" point-id="Validator" id="EGEValidator">
+		<parameter id="class" value="pl.psnc.dl.ege.validator.EGEValidator"/>
+		<parameter id="name" value="EGE Validator" />
+		<parameter id="description" value="EGE default validator" />
+	</extension>
+</plugin>

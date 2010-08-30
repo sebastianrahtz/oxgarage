@@ -1,0 +1,302 @@
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                ENCODED ARCHIVAL DESCRIPTION                -->
+<!--                  DOCUMENT TYPE DEFINITION                  -->
+<!--                   NOTATION DECLARATIONS                    -->
+<!--                        VERSION 1.0                         -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--               Prepared and Maintained by the               -->
+<!--         Encoded Archival Description Working Group         -->
+<!--            of the Society of American Archivists           -->
+<!--                          and the                           -->
+<!--        Network Development and MARC Standards Office       -->
+<!--                 of the Library of Congress                 -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--               Society of American Archivists               -->
+<!--                      Chicago, Illinois                     -->
+<!--                            1998                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--     Encoded Archival Description Notation Declarations     -->
+<!--                                                            -->
+<!--            EAD Technical Document No. 1, Part 4            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--This file constitutes a component of version 1.0 of the     -->
+<!--Encoded Archival Description Document Type Definition (DTD),-->
+<!--released in August 1998.  Version 1.0 of the DTD supersedes -->
+<!--the beta version made available via the EAD Internet site   -->
+<!--beginning in 1996.                                          -->
+<!--                                                            -->
+<!--                                                            -->
+<!--The SAA Encoded Archival Description Working Group is       -->
+<!--responsible for updating and editing the EAD DTD (EAD       -->
+<!--Technical Document No. 1) and tag library (EAD Technical    -->
+<!--Document No. 2).                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--The LC Network Development and MARC Standards Office serves -->
+<!--as the maintenance agency for online EAD documentation,     -->
+<!--including storage and delivery of electronic files and      -->
+<!--maintenance of the EAD Internet site, located at            -->
+<!--http://www.loc.gov/ead/.                                    -->
+<!--                                                            -->
+<!--                                                            -->
+<!--Published by the Society of American Archivists.            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--Tag Library available from:                                 -->
+<!--                Society of American Archivists              -->
+<!--                527 S. Wells Street, 5th floor              -->
+<!--                Chicago, IL 60607                           -->
+<!--                                                            -->
+<!--                Phone:    312/922-0140                      -->
+<!--                Fax:      312/347-1452                      -->
+<!--                Internet: info@archivists.org               -->
+<!--                                                            -->
+<!--                                                            -->
+<!--(c) Society of American Archivists, 1998.                   -->
+<!-- All rights reserved.                                       -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          PUBLIC IDENTIFIER FOR EADNOTAT.ENT                -->
+<!--************************************************************-->
+
+<!--
+
+"-//Society of American Archivists//DTD eadnotat.ent (Encoded Archival Description (EAD) Notation Declarations Version 1.0)//EN"
+
+                                                                -->
+<!--************************************************************-->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          INTRODUCTION                                      -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--  NAME:      Encoded Archival Description Notation          -->
+<!--              Declarations                                  -->
+<!--                    File name = eadnotat.ent                -->
+<!--                    Version = 1.0                           -->
+<!--                    Version date = 980824                   -->
+<!--                                                            -->
+<!--  EDITOR:    Daniel V. Pitti                                -->
+<!--             Institute for Advanced Technology in the       -->
+<!--             Humanities, University of Virginia             -->
+<!--                                                            -->
+<!--  PURPOSE:   Declarations for notations used in references  -->
+<!--             to external entities in EAD archival documents.-->
+<!--                                                            -->
+<!--  CONTACT:   EAD listserv of the Library of Congress Network-->
+<!--             Development and MARC Standards Office.         -->
+<!--             To subscribe to this listserv, send a one-line -->
+<!--             message to LISTSERV@LOC.GOV containing the     -->
+<!--             text:  SUBSCRIBE EAD YourName. Once subscribed,-->
+<!--             submit messages to EAD@LOC.GOV.                -->
+<!--                                                            -->
+<!--             EAD Internet site, located at                  -->
+<!--             http://www.loc.gov/ead/                        -->
+<!--                                                            -->
+<!--  DEPENDENCIES:                                             -->
+<!--             None.                                          -->
+<!--                                                            -->
+<!--  USE NOTE:  For SGML applications, eadnotat.ent is         -->
+<!--             referenced from within the ead.dtd or          -->
+<!--             eadgrp.dtd.                                    -->
+<!--             For XML applications, eadnotat.ent must be     -->
+<!--             referenced in the declaration subset of the    -->
+<!--             instance before any declarations of external   -->
+<!--             entities.                                      -->
+<!--             For more information, see Extensible Markup    -->
+<!--             Language (XML) 1.0:                            -->
+<!--             http://www.w3.org/TR/1998/REC-xml-19980210     -->
+<!--                                                            -->
+<!--************************************************************-->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          CHANGE HISTORY (POST VERSION 1.0 CHANGES)         -->
+<!--************************************************************-->
+<!-- 
+NUM  DESCRIPTION OF CHANGE                                MM/DD/YY
+
+
+                                                                -->
+<!--************************************************************-->
+<!--          END CHANGE HISTORY                                -->
+<!--************************************************************-->
+
+
+<!--************************************************************-->
+<!--              NOTATION DECLARATIONS                         -->
+<!--************************************************************-->
+
+
+<!--***************LOCAL NOTATION DECLARATIONS******************-->
+<!--Local notation declarations should be entered below this note.
+
+    WARNING: LOCAL NOTATION DECLARATIONS WILL BE AN IMPEDIMENT TO
+    EASILY INTERCHANGING EAD DOCUMENT INSTANCES. BEFORE USING LOCAL
+    NOTATION DECLARATIONS, CONSULT WITH THE LIBRARY OF CONGRESS
+    NETWORK DEVELOPMENT AND MARC STANDARDS OFFICE.              -->
+<!--************************************************************-->
+
+
+
+<!--********************ISO STANDARD NOTATIONS******************-->
+<!--The following notation declarations are for ISO standards. The
+    declarations were selected from a list of declarations
+    compiled by Martin Bryan, The SGML Centre, Churchdown, Glos.,
+    GL3 2PU, UK (mtbryan@sgml.u-net.com). The list was compiled for
+    a proposed ISO TR. There are both ISO 9070 names and SGML
+    notation declarations for each referenced standard.         
+    
+    The XML Notation was supplied by James Clark.               -->
+
+<!--************************************************************-->
+
+
+<!--          SGML                                              -->
+
+<!NOTATION sgml     PUBLIC
+"ISO 8879:1986//NOTATION Information processing - Text and office
+systems - Standard Generalized Markup Language (SGML)//EN"
+""                                                                >
+
+<!--          JPEG                                              -->
+
+<!NOTATION jpeg     PUBLIC
+"ISO/IEC 10918:1993//NOTATION Digital Compression and Coding of
+Continuous-tone Still Images (JPEG)//EN"
+""                                                                >
+
+<!--          MPEG1vid                                          -->
+
+<!NOTATION mpeg1vid PUBLIC
+"ISO/IEC 11172-2:1993//NOTATION Information technology - Coding of
+moving pictures and associated audio for digital storage media at
+up to about 1,5 Mbit/s - Part 2: Video//EN"
+""                                                                >
+
+<!--          MPEG1aud                                          -->
+
+<!NOTATION mpeg1aud PUBLIC
+"ISO/IEC 11172-3:1993//NOTATION Information technology - Coding of
+moving pictures and associated audio for digital storage media at
+up to about 1,5 Mbit/s - Part 3: Audio//EN"
+""                                                                >
+
+<!--          MPEG2vid                                          -->
+
+<!NOTATION mpeg2vid PUBLIC
+"ISO/IEC 13818-2:1995//NOTATION Information technology - Coding of
+moving pictures and associated audio: Part 2. Video//EN"
+""                                                                >
+
+<!--          MPEG2aud                                          -->
+
+<!NOTATION mpeg2aud PUBLIC
+"ISO/IEC 13818-3:1995//NOTATION Coding of moving pictures and
+associated audio: Part 3. Audio//EN"
+""                                                                >
+
+<!--          XML                                               -->
+
+<!NOTATION xml PUBLIC
+"ISO 8879:1986//NOTATION Extensible Markup Language (XML) 1.0//EN"
+""                                                                >
+
+
+
+<!--********************PROPRIETARY NOTATIONS*******************-->
+<!--The following notation declarations are for proprietary
+    notations. These declarations are taken from _Making
+    Hypermedia Work: A User's Guide to Hytime / Steven J. DeRose
+    and David G. Durand (Boston: Kluwer Academic Publishers),
+    pp. 322ff. (ISBN 0-7923-9432-1). If owners of these notations
+    register FPI's, it is recommended that these be used instead
+    of those listed below.                                      -->
+<!--************************************************************-->
+
+<!--          PCX                                               -->
+
+<!NOTATION pcx      PUBLIC
+"+//ISBN 0-7923-9432-1::Graphic Notation//NOTATION ZSoft PCX
+bitmap//EN"
+""                                                                >
+
+<!--          GIF                                               -->
+
+<!NOTATION gif      PUBLIC
+"+//ISBN 0-7923-9432-1::Graphic Notation//NOTATION CompuServe
+Graphic Interchange Format//EN"
+""                                                                >
+
+<!--          TIFF                                              -->
+
+<!NOTATION tiff     PUBLIC
+"+//ISBN 0-7923-9432-1::Graphic Notation//NOTATION Aldus/Microsoft
+Tagged Interchange File Format//EN"
+""                                                                >
+
+<!--          EPS                                               -->
+
+<!NOTATION eps  PUBLIC
+"+//ISBN 0-7923-9432-1::Graphic Notation//NOTATION Adobe Systems
+Encapulated PostScript//EN"
+""                                                                >
+
+<!--          PICT                                              -->
+
+<!NOTATION pict PUBLIC
+"+//ISBN 0-7923-9432-1::Graphic Notation//NOTATION Apple Computer
+Quickdraw Picture//EN"
+""                                                                >
+
+
+<!--**********NOTATIONS NAMED WITHIN EAD************************-->
+
+<!--          HTML                                              -->
+
+<!NOTATION html PUBLIC 
+"-//W3C//NOTATION HTML 4.0//EN"
+""                                                                >
+
+
+<!--          EMAIL                                             -->
+<!NOTATION email PUBLIC
+"-//Society of American Archivists//NOTATION EMAIL//EN"
+""                                                                >
+
+<!--************************************************************-->
+<!--**********END of EAD NOTATION DECLARATIONS******************-->
+<!--************************************************************-->

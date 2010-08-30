@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project name="EGE API">
+  <bannerLeft>
+    <name>EGE web service</name>
+    <src>images/ege.png</src>
+    <href>http://dl.psnc.pl/software/EGE/index.html</href>
+  </bannerLeft>
+  <bannerRight>
+    <name>ENRICH</name>
+    <src>images/enrich-logo.png</src>
+    <href>http://enrich.manuscriptorium.com/</href>
+  </bannerRight>
+  <version position="left"/>
+  <publishDate position="left"/>
+
+  <body>
+    <links>
+      <item name="PSNC Digital Libraries Team" href="http://dl.psnc.pl/" />
+    </links>
+	<menu name="Overview">
+      <item name="About EGE web service" href="index.html"/>
+      <item name="Download" href="download.html"/>
+    </menu>
+	<menu ref="reports"/>
+    <menu ref="parent"/>		
+   </body>
+</project>

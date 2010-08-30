@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project default="deploy" name="ege-framework" basedir=".">
+    <description>The EGE Framework</description>
+    
+    <property name="src.dir"     value="src"/>
+    <property name="build.dir"   value="bin"/>
+    <property name="lib.dir"     value="lib"/>
+    <property name="deploy.dir"     value="deploy"/>
+    
+    <target name="clean">
+        <tstamp>
+            <format property="now" pattern="d-MM-yyyy hh:mm aa"/>
+        </tstamp>
+        <echo message="===========================================" />
+        <echo message="Creating new build of TEI EGE Java Utilities: ${now}"  />
+        <echo message="--------------------" />
+        <echo message="Cleaning directories" />
+        <echo message="===========================================" />
+        
+        <delete dir="${build.dir}"/>
+    </target>
+        <target name="init-classpath">
+        <path id="classpath">
+            <pathelement location="src"/>
+        </path>
+    </target>
+    
+
+    <target name="init" depends="clean">
+          <echo message="==========================================" />
+          <echo message="OS Name: ${os.name}                       " />
+          <echo message="Java Home: ${java.home}                   " />
+          <echo message="Ant java version: ${ant.java.version}     " />
+          <echo message="Java vendor: ${java.vendor}               " />
+          <echo message="Java Version: ${java.version}             " />
+          <echo message="==========================================" />
+         
+          <mkdir dir="${build.dir}"/>
+   </target>
+    
+    <target name="compile" depends="init,init-classpath">
+        <echo message="==========================================" />
+        <echo message="Compiling source files" />
+        <echo message="==========================================" />
+        
+        <javac 
+            debug="on"
+            srcdir="${src.dir}" 
+            destdir="${build.dir}"
+            encoding="utf-8"
+            classpathref="classpath"/>
+        
+        <echo message="==========================================" />
+        <echo message="Copy source and config files" />
+        <echo message="==========================================" />
+        
+        <copy todir="${build.dir}">
+             <fileset dir="${src.dir}" includes="**/*.*"/>
+        </copy>
+    </target>
+    
+    <target name="deploy" depends="compile">
+        <jar destfile="${deploy.dir}/ege-framework.jar" 
+                     basedir="${build.dir}" includes="**/*.*">
+            <manifest>
+              <attribute name="Created-By" value="EGE"/>
+              
+              <attribute name="Implementation-Title" value="ege-framework"/>
+              <attribute name="Implementation-Version" value="0.5-oxford"/>
+            </manifest>
+          </jar>
+    </target>
+    
+   
+</project>

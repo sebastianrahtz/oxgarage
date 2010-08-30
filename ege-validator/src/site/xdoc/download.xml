@@ -1,0 +1,24 @@
+<document>
+  <properties>
+    <title>Download</title>
+  </properties>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="Download EGE validator">
+      <!-- Within sections, any XHTML can be used -->
+		<p>Download EGE validator: </p>
+			<ul>
+			<li>Binaries : <a href="http://dl.psnc.pl/software/EGE/download/ege-validator-0.3-dist.zip">EGE validator ver 0.3 (2009.12.03)</a>
+			</li>
+			<li>Sources : <a href="http://dl.psnc.pl/software/EGE/download/ege-validator-0.3-src.zip">EGE validator ver 0.3 (2009.12.03)</a></li>
+			</ul>
+		<p>Download older versions EGE XSL converter: </p>
+			<ul>
+			<li>Binaries : <a href="http://dl.psnc.pl/software/EGE/download/ege-validator-0.2.1.zip">EGE validator ver 0.2.1 (2009.10.01)</a>
+			</li>
+			<li>Sources : <a href="http://dl.psnc.pl/software/EGE/download/ege-validator-0.2.1-src.zip">EGE validator ver 0.2.1 (2009.10.01)</a></li>
+			</ul>
+		
+	</section>
+  </body>
+</document>

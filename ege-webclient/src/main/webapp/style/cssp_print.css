@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    font-family: 'times new roman', times, serif;
+    color: #000000;
+    background-color: #ffffff;
+}
+img {
+    border: 0px;
+    background-color: #ffffff;
+}
+h1 {
+    font-size: 18pt;
+    font-family: arial, helvetica, sans-serif;
+}
+h2 {
+    font-size: 16pt;
+    font-family: arial, helvetica, sans-serif;
+}
+h3 {
+    font-size: 14pt;
+    font-family: arial, helvetica, sans-serif;
+}
+h4 {
+    font-size: 13pt;
+    font-family: arial, helvetica, sans-serif;
+    font-weight: bold;
+}
+h5 {
+    font-size: 12pt;
+    font-family: arial, helvetica, sans-serif;
+    font-weight: bold;
+}
+h6 {
+    font-size: 12pt;
+    font-family: arial, helvetica, sans-serif;
+    font-weight: normal;
+}
+p, li, dd, dt, td, th {
+    font-size: 12pt;
+    text-align: left;
+    vertical-align: top;
+}
+table p {
+    font-size: 11pt;
+}
+ul {
+    list-style-type: disc;
+}
+ul ul {
+    list-style-type: circle;
+}
+ul ul ul {
+    list-style-type: square;
+}
+hr {
+    color: #000066;
+    background-color: #ffffff;
+}
+.sitename {
+    font-weight: bold;
+    font-family: arial, helvetica, sans-serif;
+    letter-spacing: 0.2em;
+}
+.sitename a:link, .sitename a:visited {
+    text-decoration: none;
+}
+.pagebreak {
+    page-break-before: always;
+}
+#footer {
+    font-size: 11pt;
+}
+#lh-col, #searchbox, #accessibility, #hdr2, #hdr3, #breadcrumb {
+    display: none;
+}
+#rh-col a:link:after, #rh-col a:visited:after {
+/* content: "("attr(href)")"; */
+}
+#rh-col a[href^="/"]:after {
+/* content: " (http://www.oucs.ox.ac.uk" attr(href) ") "; */
+}
+#rh-col .footer a:link:after, #rh-col a:visited:after {
+    content: "";
+}
+#hdr {
+    background: url("../../images/oucslogo-darkblueonwhite-te.jpg");
+    color: #ffffff;
+    background-color : #000066;
+    background-repeat : no-repeat;
+    height: 83px;
+}
+/* Adding more styles to hide columns ect... */
+body {
+    float: none;
+    margin: 0;
+    padding: 0;
+}
+/*
+  #hdr, h1 {
+  display: none;
+  visibility: hidden;
+  }
+ */
+#mainMenu, #breadcrumb, #globalNavOuter, #searchOuter, p.right {
+    display: none;
+}
+#col-a {
+    float: none !important;
+    margin: 0;
+    width: auto;
+}
+#col-b, #col-c {
+    display: none;
+}
+.show-all #columns {
+    padding: 0;
+}
+table.documentation {
+		    border-collapse: collapse;
+}
+table.documentation tr td {
+		    border: solid black 1pt;
+		    }

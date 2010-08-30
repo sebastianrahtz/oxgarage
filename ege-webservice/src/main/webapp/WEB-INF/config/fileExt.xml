@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<file-extensions-map>
+	<mime-ext mime="text/xml" ext=".xml" />
+	<mime-ext mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document" ext=".docx" />
+	<mime-ext mime="application/xhtml+xml" ext=".html" />
+	<mime-ext mime="application/x-latex" ext=".tex" />
+	<mime-ext mime="application/xml-dtd" ext=".dtd" />
+	<mime-ext mime="application/xml-relaxng" ext=".rng" />
+	<mime-ext mime="application/zip" ext=".zip" />
+	<mime-ext mime="application/epub+zip" ext=".epub" />
+	<mime-ext mime="application/vnd.oasis.opendocument.text" ext=".odt" />
+	<mime-ext mime="application/pdf" ext=".pdf" />
+	<mime-ext mime="application/msword" ext=".doc" />
+	<mime-ext mime="application/rtf" ext=".rtf" />
+	<mime-ext mime="text/plain" ext=".txt" />
+	<mime-ext mime="application/vnd.sun.xml.writer" ext=".sxw" />
+	<mime-ext mime="application/vnd.oasis.opendocument.spreadsheet" ext=".ods" />
+	<mime-ext mime="application/vnd.sun.xml.calc" ext=".sxc" />
+	<mime-ext mime="application/vnd.ms-excel" ext=".xls" />
+	<mime-ext mime="text/csv" ext=".csv" />
+	<mime-ext mime="text/tsv" ext=".tsv" />
+	<mime-ext mime="application/vnd.oasis.opendocument.presentation" ext=".odp" />
+	<mime-ext mime="application/vnd.sun.xml.impress" ext=".sxi" />
+	<mime-ext mime="application/vnd.ms-powerpoint" ext=".ppt" />
+	<mime-ext mime="application/x-shockwave-flash" ext=".swf" />
+	<mime-ext mime="application/xslfo+xml" ext=".fo" />
+</file-extensions-map>

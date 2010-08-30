@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>ege</artifactId>
+    <groupId>pl.psnc.dl.ege</groupId>
+    <version>0.4.3</version>
+  </parent>
+  <groupId>pl.psnc.dl.ege.webapp</groupId>
+  <artifactId>ege-webclient</artifactId>
+  <version>0.3</version>
+  <packaging>war</packaging>
+  <name>EGE Web Client</name>
+  <url>/multiprojects/ege-webclient</url>
+  <description>
+	EGE Web Client. Web client is separated user interface project for EGE RESTful web service functionality.
+  </description>
+  <licenses>
+	<license>
+		<name>GPL</name>
+		<url>http://www.gnu.org/licenses/gpl.txt</url>
+	</license>
+  </licenses>
+  <developers>
+      <developer>
+         <id>mariuszs</id>
+         <name>Mariusz Stanisławczyk</name>
+         <email>mariuszs@man.poznan.pl</email>
+         <roles>
+            <role>Developer</role>
+         </roles>
+         <organization>PCSS</organization>
+      </developer>
+	  <developer>
+         <id>tparkola</id>
+         <name>Tomasz Parkoła</name>
+         <email>tparkola@man.poznan.pl</email>
+         <roles>
+            <role>Project Manager</role>
+         </roles>
+         <organization>PCSS</organization>
+      </developer>	  
+   </developers>
+  <build>
+    <finalName>ege-webclient</finalName>
+  </build>
+  <reporting>
+    <plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-project-info-reports-plugin</artifactId>
+			<reportSets>
+				<reportSet>
+					<reports>
+						<report>project-team</report>
+						<report>license</report>
+					</reports>
+				</reportSet>
+			</reportSets>
+		</plugin>
+	</plugins>
+  </reporting>
+</project>

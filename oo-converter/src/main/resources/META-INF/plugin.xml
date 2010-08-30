@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.4" "http://jpf.sourceforge.net/plugin_0_7.dtd">
+<plugin id="oo-converter" version="1.0">
+	<requires>
+		<import plugin-id="pl.psnc.dl.ege.root"/>
+	</requires>
+	<extension plugin-id="pl.psnc.dl.ege.root" point-id="Converter" id="OOConverter">
+		<parameter id="class" value="uk.ac.ox.oucs.oxgarage.oo.OOConverter"/>
+		<parameter id="name" value="OpenOffice Converter"/>
+	</extension>
+</plugin>

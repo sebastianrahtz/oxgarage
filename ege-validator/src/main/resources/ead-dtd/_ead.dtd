@@ -1,0 +1,467 @@
+﻿<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                ENCODED ARCHIVAL DESCRIPTION                -->
+<!--                  DOCUMENT TYPE DEFINITION                  -->
+<!--                        VERSION 1.0                         -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--               Prepared and Maintained by the               -->
+<!--         Encoded Archival Description Working Group         -->
+<!--            of the Society of American Archivists           -->
+<!--                          and the                           -->
+<!--        Network Development and MARC Standards Office       -->
+<!--                 of the Library of Congress                 -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--               Society of American Archivists               -->
+<!--                      Chicago, Illinois                     -->
+<!--                            1998                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--    Encoded Archival Description Document Type Definition   -->
+<!--                                                            -->
+<!--            EAD Technical Document No. 1, Part 1            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--This file constitutes a component of version 1.0 of the     -->
+<!--Encoded Archival Description Document Type Definition (DTD),-->
+<!--released in August 1998.  Version 1.0 of the DTD supersedes -->
+<!--the beta version made available via the EAD Internet site   -->
+<!--beginning in 1996.                                          -->
+<!--                                                            -->
+<!--                                                            -->
+<!--The SAA Encoded Archival Description Working Group is       -->
+<!--responsible for updating and editing the EAD DTD (EAD       -->
+<!--Technical Document No. 1) and tag library (EAD Technical    -->
+<!--Document No. 2).                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--The LC Network Development and MARC Standards Office serves -->
+<!--as the maintenance agency for online EAD documentation,     -->
+<!--including storage and delivery of electronic files and      -->
+<!--maintenance of the EAD Internet site, located at            -->
+<!--http://www.loc.gov/ead/.                                    -->
+<!--                                                            -->
+<!--                                                            -->
+<!--Published by the Society of American Archivists.            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--Tag Library available from:                                 -->
+<!--                Society of American Archivists              -->
+<!--                527 S. Wells Street, 5th floor              -->
+<!--                Chicago, IL 60607                           -->
+<!--                                                            -->
+<!--                Phone:    312/922-0140                      -->
+<!--                Fax:      312/347-1452                      -->
+<!--                Internet: info@archivists.org               -->
+<!--                                                            -->
+<!--                                                            -->
+<!--(c) Society of American Archivists, 1998.                   -->
+<!-- All rights reserved.                                       -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          PUBLIC IDENTIFIER FOR EAD.DTD                     -->
+<!--************************************************************-->
+
+<!--
+
+"-//Society of American Archivists//DTD ead.dtd (Encoded Archival Description (EAD) Version 1.0)//EN"
+
+                                                                -->
+<!--************************************************************-->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--************************************************************-->
+<!--          INTRODUCTION                                      -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--  NAME:      Encoded Archival Description Document Type     -->
+<!--              Definition                                    -->
+<!--                    File name = ead.dtd                     -->
+<!--                    Version = 1.0                           -->
+<!--                    Version date = 980824                   -->
+<!--                                                            -->
+<!--  EDITOR:    Daniel V. Pitti                                -->
+<!--             Institute for Advanced Technology in the       -->
+<!--             Humanities, University of Virginia             -->
+<!--                                                            -->
+<!--  PURPOSE:   To encode that class of archival finding aids  -->
+<!--             known as inventories and registers, which are  -->
+<!--             reference tools produced by archives,          -->
+<!--             libraries, universities, associations,         -->
+<!--             agencies, and other organizations to describe, -->
+<!--             control, and provide access to archival and    -->
+<!--             manuscript materials.                          -->
+<!--                                                            -->
+<!--  CONTACT:   EAD listserv of the Library of Congress Network-->
+<!--             Development and MARC Standards Office.         -->
+<!--             To subscribe to this listserv, send a one-line -->
+<!--             message to LISTSERV@LOC.GOV containing the     -->
+<!--             text:  SUBSCRIBE EAD YourName. Once subscribed,-->
+<!--             submit messages to EAD@LOC.GOV.                -->
+<!--                                                            -->
+<!--             EAD Internet site, located at                  -->
+<!--             http://www.loc.gov/ead/                        -->
+<!--                                                            -->
+<!--  DEPENDENCIES:                                             -->
+<!--             References ead.base                            -->
+<!--             For SGML applications:                         -->
+<!--              References: eadnotat.ent and eadchars.ent     -->
+<!--              SGML declaration: eadsgml.dcl                 -->
+<!--                                                            -->
+<!--                                                            -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--                                                            -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--          SPONSOR INFORMATION                               -->
+<!--************************************************************-->
+<!--      The EAD is a cooperative effort sponsored by several  -->
+<!--      institutions and professional associations. Its       -->
+<!--      development has been supported through a series of    -->
+<!--      fellowships and grants.                               -->
+<!--                                                            -->
+<!--      The Society of American Archivists (SAA) through the  -->
+<!--      EAD Working Group is responsible for the intellectual -->
+<!--      content of EAD and for monitoring and assisting in its-->
+<!--      ongoing development. The working group includes       -->
+<!--      individuals representing various interests within the -->
+<!--      SAA as well as representatives from OCLC, the Research-->
+<!--      Libraries Group (RLG), the Library of Congress, the   -->
+<!--      National Archives and Records Administration (U.S.),  -->
+<!--      Canada, and the United Kingdom.                       -->
+<!--                                                            -->
+<!--      The Library of Congress Network Development and MARC  -->
+<!--      Standards Office is the international maintenance     -->
+<!--      agency for the standard.                              -->
+<!--                                                            -->
+<!--      Funding agencies who have contributed generously to   -->
+<!--      the development of the standard include:  Department  -->
+<!--      of Education (Title IIA grant) to the University of   -->
+<!--      California, Berkeley, for developing a prototype      -->
+<!--      encoding standard and database for finding aids; The  -->
+<!--      Library, University of California, Berkeley, for      -->
+<!--      supporting ongoing development of a community-based   -->
+<!--      standard; Commission on Preservation and Access for a -->
+<!--      three-day conference (4-6 April 1995) on the Berkeley -->
+<!--      Finding Aid Project (BFAP); University of Michigan    -->
+<!--      Bentley Historical Library, Andrew W. Mellon          -->
+<!--      Foundation, and the National Endowment for the        -->
+<!--      Humanities (Division of Preservation and Access) for  -->
+<!--      assembling representatives from the archival community-->
+<!--      for a week-long (22-29 July 1995) Bentley fellowship  -->
+<!--      program to develop design principles and revise the   -->
+<!--      BFAP data model and DTD; Library of Congress National -->
+<!--      Digital Library Program for sponsoring a three-day    -->
+<!--      meeting (1-3 November 1995) of the Bentley team and   -->
+<!--      other experts to review the Bentley model and for     -->
+<!--      providing the technical support of an SGML consulting -->
+<!--      firm to make modifications and supply accompanying    -->
+<!--      documentation for an alpha version of the DTD; the    -->
+<!--      Council on Library Resources (now the Council on      -->
+<!--      Library and Information Resources) for supporting     -->
+<!--      meetings of the EAD development team in Los Angeles,  -->
+<!--      California (4-6 January 1996) and Berkeley, California-->
+<!--      (27-29 April 1996) and for sponsoring the development -->
+<!--      of the beta version tag library and application       -->
+<!--      guidelines and the development and publication of the -->
+<!--      revised version 1.0 tag library under the auspices of -->
+<!--      the Society of American Archivists; and the Delmas    -->
+<!--      Foundation for funding a three-day meeting (31 October-->
+<!--      -2 November 1997) of the EAD Working Group to consider-->
+<!--      changes to the beta version of the DTD.               -->
+<!--                                                            -->
+<!--                                                            -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--                                                            -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--          VERSION INFORMATION                               -->
+<!--************************************************************-->
+<!--                                                            -->
+<!--  ALPHA 0.1:                                                -->
+<!--             Daniel V. Pitti                                -->
+<!--             University of California, Berkeley, The Library-->
+<!--             DATE: 1995-10                                  -->
+<!--                                                            -->
+<!--                                                            -->
+<!--    In October 1993, the University of California, Berkeley -->
+<!--    Library began a two-year research and demonstration     -->
+<!--    project to investigate the desirability and feasibility -->
+<!--    of developing an encoding standard for machine-readable -->
+<!--    finding aids.  Daniel V. Pitti, director of the         -->
+<!--    Berkeley Finding Aid Project (BFAP), wrote the FindAid  -->
+<!--    DTD and oversaw the creation of a prototype database.   -->
+<!--    Campbell Crabtree, Tim Hoyer, Gabriela Montoya, Alvin   -->
+<!--    Pollock, and other Library and Bancroft Library staff   -->
+<!--    assisted Pitti in this work and in subsequent efforts   -->
+<!--    to develop a community-based encoding standard.         -->
+<!--                                                            -->
+<!--    In July 1995, Pitti assembled a team of archivists and  -->
+<!--    an SGML expert to meet at the Bentley Historical        -->
+<!--    Library in Ann Arbor, Michigan, to analyze the FindAid  -->
+<!--    DTD and data model developed by the BFAP.  The Bentley  -->
+<!--    Team for Encoded Archival Description Development       -->
+<!--    produced a new data model and the "Ann Arbor Accords:   -->
+<!--    Principles and Criteria for an SGML Document Type       -->
+<!--    Definition (DTD) for Finding Aids."  These two          -->
+<!--    documents provided the framework for the initial draft  -->
+<!--    (version 0.1) of the EAD DTD.                           -->
+<!--                                                            -->
+<!--    Members of the Bentley team assembled by Pitti were     -->
+<!--    Steven J. DeRose, Electronic Book Technologies; Jackie  -->
+<!--    Dooley, University of California, Irvine; Michael J.    -->
+<!--    Fox, Minnesota Historical Society; Steven Hensen,       -->
+<!--    Duke University; Kris Kiesling, University of Texas at  -->
+<!--    Austin; Janice E. Ruth, Library of Congress; Sharon     -->
+<!--    Thibodeau, National Archives and Records                -->
+<!--    Administration; and Helena Zinkham, Library of Congress.-->
+<!--                                                            -->
+<!--                                                            -->
+<!--  ALPHA 0.2:                                                -->
+<!--             Daniel V. Pitti                                -->
+<!--             University of California, Berkeley, The Library-->
+<!--             and the                                        -->
+<!--             ATLIS Consulting Group (DAL)                   -->
+<!--             Rockville, Maryland  20852                     -->
+<!--             (under contract with the National Digital      -->
+<!--             Library Program, Library of Congress)          -->
+<!--             DATE: 1996-01                                  -->
+<!--                                                            -->
+<!--     Draft Alpha 0.2 (Daniel V. Pitti/ATLIS Consulting)     -->
+<!--     December 1995                                          -->
+<!--                                                            -->
+<!--    The Bentley team together with Debbie Lapeyre of ATLIS  -->
+<!--    Consulting Group, Anne Gilliland-Swetland of the        -->
+<!--    University of California, Los Angeles, and Marla Banks, -->
+<!--    Randall Barry, Beth Davis-Brown, LeeEllen Friedland, and-->
+<!--    Belinda Urquiza of the Library of Congress met in       -->
+<!--    November 1995 at the Library of Congress to review the  -->
+<!--    0.1 DTD and describe the results of initial testing.    -->
+<!--    The results of that meeting are reflected in the 0.2    -->
+<!--    version of the DTD.                                     -->
+<!--                                                            -->
+<!--     Draft Alpha 0.3 (Daniel V. Pitti/ATLIS Consulting)     -->
+<!--     January 1996                                           -->
+<!--                                                            -->
+<!--    A subset of the Bentley team (Michael Fox, Steven       -->
+<!--    Hensen, Kris Kiesling, Daniel Pitti, and Janice Ruth)   -->
+<!--    met with Gilliland-Swetland and Thomas La Porte,        -->
+<!--    DreamWorks SKG, in January 1996 at the University of    -->
+<!--    California, Los Angeles to outline the application      -->
+<!--    guidelines and review the 0.2 DTD and draft tag library.-->
+<!--    The simplifications and corrections developed in that   -->
+<!--    meeting are reflected in version 0.3.                   -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--  BETA:                                                     -->
+<!--             Daniel V. Pitti                                -->
+<!--             University of California, Berkeley, The Library-->
+<!--             DATE: 1996-06                                  -->
+<!--                                                            -->
+<!--                                                            -->
+<!--    On April 27-29, 1996, in Berkeley, California, the      -->
+<!--    original Bentley Development Team for Encoded Archival  -->
+<!--    Description and Randall Barry, Anne Gilliland-Swetland, -->
+<!--    Thomas La Porte, Tim Hoyer, and Jack Von Euw, University-->
+<!--    of California, Berkeley, met to review the draft EAD    -->
+<!--    guidelines and to discuss changes to the alpha EAD which-->
+<!--    had been suggested by team members and early            -->
+<!--    implementors. The corrections and additions developed in-->
+<!--    that meeting and in subsequent communication are        -->
+<!--    reflected in the beta version of the EAD DTD.           -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--  VERSION 1.0:                                              -->
+<!--             Daniel V. Pitti                                -->
+<!--             Institute for Advanced Technology in the       -->
+<!--             Humanities, University of Virginia             -->
+<!--             DATE: 1998-08                                  -->
+<!--                                                            -->
+<!--                                                            -->
+<!--    In June 1997, the EAD Working Group invited the archival-->
+<!--    community to submit to the EAD listserv formal comments -->
+<!--    and suggestions for changes to the EAD DTD. Comments    -->
+<!--    were collected for three months. On 31 October-         -->
+<!--    2 November 1997, the EAD Working Group met in Washington-->
+<!--    D.C. to review and consider the submitted suggestions   -->
+<!--    and comments, and to approve changes to be incorporated -->
+<!--    into the Version 1.0 DTD.                               -->
+<!--                                                            -->
+<!--    Members of the EAD Working Group meeting in Washington, -->
+<!--    D.C., were Kris Kiesling, Chair; Randall Barry; Jackie  -->
+<!--    Dooley; Wendy Duff, University of Toronto; Ricky Erway, -->
+<!--    Research Libraries Group; Michael Fox; Steven Hensen;   -->
+<!--    William Landis, University of California, Los Angeles;  -->
+<!--    Daniel Pitti, University of Virginia; Janice Ruth;      -->
+<!--    Robert Spindler, Arizona State University; Meg Sweet,   -->
+<!--    Public Record Office (UK); Richard Szary, Yale          -->
+<!--    University; Sharon Thibodeau; and Helena Zinkham.       -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--                     END EAD INTRODUCTION                   -->
+<!--************************************************************-->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          CHANGE HISTORY (POST VERSION 1.0 CHANGES)         -->
+<!--************************************************************-->
+<!-- 
+NUM  DESCRIPTION OF CHANGE                                MM/DD/YY
+
+
+                                                                -->
+<!--************************************************************-->
+<!--          END CHANGE HISTORY                                -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--************************************************************-->
+<!--          XLINK INCLUSION/EXCLUSION                         -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--     NOTE: by default, XLink options are ignored or not     -->
+<!--     recognized by the SGML or XML parser. When XLink       -->
+<!--     software becomes available, it will be necessary to    -->
+<!--     include the xlink:form attributes. To include these    -->
+<!--     attributes, change the entity value for "xlink" to     -->
+<!--     "INCLUDE" and the entity value for "noxlink" to        -->
+<!--     "IGNORE".                                              -->
+<!--                                                            -->
+<!--************************************************************-->
+ 
+<!ENTITY % xlink          'IGNORE'                                
+                                                                  >
+<!ENTITY % noxlink        'INCLUDE'                               
+                                                                  >
+
+<!--************************************************************-->
+<!--                  END XLINK INCLUSION/EXCLUSION             -->
+<!--************************************************************-->
+
+
+
+<!--************************************************************-->
+<!--          TABULAR DSC INCLUSION/EXCLUSION                   -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--     NOTE: by default, TABULAR version of DSC is excluded   -->
+<!--     or not recognized by the SGML or XML parser. To enable -->
+<!--     tabular features in the DSC, change the entity value   -->
+<!--     for "tabular" to "INCLUDE" and the entity value for    -->
+<!--     "nontabular" to "IGNORE".                              -->
+<!--************************************************************-->
+
+<!ENTITY % tabular        'IGNORE'                               
+                                                                  >
+<!ENTITY % nontabular     'INCLUDE'                               
+                                                                  >
+
+<!--************************************************************-->
+<!--          END TABULAR DSC INCLUSION/EXCLUSION               -->
+<!--************************************************************-->
+
+
+<!--************************************************************-->
+<!--          SGML EADNOTAT AND EADCHARS INCLUSION/EXCLUSION    -->
+<!--************************************************************-->
+<!--                                                            -->
+<!--     NOTE 1: eadchars.ent should only be invoked for SGML   -->
+<!--     applications. For XML, use Unicode &#xN; where "N"     -->
+<!--     is the Unicode Hexadecimal value assigned by the       -->
+<!--     standard.                                              -->
+<!--                                                            -->
+<!--     NOTE 2: eadnotat.ent should only be invoked for SGML   -->
+<!--     applications. For XML, the eadnotat.ent file should be -->
+<!--     invoked in the declaration subset of individual        -->
+<!--     instance.                                              -->
+<!--                                                            -->
+<!--     For more information, see Extensible Markup Language   -->
+<!--     (XML) 1.0: http://www.w3.org/TR/1998/REC-xml-19980210  -->
+<!--                                                            -->
+<!--************************************************************-->
+
+<!ENTITY % sgml           'INCLUDE'                               
+                                                                  >
+
+<!--************************************************************-->
+<!--          END EADNOTAT AND EADCHARS INCLUSION/EXCLUSION     -->
+<!--************************************************************-->
+
+
+
+<!--************************************************************-->
+<!--          INVOKE EADBASE MODULE                             -->
+<!--************************************************************-->
+
+
+<!ENTITY % eadbase               PUBLIC 
+"-//Society of American Archivists//DTD eadbase.ent (Encoded Archival Description (EAD) Basic Declarations Version 1.0)//EN" 
+"eadbase.ent" >
+%eadbase;
+
+
+<![%sgml;[
+<!--************************************************************-->
+<!--          INVOKE EADCHARS AND EADNOTAT FOR SGML APPLICATIONS-->
+<!--************************************************************-->
+
+<!ENTITY % eadchars              PUBLIC
+"-//Society of American Archivists//DTD eadchars.ent (Encoded Archival Description (EAD) Special Characters Version 1.0)//EN"
+"eadchars.ent"
+>
+
+%eadchars;
+
+<!ENTITY % eadnotat              PUBLIC
+"-//Society of American Archivists//DTD eadnotat.ent (Encoded Archival Description (EAD) Notation Declarations Version 1.0)//EN"
+"eadnotat.ent"
+>
+
+%eadnotat;
+
+]]>
+
+<!--************************************************************-->
+<!--************************************************************-->
+<!--          END of EAD DTD                                    -->
+<!--************************************************************-->
+<!--************************************************************-->
+

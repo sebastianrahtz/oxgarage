@@ -1,0 +1,18 @@
+<plugin>
+	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="TEItoNLMconverter">
+		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
+		<parameter id="name" value="ODDC to HTML"/>
+		<parameter id="xsluri" value="odds2/odd2html.xsl" />
+		<parameter id="iMimeType" value="text/xml" />
+		<parameter id="iFormat" value="ODDC" />
+		<parameter id="iDescription" value="Compiled TEI ODD Document"/>
+		<parameter id="iType" value="text" />		
+		<parameter id="oMimeType" value="application/xhtml+xml"/>
+		<parameter id="oFormat" value="xhtml" />
+		<parameter id="oDescription" value="xHTML Document"/>
+		<parameter id="oType" value="text" />
+		<parameter id="visibility" value="true" />
+		<parameter id="cost" value="5" />
+	</extension>
+</plugin>
+

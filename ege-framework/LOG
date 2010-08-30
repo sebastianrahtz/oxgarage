@@ -1,0 +1,177 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building EGE Framework
+[INFO]    task-segment: [package]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[WARNING] Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 1 resource
+Downloading: http://repo1.maven.org/maven2/pl/psnc/dl/ege/ege-api/0.2/ege-api-0.2.pom
+[INFO] Unable to find resource 'pl.psnc.dl.ege:ege-api:pom:0.2' in repository central (http://repo1.maven.org/maven2)
+Downloading: http://repo1.maven.org/maven2/jpf/jpf/1.15/jpf-1.15.pom
+[INFO] Unable to find resource 'jpf:jpf:pom:1.15' in repository central (http://repo1.maven.org/maven2)
+Downloading: http://repo1.maven.org/maven2/net/sf/jung/jung-algorithms/2.0.2/jung-algorithms-2.0.2.pom
+[INFO] Unable to find resource 'net.sf.jung:jung-algorithms:pom:2.0.2' in repository central (http://repo1.maven.org/maven2)
+Downloading: http://repo1.maven.org/maven2/net/sf/jung/jung-visualization/2.0.2/jung-visualization-2.0.2.pom
+[INFO] Unable to find resource 'net.sf.jung:jung-visualization:pom:2.0.2' in repository central (http://repo1.maven.org/maven2)
+Downloading: http://repo1.maven.org/maven2/net/sf/jung/jung-api/2.0.2/jung-api-2.0.2.pom
+[INFO] Unable to find resource 'net.sf.jung:jung-api:pom:2.0.2' in repository central (http://repo1.maven.org/maven2)
+Downloading: http://repo1.maven.org/maven2/net/sf/jung/jung-graph-impl/2.0.2/jung-graph-impl-2.0.2.pom
+[INFO] Unable to find resource 'net.sf.jung:jung-graph-impl:pom:2.0.2' in repository central (http://repo1.maven.org/maven2)
+Downloading: http://repo1.maven.org/maven2/net/sf/jung/jung-io/2.0.2/jung-io-2.0.2.pom
+[INFO] Unable to find resource 'net.sf.jung:jung-io:pom:2.0.2' in repository central (http://repo1.maven.org/maven2)
+Downloading: http://repo1.maven.org/maven2/net/sf/jung/jung-samples/2.0.2/jung-samples-2.0.2.pom
+[INFO] Unable to find resource 'net.sf.jung:jung-samples:pom:2.0.2' in repository central (http://repo1.maven.org/maven2)
+Downloading: http://repo1.maven.org/maven2/net/sf/jung/jung-algorithms/2.0.2/jung-algorithms-2.0.2.jar
+Downloading: http://repo1.maven.org/maven2/jpf/jpf/1.15/jpf-1.15.jar
+Downloading: http://repo1.maven.org/maven2/pl/psnc/dl/ege/ege-api/0.2/ege-api-0.2.jar
+[INFO] Unable to find resource 'net.sf.jung:jung-algorithms:jar:2.0.2' in repository central (http://repo1.maven.org/maven2)
+Downloading: http://repo1.maven.org/maven2/net/sf/jung/jung-visualization/2.0.2/jung-visualization-2.0.2.jar
+[INFO] Unable to find resource 'jpf:jpf:jar:1.15' in repository central (http://repo1.maven.org/maven2)
+[INFO] Unable to find resource 'pl.psnc.dl.ege:ege-api:jar:0.2' in repository central (http://repo1.maven.org/maven2)
+[INFO] Unable to find resource 'net.sf.jung:jung-visualization:jar:2.0.2' in repository central (http://repo1.maven.org/maven2)
+Downloading: http://repo1.maven.org/maven2/net/sf/jung/jung-api/2.0.2/jung-api-2.0.2.jar
+[INFO] Unable to find resource 'net.sf.jung:jung-api:jar:2.0.2' in repository central (http://repo1.maven.org/maven2)
+Downloading: http://repo1.maven.org/maven2/net/sf/jung/jung-graph-impl/2.0.2/jung-graph-impl-2.0.2.jar
+[INFO] Unable to find resource 'net.sf.jung:jung-graph-impl:jar:2.0.2' in repository central (http://repo1.maven.org/maven2)
+Downloading: http://repo1.maven.org/maven2/net/sf/jung/jung-io/2.0.2/jung-io-2.0.2.jar
+[INFO] Unable to find resource 'net.sf.jung:jung-io:jar:2.0.2' in repository central (http://repo1.maven.org/maven2)
+Downloading: http://repo1.maven.org/maven2/net/sf/jung/jung-samples/2.0.2/jung-samples-2.0.2.jar
+[INFO] Unable to find resource 'net.sf.jung:jung-samples:jar:2.0.2' in repository central (http://repo1.maven.org/maven2)
+[INFO] ------------------------------------------------------------------------
+[ERROR] BUILD ERROR
+[INFO] ------------------------------------------------------------------------
+[INFO] Failed to resolve artifact.
+
+Missing:
+----------
+1) net.sf.jung:jung-algorithms:jar:2.0.2
+
+  Try downloading the file manually from the project website.
+
+  Then, install it using the command: 
+      mvn install:install-file -DgroupId=net.sf.jung -DartifactId=jung-algorithms -Dversion=2.0.2 -Dpackaging=jar -Dfile=/path/to/file
+
+  Alternatively, if you host your own repository you can deploy the file there: 
+      mvn deploy:deploy-file -DgroupId=net.sf.jung -DartifactId=jung-algorithms -Dversion=2.0.2 -Dpackaging=jar -Dfile=/path/to/file -Durl=[url] -DrepositoryId=[id]
+
+  Path to dependency: 
+  	1) pl.psnc.dl.ege:ege-framework:jar:0.3
+  	2) net.sf.jung:jung-algorithms:jar:2.0.2
+
+2) jpf:jpf:jar:1.15
+
+  Try downloading the file manually from the project website.
+
+  Then, install it using the command: 
+      mvn install:install-file -DgroupId=jpf -DartifactId=jpf -Dversion=1.15 -Dpackaging=jar -Dfile=/path/to/file
+
+  Alternatively, if you host your own repository you can deploy the file there: 
+      mvn deploy:deploy-file -DgroupId=jpf -DartifactId=jpf -Dversion=1.15 -Dpackaging=jar -Dfile=/path/to/file -Durl=[url] -DrepositoryId=[id]
+
+  Path to dependency: 
+  	1) pl.psnc.dl.ege:ege-framework:jar:0.3
+  	2) jpf:jpf:jar:1.15
+
+3) pl.psnc.dl.ege:ege-api:jar:0.2
+
+  Try downloading the file manually from the project website.
+
+  Then, install it using the command: 
+      mvn install:install-file -DgroupId=pl.psnc.dl.ege -DartifactId=ege-api -Dversion=0.2 -Dpackaging=jar -Dfile=/path/to/file
+
+  Alternatively, if you host your own repository you can deploy the file there: 
+      mvn deploy:deploy-file -DgroupId=pl.psnc.dl.ege -DartifactId=ege-api -Dversion=0.2 -Dpackaging=jar -Dfile=/path/to/file -Durl=[url] -DrepositoryId=[id]
+
+  Path to dependency: 
+  	1) pl.psnc.dl.ege:ege-framework:jar:0.3
+  	2) pl.psnc.dl.ege:ege-api:jar:0.2
+
+4) net.sf.jung:jung-visualization:jar:2.0.2
+
+  Try downloading the file manually from the project website.
+
+  Then, install it using the command: 
+      mvn install:install-file -DgroupId=net.sf.jung -DartifactId=jung-visualization -Dversion=2.0.2 -Dpackaging=jar -Dfile=/path/to/file
+
+  Alternatively, if you host your own repository you can deploy the file there: 
+      mvn deploy:deploy-file -DgroupId=net.sf.jung -DartifactId=jung-visualization -Dversion=2.0.2 -Dpackaging=jar -Dfile=/path/to/file -Durl=[url] -DrepositoryId=[id]
+
+  Path to dependency: 
+  	1) pl.psnc.dl.ege:ege-framework:jar:0.3
+  	2) net.sf.jung:jung-visualization:jar:2.0.2
+
+5) net.sf.jung:jung-api:jar:2.0.2
+
+  Try downloading the file manually from the project website.
+
+  Then, install it using the command: 
+      mvn install:install-file -DgroupId=net.sf.jung -DartifactId=jung-api -Dversion=2.0.2 -Dpackaging=jar -Dfile=/path/to/file
+
+  Alternatively, if you host your own repository you can deploy the file there: 
+      mvn deploy:deploy-file -DgroupId=net.sf.jung -DartifactId=jung-api -Dversion=2.0.2 -Dpackaging=jar -Dfile=/path/to/file -Durl=[url] -DrepositoryId=[id]
+
+  Path to dependency: 
+  	1) pl.psnc.dl.ege:ege-framework:jar:0.3
+  	2) net.sf.jung:jung-api:jar:2.0.2
+
+6) net.sf.jung:jung-graph-impl:jar:2.0.2
+
+  Try downloading the file manually from the project website.
+
+  Then, install it using the command: 
+      mvn install:install-file -DgroupId=net.sf.jung -DartifactId=jung-graph-impl -Dversion=2.0.2 -Dpackaging=jar -Dfile=/path/to/file
+
+  Alternatively, if you host your own repository you can deploy the file there: 
+      mvn deploy:deploy-file -DgroupId=net.sf.jung -DartifactId=jung-graph-impl -Dversion=2.0.2 -Dpackaging=jar -Dfile=/path/to/file -Durl=[url] -DrepositoryId=[id]
+
+  Path to dependency: 
+  	1) pl.psnc.dl.ege:ege-framework:jar:0.3
+  	2) net.sf.jung:jung-graph-impl:jar:2.0.2
+
+7) net.sf.jung:jung-io:jar:2.0.2
+
+  Try downloading the file manually from the project website.
+
+  Then, install it using the command: 
+      mvn install:install-file -DgroupId=net.sf.jung -DartifactId=jung-io -Dversion=2.0.2 -Dpackaging=jar -Dfile=/path/to/file
+
+  Alternatively, if you host your own repository you can deploy the file there: 
+      mvn deploy:deploy-file -DgroupId=net.sf.jung -DartifactId=jung-io -Dversion=2.0.2 -Dpackaging=jar -Dfile=/path/to/file -Durl=[url] -DrepositoryId=[id]
+
+  Path to dependency: 
+  	1) pl.psnc.dl.ege:ege-framework:jar:0.3
+  	2) net.sf.jung:jung-io:jar:2.0.2
+
+8) net.sf.jung:jung-samples:jar:2.0.2
+
+  Try downloading the file manually from the project website.
+
+  Then, install it using the command: 
+      mvn install:install-file -DgroupId=net.sf.jung -DartifactId=jung-samples -Dversion=2.0.2 -Dpackaging=jar -Dfile=/path/to/file
+
+  Alternatively, if you host your own repository you can deploy the file there: 
+      mvn deploy:deploy-file -DgroupId=net.sf.jung -DartifactId=jung-samples -Dversion=2.0.2 -Dpackaging=jar -Dfile=/path/to/file -Durl=[url] -DrepositoryId=[id]
+
+  Path to dependency: 
+  	1) pl.psnc.dl.ege:ege-framework:jar:0.3
+  	2) net.sf.jung:jung-samples:jar:2.0.2
+
+----------
+8 required artifacts are missing.
+
+for artifact: 
+  pl.psnc.dl.ege:ege-framework:jar:0.3
+
+from the specified remote repositories:
+  central (http://repo1.maven.org/maven2)
+
+
+
+[INFO] ------------------------------------------------------------------------
+[INFO] For more information, run Maven with the -e switch
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 7 seconds
+[INFO] Finished at: Wed Jun 09 22:56:29 BST 2010
+[INFO] Final Memory: 11M/81M
+[INFO] ------------------------------------------------------------------------

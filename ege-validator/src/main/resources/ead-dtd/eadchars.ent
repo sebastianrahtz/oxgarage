@@ -1,0 +1,241 @@
+﻿<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                ENCODED ARCHIVAL DESCRIPTION                -->
+<!--                  DOCUMENT TYPE DEFINITION                  -->
+<!--                    SPECIAL CHARACTERS                      -->
+<!--                        VERSION 1.0                         -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--               Prepared and Maintained by the               -->
+<!--         Encoded Archival Description Working Group         -->
+<!--            of the Society of American Archivists           -->
+<!--                          and the                           -->
+<!--        Network Development and MARC Standards Office       -->
+<!--                 of the Library of Congress                 -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--               Society of American Archivists               -->
+<!--                      Chicago, Illinois                     -->
+<!--                            1998                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--      Encoded Archival Description Special Characters       -->
+<!--                                                            -->
+<!--            EAD Technical Document No. 1, Part 5            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--This file constitutes a component of version 1.0 of the     -->
+<!--Encoded Archival Description Document Type Definition (DTD),-->
+<!--released in August 1998.  Version 1.0 of the DTD supersedes -->
+<!--the beta version made available via the EAD Internet site   -->
+<!--beginning in 1996.                                          -->
+<!--                                                            -->
+<!--                                                            -->
+<!--The SAA Encoded Archival Description Working Group is       -->
+<!--responsible for updating and editing the EAD DTD (EAD       -->
+<!--Technical Document No. 1) and tag library (EAD Technical    -->
+<!--Document No. 2).                                            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--The LC Network Development and MARC Standards Office serves -->
+<!--as the maintenance agency for online EAD documentation,     -->
+<!--including storage and delivery of electronic files and      -->
+<!--maintenance of the EAD Internet site, located at            -->
+<!--http://www.loc.gov/ead/.                                    -->
+<!--                                                            -->
+<!--                                                            -->
+<!--Published by the Society of American Archivists.            -->
+<!--                                                            -->
+<!--                                                            -->
+<!--Tag Library available from:                                 -->
+<!--                Society of American Archivists              -->
+<!--                527 S. Wells Street, 5th floor              -->
+<!--                Chicago, IL 60607                           -->
+<!--                                                            -->
+<!--                Phone:    312/922-0140                      -->
+<!--                Fax:      312/347-1452                      -->
+<!--                Internet: info@archivists.org               -->
+<!--                                                            -->
+<!--                                                            -->
+<!--(c) Society of American Archivists, 1998.                   -->
+<!-- All rights reserved.                                       -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          PUBLIC IDENTIFIER FOR EADCHARS.ENT                -->
+<!--************************************************************-->
+
+<!--
+
+"-//Society of American Archivists//DTD eadchars.ent (Encoded Archival Description (EAD) Special Characters Version 1.0)//EN"
+
+                                                                -->
+<!--************************************************************-->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          INTRODUCTION                                      -->
+<!--************************************************************-->
+<!--************************************************************-->
+<!--  NAME:      Encoded Archival Description Special Characters-->
+<!--                    File name = eadchars.ent                -->
+<!--                    Version = 1.0                           -->
+<!--                    Version date = 980824                   -->
+<!--                                                            -->
+<!--  EDITOR:    Daniel V. Pitti                                -->
+<!--             Institute for Advanced Technology in the       -->
+<!--             Humanities, University of Virginia             -->
+<!--                                                            -->
+<!--  PURPOSE:   References ISO special character sets for use  -->
+<!--             in SGML EAD archival documents.                -->
+<!--                                                            -->
+<!--  CONTACT:   EAD listserv of the Library of Congress Network-->
+<!--             Development and MARC Standards Office.         -->
+<!--             To subscribe to this listserv, send a one-line -->
+<!--             message to LISTSERV@LOC.GOV containing the     -->
+<!--             text:  SUBSCRIBE EAD YourName. Once subscribed,-->
+<!--             submit messages to EAD@LOC.GOV.                -->
+<!--                                                            -->
+<!--             EAD Internet site, located at                  -->
+<!--             http://www.loc.gov/ead/                        -->
+<!--                                                            -->
+<!--  DEPENDENCIES:                                             -->
+<!--             ISO Special Character sets:                    -->
+<!--                                                            -->
+<!--             "ISO 8879-1986//ENTITIES Added Latin 1//EN"    -->
+<!--                                                            -->
+<!--             "ISO 8879-1986//ENTITIES Added Latin 2//EN"    -->
+<!--                                                            -->
+<!--             "ISO 8879-1986//ENTITIES Greek Symbols//EN"    -->
+<!--                                                            -->
+<!--             "ISO 8879-1986//ENTITIES Alternative Greek     -->
+<!--              Symbols//EN"                                  -->
+<!--                                                            -->
+<!--             "ISO 8879-1986//ENTITIES Greek Letters//EN"    -->
+<!--                                                            -->
+<!--             "ISO 8879-1986//ENTITIES Monotoniko Greek//EN" -->
+<!--                                                            -->
+<!--             "ISO 8879-1986//ENTITIES Diacritical Marks//EN"-->
+<!--                                                            -->
+<!--             "ISO 8879-1986//ENTITIES Numeric and Special   -->
+<!--              Graphic//EN"                                  -->
+<!--                                                            -->
+<!--             "ISO 8879-1986//ENTITIES Publishing//EN"       -->
+<!--                                                            -->
+<!--             "ISO 8879-1986//ENTITIES General Technical//EN"-->
+<!--                                                            -->
+<!--             "ISO 8879-1986//ENTITIES Russian Cyrillic//EN" -->
+<!--                                                            -->
+<!--             "ISO 8879-1986//ENTITIES Non-Russian           -->
+<!--              Cyrillic//EN"                                 -->
+<!--                                                            -->
+<!--  USE NOTE:  eadchars.ent should only be invoked for SGML   -->
+<!--             applications. For XML, use Unicode &#xN; where -->
+<!--             "N" is the Unicode Hexadecimal value assigned  -->
+<!--             by the standard.                               -->
+<!--             For more information, see Extensible Markup    -->
+<!--             Language (XML) 1.0:                            -->
+<!--             http://www.w3.org/TR/1998/REC-xml-19980210     -->
+<!--                                                            -->
+<!--************************************************************-->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--          CHANGE HISTORY (POST VERSION 1.0 CHANGES)         -->
+<!--************************************************************-->
+<!-- 
+NUM  DESCRIPTION OF CHANGE                                MM/DD/YY
+
+
+                                                                -->
+<!--************************************************************-->
+<!--          END CHANGE HISTORY                                -->
+<!--************************************************************-->
+
+<!--************************************************************-->
+<!--                  SPECIAL CHARACTER ISO ENTITY SETS         -->
+<!--************************************************************-->
+<!--************************************************************-->
+
+<!ENTITY % ISOlat1 PUBLIC "ISO 8879-1986//ENTITIES Added Latin 1//EN" "isolat1.ent" >
+
+<!ENTITY % ISOlat2 PUBLIC
+           "ISO 8879-1986//ENTITIES Added Latin 2//EN" "isolat2.ent" >
+
+<!ENTITY % ISOgrk3 PUBLIC
+           "ISO 8879-1986//ENTITIES Greek Symbols//EN"    "isogrk3.ent"        >
+
+<!ENTITY % ISOgrk4 PUBLIC
+           "ISO 8879-1986//ENTITIES Alternative Greek Symbols//EN" "isogrk4.ent" >
+
+<!ENTITY % ISOgrk1 PUBLIC
+           "ISO 8879-1986//ENTITIES Greek Letters//EN"      "isogrk1.ent"      >
+
+<!ENTITY % ISOgrk2 PUBLIC
+           "ISO 8879-1986//ENTITIES Monotoniko Greek//EN"     "isogrk2.ent"    >
+
+<!ENTITY % ISOdia PUBLIC
+            "ISO 8879-1986//ENTITIES Diacritical Marks//EN"    "isodia.ent"   >
+
+<!ENTITY % ISOnum  PUBLIC
+           "ISO 8879-1986//ENTITIES Numeric and Special
+            Graphic//EN"                                        "isonum.ent"  >
+
+<!ENTITY % ISOpub  PUBLIC
+           "ISO 8879-1986//ENTITIES Publishing//EN"              "isopub.ent" >
+
+<!ENTITY % ISOtech PUBLIC
+           "ISO 8879-1986//ENTITIES General Technical//EN"       "isotech.ent" >
+
+<!ENTITY % ISOcyr1 PUBLIC
+           "ISO 8879-1986//ENTITIES Russian Cyrillic//EN"       "isocyr1.ent"  >
+
+<!ENTITY % ISOcyr2 PUBLIC
+           "ISO 8879-1986//ENTITIES Non-Russian Cyrillic//EN"   "isocyr2.ent"  >
+
+<!--************************************************************-->
+<!--          BASIC CHARACTER ENTITY SETS REFERENCED            -->
+<!--************************************************************-->
+
+<!-- %ISOlat1;  %ISOlat2;
+%ISOgrk1;  %ISOgrk2; %ISOgrk3; %ISOgrk4;
+%ISOdia;   %ISOnum;  %ISOpub;  %ISOtech; -->
+
+<!--************************************************************-->
+<!--          POTENTIAL CHARACTER (ADD IF NEEDED)               -->
+<!--************************************************************-->
+
+<!--
+
+%ISOcyr1;  %ISOcyr2;
+                                                                -->
+
+<!--************************************************************-->
+<!--**********END OF EADCHARS DTD FRAGMENT**********************-->
+<!--************************************************************-->

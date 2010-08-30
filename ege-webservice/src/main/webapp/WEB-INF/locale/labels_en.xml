@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="pl.psnc.dl.ege.tei.profileNames">Select conversion profile: </entry>
+<entry key="pl.psnc.dl.ege.tei.getImages">Copy and rename all provided images</entry>
+<entry key="pl.psnc.dl.ege.tei.getOnlineImages">Download images located on the internet</entry>
+<entry key="pl.psnc.dl.ege.tei.textOnly">Convert text only, don't include any images from the document</entry>
+</properties>

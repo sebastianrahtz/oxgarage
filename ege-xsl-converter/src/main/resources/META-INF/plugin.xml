@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+<!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.4" "http://jpf.sourceforge.net/plugin_0_7.dtd">
+<plugin id="pl.psnc.dl.ege.xsl.converter" version="1.0">
+	<requires>
+		<import plugin-id="pl.psnc.dl.ege.root"/>
+	</requires>
+<!--
+	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="MasterToEnrichConverter">
+		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
+		<parameter id="name" value="MASTER to Enrich Converter"/>
+		<parameter id="xsluri" value="http://tei.oucs.ox.ac.uk/ENRICH/XSLT/xsl/master2enrich.xsl" />
+		<parameter id="iMimeType" value="text/xml" />
+		<parameter id="iFormat" value="MASTER" />
+		<parameter id="oMimeType" value="text/xml" />
+		<parameter id="oFormat" value="ENRICH TEI P5" />
+	</extension>
+	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="EadToEnrichConverter">
+		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
+		<parameter id="name" value="EAD to Enrich Converter"/>
+		<parameter id="xsluri" value="http://tei.oucs.ox.ac.uk/ENRICH/XSLT/xsl/ead2enrich.xsl" />
+		<parameter id="iMimeType" value="text/xml" />
+		<parameter id="iFormat" value="EAD" />
+		<parameter id="oMimeType" value="application/zip" />
+		<parameter id="oFormat" value="ENRICH TEI P5" />
+	</extension>
+-->
+	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="DocbookToTEIConverter">
+		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
+		<parameter id="name" value="Docbook to TEI"/>
+		<parameter id="xsluri" value="profiles/default/docbook/from.xsl" />
+		<parameter id="iMimeType" value="text/xml" />
+		<parameter id="iFormat" value="DBK" />
+		<parameter id="iDescription" value="DocBook Document" />
+		<parameter id="iType" value="text" />
+		<parameter id="oMimeType" value="text/xml" />
+		<parameter id="oFormat" value="TEI" />
+		<parameter id="oDescription" value="TEI P5 XML Document" />
+		<parameter id="oType" value="text" />
+		<parameter id="visibility" value="true" />
+		<parameter id="cost" value="10" />
+	</extension>
+	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="P4ToP5Converter">
+		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
+		<parameter id="name" value="P4 to P5"/>
+		<parameter id="xsluri" value="profiles/default/p4/from.xsl" />
+		<parameter id="iMimeType" value="text/xml" />
+		<parameter id="iFormat" value="P4" />
+		<parameter id="iDescription" value="TEI P4 XML Document" />		
+		<parameter id="iType" value="text" />
+		<parameter id="oMimeType" value="text/xml" />
+		<parameter id="oFormat" value="TEI" />
+		<parameter id="oDescription" value="TEI P5 XML Document" />		
+		<parameter id="oType" value="text" />
+		<parameter id="visibility" value="true" />
+		<parameter id="cost" value="10" />
+	</extension>
+	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="ODDToCompiledODD">
+		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
+		<parameter id="name" value="ODD to Compiled ODD"/>
+		<parameter id="xsluri" value="odds2/odd2odd.xsl" />
+		<parameter id="iMimeType" value="text/xml" />
+		<parameter id="iFormat" value="ODD" />
+		<parameter id="iDescription" value="ODD Document" />		
+		<parameter id="iType" value="text" />
+		<parameter id="oMimeType" value="text/xml"/>
+		<parameter id="oFormat" value="ODDC" />
+		<parameter id="oDescription" value="Compiled ODD Document" />		
+		<parameter id="oType" value="text" />
+		<parameter id="visibility" value="true" />
+		<parameter id="cost" value="10" />
+	</extension>
+</plugin>

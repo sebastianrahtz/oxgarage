@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<validators>
+	<validator format="MASTER" mimeType="text/xml">
+		<dtd systemId="ege_master" root="TEI.2" />
+	</validator>
+	<validator format="TEI" mimeType="text/xml">
+		<scheme url="http://tei.oucs.ox.ac.uk/ENRICH/ODD/RomaResults/enrich.xsd" />
+	</validator>
+	<validator format="EAD" mimeType="text/xml">
+		<dtd systemId="ege_ead" root="ead" />
+	</validator>
+</validators>

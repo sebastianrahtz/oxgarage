@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.4" "http://jpf.sourceforge.net/plugin_0_7.dtd">
+<plugin id="pl.psnc.dl.ege.root" version="1.0">
+	<extension-point id="Converter">
+		<parameter-def id="class"/>
+		<parameter-def id="name"/>
+		<parameter-def id="description" multiplicity="none-or-one"/>
+	</extension-point>
+	<extension-point id="XslConverter">
+		<parameter-def id="class"/>
+		<parameter-def id="name"/>
+		<parameter-def id="description" multiplicity="none-or-one"/>
+		<parameter-def id="xsluri" multiplicity="one"/>
+		<parameter-def id="iMimeType" multiplicity="one"/>
+		<parameter-def id="iFormat" multiplicity="one"/>
+		<parameter-def id="iType" multiplicity="one"/>
+		<parameter-def id="iDescription" multiplicity="one"/>
+		<parameter-def id="oMimeType" multiplicity="one"/>
+		<parameter-def id="oFormat" multiplicity="one"/>
+		<parameter-def id="oDescription" multiplicity="one"/>
+		<parameter-def id="oType" multiplicity="one"/>
+		<parameter-def id="visibility" multiplicity="one"/>
+		<parameter-def id="cost" multiplicity="one"/>
+	</extension-point>
+	<extension-point id="Validator">
+		<parameter-def id="class"/>
+		<parameter-def id="name"/>
+		<parameter-def id="description" multiplicity="none-or-one"/>
+	</extension-point>
+	<extension-point id="Recognizer">
+		<parameter-def id="class"/>
+		<parameter-def id="name"/>
+		<parameter-def id="description" multiplicity="none-or-one"/>
+	</extension-point>
+</plugin>

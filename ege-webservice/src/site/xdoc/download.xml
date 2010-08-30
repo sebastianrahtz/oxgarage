@@ -1,0 +1,36 @@
+﻿<document>
+  <properties>
+    <title>Download</title>
+  </properties>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="Download EGE RESTful web service">
+      <!-- Within sections, any XHTML can be used -->
+		<p>Download EGE RESTful web service application: </p>
+			<ul>
+			<li>Binaries : <a href="http://dl.psnc.pl/software/EGE/download/ege-webservice-0.4.2-dist.zip">EGE web service ver 0.4.2 (2009.12.03)</a>
+			</li>
+			<li>Sources : <a href="http://dl.psnc.pl/software/EGE/download/ege-webservice-0.4.2-src.zip">EGE web service ver 0.4.2 (2009.12.03)</a>
+			</li>
+			</ul>
+		<p>Download older versions of EGE RESTful web service application: </p>
+			<ul>
+			<li>Binaries : <a href="http://dl.psnc.pl/software/EGE/download/ege-webservice-0.4.1.zip">EGE web service ver 0.4.1 (2009.11.05)</a>
+			</li>
+			<li>Sources : <a href="http://dl.psnc.pl/software/EGE/download/ege-webservice-0.4.1-src.zip">EGE web service ver 0.4.1 (2009.11.05)</a>
+			</li>
+			<li>Binaries : <a href="http://dl.psnc.pl/software/EGE/download/ege-webservice-0.4.zip">EGE web service ver 0.4 (2009.11.02)</a>
+			</li>
+			<li>Sources : <a href="http://dl.psnc.pl/software/EGE/download/ege-webservice-0.4-src.zip">EGE web service ver 0.4 (2009.11.02)</a>
+			</li>
+			<li>Binaries : <a href="http://dl.psnc.pl/software/EGE/download/ege-webservice-0.3.zip">EGE web service ver 0.3 (2009.10.01)</a>
+			</li>
+			<li>Sources : <a href="http://dl.psnc.pl/software/EGE/download/ege-webservice-0.3-src.zip">EGE web service ver 0.3 (2009.10.01)</a></li>
+			</ul>
+		
+	</section>
+	<section name="Installing EGE RESTful web service">
+		<p>Full instruction of installation of EGE RESTful web service and EGE web client can be found at : <a href="../../download.html">EGE Download</a> section.</p>
+	</section>
+  </body>
+</document>

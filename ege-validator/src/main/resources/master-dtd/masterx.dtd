@@ -1,0 +1,3131 @@
+<!-- TEI DTD  generated on 2001 06 1 -->
+
+<!ELEMENT TEI.2 
+	(teiHeader, text) >
+
+
+<!ATTLIST TEI.2 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "TEI.2" >
+
+
+<!ELEMENT sourceDesc 
+	(p | bibl | listBibl | msDescription)+ >
+
+
+<!ATTLIST sourceDesc 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	default (YES | NO) "NO" >
+
+
+<!ELEMENT dimensions 
+	(#PCDATA | height | width | depth)* >
+
+
+<!ATTLIST dimensions 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	units CDATA "mm"
+	scope (all | most | range) #IMPLIED
+	type CDATA #IMPLIED >
+
+
+<!ELEMENT height 
+	(#PCDATA) >
+
+
+<!ATTLIST height 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	units CDATA "mm"
+	scope (all | most | range) #IMPLIED >
+
+
+<!ELEMENT depth 
+	(#PCDATA) >
+
+
+<!ATTLIST depth 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	units CDATA "mm"
+	scope (all | most | range) #IMPLIED >
+
+
+<!ELEMENT width 
+	(#PCDATA) >
+
+
+<!ATTLIST width 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	units CDATA "mm"
+	scope (all | most | range) #IMPLIED >
+
+
+<!ELEMENT locus 
+	(#PCDATA) >
+
+
+<!ATTLIST locus 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	from CDATA #IMPLIED
+	to CDATA #IMPLIED
+	targets IDREFS #IMPLIED >
+
+
+<!ELEMENT origDate 
+	(#PCDATA) >
+
+
+<!ATTLIST origDate 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	notBefore CDATA #IMPLIED
+	notAfter CDATA #IMPLIED
+	certainty (high | medium | low) #IMPLIED
+	evidence (internal | external | conjecture) "external" >
+
+
+<!ELEMENT origPlace 
+	(#PCDATA) >
+
+
+<!ATTLIST origPlace 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	reg CDATA #IMPLIED >
+
+
+<!ELEMENT name 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST name 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	type (person | female | place | org | other) "person"
+	role CDATA #IMPLIED
+	reg CDATA #IMPLIED
+	key IDREF #IMPLIED >
+
+
+<!ELEMENT material 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST material 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT heraldry 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST heraldry 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT catchwords 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST catchwords 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT signatures 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST signatures 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT secFol 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST secFol 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT person 
+	(p+ | (persName*, birth?, death?, (occupation | residence 
+	| bibl)*)) >
+
+
+<!ATTLIST person 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	role CDATA #IMPLIED
+	sex (m | f | u) "m"
+	age CDATA #IMPLIED >
+
+
+<!ELEMENT birth 
+	(#PCDATA | date | placeName | ptr | ref | note)* >
+
+
+<!ATTLIST birth 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	date CDATA #IMPLIED
+	notBefore CDATA #IMPLIED
+	notAfter CDATA #IMPLIED
+	certainty (high | medium | low) #IMPLIED
+	evidence (internal | external | conjecture) "external" >
+
+
+<!ELEMENT death 
+	(#PCDATA | date | placeName | ptr | ref | note)* >
+
+
+<!ATTLIST death 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	date CDATA #IMPLIED
+	notBefore CDATA #IMPLIED
+	notAfter CDATA #IMPLIED
+	certainty (high | medium | low) #IMPLIED
+	evidence (internal | external | conjecture) "external" >
+
+
+<!ELEMENT residence 
+	(#PCDATA | date | placeName | ptr | ref | note)* >
+
+
+<!ATTLIST residence 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	notBefore CDATA #IMPLIED
+	notAfter CDATA #IMPLIED
+	certainty (high | medium | low) #IMPLIED
+	evidence (internal | external | conjecture) "external" >
+
+
+<!ELEMENT occupation 
+	(#PCDATA | date | placeName | ptr | ref | note)* >
+
+
+<!ATTLIST occupation 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	notBefore CDATA #IMPLIED
+	notAfter CDATA #IMPLIED
+	certainty (high | medium | low) #IMPLIED
+	evidence (internal | external | conjecture) "external" >
+
+
+<!ELEMENT msDescription 
+	(msIdentifier, msHeading?, msContents?, physDesc?, history?, 
+	additional?, msPart*) >
+
+
+<!ATTLIST msDescription 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	type CDATA #IMPLIED
+	status (uni | compo | frag | def | unknown) "uni" >
+
+
+<!ELEMENT msIdentifier 
+	(country?, region?, settlement, institution?, repository, 
+	collection?, idno, altName*) >
+
+
+<!ATTLIST msIdentifier 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT institution 
+	(#PCDATA) >
+
+
+<!ATTLIST institution 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	reg CDATA #IMPLIED
+	key CDATA #IMPLIED >
+
+
+<!ELEMENT repository 
+	(#PCDATA) >
+
+
+<!ATTLIST repository 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	reg CDATA #IMPLIED
+	key CDATA #IMPLIED >
+
+
+<!ELEMENT collection 
+	(#PCDATA) >
+
+
+<!ATTLIST collection 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT altName 
+	(#PCDATA) >
+
+
+<!ATTLIST altName 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	type CDATA #IMPLIED >
+
+
+<!ELEMENT msHeading 
+	(#PCDATA | author | respStmt | title | origPlace | origDate 
+	| textLang | note)* >
+
+
+<!ATTLIST msHeading 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT author 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST author 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	reg CDATA #IMPLIED
+	key CDATA #IMPLIED
+	attested (yes | no | unk) "unk"
+	accepted (a | y | n | u) "a" >
+
+
+<!ELEMENT textLang 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST textLang 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	langKey IDREF #IMPLIED
+	otherLangs IDREFS #IMPLIED >
+
+
+<!ELEMENT msContents 
+	(p+ | (overview?, msItem+)) >
+
+
+<!ATTLIST msContents 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	class IDREFS #IMPLIED
+	defective (yes | no | unk) "no" >
+
+
+<!ELEMENT msItem 
+	(locus?, (author | respStmt | title | rubric | summary | 
+	incipit | explicit | colophon | textLang | q | decoNote 
+	| bibl | listBibl | note | msItem)*) >
+
+
+<!ATTLIST msItem 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	class IDREFS #IMPLIED
+	defective (yes | no | unk) "no" >
+
+
+<!ELEMENT summary 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST summary 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT rubric 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST rubric 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	type CDATA #IMPLIED >
+
+
+<!ELEMENT incipit 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST incipit 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	type CDATA #IMPLIED
+	defective (yes | no | unk) "no" >
+
+
+<!ELEMENT explicit 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST explicit 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	type CDATA #IMPLIED
+	defective (yes | no | unk) "no" >
+
+
+<!ELEMENT colophon 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST colophon 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT physDesc 
+	(p+ | (form?, support?, extent?, collation?, layout?, msWriting?, 
+	musicNotation?, decoration?, bindingDesc?, foliation*, additions?, 
+	condition?)) >
+
+
+<!ATTLIST physDesc 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT form 
+	(p)+ >
+
+
+<!ATTLIST form 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT support 
+	(p+ | (overview?, watermarks?)) >
+
+
+<!ATTLIST support 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT overview 
+	(p)+ >
+
+
+<!ATTLIST overview 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT watermarks 
+	(p)+ >
+
+
+<!ATTLIST watermarks 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT collation 
+	(p)+ >
+
+
+<!ATTLIST collation 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT layout 
+	(p)+ >
+
+
+<!ATTLIST layout 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	columns CDATA "1"
+	ruledLines CDATA #IMPLIED
+	writtenLines CDATA #IMPLIED >
+
+
+<!ELEMENT msWriting 
+	(handDesc | p)+ >
+
+
+<!ATTLIST msWriting 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	hands CDATA #IMPLIED >
+
+
+<!ELEMENT handDesc 
+	(p)+ >
+
+
+<!ATTLIST handDesc 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	scribe CDATA #IMPLIED
+	script CDATA #IMPLIED
+	medium CDATA #IMPLIED
+	scope (sole | major | minor) #IMPLIED >
+
+
+<!ELEMENT musicNotation 
+	(p)+ >
+
+
+<!ATTLIST musicNotation 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT decoration 
+	(p+ | decoNote+) >
+
+
+<!ATTLIST decoration 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT decoNote 
+	(p)+ >
+
+
+<!ATTLIST decoNote 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	type CDATA #IMPLIED
+	subtype CDATA #IMPLIED
+	size CDATA #IMPLIED
+	technique CDATA #IMPLIED
+	quality CDATA #IMPLIED
+	figurative (yes | no | na) "na"
+	illustrative (y | n | u) "u" >
+
+
+<!ELEMENT bindingDesc 
+	((p | decoNote)+ | binding+) >
+
+
+<!ATTLIST bindingDesc 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT binding 
+	(decoNote | p)+ >
+
+
+<!ATTLIST binding 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	notBefore CDATA #IMPLIED
+	notAfter CDATA #IMPLIED
+	certainty (high | medium | low) #IMPLIED
+	evidence (internal | external | conjecture) "external"
+	contemporary (yes | no | unk) "unk" >
+
+
+<!ELEMENT foliation 
+	(p)+ >
+
+
+<!ATTLIST foliation 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT additions 
+	(p)+ >
+
+
+<!ATTLIST additions 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT condition 
+	(p)+ >
+
+
+<!ATTLIST condition 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT history 
+	(p+ | (origin?, provenance*, acquisition?)) >
+
+
+<!ATTLIST history 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT origin 
+	(p)+ >
+
+
+<!ATTLIST origin 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	notBefore CDATA #IMPLIED
+	notAfter CDATA #IMPLIED
+	certainty (high | medium | low) #IMPLIED
+	evidence (internal | external | conjecture) "external" >
+
+
+<!ELEMENT provenance 
+	(p)+ >
+
+
+<!ATTLIST provenance 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	notBefore CDATA #IMPLIED
+	notAfter CDATA #IMPLIED
+	certainty (high | medium | low) #IMPLIED
+	evidence (internal | external | conjecture) "external" >
+
+
+<!ELEMENT acquisition 
+	(p)+ >
+
+
+<!ATTLIST acquisition 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	notBefore CDATA #IMPLIED
+	notAfter CDATA #IMPLIED
+	certainty (high | medium | low) #IMPLIED
+	evidence (internal | external | conjecture) "external" >
+
+
+<!ELEMENT additional 
+	(adminInfo?, surrogates?, accMat?, listBibl?) >
+
+
+<!ATTLIST additional 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT adminInfo 
+	(p+ | (recordHist?, availability?, custodialHist?, remarks?)) >
+
+
+<!ATTLIST adminInfo 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT recordHist 
+	(source, change*) >
+
+
+<!ATTLIST recordHist 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT source 
+	(p)+ >
+
+
+<!ATTLIST source 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT custodialHist 
+	(p+ | custEvent+) >
+
+
+<!ATTLIST custodialHist 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT custEvent 
+	(p)+ >
+
+
+<!ATTLIST custEvent 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	notBefore CDATA #IMPLIED
+	notAfter CDATA #IMPLIED
+	certainty (high | medium | low) #IMPLIED
+	evidence (internal | external | conjecture) "external"
+	type CDATA #IMPLIED >
+
+
+<!ELEMENT remarks 
+	(p)+ >
+
+
+<!ATTLIST remarks 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT surrogates 
+	(p)+ >
+
+
+<!ATTLIST surrogates 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT accMat 
+	(p)+ >
+
+
+<!ATTLIST accMat 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	type CDATA #IMPLIED >
+
+
+<!ELEMENT msPart 
+	(idno?, msContents?, physDesc?, history?, additional?, msPart*) >
+
+
+<!ATTLIST msPart 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED >
+
+
+<!ELEMENT respStmt 
+	(resp | name | index | cb | lb | milestone | pb | addSpan 
+	| delSpan | gap)+ >
+
+
+<!ATTLIST respStmt 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "respStmt" >
+
+
+<!ELEMENT publicationStmt 
+	((p, (index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)*)+ | ((publisher | distributor | authority | pubPlace 
+	| idno | availability | date), (index | cb | lb | milestone 
+	| pb | addSpan | delSpan | gap)*)+) >
+
+
+<!ATTLIST publicationStmt 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "publicationStmt" >
+
+
+<!ELEMENT persName 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST persName 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	reg CDATA #IMPLIED
+	key CDATA #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "persName" >
+
+
+<!ELEMENT placeName 
+	(#PCDATA | country | region | settlement | dimensions | 
+	locus | origDate | origPlace | msIdentifier | material | 
+	signatures | catchwords | secFol | heraldry | abbr | date 
+	| dateRange | expan | name | num | persName | placeName 
+	| add | corr | damage | del | orig | reg | restore | sic 
+	| space | supplied | unclear | foreign | gloss | hi | term 
+	| title | ptr | ref | formula | fw | handShift | index | 
+	cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST placeName 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	type CDATA #IMPLIED
+	full (yes | abb | init) "yes"
+	reg CDATA #IMPLIED
+	key CDATA #IMPLIED
+	TEIform CDATA "placeName" >
+
+
+<!ELEMENT dateline 
+	(#PCDATA | date | name | index | cb | lb | milestone | pb 
+	| addSpan | delSpan | gap)* >
+
+
+<!ATTLIST dateline 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "dateline" >
+
+
+<!ELEMENT catDesc 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift)* >
+
+
+<!ATTLIST catDesc 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "catDesc" >
+
+
+<!ELEMENT opener 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	argument | epigraph | signed | dateline | salute | index 
+	| cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST opener 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "opener" >
+
+
+<!ELEMENT closer 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	signed | dateline | salute | index | cb | lb | milestone 
+	| pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST closer 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "closer" >
+
+
+<!ELEMENT idno 
+	(#PCDATA | index | cb | lb | milestone | pb | addSpan | 
+	delSpan | gap)* >
+
+
+<!ATTLIST idno 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "idno" >
+
+
+<!ELEMENT bibl 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	author | biblScope | edition | editor | extent | idno | 
+	imprint | note | publisher | pubPlace | respStmt | series 
+	| index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)* >
+
+
+<!ATTLIST bibl 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	default (YES | NO) "NO"
+	TEIform CDATA "bibl" >
+
+
+<!ELEMENT imprint 
+	(pubPlace | publisher | date | biblScope | index | cb | 
+	lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST imprint 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "imprint" >
+
+
+<!ELEMENT lg 
+	((argument | dateline | docAuthor | docDate | epigraph | 
+	head | opener | salute | signed | index | cb | lb | milestone 
+	| pb | addSpan | delSpan | gap)*, (l | lg), (l | lg | index 
+	| cb | lb | milestone | pb | addSpan | delSpan | gap)*, 
+	((closer | dateline | epigraph | salute | signed | trailer), 
+	(index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)*)*) >
+
+
+<!ATTLIST lg 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	sample (initial | medial | final | unknown | complete) "complete"
+	part (Y | N | I | M | F) "N"
+	type CDATA #IMPLIED
+	org (composite | uniform) "uniform"
+	real CDATA #IMPLIED
+	met CDATA #IMPLIED
+	rhyme CDATA #IMPLIED
+	TEIform CDATA "lg" >
+
+
+<!ELEMENT list 
+	((index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)*, (head, (index | cb | lb | milestone | pb | addSpan 
+	| delSpan | gap)*)?, ((item, (index | cb | lb | milestone 
+	| pb | addSpan | delSpan | gap)*)* | (label, (index | cb 
+	| lb | milestone | pb | addSpan | delSpan | gap)*, item, 
+	(index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)*)+)) >
+
+
+<!ATTLIST list 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	type CDATA "simple"
+	TEIform CDATA "list" >
+
+
+<!ELEMENT listBibl 
+	((index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)*, (head, (index | cb | lb | milestone | pb | addSpan 
+	| delSpan | gap)*)?, bibl, (bibl | index | cb | lb | milestone 
+	| pb | addSpan | delSpan | gap)*, (trailer, (index | cb 
+	| lb | milestone | pb | addSpan | delSpan | gap)*)?) >
+
+
+<!ATTLIST listBibl 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	default (YES | NO) "NO"
+	TEIform CDATA "listBibl" >
+
+
+<!ELEMENT series 
+	(title | editor | respStmt | biblScope | index | cb | lb 
+	| milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST series 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "series" >
+
+
+<!ELEMENT argument 
+	((index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)*, (head, ((bibl | msDescription | l | lg | p | q | 
+	label | list | listBibl | note), (index | cb | lb | milestone 
+	| pb | addSpan | delSpan | gap)*)*)?) >
+
+
+<!ATTLIST argument 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "argument" >
+
+
+<!ELEMENT back 
+	((titlePage | index | cb | lb | milestone | pb | addSpan 
+	| delSpan | gap)*, (((argument | dateline | docAuthor | 
+	docDate | epigraph | head | opener | salute | signed), (argument 
+	| dateline | docAuthor | docDate | epigraph | head | opener 
+	| salute | signed | titlePage | index | cb | lb | milestone 
+	| pb | addSpan | delSpan | gap)*) | (div, (div | titlePage 
+	| index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)*))?) >
+
+
+<!ATTLIST back 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	decls IDREFS #IMPLIED
+	TEIform CDATA "back" >
+
+
+<!ELEMENT body 
+	((argument | dateline | docAuthor | docDate | epigraph | 
+	head | opener | salute | signed | index | cb | lb | milestone 
+	| pb | addSpan | delSpan | gap)*, ((((bibl | msDescription 
+	| l | lg | p | q | label | list | listBibl | note), (index 
+	| cb | lb | milestone | pb | addSpan | delSpan | gap)*)+, 
+	(div, (div | index | cb | lb | milestone | pb | addSpan 
+	| delSpan | gap)*)?) | (div, (div | index | cb | lb | milestone 
+	| pb | addSpan | delSpan | gap)*)), ((closer | dateline 
+	| epigraph | salute | signed | trailer), (index | cb | lb 
+	| milestone | pb | addSpan | delSpan | gap)*)*) >
+
+
+<!ATTLIST body 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	decls IDREFS #IMPLIED
+	TEIform CDATA "body" >
+
+
+<!ELEMENT div 
+	((argument | dateline | docAuthor | docDate | epigraph | 
+	head | opener | salute | signed | index | cb | lb | milestone 
+	| pb | addSpan | delSpan | gap)*, ((div, (index | cb | lb 
+	| milestone | pb | addSpan | delSpan | gap)*)+ | (((bibl 
+	| msDescription | l | lg | p | q | label | list | listBibl 
+	| note), (index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)*)+, (div, (index | cb | lb | milestone | pb | addSpan 
+	| delSpan | gap)*)*)), ((closer | dateline | epigraph | 
+	salute | signed | trailer), (index | cb | lb | milestone 
+	| pb | addSpan | delSpan | gap)*)*) >
+
+
+<!ATTLIST div 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	decls IDREFS #IMPLIED
+	sample (initial | medial | final | unknown | complete) "complete"
+	part (Y | N | I | M | F) "N"
+	type CDATA #IMPLIED
+	org (composite | uniform) "uniform"
+	TEIform CDATA "div" >
+
+
+<!ELEMENT text 
+	((index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)*, (front, (index | cb | lb | milestone | pb | addSpan 
+	| delSpan | gap)*)?, body, (index | cb | lb | milestone 
+	| pb | addSpan | delSpan | gap)*, (back, (index | cb | lb 
+	| milestone | pb | addSpan | delSpan | gap)*)?) >
+
+
+<!ATTLIST text 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	decls IDREFS #IMPLIED
+	TEIform CDATA "text" >
+
+
+<!ELEMENT front 
+	((titlePage | index | cb | lb | milestone | pb | addSpan 
+	| delSpan | gap)*, (((argument | docAuthor | docDate | docTitle 
+	| epigraph | head | titlePart), (argument | docAuthor | 
+	docDate | docTitle | epigraph | head | titlePart | titlePage 
+	| index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)*) | (div, (div | titlePage | index | cb | lb | milestone 
+	| pb | addSpan | delSpan | gap)*))?) >
+
+
+<!ATTLIST front 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	decls IDREFS #IMPLIED
+	TEIform CDATA "front" >
+
+
+<!ELEMENT titlePage 
+	((index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)*, (docAuthor | docDate | docTitle | epigraph | figure 
+	| titlePart), (docAuthor | docDate | docTitle | epigraph 
+	| figure | titlePart | index | cb | lb | milestone | pb 
+	| addSpan | delSpan | gap)*) >
+
+
+<!ATTLIST titlePage 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "titlePage" >
+
+
+<!ELEMENT docTitle 
+	((index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)*, (titlePart, (index | cb | lb | milestone | pb | addSpan 
+	| delSpan | gap)*)+) >
+
+
+<!ATTLIST docTitle 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "docTitle" >
+
+
+<!ELEMENT availability 
+	(p | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST availability 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	status (free | unknown | restricted) #IMPLIED
+	TEIform CDATA "availability" >
+
+
+<!ELEMENT editionStmt 
+	((index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)*, ((edition, (respStmt | index | cb | lb | milestone 
+	| pb | addSpan | delSpan | gap)*) | (p, (index | cb | lb 
+	| milestone | pb | addSpan | delSpan | gap)*)+)) >
+
+
+<!ATTLIST editionStmt 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "editionStmt" >
+
+
+<!ELEMENT notesStmt 
+	((index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)*, (note, (index | cb | lb | milestone | pb | addSpan 
+	| delSpan | gap)*)+) >
+
+
+<!ATTLIST notesStmt 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "notesStmt" >
+
+
+<!ELEMENT seriesStmt 
+	((index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)*, ((title, (idno | respStmt | index | cb | lb | milestone 
+	| pb | addSpan | delSpan | gap)*) | (p, (index | cb | lb 
+	| milestone | pb | addSpan | delSpan | gap)*)+)) >
+
+
+<!ATTLIST seriesStmt 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "seriesStmt" >
+
+
+<!ELEMENT titleStmt 
+	((index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)*, (title, (index | cb | lb | milestone | pb | addSpan 
+	| delSpan | gap)*)+, ((author | editor | sponsor | funder 
+	| principal | respStmt), (index | cb | lb | milestone | 
+	pb | addSpan | delSpan | gap)*)*) >
+
+
+<!ATTLIST titleStmt 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "titleStmt" >
+
+
+<!ELEMENT table 
+	((head | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)*, (row, (index | cb | lb | milestone | pb | addSpan 
+	| delSpan | gap)*)+) >
+
+
+<!ATTLIST table 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	rows NMTOKEN #IMPLIED
+	cols NMTOKEN #IMPLIED
+	TEIform CDATA "table" >
+
+
+<!ELEMENT row 
+	((cell | table), (index | cb | lb | milestone | pb | addSpan 
+	| delSpan | gap)*)+ >
+
+
+<!ATTLIST row 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	role CDATA "data"
+	TEIform CDATA "row" >
+
+
+<!ELEMENT figure 
+	((index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)*, (head, (index | cb | lb | milestone | pb | addSpan 
+	| delSpan | gap)*)?, (p, (index | cb | lb | milestone | 
+	pb | addSpan | delSpan | gap)*)*, (figDesc, (index | cb 
+	| lb | milestone | pb | addSpan | delSpan | gap)*)?, (text, 
+	(index | cb | lb | milestone | pb | addSpan | delSpan | 
+	gap)*)?) >
+
+
+<!ATTLIST figure 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	entity ENTITY #IMPLIED
+	TEIform CDATA "figure" >
+
+
+<!ELEMENT formula 
+	(#PCDATA) >
+
+
+<!ATTLIST formula 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	notation CDATA #REQUIRED
+	TEIform CDATA "formula" >
+
+
+<!ELEMENT teiHeader 
+	(fileDesc, encodingDesc*, profileDesc*, revisionDesc?) >
+
+
+<!ATTLIST teiHeader 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	creator CDATA #IMPLIED
+	date.created CDATA #IMPLIED
+	status (new | update) "new"
+	type CDATA "text"
+	date.updated CDATA #IMPLIED
+	TEIform CDATA "teiHeader" >
+
+
+<!ELEMENT fileDesc 
+	(titleStmt, editionStmt?, extent?, publicationStmt, seriesStmt?, 
+	notesStmt?, sourceDesc+) >
+
+
+<!ATTLIST fileDesc 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "fileDesc" >
+
+
+<!ELEMENT sponsor 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST sponsor 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "sponsor" >
+
+
+<!ELEMENT funder 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST funder 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "funder" >
+
+
+<!ELEMENT principal 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST principal 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "principal" >
+
+
+<!ELEMENT edition 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST edition 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "edition" >
+
+
+<!ELEMENT extent 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST extent 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "extent" >
+
+
+<!ELEMENT distributor 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST distributor 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "distributor" >
+
+
+<!ELEMENT authority 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST authority 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "authority" >
+
+
+<!ELEMENT encodingDesc 
+	(projectDesc*, samplingDecl*, editorialDecl*, tagsDecl?, 
+	classDecl*, p*) >
+
+
+<!ATTLIST encodingDesc 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "encodingDesc" >
+
+
+<!ELEMENT projectDesc 
+	(p)+ >
+
+
+<!ATTLIST projectDesc 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	default (YES | NO) "NO"
+	TEIform CDATA "projectDesc" >
+
+
+<!ELEMENT samplingDecl 
+	(p)+ >
+
+
+<!ATTLIST samplingDecl 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	default (YES | NO) "NO"
+	TEIform CDATA "samplingDecl" >
+
+
+<!ELEMENT editorialDecl 
+	(p+ | (stdVals+, p*)) >
+
+
+<!ATTLIST editorialDecl 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	default (YES | NO) "NO"
+	TEIform CDATA "editorialDecl" >
+
+
+<!ELEMENT stdVals 
+	(p)+ >
+
+
+<!ATTLIST stdVals 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	default (YES | NO) "NO"
+	TEIform CDATA "stdVals" >
+
+
+<!ELEMENT tagsDecl 
+	(rendition*, tagUsage*) >
+
+
+<!ATTLIST tagsDecl 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "tagsDecl" >
+
+
+<!ELEMENT tagUsage 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST tagUsage 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	gi NMTOKEN #REQUIRED
+	occurs NMTOKEN #IMPLIED
+	ident NMTOKEN #IMPLIED
+	render IDREF #IMPLIED
+	TEIform CDATA "tagUsage" >
+
+
+<!ELEMENT rendition 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST rendition 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "rendition" >
+
+
+<!ELEMENT classDecl 
+	(taxonomy)+ >
+
+
+<!ATTLIST classDecl 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "classDecl" >
+
+
+<!ELEMENT taxonomy 
+	(category+ | (bibl, category*)) >
+
+
+<!ATTLIST taxonomy 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "taxonomy" >
+
+
+<!ELEMENT category 
+	(catDesc, category*) >
+
+
+<!ATTLIST category 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "category" >
+
+
+<!ELEMENT profileDesc 
+	(creation?, langUsage*, listPerson*, handList*, textClass*) >
+
+
+<!ATTLIST profileDesc 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "profileDesc" >
+
+
+<!ELEMENT creation 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST creation 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "creation" >
+
+
+<!ELEMENT langUsage 
+	(p | language)+ >
+
+
+<!ATTLIST langUsage 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	default (YES | NO) "NO"
+	TEIform CDATA "langUsage" >
+
+
+<!ELEMENT language 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST language 
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	id ID #IMPLIED
+	wsd ENTITY #IMPLIED
+	usage NMTOKEN #IMPLIED
+	TEIform CDATA "language" >
+
+
+<!ELEMENT textClass 
+	(classCode | catRef | keywords)* >
+
+
+<!ATTLIST textClass 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	default (YES | NO) "NO"
+	TEIform CDATA "textClass" >
+
+
+<!ELEMENT keywords 
+	(term+ | list) >
+
+
+<!ATTLIST keywords 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	scheme IDREF #IMPLIED
+	TEIform CDATA "keywords" >
+
+
+<!ELEMENT classCode 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST classCode 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	scheme IDREF #IMPLIED
+	TEIform CDATA "classCode" >
+
+
+<!ELEMENT catRef 
+	EMPTY >
+
+
+<!ATTLIST catRef 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	scheme IDREF #IMPLIED
+	target IDREFS #REQUIRED
+	TEIform CDATA "catRef" >
+
+
+<!ELEMENT revisionDesc 
+	(list | change+) >
+
+
+<!ATTLIST revisionDesc 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "revisionDesc" >
+
+
+<!ELEMENT change 
+	(date, respStmt+, item) >
+
+
+<!ATTLIST change 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "change" >
+
+
+<!ELEMENT p 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST p 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "p" >
+
+
+<!ELEMENT foreign 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST foreign 
+	id ID #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	lang IDREF #IMPLIED
+	TEIform CDATA "foreign" >
+
+
+<!ELEMENT hi 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST hi 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	n CDATA #IMPLIED
+	rend CDATA #IMPLIED
+	TEIform CDATA "hi" >
+
+
+<!ELEMENT q 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | msDescription | l | lg | p | index | cb | lb | 
+	milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST q 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	who CDATA #IMPLIED
+	type CDATA #IMPLIED
+	direct (y | n | unspecified) "unspecified"
+	TEIform CDATA "q" >
+
+
+<!ELEMENT term 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST term 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "term" >
+
+
+<!ELEMENT gloss 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST gloss 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	target IDREF #IMPLIED
+	TEIform CDATA "gloss" >
+
+
+<!ELEMENT num 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST num 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	value CDATA #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "num" >
+
+
+<!ELEMENT date 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST date 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	value CDATA #IMPLIED
+	calendar CDATA #IMPLIED
+	certainty CDATA #IMPLIED
+	TEIform CDATA "date" >
+
+
+<!ELEMENT dateRange 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST dateRange 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	to CDATA #IMPLIED
+	exact (to | from | both | none) #IMPLIED
+	from CDATA #IMPLIED
+	calendar CDATA #IMPLIED
+	TEIform CDATA "dateRange" >
+
+
+<!ELEMENT abbr 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST abbr 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	cert CDATA #IMPLIED
+	expan CDATA #IMPLIED
+	resp IDREF #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "abbr" >
+
+
+<!ELEMENT expan 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST expan 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	cert CDATA #IMPLIED
+	abbr CDATA #IMPLIED
+	resp IDREF #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "expan" >
+
+
+<!ELEMENT sic 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | msDescription | l | lg | p | index | cb | lb | 
+	milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST sic 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	cert CDATA #IMPLIED
+	corr CDATA #IMPLIED
+	resp IDREF #IMPLIED
+	TEIform CDATA "sic" >
+
+
+<!ELEMENT corr 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | msDescription | l | lg | p | index | cb | lb | 
+	milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST corr 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	cert CDATA #IMPLIED
+	sic CDATA #IMPLIED
+	resp CDATA #IMPLIED
+	TEIform CDATA "corr" >
+
+
+<!ELEMENT reg 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST reg 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	orig CDATA #IMPLIED
+	resp CDATA #IMPLIED
+	TEIform CDATA "reg" >
+
+
+<!ELEMENT orig 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST orig 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	reg CDATA #IMPLIED
+	resp CDATA #IMPLIED
+	TEIform CDATA "orig" >
+
+
+<!ELEMENT gap 
+	EMPTY >
+
+
+<!ATTLIST gap 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	desc CDATA #IMPLIED
+	extent CDATA #IMPLIED
+	resp IDREF #IMPLIED
+	hand IDREF #IMPLIED
+	reason CDATA #IMPLIED
+	agent CDATA #IMPLIED
+	TEIform CDATA "gap" >
+
+
+<!ELEMENT add 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | msDescription | l | lg | p | index | cb | lb | 
+	milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST add 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	cert CDATA #IMPLIED
+	place CDATA #IMPLIED
+	resp IDREF #IMPLIED
+	hand IDREF #IMPLIED
+	TEIform CDATA "add" >
+
+
+<!ELEMENT del 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST del 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	n CDATA #IMPLIED
+	cert CDATA #IMPLIED
+	resp IDREF #IMPLIED
+	hand IDREF #IMPLIED
+	status CDATA "unremarkable"
+	rend CDATA #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "del" >
+
+
+<!ELEMENT unclear 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST unclear 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	cert CDATA #IMPLIED
+	resp CDATA #IMPLIED
+	hand IDREF #IMPLIED
+	reason CDATA #IMPLIED
+	agent CDATA #IMPLIED
+	TEIform CDATA "unclear" >
+
+
+<!ELEMENT ptr 
+	EMPTY >
+
+
+<!ATTLIST ptr 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	crdate CDATA #IMPLIED
+	evaluate (all | one | none) #IMPLIED
+	resp CDATA #IMPLIED
+	targOrder (Y | N | U) "U"
+	type CDATA #IMPLIED
+	targType NMTOKENS #IMPLIED
+	target IDREFS #REQUIRED
+	TEIform CDATA "ptr" >
+
+
+<!ELEMENT ref 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST ref 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	crdate CDATA #IMPLIED
+	evaluate (all | one | none) #IMPLIED
+	resp CDATA #IMPLIED
+	targOrder (Y | N | U) "U"
+	type CDATA #IMPLIED
+	targType NMTOKENS #IMPLIED
+	target IDREFS #IMPLIED
+	TEIform CDATA "ref" >
+
+
+<!ELEMENT item 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | msDescription | l | lg | p | index | cb | lb | 
+	milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST item 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "item" >
+
+
+<!ELEMENT label 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST label 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "label" >
+
+
+<!ELEMENT head 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST head 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "head" >
+
+
+<!ELEMENT note 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | msDescription | l | lg | p | index | cb | lb | 
+	milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST note 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	target IDREFS #IMPLIED
+	place CDATA "unspecified"
+	targetEnd IDREFS #IMPLIED
+	resp CDATA #IMPLIED
+	anchored (yes | no) "yes"
+	n CDATA #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "note" >
+
+
+<!ELEMENT index 
+	EMPTY >
+
+
+<!ATTLIST index 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	level1 CDATA #REQUIRED
+	index CDATA #IMPLIED
+	level3 CDATA #IMPLIED
+	level4 CDATA #IMPLIED
+	level2 CDATA #IMPLIED
+	TEIform CDATA "index" >
+
+
+<!ELEMENT milestone 
+	EMPTY >
+
+
+<!ATTLIST milestone 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	ed CDATA #IMPLIED
+	n CDATA #IMPLIED
+	unit CDATA #REQUIRED
+	TEIform CDATA "milestone" >
+
+
+<!ELEMENT pb 
+	EMPTY >
+
+
+<!ATTLIST pb 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	ed CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "pb" >
+
+
+<!ELEMENT lb 
+	EMPTY >
+
+
+<!ATTLIST lb 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	ed CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "lb" >
+
+
+<!ELEMENT cb 
+	EMPTY >
+
+
+<!ATTLIST cb 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	ed CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "cb" >
+
+
+<!ELEMENT editor 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST editor 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	role CDATA "editor"
+	TEIform CDATA "editor" >
+
+
+<!ELEMENT resp 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST resp 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "resp" >
+
+
+<!ELEMENT title 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST title 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	level (a | m | j | s | u) #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "title" >
+
+
+<!ELEMENT publisher 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST publisher 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "publisher" >
+
+
+<!ELEMENT biblScope 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST biblScope 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "biblScope" >
+
+
+<!ELEMENT pubPlace 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST pubPlace 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	reg CDATA #IMPLIED
+	key CDATA #IMPLIED
+	TEIform CDATA "pubPlace" >
+
+
+<!ELEMENT l 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST l 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	enjamb CDATA #IMPLIED
+	real CDATA #IMPLIED
+	met CDATA #IMPLIED
+	rhyme CDATA #IMPLIED
+	part (Y | N | I | M | F) "N"
+	TEIform CDATA "l" >
+
+
+<!ELEMENT trailer 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST trailer 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "trailer" >
+
+
+<!ELEMENT epigraph 
+	((bibl | msDescription | l | lg | p | q | label | list | 
+	listBibl | note), (index | cb | lb | milestone | pb | addSpan 
+	| delSpan | gap)*)* >
+
+
+<!ATTLIST epigraph 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "epigraph" >
+
+
+<!ELEMENT salute 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST salute 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "salute" >
+
+
+<!ELEMENT signed 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST signed 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "signed" >
+
+
+<!ELEMENT titlePart 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST titlePart 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	type CDATA "main"
+	TEIform CDATA "titlePart" >
+
+
+<!ELEMENT docAuthor 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST docAuthor 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "docAuthor" >
+
+
+<!ELEMENT docDate 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST docDate 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	value CDATA #IMPLIED
+	TEIform CDATA "docDate" >
+
+
+<!ELEMENT addSpan 
+	EMPTY >
+
+
+<!ATTLIST addSpan 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	cert CDATA #IMPLIED
+	to IDREF #REQUIRED
+	place CDATA #IMPLIED
+	resp IDREF #IMPLIED
+	hand IDREF #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "addSpan" >
+
+
+<!ELEMENT delSpan 
+	EMPTY >
+
+
+<!ATTLIST delSpan 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	cert CDATA #IMPLIED
+	to IDREF #REQUIRED
+	resp IDREF #IMPLIED
+	hand IDREF #IMPLIED
+	status CDATA "unremarkable"
+	type CDATA #IMPLIED
+	TEIform CDATA "delSpan" >
+
+
+<!ELEMENT restore 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST restore 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	wit CDATA #IMPLIED
+	cause CDATA #IMPLIED
+	varSeq NMTOKEN #IMPLIED
+	cert CDATA #IMPLIED
+	desc CDATA #IMPLIED
+	resp IDREF #IMPLIED
+	hand IDREF #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "restore" >
+
+
+<!ELEMENT supplied 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST supplied 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	source CDATA #IMPLIED
+	resp CDATA #IMPLIED
+	hand IDREF #IMPLIED
+	reason CDATA #IMPLIED
+	agent CDATA #IMPLIED
+	TEIform CDATA "supplied" >
+
+
+<!ELEMENT hand 
+	EMPTY >
+
+
+<!ATTLIST hand 
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	first CDATA #IMPLIED
+	scribe CDATA #IMPLIED
+	id ID #REQUIRED
+	style CDATA #IMPLIED
+	lang CDATA #IMPLIED
+	hand CDATA #IMPLIED
+	character CDATA #IMPLIED
+	resp CDATA #IMPLIED
+	ink CDATA #IMPLIED
+	TEIform CDATA "hand" >
+
+
+<!ELEMENT handShift 
+	EMPTY >
+
+
+<!ATTLIST handShift 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	style CDATA #IMPLIED
+	new IDREF #IMPLIED
+	old IDREF #IMPLIED
+	character CDATA #IMPLIED
+	resp IDREF #IMPLIED
+	ink CDATA #IMPLIED
+	TEIform CDATA "handShift" >
+
+
+<!ELEMENT handList 
+	(hand)* >
+
+
+<!ATTLIST handList 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "handList" >
+
+
+<!ELEMENT damage 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST damage 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	extent CDATA #IMPLIED
+	resp IDREF #IMPLIED
+	hand IDREF #IMPLIED
+	type CDATA #IMPLIED
+	agent CDATA #IMPLIED
+	degree CDATA #IMPLIED
+	TEIform CDATA "damage" >
+
+
+<!ELEMENT space 
+	EMPTY >
+
+
+<!ATTLIST space 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	extent CDATA #IMPLIED
+	dim (horizontal | vertical) #IMPLIED
+	resp CDATA #IMPLIED
+	TEIform CDATA "space" >
+
+
+<!ELEMENT fw 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST fw 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	place CDATA #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "fw" >
+
+
+<!ELEMENT settlement 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	index | cb | lb | milestone | pb | addSpan | delSpan | gap)* >
+
+
+<!ATTLIST settlement 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	reg CDATA #IMPLIED
+	key CDATA #IMPLIED
+	type CDATA #IMPLIED
+	full (yes | abb | init) "yes"
+	TEIform CDATA "settlement" >
+
+
+<!ELEMENT region 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST region 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	reg CDATA #IMPLIED
+	key CDATA #IMPLIED
+	type CDATA #IMPLIED
+	full (yes | abb | init) "yes"
+	TEIform CDATA "region" >
+
+
+<!ELEMENT country 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST country 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	reg CDATA #IMPLIED
+	key CDATA #IMPLIED
+	type CDATA #IMPLIED
+	full (yes | abb | init) "yes"
+	TEIform CDATA "country" >
+
+
+<!ELEMENT cell 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST cell 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	role CDATA "data"
+	rows NMTOKEN "1"
+	cols NMTOKEN "1"
+	TEIform CDATA "cell" >
+
+
+<!ELEMENT figDesc 
+	(#PCDATA | dimensions | locus | origDate | origPlace | msIdentifier 
+	| material | signatures | catchwords | secFol | heraldry 
+	| abbr | date | dateRange | expan | name | num | persName 
+	| placeName | add | corr | damage | del | orig | reg | restore 
+	| sic | space | supplied | unclear | foreign | gloss | hi 
+	| term | title | ptr | ref | formula | fw | handShift | 
+	bibl | q | label | list | listBibl | note | figure | table 
+	| text | index | cb | lb | milestone | pb | addSpan | delSpan 
+	| gap)* >
+
+
+<!ATTLIST figDesc 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	TEIform CDATA "figDesc" >
+
+
+<!ELEMENT listPerson 
+	(p+ | person+) >
+
+
+<!ATTLIST listPerson 
+	id ID #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	n CDATA #IMPLIED
+	default (YES | NO) "NO"
+	TEIform CDATA "particDesc" >
+

@@ -1,0 +1,25 @@
+﻿<document>
+  <properties>
+    <title>Download</title>
+  </properties>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="Download EGE API">
+      <!-- Within sections, any XHTML can be used -->
+		<p>Download EGE API: </p>
+			<ul>
+			<li>Binaries : <a href="http://dl.psnc.pl/software/EGE/download/ege-api-0.2.1-dist.zip">EGE API ver 0.2.1 (2009.12.03)</a>
+			</li>
+			<li>Sources : <a href="http://dl.psnc.pl/software/EGE/download/ege-api-0.2.1-src.zip">EGE API ver 0.2.1 (2009.12.03)</a></li>
+			</ul>
+		
+		<p>Download older versions EGE API : </p>
+			<ul>
+			<li>Binaries : <a href="http://dl.psnc.pl/software/EGE/download/ege-api-0.2.zip">EGE API ver 0.2 (2009.10.01)</a>
+			</li>
+			<li>Sources : <a href="http://dl.psnc.pl/software/EGE/download/ege-api-0.2-src.zip">EGE API ver 0.2 (2009.10.01)</a></li>
+			</ul>
+		
+	</section>
+  </body>
+</document>

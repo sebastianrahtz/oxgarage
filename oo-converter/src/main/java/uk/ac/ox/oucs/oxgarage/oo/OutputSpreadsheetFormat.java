@@ -1,0 +1,61 @@
+package uk.ac.ox.oucs.oxgarage.oo;
+
+public enum OutputSpreadsheetFormat {
+	
+    /*
+      supported formats
+
+     Name ("name", "mime type for target", "description", "extension", visible)
+
+     */
+	PDF("pdf","application/pdf", "PDF Document", "pdf", true, 4),
+	ODS("ods", "application/vnd.oasis.opendocument.spreadsheet", "Open Office Spreadsheet (.ods)", "ods", true, 4),
+	SXC("sxc", "application/vnd.sun.xml.calc", "OpenOffice 1.0 Spreadsheet (.sxc)", "sxc", true, 4),
+	XLS("xls", "application/vnd.ms-excel", "Microsoft Excel Document (.xls)", "xls", true, 5),
+	CSV("csv", "text/csv", "Comma-Separated Values (.csv)", "csv", true, 5),
+	TSV("tsv", "text/tsv", "Tab-Separated Values (.tsv)", "tsv", true, 5);
+
+	private String name;
+	private String mimeType;
+	private String description;
+	private String extension;
+	private boolean visible;
+	private int cost;
+	
+	OutputSpreadsheetFormat(String name, String mimeType, String description, String extension, boolean visible, int cost){
+		this.name = name;
+		this.mimeType = mimeType;
+		this.description = description;
+		this.extension = extension;
+		this.visible = visible;
+		this.cost = cost;
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public String getMimeType(){
+		return mimeType;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public String getExtension() {
+		return extension;
+	}
+
+	public boolean getVisible() {
+		return visible;
+	}
+	
+	public int getCost() {
+		return cost;
+	}
+
+	public String toString() {
+		return name + "/" + mimeType;
+	}
+}

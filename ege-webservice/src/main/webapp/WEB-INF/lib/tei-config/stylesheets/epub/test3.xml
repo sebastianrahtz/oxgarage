@@ -1,0 +1,865 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>CMR stuff</title>
+        <author>from OUCS</author>
+      </titleStmt>
+      <editionStmt>
+        <edition>
+          <date>January 2010</date>
+        </edition>
+      </editionStmt>
+      <publicationStmt>
+        <authority>webmaster@oucs.ox.ac.uk</authority>
+        
+      <date when="2009-08-01"/></publicationStmt>
+      <sourceDesc>
+        <p>This is the master version of an original document,
+created by converting an HTML file to TEI XML on 2000/11/16.</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <p>A test of a <ref target="#ITREQ">hyperlink</ref></p>
+
+      <egXML xmlns="http://www.tei-c.org/ns/Examples">
+	<fileDesc>
+      <titleStmt>
+        <title>CMR stuff</title>
+        <author>from OUCS</author>
+      </titleStmt>
+      <editionStmt>
+        <edition>
+          <date>January 2010</date>
+        </edition>
+      </editionStmt>
+      <publicationStmt>
+        <authority>webmaster@oucs.ox.ac.uk</authority>
+      <date when="2009-08-01"/></publicationStmt>
+      <sourceDesc>
+        <p>This is the master version of an original document,
+created by converting an HTML file to TEI XML on 2000/11/16.</p>
+      </sourceDesc>
+    </fileDesc>
+      </egXML>
+      <div>
+	<head>Central machine room project</head>
+	<p><ref target="http://www.romonet.com/">Romonet Ltd.</ref> were asked to assist
+	Oxford University in ensuring the sound environmental (from an in-use energy and
+	cost perspective) design and implementation of a new Central Machine Room (data
+	centre) as well as the Mechanical and Electrical refurbishment of the existing
+	OUCS Machine Room.</p>
+	<p>Oxford University wish the new CMR to be a design exemplar from an energy and
+	environmental perspective that clearly support the University’s sustainability
+                    strategy</p>
+                <p>This report describes the findings that resulted from the workshops held at the
+                    Computing Services department on the 5th and 6th November 2008.</p>
+            </div>
+            <div>
+                <head>Overview</head>
+                <p>Romonet Ltd was engaged by Oxford University Computing Services (OUCS) to
+                    facilitate and explore the challenges faced by the University in successfully
+                    achieving the environmental sustainability and low carbon IT (energy efficiency)
+                    goals of a new Central Machine Room (CMR) project. The computing services
+                    department’s existing Machine Room (MR) was constructed in the 1970’s and has
+                    had a number of upgrades since, those being mostly in the mechanical and
+                    electrical infrastructure in order to support the increased and higher density
+                    demand over the years.</p>
+                <p>The CMR project will bring the University two primary benefits: a) Additional
+                    data centre capacity b) the opportunity to provide a higher level of resilience
+                    (thus lower risk) for critical IT services by creating the ability to split
+                    services between the current MR and the new CMR.</p>
+                <p>The University is very keen that the new CMR demonstrates a state-of-the-art
+                    design emphasising sustainability and low carbon ICT. Due to the limited
+                    resources, the focus of this study has been on the design and in-use energy
+                    efficiency rather than the embodied carbon used within the materials and
+                    equipment housed within the OMPI building and the CMR.</p>
+                <p>The CMR has been designed within the basement of a new building to house the
+                    Oxford Molecular Pathology Institute (OMPI) which itself has a significant
+                    requirement for controlled environmental capabilities for the laboratory areas
+                    within the building.</p>
+                <p>Many departments and areas of expertise are required during such a project and
+                    whilst each group may be considering energy efficiency within their area of
+                    knowledge and expertise, experience has taught us that these areas are rarely
+                    brought together in order to optimise and maximise the overall design efficiency
+                    and ability to meet such in terms of the achieved efficiency.</p>
+                <p>The project team were aware that it is possible to create a ‘sound’ mechanical
+                    and electrical design in isolation that could go some way to optimising the
+                    in-use energy efficiency of a data centre but in order to create an exemplar for
+                    the University, the use of the facility in terms of the IT and communications
+                    equipment was of vital importance.</p>
+            </div>
+            <div>
+                <head>Romonet background</head>
+                <p>Romonet Ltd was founded in 2006 to address the cost, energy and business issues
+                    within the European data centre market. Romonet has consulting, research,
+                    training and software development practices. Although the company is recently
+                    formed, the three principals, Zahl Limbuwala, Liam Newcombe and Sean Newcombe
+                    have between them over three decades of experience in the design, implementation
+                    and operation of data centres and the specification, design and delivery of ICT
+                    services in both the private and public sectors both within the EU and
+                    internationally. This depth of experience is now leveraged through the
+                    consulting, research and training practices of Romonet.</p>
+            </div>
+            <div>
+                <head>Data gathering</head>
+                <p>Romonet was given access to the internal business case for the CMR project along
+                    with a report created from an early feasibility study carried out by a data
+                    centre design and build consultancy. Romonet then organised a cross functional
+                    two-day workshop to explore the current status of the project, gain an
+                    understanding of how well the requirements had captured the sustainability,
+                    energy efficiency and low carbon goals and how well these goals had filtered
+                    through the various departments, stakeholders and sub-contractors.</p>
+                <p>Working with the IT Director for the University, a detailed list of required
+                    roles and functions for the two day workshop was drawn up and taken to the OMPI
+                    project sponsor and other stakeholders to ensure high level support and buy-in.
+                    The required roles and functions required were as follows:</p>
+                <list>
+                    <item>Head of Estates (or representative)</item>
+                    <item>Project Sponsor (or representative)</item>
+                    <item>New OMPI building Project Manager</item>
+                    <item>Director of IT (University)</item>
+                    <item>Computing Services Director</item>
+                    <item>Current MR Manager</item>
+                    <item>Networks Manager</item>
+                    <item>IT Systems Manager</item>
+                    <item>CMR Mechanical and Electrical Consultant/s or Contractors</item>
+                    <item>University Sustainability Officer (or representative)</item>
+                </list>
+                <p>Day One of the workshop was designed to give each functional area a chance to
+                    present their current thinking and plans for the CMR via a short (60 mins)
+                    presentation. This would enable the group to share a basic but common
+                    understanding of the issues, challenges and opportunities in each area in terms
+                    of achieving the project goals.</p>
+                <p>Day Two of the workshop was designed to lead the group through a structured
+                    approach to the design of the CMR in terms of achieving the most optimally
+                    efficient design (in terms of in-use energy). This would involve taking the
+                    group through a Business Impact Assessment exercise to gain a more granular
+                    understanding of business requirements and how they drove IT requirements that
+                    ultimately should drive the mechanical and electrical design of the CMR.</p>
+            </div>
+            <div>
+                <head>Findings</head>
+                <p>This section details the findings from the two-day workshop along with follow-up
+                    discussions with staff from the project team and OUCS.</p>
+                <div>
+                    <head>General</head>
+                    <p>In order to create the optimal CMR design from an energy and carbon
+                        standpoint it is essential that the energy efficiency goals are communicated
+                        to the entire project team. However this alone will not result in an optimal
+                        design. The way the customer (OUCS – as the ‘end user’ of the CMR) plans to
+                        use the facility plays a very large part in turning an efficient design on
+                        paper into an efficient one in practice. This is the first barrier that M
+                        and E designers often come across and is the hardest part of turning a
+                        ‘template’ design into a facility that actually achieves high efficiency
+                        from day one.</p>
+                    <p>There are many factors that affect efficiency within a data centre which, by
+                        its very nature, is a complex system. The data centre influences the
+                        efficiency of the ICT equipment housed within it and vice-versa. The
+                        resulting system can be difficult to predict and understand and inherent
+                        loops within the system can also make efficiency analysis or prediction
+                        difficult. Moreover the measurement of and the metrics to report energy
+                        efficiency within the data centre is a relatively new area that is not yet
+                        adequately developed.</p>
+                </div>
+                <div>
+                    <head>Demand forecasting</head>
+                    <p>The importance of business demand forecasting is often overlooked beyond the
+                        initial ‘wet-finger’ demand figures that are needed to support the business
+                        case for any new data centre facility. It is however a demonstrable fact
+                        that getting the most accurate and granular view of business demand and how
+                        that translates to IT demand in advance of committing the data centre
+                        design, is the largest factor in achieving a target design efficiency.</p>
+                    <p>As mechanical and electrical engineers understand, knowing what load will be
+                        placed on their systems within the data centre as well as when and how this
+                        load will change and grow is critical information to enable them to design a
+                        suitably modular facility which can operate efficiently under both initial
+                        and fully filled out loads. An explanation of design capacity and its impact
+                        on energy efficiency can be found in section 6.1.</p>
+                    <p>Business demand forecasting is not a simple task within a University
+                        environment. Furthermore the follow-on task of Business Impact Analysis can
+                        also be very challenging within an environment that operates on a very loose
+                        supplier-customer relationship basis.</p>
+                    <p>However, difficulty aside, the effort expended in carrying out these
+                        activities in order to produce a clear IT requirements forecast is well
+                        invested time in terms of how efficient the new data centre will be on day
+                        one and also how flexible the resultant data centre design is in it’s
+                        ability to deal with variability in forecast, technology steps, unexpected
+                        requirements or demand yet still be able to operate in a highly efficient
+                        manner.</p>
+                    <p>While an initial study had been carried out by a third party which helped
+                        produce the figures that went into the business case, a much more concerted
+                        effort was required by the computing services department in order to get the
+                        level of data required by the people designing the data centre M and E
+                        infrastructure.</p>
+                    <p>Business Impact Analysis was found to be another challenging task within the
+                        University environment as defining ‘Business Impact’ could vary from one
+                        department to another. The normal approach would be to identify the business
+                        services provided by the computing services department and carry out an
+                        impact assessment to understand what level of design resilience was required
+                        from the IT platform(s) that underpinned that service. In this case there
+                        was much debate around what actually represented services as the computing
+                        department offered low level services such as networking, DNS,
+                        authentication to some departments and high-level services such as email,
+                        collaboration and intranet services to others.</p>
+                    <p>However it was well understood within the computing services department after
+                        years of support experience what level of resilience or redundancy was
+                        required for most of the major services both low and high level. This
+                        enabled the department to add another dimension to the demand forecast; ‘do
+                        I require redundancy?’ to achieve the required resilience.</p>
+                </div>
+                <div xml:id="ITREQ">
+                    <head>IT requirements</head>
+                    <p>One of the features of the initial OUCS CMR design was limited UPS capacity
+                        due to constrained physical space and budget. Having established the
+                        business demand forecast along with an understanding of the level of
+                        resilience required on a service-by-service basis, the computing services
+                        department were encouraged to make efficient use of the UPS resource by
+                        creating different infrastructure resilience levels to maximise the use of
+                        the UPS where it was needed most. For example, for dual power supplied IT
+                        equipment the following simple policy could be adopted:</p>
+
+                    <table frame="border">
+                        <row role="label">
+                            <cell>Resilience level required</cell>
+                            <cell>A-feed</cell>
+                            <cell>B-feed</cell>
+                        </row>
+                        <row role="data">
+                            <cell>High</cell>
+                            <cell>UPS</cell>
+                            <cell>UPS</cell>
+                        </row>
+                        <row role="data">
+                            <cell>Medium</cell>
+                            <cell>UPS</cell>
+                            <cell>Non-UPS</cell>
+                        </row>
+                        <row role="data">
+                            <cell>Low</cell>
+                            <cell>Non-UPS</cell>
+                            <cell>Non-UPS</cell>
+                        </row>
+                    </table>
+
+                    <p>The additional advantage available in this instance was the fact that the new
+                        CMR was planned as incremental rather than replacement capacity to the
+                        existing MR. This would allow the computing service department to gain a
+                        much higher level of achieved reliability by splitting critical services
+                        across both facilities and only require the medium level of local UPS
+                        resilience.</p>
+                    <p>Finally it was discussed and accepted that in general IT equipment lifespan
+                        was around 10%-20% of the expected lifespan of the CMR itself and that a CMR
+                        designed today wouldlikely run into technology generation mismatch issues
+                        within 3-5 years. The best example of this that can be observed in almost
+                        every data centre today is the issue of power density. In other words the
+                        general trend for equipment to get smaller while heat output continues to
+                        rise. This leads us to look at a much more modular and flexible CMR design
+                        which is in harmony with the energy efficiency goals of modular provisioning
+                        of M and E infrastructure to maximise the point in time load and thus the
+                        energy efficiency.</p>
+                    <div>
+                        <head>Data centre (CMR) requirements</head>
+                        <p>Having already made a solid case for a more modular design, it was
+                            decided that addressing the power density issue to help future proof the
+                            facility whilst maximising the efficiency was the critical step in the
+                            CMR design requirements.</p>
+                        <p>Many variables need to be considered to achieve an optimum design. The
+                            initial design for Oxford was a standard raised floor with underfloor
+                            cooling in conjunction with a hot-aisle / cold-aisle design and opposing
+                            CRAC units.</p>
+                        <p>The physical requirements being driven out of the IT requirements were
+                            steering the CMR design to a zoned approach with different zones being
+                            capable of supporting differing power densities.</p>
+                        <p>The simplest approach to achieving this was to use either partial or full
+                            hot or cold aisle containment with a pair of CRAC units matched to each
+                            aisle end. This design would enable the CMR to start on day one with a
+                            single pair of CRAC units cooling a single ‘zone’. The partial or full
+                            containment would ensure minimum air remix and thus maximum efficiency.
+                            It was also agreed that containing the hot or cold air and avoiding
+                            remix would allow a much better tracking of fan power within the CRAC to
+                            IT load within the zone, again ensuring maximum efficiency through
+                            matching the delivered M and E cooling capacity to the local IT
+                            load.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <head>Understanding energy efficiency within the data centre</head>
+                <div>
+                    <head>Design capacity, IT load and efficiency</head>
+                    <p>In order to design for high energy efficiency, there is a need to match the
+                        IT load requirements to the design capacity of the M and E infrastructure.
+                        This is due to fact that most electrical and mechanical systems operate at
+                        maximum efficiency when at full load. Dependent on the type of device, the
+                        load to power function can vary significantly, but most M and E devices are
+                        designed to achieve their maximum energy efficiency near maximum load.</p>
+                    <p>The same is true at a system level, meaning the overall energy efficiency of
+                        the data centre M and E infrastructure will occur when the system is close
+                        to its maximum rated capacity, or in other words when the IT electrical load
+                        is at 100%.</p>
+                    <p>Much like today’s IT devices, the system wide capability for the data centre
+                        M and E infrastructure to ‘turn down’ from 100% load and remain efficient is
+                        very limited. Many of the devices within the more modern designs simply do
+                        not work properly without a suitable base load. This is particularly true of
+                        components such as absorptive chillers in CCHP plant.</p>
+			<figure>
+			  <graphic url="images/cmr-figure1.jpg"/>
+			  </figure>
+                    <p>Figure 1 illustrates a typical energy efficiency surface plot for a data
+                        centre, the vertical axis depicts the DCiE (Data Centre infrastructure
+                        Efficiency) where a DCiE of 1 represents 100% of the energy supplied from
+                        the utility being delivered to the IT equipment within the data centre. The
+                        illustration shows the influence of IT load on the overall efficiency of the
+                        data centre and thus the importance of ensuring a close match between data
+                        centre provisioned capacity and the average utilisation of this capacity at
+                        any point in time. This has a direct bearing on the optimal CMR design from
+                        an energy and carbon efficiency
+		    perspective.</p>
+		    <figure>
+		      <graphic url="images/cmr-figure2.jpg"/>
+                    </figure>
+                    <p>If we look at an IT device, a server for example illustrated in Figure 2, we
+                        see a typical commodity x86 server’s load to power transfer function. It can
+                        be seen that the server’s electrical load varies between 200 watts with no
+                        load applied and 300 watts when it is working flat out. The yellow diagonal
+                        line shows how a load-to-power linear server would behave. That is, when it
+                        is doing no work, it is drawing little or no power.</p>
+                </div>
+                <div>
+                    <head>Metrics</head>
+                    <p>There has been much effort within the data centre industry to develop metrics
+                        that span the entire data centre and map energy consumption to the useful
+                        work of the facility. The development of metrics that described the basic
+                        energy transfer of the physical data centre are now relatively stable and
+                        well understood. There is not yet any useful metric for the IT work or
+                        application work of the data centre. As such this section will address the
+                        metrics for the physical facility.</p>
+                    <div>
+                        <head>Measuring energy efficiency (DCiE and PUE)</head>
+                        <p>Data Centre Infrastructure (DCiE) or Power Usage Effectiveness (PUE) are
+                            two metrics in common use within the data centre industry for reporting
+                            the energy efficiency of a data centre. They are calculated as
+                            follows:</p>
+                        <p>The Data Center infrastructure Efficiency metric is defined as the
+                            fraction of the IT equipment power divided by the total facility
+                            power;</p>
+                        <p>DciE = IT Equipment Power / Total Facility Power</p>
+                        <p>The total facility power is defined as the power measured at the incoming
+                            utility meter. The IT equipment power is defined as the power consumed
+                            by the IT equipment supported by the data centre as opposed to the power
+                            delivery and cooling components and other miscellaneous loads. For a
+                            full description of DCiE see the <ref target="http://www.thegreengrid.org/en/Global/Content/white-papers/The-Green-Grid-Data-Center-Power-Efficiency-Metrics-PUE-and-DCiE">
+         Green Grid paper on DCiE and PUE</ref>.</p>
+                        <p>The PUE metric is simply the reciprocal of the DCiE metric;</p>
+                        <p>PUE = 1 / DCE = Total Facility Power / IT Equipment Power</p>
+                        <p>While both DCiE and PUE are simple metrics to understand and measure,
+                            their usefulness in predicting and managing energy efficiency are
+                            limited as both are influenced by how full the data centre is from an IT
+                            equipment power draw perspective (due to the fact that they are simple
+                            ratios). Therefore in terms of measuring and understanding the achieved
+                            vs. design efficiency of a data centre, they are of little use.</p>
+			    <p><graphic url="images/cmr-figure3.jpg"/></p>
+                        <p>Figure 3 illustrates that on day one, if very little IT equipment is
+                            installed into the CMR the achieved efficiency shown by the DCiE metric
+                            would be close to zero. While such a figure may well be accurate it
+                            gives little indication as to how cost or carbon efficient the CMR will
+                            be under load in absolute terms. It is the absolute utility load
+                            (irrespective of howmuch IT equipment is installed) that will influence
+                            a data centre’s carbon footprint and any claims to be ‘low carbon’.</p>
+                    </div>
+                    <div>
+                        <head>Fixed and Proportional</head>
+                        <p>A data centre has a fixed base load, which would be drawn even if all of
+                            the IT equipment were to be unplugged, as such we can represent the
+                            facility power draw in two components, the fixed and variable power
+                            draw. This is represented by the fixed and proportional overheads.
+                            Whilst there is some non-linearity from the square law losses these are
+                            dominated by the fixed and proportional losses, allowing this
+                            representation to be an effective approximation as shown in Figure
+                            4.</p>
+                        <list>
+                            <item>Facility Power(zero): The power drawn at the Utility feed at zero
+                                IT electrical load</item>
+                            <item>Facility Power(full): The power drawn at the Utility feed at full
+                                IT electrical load</item>
+                            <item>Rated IT Load: The rated IT electrical load of the facility</item>
+                            <item>Fixed overhead = Facility Power(zero) / Rates IT Load</item>
+                        </list>
+                        <p>Fixed overhead has no units as the component units are Watts / Watts.</p>
+                        <list>
+                            <item>Proportional Load = Facility Power(full) - Facility Power(zero) /
+                                Rated IT Load</item>
+                        </list>
+                        <p>Again, proportional overhead has no units as the component units are
+                            Watts / Watts.</p>
+                        <p>Once these two values are determined for the facility the two loss
+                            components can be plotted together, in the case of the data centre
+                            example below these are;</p>
+                        <list>
+                            <item>Fixed Overhead = 0.65</item>
+                            <item>Proportional Overhead = 1.41</item>
+                        </list>
+			<figure>
+                        <graphic url="images/cmr-figure4.jpg"/>
+                        </figure>
+                        <p>The ability to lower the fixed overhead of a data centre through modular
+                            provisioning will have a material impact on the facilities ability to be
+                            more energy responsive to IT load and thus have a greater measurable
+                            impact on energy consumed from the utility feed.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <head>Recommendations</head>
+                <p>The new CMR program is intended to deliver a direct increase in both the physical
+                    and power capacity available to OUCS. There is a substantial opportunity within
+                    the new design to enhance this through data centre and IT efficiency
+                    improvements to deliver more effective utilisation of the available physical and
+                    energy capacity and therefore further improvement in the available computing
+                    services. This section summarises three sets of direct recommendations for the
+                    facility in the areas of energy metering, implementation and operational
+                    practices and the management of services within the facilities.</p>
+                <div>
+                    <head>Measuring operational energy efficiency</head>
+                    <p>One of the benefits of designing and building a green field data centre is
+                        the ability to include effective and useful instrumentation within the
+                        design at little additional cost.</p>
+                    <p>Before spending additional money on metering equipment it is important to
+                        understand what benefits are expected from this instrumentation and the uses
+                        to which the data can be put. Many operators have installed expensive
+                        products that meter at the IT power strip or socket level in the data
+                        centre. Whilst per socket metering can provide very granular information
+                        this data is not directly useful to OUCS who do not charge occupants
+                        collocation fees including a multiple of metered power. As indicated in
+                        section 6.2.2 it is not reasonable or useful to allocate energy use or cost
+                        to a device based only on the metered power at the PSU, further, as
+                        technology advances and more devices are virtualised the notional
+                        relationship between a power socket and a logical server or service
+                        component is removed. Many IT devices also now report their energy use
+                        through management APIs (this is required in the new Energy Star for Compute
+                        Servers standard) which avoids the additional problems involved in
+                        associating a physical IT device with a numbered socket.</p>
+                    <p>Whilst many operators have installed instrumentation to measure power within
+                        the data centre this is normally the energy used by the IT equipment and not
+                        the energy we are concerned with, the energy wasted by non-IT equipment. If
+                        this is measured at all it is frequently in Building Management Software and
+                        not visible to the IT department.</p>
+
+			<p><graphic url="images/cmr-figure5.jpg"/></p>
+
+                    <p>If the goal is to understand and manage IT energy use, energy efficiency and
+                        cost then a combination of IT and Mechanical and Electrical device
+                        consumption metering is required. PDU or rack level metering of the IT load
+                        is all that is necessary for OUCS when coupled with effective reporting of
+                        the data centre infrastructure loads.</p>
+                    <p>Figure 5 illustrates three levels of data centre energy instrumentation. It
+                        is recommended for the OUCS CMR that at least the detailed measurement
+                        points (light blue) be instrumented. The meters should be network connected
+                        and able to log their data to a central station. Many BMS systems available
+                        today are able to accept logging data from remote energy meters. This data
+                        should be available from the BMS to other software. The historic reporting
+                        data should be stored in as granular a form as possible, at least hourly if
+                        not at the 300 second IT polling rate.</p>
+                    <p>Data captured from the detailed measurement points will allow the simulation
+                        of future energy impacting changes and thus give a much greater
+                        understanding and control of energy management within the CMR.</p>
+                </div>
+                <div>
+                    <head>Applying the EU Code of Conduct for Data Centres</head>
+                    <p>It is recommended that Oxford University implement the EU Code of Conduct for
+                        Data Centre operators. The Code details best practices that apply to M and E
+                        infrastructure, IT systems and software. The best practices have been
+                        developed and reviewed by industry experts and represent a practical and
+                        effective approach to energy efficient design and on-going energy management
+                        within the data centre.</p>
+                    <p>Romonet recommends that Oxford University implements the following best
+                        practices defined in the EU Code of Conduct for data centres at a minimum.
+                        Ideally Oxford University would become a full Participant of the code and
+                        report its energy data back to the EU under the requirements of Participant
+                        status. The mandatory requirement for reporting of high-level power data
+                        will ensure regular (six monthly) senior visibility of the energy data from
+                        the CMR and an increased understanding and appreciation of how the
+                        efficiency of the facility is being managed. Regular reviews of the
+                        reporting will also give a much better appreciation of the rate of growth in
+                        IT service related energy.</p>
+                    <div>
+                        <head>Design stage best practices</head>
+                        <p>Listed below are the minimum best practices expected to be implemented
+                            during a new-build or major data centre re-fit.</p>
+
+                        <table frame="border">
+                            <row role="label">
+                                <cell>Type</cell>
+                                <cell>Description</cell>
+                                <cell>Implementation stage</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Group involvement</cell>
+                                <cell>Establish an approval board containing representatives from
+                                    all disciplines (software, IT, M and E). Require approval for
+                                    any significant decision to ensure that the impacts of the
+                                    decision have been properly understood and an optimal solution
+                                    reached. For example, this would include the definition of
+                                    standard IT hardware lists.</cell>
+                                <cell>Design and Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Build resilience to business requirements</cell>
+                                <cell>Only the level of resilience actually justified by business
+                                    requirements and impact analysis should be built. 2N
+                                    infrastructures are frequently unnecessary and inappropriate.
+                                    Resilience for a small portion of critical services can be
+                                    obtained using DR / BC sites.</cell>
+                                <cell>Design</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Consider multiple levels of resilience</cell>
+                                <cell>It is possible to build a single data centre to provide
+                                    multiple levels of power and cooling resilience to different
+                                    floor areas. Many co-location providers already deliver this,
+                                    for example, optional ‘grey’ power feeds without UPS or
+                                    generator back up.</cell>
+                                <cell>Design</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Design – Contained hot or cold air</cell>
+                                <cell>There are a number of design concepts whose basic intent is to
+                                    contain and separate the cold air from the heated return air on
+                                    the data floor: <list>
+                                        <item>Hot aisle containment</item>
+                                        <item>Cold aisle containment</item>
+                                        <item>Contained rack supply, room return</item>
+                                        <item>Room supply, Contained rack return</item>
+                                        <item>Contained rack supply, Contained rack return</item>
+                                    </list> This action is expected for air-cooled facilities over
+                                    1kW per square meter power density.</cell>
+                                <cell>Design and Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Efficient part load operation</cell>
+                                <cell>Optimise the facility for the partial load it will experience
+                                    for most of operational time rather than max load. e.g. sequence
+                                    chillers, operate cooling towers with shared load for increased
+                                    heat exchange area</cell>
+                                <cell>Design</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Variable Speed Fans</cell>
+                                <cell>Many old CRAC units operate fixed speed fans which consume
+                                    substantial power and obstruct attempts to manage the data floor
+                                    temperature. This is particularly effective where there is a
+                                    high level of redundancy in the cooling system, low utilisation
+                                    of the facility or highly variable IT electrical load.</cell>
+                                <cell>Design</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Modular UPS Deployment</cell>
+                                <cell>It is now possible to purchase modular UPS systems across a
+                                    broad range of power delivery. Physical installation,
+                                    transformers and cabling are prepared to meet the design
+                                    electrical load of the facility but the sources of inefficiency,
+                                    switching units and batteries are installed, as required in
+                                    modular units. This substantially reduces both the capital cost
+                                    and the fixed overhead losses of these systems. In low power
+                                    environments these may be frames with plug in modules, in larger
+                                    environments these are likely to be entire UPS units.</cell>
+                                <cell>Design</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Lean provisioning of power and cooling for a maximum of 18
+                                    months of data floor capacity</cell>
+                                <cell>The provisioning of excess power and cooling capacity in the
+                                    data centre drives substantial fixed losses and is unnecessary.
+                                    Planning a data centre for modular expansion and then building
+                                    out this capacity in a rolling program of deployments is more
+                                    efficient. This also allows the technology ‘generation’ of the
+                                    IT equipment and supporting M and E infrastructure to be
+                                    matched, improving both efficiency and the ability to respond to
+                                    business requirements.</cell>
+                                <cell>Design</cell>
+                            </row>
+                        </table>
+
+                    </div>
+                    <div>
+                        <head>Operational stage best practices</head>
+                        <p>Listed below are the minimum expected best practices that should be
+                            implemented once the new CMR goes live.</p>
+                        <table frame="border">
+                            <row role="label">
+                                <cell>Practice</cell>
+                                <cell>Description.</cell>
+                                <cell>Type</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Multiple tender for IT hardware – Power</cell>
+                                <cell>Include the Performance per Watt of the IT device as a high
+                                    priority decision factor in the tender process. This may be
+                                    through the use of Energy Star or SPEC Power type standard
+                                    metrics or through application or deployment specific user
+                                    metrics more closely aligned to the target environment. The
+                                    power consumption of the device at the expected utilisation or
+                                    applied workload should be considered in addition to peak
+                                    performance per Watt figures.</cell>
+                                <cell>Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Multiple tender for IT hardware – Basic operating temperature
+                                    and humidity range</cell>
+                                <cell>Include the operating temperature and humidity ranges of new
+                                    equipment as high priority decision factors in the tender
+                                    process. The minimum is the ASHRAE Recommended range for Class 1
+                                    Data Centers, 18-27C and 5.5C dew point up to 15C dew point and
+                                    60% RH</cell>
+                                <cell>Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Enable power management features</cell>
+                                <cell>Formally change the deployment process to include the checking
+                                    and enabling of power management features on hardware.</cell>
+                                <cell>Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Provision to the as configured power</cell>
+                                <cell>Provision power and cooling only to the as-configured power
+                                    draw capability of the equipment, not the PSU or nameplate
+                                    rating.</cell>
+                                <cell>Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Deploy using Grid and Virtualisation</cell>
+                                <cell>Processes should be put in place to require senior business
+                                    approval for any new service that requires dedicated hardware
+                                    and will not run on a resource sharing grid or virtualised
+                                    platform.</cell>
+                                <cell>Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Reduce IT hardware resilience level</cell>
+                                <cell>Determine the business impact of service incidents for each
+                                    deployed service and deploy only the level of hardware
+                                    resilience actually justified.</cell>
+                                <cell>Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Reduce Hot / Cold standby equipment</cell>
+                                <cell>Determine the business impact of service incidents for each
+                                    deployed service and deploy only the level of site BC / DR
+                                    actually required.</cell>
+                                <cell>Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Select efficient software</cell>
+                                <cell>Make the performance of the software, in terms of the power
+                                    draw of the hardware required to meet performance and
+                                    availability targets a primary selection factor.</cell>
+                                <cell>Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Develop efficient software</cell>
+                                <cell>Make the performance of the software, in terms of the power
+                                    draw of the hardware required to meet performance and
+                                    availability targets a critical success factor.</cell>
+                                <cell>Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Decommission unused services</cell>
+                                <cell>Completely decommission and switch off, preferably remove, the
+                                    supporting hardware for unused services</cell>
+                                <cell>Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Data Management Policy</cell>
+                                <cell>Develop a data management policy to define which data should
+                                    be kept, for how long and at what level of protection.
+                                    Communicate the policy to users and enforce. Particular care
+                                    should be taken to understand the impact of any data retention
+                                    requirements.</cell>
+                                <cell>Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Rack air flow management – Blanking Plates</cell>
+                                <cell>Installation of blanking plates where there is no equipment to
+                                    reduce cold air passing through gaps in the rack. This also
+                                    reduces air heated by one device being ingested by another
+                                    device, increasing intake temperature and reducing
+                                    efficiency.</cell>
+                                <cell>Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Rack air flow management – Other Openings</cell>
+                                <cell>Installation of aperture brushes (draught excluders) or cover
+                                    plates to cover all air leakage opportunities in each rack. This
+                                    includes: <list>
+                                        <item>Floor openings at the base of the rack</item>
+                                        <item>Gaps at the sides, top and bottom of the rack between
+                                            equipment or mounting rails and the perimeter of the
+                                            rack</item>
+                                    </list></cell>
+                                <cell>Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Raised floor air flow management</cell>
+                                <cell>Close all unwanted apertures in the raised floor. Review
+                                    placement and opening factors of vented tiles. Maintain unbroken
+                                    rows of cabinets to prevent bypass air – where necessary fill
+                                    with empty fully blanked racks. Managing unbroken rows is
+                                    especially important in hot and cold aisle environments. Any
+                                    opening between the aisles will degrade the separation of hot
+                                    and cold air.</cell>
+                                <cell>Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Provide adequate free area on rack doors</cell>
+                                <cell>Solid doors can be replaced (where doors are necessary) with
+                                    partially perforated doors to ensure adequate cooling airflow
+                                    which often impede the cooling airflow and may promote
+                                    recirculation within the enclosed cabinet further increasing the
+                                    equipment intake temperature.</cell>
+                                <cell>Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Review of cooling before IT equipment changes</cell>
+                                <cell>The availability of cooling including the placement and flow
+                                    of vented tiles should be reviewed before each IT equipment
+                                    change to optimise the use of cooling resources.</cell>
+                                <cell>Operational</cell>
+                            </row>
+                            <row role="data">
+                                <cell>Review of cooling strategy</cell>
+                                <cell>Periodically review the IT equipment and cooling deployment
+                                    against strategy.</cell>
+                                <cell>Operational</cell>
+                            </row>
+                        </table>
+                    </div>
+                </div>
+                <div>
+                    <head>Service categorisation and grouping</head>
+                    <p>The services delivered by OUCS should be reviewed to determine the required
+                        resilience and availability levels for each service. For user facing
+                        services (such as email) this is dependent upon the level of direct user
+                        impact from service failures whilst for infrastructure services (such as
+                        dns) this is determined from the impact upon user facing services (such as
+                        Internet access).</p>
+                    <p>As OUCS will have multiple machine rooms and the ability to deliver multiple
+                        levels of resilience at the facility, hardware, network and software level
+                        it is sensible to define a series of standard offerings to meet the range of
+                        common availability criteria. The following table suggests a range of
+                        recovery and continuity levels and mechanisms as an example.</p>
+
+                    <table frame="border">
+                        <row role="label">
+                            <cell>Level</cell>
+                            <cell>Description</cell>
+                            <cell>Implementation</cell>
+                            <cell>Continuity or Recovery Mechanism</cell>
+                        </row>
+                        <row role="data">
+                            <cell>Low-medium</cell>
+                            <cell>Low protection.</cell>
+                            <cell>Single physical or logical server, UPS protected</cell>
+                            <cell>Repair or restore from backup.</cell>
+                        </row>
+                        <row role="data">
+                            <cell>Medium</cell>
+                            <cell>Manual recovery.</cell>
+                            <cell>Single logical server, UPS protected, VM image on shared
+                                disk</cell>
+                            <cell>Manually invoke virtual machine on alternate hardware in same or
+                                alternate machine room</cell>
+                        </row>
+                        <row role="data">
+                            <cell>Low</cell>
+                            <cell>No protection.</cell>
+                            <cell>Single physical or logical server, single feed, no UPS</cell>
+                            <cell>Repair or restore from backup.</cell>
+                        </row>
+                        <row role="data">
+                            <cell>High</cell>
+                            <cell>Auto Recovery</cell>
+                            <cell>Logical server with cold standby hardware in separate machine
+                                room, replicated shared data</cell>
+                            <cell>Automatically invoke virtual machine on designated hardware in
+                                alternate machine room.</cell>
+                        </row>
+                        <row role="data">
+                            <cell>Very high</cell>
+                            <cell>Continuity</cell>
+                            <cell>Active / Active logical or physical servers in separate machine
+                                rooms</cell>
+                            <cell>Automatic redirection of user traffic.</cell>
+                        </row>
+                    </table>
+
+                    <p>It should be noted that hardware level disk replication is only necessary for
+                        legacy applications that offer no higher level replication of data and
+                        should not be viewed as a strategic solution.</p>
+                </div>
+                <div>
+                    <head>Service catalogue and CMDB</head>
+                    <p>Many of the best practices identified above will be easier to achieve if a
+                        comprehensive Service Catalogue is implemented and maintained. Alongside the
+                        Service Catalogue, a Configuration Management Database should be established
+                        and rigorously maintained for the new CMR to ensure that existing IT
+                        equipment is both documented and controlled. All changes in location,
+                        connections, memory, storage etc. – i.e. “configuration” – should be
+                        recorded in detail in the CMDB.</p>
+                </div>
+            </div>
+            <div>
+                <head>Glossary</head>
+                <table frame="border">
+                    <row role="label">
+                        <cell>Acronym</cell>
+                        <cell>Description</cell>
+                    </row>
+                    <row role="data">
+                        <cell>CMR</cell>
+                        <cell>Central Machine Room (the proposed new data centre)</cell>
+                    </row>
+                    <row role="data">
+                        <cell>OUCS</cell>
+                        <cell>Oxford University Computing Services</cell>
+                    </row>
+                    <row role="data">
+                        <cell>MR</cell>
+                        <cell>Machine Room (Existing OUCS data centre)</cell>
+                    </row>
+                    <row role="data">
+                        <cell>OMPI</cell>
+                        <cell>Oxford Molecular Pathology Institute</cell>
+                    </row>
+                    <row role="data">
+                        <cell>M and E</cell>
+                        <cell>Mechanical and Electrical equipment supporting the CMR (and
+                            OMPI)</cell>
+                    </row>
+                    <row role="data">
+                        <cell>IT/ICT</cell>
+                        <cell>Information Technology / Information Communications Technology (often
+                            used to mean generic compute, storage and telecommunications
+                            equipment)</cell>
+                    </row>
+                    <row role="data">
+                        <cell>BMS</cell>
+                        <cell>Building Management System</cell>
+                    </row>
+                    <row role="data">
+                        <cell>CRAC</cell>
+                        <cell>Computer Room Air Conditioner</cell>
+                    </row>
+                    <row role="data">
+                        <cell>UPS</cell>
+                        <cell>Uninterruptible Power Supply</cell>
+                    </row>
+                </table>
+            </div>
+        </body>
+    </text>
+
+</TEI>
