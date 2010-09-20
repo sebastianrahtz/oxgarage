@@ -1,0 +1,23 @@
+﻿<document>
+  <properties>
+    <title>About EGE TEI converter</title>
+  </properties>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="About EGE TEI converter">
+      <!-- Within sections, any XHTML can be used -->
+	  <p>EGE framework converter plugin implementation. Plugin contains multiple transformations of ENRICH TEI format.</p>
+	  <p>Supported conversions : 
+	  <ul>
+		<li>from ENRICH TEI(text/xml) format to FO(text/xml) format;</li>
+		<li>from ENRICH TEI(text/xml) format to ENRICH TEI(application/xhtml+xml) format;</li>
+		<li>from ENRICH TEI(text/xml) format to ENRICH TEI(application/x-latex) format;</li>
+		<li>from ENRICH TEI(text/xml) format to ENRICH TEI(application/msword) format;</li>
+		<li>from ENRICH TEI(application/msword) format to ENRICH TEI(text/xml) format;</li>
+	  </ul>
+	  </p>
+	  <p>More about EGE extensions mechanism can be found at : <a href="../../creation.html">Creating EGE extensions</a>.</p>
+	  <p>You can download <b>EGE TEI converter</b> sources and binaries from <a href="download.html">here</a></p>
+	</section>
+  </body>
+</document>
