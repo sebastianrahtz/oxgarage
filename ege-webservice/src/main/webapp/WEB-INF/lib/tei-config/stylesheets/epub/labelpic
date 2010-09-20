@@ -1,2 +1,0 @@
-convert  -background '#0008' -fill white -gravity center -size 600x200 \
--fill red -font Helvetica caption:"Timon of Athens" template.jpg +swap -gravity North -composite cover.jpg
