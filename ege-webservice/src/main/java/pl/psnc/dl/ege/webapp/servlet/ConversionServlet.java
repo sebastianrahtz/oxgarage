@@ -345,7 +345,7 @@ public class ConversionServlet extends HttpServlet {
 							return;
 						}
 					} catch (ValidatorException vex) {
-						LOGGER.warn(vex.getMessage());
+						LOGGER.debug(vex.getMessage());
 					} finally {
 						try {
 							ins.close();

@@ -78,11 +78,11 @@ public class TEIConverter implements Converter {
 				if (conversionDataTypes.equals(cadt)) {
 					String profile = cadt.getProperties().get(
 							ConverterConfiguration.PROFILE_KEY);
-					LOGGER.debug("Converting from : "
-							+ conversionDataTypes.getInputType().toString()
-							+ " to "
-							+ conversionDataTypes.getOutputType().toString());
-					LOGGER.debug("Selected profile : " + profile);
+					LOGGER.info("Converting FROM:  "
+						    + conversionDataTypes.getInputType().toString()
+						    + " TO "
+						    + conversionDataTypes.getOutputType().toString()
+						    + " WITH profile " + profile );
 					convertDocument(inputStream, outputStream, cadt.getInputType(), cadt.getOutputType(),
 							cadt.getProperties());
 					found = true;
@@ -126,7 +126,7 @@ public class TEIConverter implements Converter {
 				&& fromDataType.getFormat().equals(Format.DOCX.getId())) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.DOCX
 					.getProfile())) {
-				LOGGER.warn(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
 				profile = ConverterConfiguration.DEFAULT_PROFILE;
 			}
 			transformFromDocX(inputStream, outputStream, profile, properties);
@@ -135,7 +135,7 @@ public class TEIConverter implements Converter {
 		else if (Format.DOCX.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.DOCX
 					.getProfile())) {
-				LOGGER.warn(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
 				profile = ConverterConfiguration.DEFAULT_PROFILE;
 			}
 			Processor proc = SaxonProcFactory.getProcessor();
@@ -148,7 +148,7 @@ public class TEIConverter implements Converter {
 				&& fromDataType.getFormat().equals(Format.ODT.getId())) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.ODT
 					.getProfile())) {
-				LOGGER.warn(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
 				profile = ConverterConfiguration.DEFAULT_PROFILE;
 			}
 			transformFromOdt(inputStream, outputStream, profile, properties);
@@ -157,7 +157,7 @@ public class TEIConverter implements Converter {
 		else if (Format.ODT.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.ODT
 					.getProfile())) {
-				LOGGER.warn(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
 				profile = ConverterConfiguration.DEFAULT_PROFILE;
 			}
 			Processor proc = SaxonProcFactory.getProcessor();
@@ -169,7 +169,7 @@ public class TEIConverter implements Converter {
 			 && fromDataType.getFormat().equals(Format.ODDHTML.getFormatName())) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.ODDHTML
 					.getProfile())) {
-				LOGGER.warn(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
 				profile = ConverterConfiguration.DEFAULT_PROFILE;
 			}
 			properties.put("extension", "html");
@@ -180,7 +180,7 @@ public class TEIConverter implements Converter {
 		else if (Format.XHTML.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.XHTML
 					.getProfile())) {
-				LOGGER.warn(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
 				profile = ConverterConfiguration.DEFAULT_PROFILE;
 			}
 			properties.put("extension", "html");
@@ -191,7 +191,7 @@ public class TEIConverter implements Converter {
 		else if (Format.RELAXNG.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.RELAXNG
 					.getProfile())) {
-				LOGGER.warn(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
 				profile = ConverterConfiguration.DEFAULT_PROFILE;
 			}
 			properties.put("extension", "rng");
@@ -202,7 +202,7 @@ public class TEIConverter implements Converter {
 		else if (Format.DTD.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.DTD
 					.getProfile())) {
-				LOGGER.warn(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
 				profile = ConverterConfiguration.DEFAULT_PROFILE;
 			}
 			properties.put("extension", "dtd");
@@ -214,7 +214,7 @@ public class TEIConverter implements Converter {
 			 && fromDataType.getFormat().equals(Format.LITE.getFormatName())) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.LITE
 					.getProfile())) {
-				LOGGER.warn(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
 				profile = ConverterConfiguration.DEFAULT_PROFILE;
 			}
 			properties.put("extension", "xml");
@@ -225,7 +225,7 @@ public class TEIConverter implements Converter {
 		else if (Format.LATEX.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.LATEX
 					.getProfile())) {
-				LOGGER.warn(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
 				profile = ConverterConfiguration.DEFAULT_PROFILE;
 			}
 			properties.put("extension", "tex");
@@ -237,7 +237,7 @@ public class TEIConverter implements Converter {
 				//&& Format.FO.getFormatName().equals(dataType.getFormat())) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.FO
 					.getProfile())) {
-				LOGGER.warn(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
 				profile = ConverterConfiguration.DEFAULT_PROFILE;
 			}
 			properties.put("extension", "fo");
@@ -248,7 +248,7 @@ public class TEIConverter implements Converter {
 		else if (Format.EPUB.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.EPUB
 					.getProfile())) {
-				LOGGER.warn(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
 				profile = ConverterConfiguration.DEFAULT_PROFILE;
 			}
 			transformToEpub(inputStream, outputStream, profile, Format.EPUB.getProfile(), properties);
@@ -365,6 +365,13 @@ public class TEIConverter implements Converter {
 			fos = new FileOutputStream(resFile);
 			XsltExecutable exec = comp.compile(resolveConfiguration(id, comp, profile));
 			XsltTransformer transformer = exec.load();
+			if(properties.get(ConverterConfiguration.LANGUAGE_KEY)!=null) 
+			    {
+				XdmAtomicValue doclang = new XdmAtomicValue(properties.get(ConverterConfiguration.LANGUAGE_KEY));
+				transformer.setParameter(new QName("lang"), doclang);
+				transformer.setParameter(new QName("doclang"), doclang);
+				transformer.setParameter(new QName("documentationLanguage"), doclang);
+			    }
 			setTransformationParameters(transformer, id);
 			transformer.setInitialContextNode(initialNode);
 			Serializer result = new Serializer();

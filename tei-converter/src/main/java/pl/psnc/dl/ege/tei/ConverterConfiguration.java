@@ -32,11 +32,14 @@ final class ConverterConfiguration
 
 	public static final String PROFILE_KEY = "pl.psnc.dl.ege.tei.profileNames";
 
-	public static final String IMAGES_KEY = "pl.psnc.dl.ege.tei.getImages";
+	public static final String IMAGES_KEY = "oxgarage.getImages";
 
-	public static final String FETCHIMAGES_KEY = "pl.psnc.dl.ege.tei.getOnlineImages";
+	public static final String FETCHIMAGES_KEY = "oxgarage.getOnlineImages";
 
-	public static final String TEXTONLY_KEY = "pl.psnc.dl.ege.tei.textOnly";
+	public static final String TEXTONLY_KEY = "oxgarage.textOnly";
+
+        public static final String LANGUAGE_KEY = "oxgarage.lang";
+
 
 	static {
 		String pref = TEIConverter.class.getProtectionDomain().getCodeSource()
@@ -61,15 +64,24 @@ final class ConverterConfiguration
 				sbParams.append(FETCHIMAGES_KEY);
 				sbParams.append("\">");
 				sbParams.append("true,false");
-				sbParams.append("</entry><entry key=\"" + FETCHIMAGES_KEY + ".type\">pathBoolean</entry>");
+				sbParams.append("</entry>");
+				sbParams.append("<entry key=\"" + FETCHIMAGES_KEY + ".type\">pathBoolean</entry>");
+				sbParams.append("<entry key=\"");
+				sbParams.append(LANGUAGE_KEY);
+				sbParams.append("\">");
+				sbParams.append("en,de,es,fr,kr,ja,zh-tw");
+				sbParams.append("</entry>");
+				sbParams.append("<entry key=\"" + LANGUAGE_KEY + ".type\">array</entry>");
 				sbParams.append("<entry key=\"");
 				sbParams.append(TEXTONLY_KEY);
 				sbParams.append("\">");
 				sbParams.append("true,false");
-				sbParams.append("</entry><entry key=\"" + TEXTONLY_KEY + ".type\">pathBoolean</entry>");
+				sbParams.append("</entry>");
+				sbParams.append("<entry key=\"" + TEXTONLY_KEY + ".type\">pathBoolean</entry>");
 				sbParams.append("<entry key=\"");
 				sbParams.append(PROFILE_KEY);
 				sbParams.append("\">");
+
 				
 				String[] profileDirNames = basePath.list();
 				Arrays.sort(profileDirNames);

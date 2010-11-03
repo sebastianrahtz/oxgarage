@@ -303,18 +303,27 @@ public class ImageFetcher {
 		
 			String author = properties.get("author");
 			String title = properties.get("title");
-
+			if (author.matches("([^,]+), ([^,]+), (.+)")) {
+		            author = author.replaceAll("([^,]+), ([^,]+), (.+)","$2 $1");
+			}
+			if (title.length() > 60) {
+			    String Rest= title.substring(60,title.length());
+			    int stop = Rest.indexOf(' ');
+			    if (stop > -1) {
+				    title= title.substring(0, 60) + Rest.substring(0,stop) + "...";
+				}
+			}
 			BufferedImage img = ImageIO.read(coverTemplate);
 			Graphics2D g = (Graphics2D) img.getGraphics();
 
 			g.setColor(Color.white);
 			g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
                             RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-			int maxAuthorFontSize = 70;
-			FontMarginTuple authorProps = calculateFontMargin(new Font("MinionPro", Font.PLAIN, maxAuthorFontSize), 575, g, author, 1);
+			int maxAuthorFontSize = 73;
+			FontMarginTuple authorProps = calculateFontMargin(new Font("MinionPro", Font.PLAIN, maxAuthorFontSize), 575, g, author, 2);
 
-			int maxTitleFontSize = 80;
-			FontMarginTuple titleProps = calculateFontMargin(new Font("MinionPro", Font.BOLD, maxTitleFontSize), 575, g, title, 2);
+			int maxTitleFontSize = 73;
+			FontMarginTuple titleProps = calculateFontMargin(new Font("MinionPro", Font.BOLD, maxTitleFontSize), 585, g, title, 5);
 
 			Font authorFont = authorProps.font;
 			int[] authorMargin = authorProps.margin;
@@ -326,22 +335,31 @@ public class ImageFetcher {
 			int marginY;
 			int authorFontSize = authorFont.getSize();
 			if(author.length()==0) authorFontSize = 0;
-			if(title.contains("\n")) marginY = (310 - authorFontSize - 2*titleFont.getSize())/2;
-			else marginY = (230 - authorFontSize - titleFont.getSize())/2;
+			//if(title.contains("\n")) marginY = (310 - authorFontSize - 2*titleFont.getSize())/2;
+			//else marginY = (230 - authorFontSize - titleFont.getSize())/2;
+			marginY = 50;
 
 			g.setFont(titleFont);	
-			int newLine = titleText.indexOf('\n');		
-			if(newLine==-1) g.drawString(titleText, titleMargin[0],marginY + 50 + authorFont.getSize() + titleFont.getSize());
-			else {
-				g.drawString(titleText.substring(0, newLine), 
-						15 + titleMargin[0], marginY + 50 + authorFont.getSize() + titleFont.getSize());
-				g.drawString(titleText.substring(newLine + 1), 
-						15 + titleMargin[1], marginY + 60 + authorFont.getSize() + 2*titleFont.getSize());
+			String[] lines = titleText.split("\n");
+			int topMargin = marginY + 120;
+			if (lines.length == 1) {
+			    topMargin = marginY + 250;
 			}
+			else 
+			    { 
+				if (lines.length == 2) 
+				    topMargin = marginY + 200;
+			    }
+			for(int i = 0; i < lines.length; i++)
+			     g.drawString(lines[i], titleMargin[i],topMargin + i * 75 );
+			
 
 			g.setColor(Color.black);
 			g.setFont(authorFont);
-			g.drawString(authorText, 15 + authorMargin[0],marginY + 500 + authorFont.getSize());
+			lines = authorText.split("\n");
+			topMargin = marginY + 565;
+			for(int i = 0; i < lines.length; i++)
+			    g.drawString(lines[i], authorMargin[i], topMargin + i * 75 );
 
 			ImageIO.write(img, "jpg", cover);
 			return coverImage;
@@ -358,7 +376,7 @@ public class ImageFetcher {
 		int size = font.getSize();
 		String newText = s;
 		while (width>lines*widthToFit) {		
-			size = (size*4)/5;
+			size = (size*19)/20;
 			font = new Font(font.getName(), font.getStyle(), size);
 			fm = g.getFontMetrics(font);			
 			width = fm.stringWidth(s);				

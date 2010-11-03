@@ -69,4 +69,52 @@
 		<parameter id="visibility" value="true" />
 		<parameter id="cost" value="10" />
 	</extension>
+
+	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="ODDCtoISOSCHconverter">
+		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
+		<parameter id="name" value="ODDC to ISO Schematron"/>
+		<parameter id="xsluri" value="odds2/extract-isosch.xsl" />
+		<parameter id="iMimeType" value="text/xml" />
+		<parameter id="iFormat" value="ODDC" />
+		<parameter id="iDescription" value="Compiled TEI ODD Document" />
+		<parameter id="iType" value="text" />		
+		<parameter id="oMimeType" value="text/xml" />
+		<parameter id="oFormat" value="isosch" />
+		<parameter id="oDescription" value="ISO Schematron constraints" />		
+		<parameter id="oType" value="text" />
+		<parameter id="visibility" value="true" />
+		<parameter id="cost" value="11" />
+	</extension>
+
+	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="ODDCtoSCHconverter">
+		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
+		<parameter id="name" value="ODDC to Schematron"/>
+		<parameter id="xsluri" value="odds2/extract-sch.xsl" />
+		<parameter id="iMimeType" value="text/xml" />
+		<parameter id="iFormat" value="ODDC" />
+		<parameter id="iDescription" value="Compiled TEI ODD Document" />
+		<parameter id="iType" value="text" />		
+		<parameter id="oMimeType" value="text/xml" />
+		<parameter id="oFormat" value="sch" />
+		<parameter id="oDescription" value="Schematron constraints" />		
+		<parameter id="oType" value="text" />
+		<parameter id="visibility" value="true" />
+		<parameter id="cost" value="11" />
+	</extension>
+
+	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="TEItoNLMconverter">
+		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
+		<parameter id="name" value="TEI to NLM"/>
+		<parameter id="xsluri" value="nlm/tei_to_nlm.xsl" />
+		<parameter id="iMimeType" value="text/xml" />
+		<parameter id="iFormat" value="TEI" />
+		<parameter id="iDescription" value="TEI P5 XML Document" />
+		<parameter id="iType" value="text" />		
+		<parameter id="oMimeType" value="text/xml" />
+		<parameter id="oFormat" value="NLM" />
+		<parameter id="oDescription" value="National Library of Medicine (NLM) DTD 3.0" />		
+		<parameter id="oType" value="text" />
+		<parameter id="visibility" value="true" />
+		<parameter id="cost" value="11" />
+	</extension>
 </plugin>

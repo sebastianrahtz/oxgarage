@@ -425,7 +425,7 @@ function ConversionActionProperty(id, definition, type, localName, caNr){
 		else if(this.type == "pathBoolean"){
 			id = this.id.replace(/\./g,"_");
 			var container = $("#"+containerId);
-			if(id == "pl_psnc_dl_ege_tei_getOnlineImages" || id == "pl_psnc_dl_ege_tei_getImages") this.value="true";
+			if(id == "oxgarage_getOnlineImages" || id == "oxgarage_getImages") this.value="true";
 			else this.value = "false";
 			container.append("<input type=\"hidden\" id=\""+id+"\" name=\"ca_"+this.index+"\" value=\"" + this.value + "\" />");
 			//handle change of option
@@ -439,21 +439,21 @@ function ConversionActionProperty(id, definition, type, localName, caNr){
 				pathOption = $("input[name='pathOption'][type='checkbox'][id=\'"+id+"\']");				
 				pathOption.bind("change" , function(){
 					$("#sendFile").attr("disabled", "");
-					if(id=="pl_psnc_dl_ege_tei_textOnly" && $(this).attr("checked")==true) {
-						if ($("#pl_psnc_dl_ege_tei_getOnlineImages").attr("checked")==true) {
-							$("#pl_psnc_dl_ege_tei_getOnlineImages").attr("checked", "")	
-							$("#pl_psnc_dl_ege_tei_getOnlineImages").trigger('change');
+					if(id=="oxgarage_textOnly" && $(this).attr("checked")==true) {
+						if ($("#oxgarage_getOnlineImages").attr("checked")==true) {
+							$("#oxgarage_getOnlineImages").attr("checked", "")	
+							$("#oxgarage_getOnlineImages").trigger('change');
 						}
-						if ($("#pl_psnc_dl_ege_tei_getImages").attr("checked")==true) {
-							$("#pl_psnc_dl_ege_tei_getImages").attr("checked", "")	
-							$("#pl_psnc_dl_ege_tei_getImages").trigger('change');
+						if ($("#oxgarage_getImages").attr("checked")==true) {
+							$("#oxgarage_getImages").attr("checked", "")	
+							$("#oxgarage_getImages").trigger('change');
 						}
 					}
-					else if((id=="pl_psnc_dl_ege_tei_getImages" ||
-							id=="pl_psnc_dl_ege_tei_getOnlineImages") && $(this).attr("checked")==true) {
-						if ($("#pl_psnc_dl_ege_tei_textOnly").attr("checked")==true) {
-							$("#pl_psnc_dl_ege_tei_textOnly").attr("checked", "")	
-							$("#pl_psnc_dl_ege_tei_textOnly").trigger('change');
+					else if((id=="oxgarage_getImages" ||
+							id=="oxgarage_getOnlineImages") && $(this).attr("checked")==true) {
+						if ($("#oxgarage_textOnly").attr("checked")==true) {
+							$("#oxgarage_textOnly").attr("checked", "")	
+							$("#oxgarage_textOnly").trigger('change');
 						}
 					}
 					$.each($("input[type='hidden'][id=\'"+id+"\']"), function() {

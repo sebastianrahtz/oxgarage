@@ -4,6 +4,7 @@
     <fileDesc>
       <titleStmt>
         <title>Encoding for Interchange: an introduction to the TEI</title>
+        <author>Lou Burnard and C. M. Sperberg-McQueen</author>
       </titleStmt>
       <publicationStmt>
 	<availability>
@@ -112,7 +113,6 @@ Encoding for Interchange: an introduction to the TEI
 </titlePart>
           <titlePart type="sub">Revised for TEI P5 release</titlePart>
         </docTitle>
-        <docAuthor>Lou Burnard</docAuthor>
         <docAuthor>C. M. Sperberg-McQueen</docAuthor>
         <docDate>February 2006</docDate>
       </titlePage>

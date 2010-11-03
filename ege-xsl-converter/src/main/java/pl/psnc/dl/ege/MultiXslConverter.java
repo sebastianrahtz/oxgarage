@@ -256,6 +256,7 @@ public class MultiXslConverter implements ConfigurableConverter {
 			proc.getUnderlyingConfiguration().getSourceParser()
 					.setErrorHandler(null);
 			XsltCompiler comp = proc.newXsltCompiler();
+			/* System.err.println("READ XSL " + xslUri);*/
 			try{
 				is = new FileInputStream(new File(xslUri));
 			}catch(IOException ex){

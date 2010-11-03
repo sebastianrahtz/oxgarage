@@ -5,7 +5,9 @@ PORT=8080
 APACHE=apache-tomcat-6.0.29
 LIB=$(PREFIX)/$(APACHE)/webapps/ege-webservice/WEB-INF/lib/
 
-P="<conversions><conversion%20index='0'%20><property%20id='pl.psnc.dl.ege.tei.profileNames'>iso</property></conversion></conversions>" 
+P="<conversions><conversion%20index='0'><property%20id='pl.psnc.dl.ege.tei.profileNames'>iso</property></conversion></conversions>" 
+O="<conversions><conversion%20index='0'><property%20id='pl.psnc.dl.ege.tei.profileNames'>ota</property></conversion></conversions>" 
+L="<conversions><conversion%20index='1'><property%20id='oxgarage.lang'>fr</property></conversion></conversions>" 
 
 
 test:
@@ -19,18 +21,14 @@ test:
 	echo To DocX
 	curl -s  -o temp-results/result.docx -F upload=@test.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document
 	curl -s  -F upload=@test.xml -o temp-results/result2.docx  http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document?properties=$(P)
-	curl  -F upload=@test8.xml  -F upload=@portrait.jpg -F upload=@lessing.jpg -o temp-results/result.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document
+	curl  -s -F upload=@test8.xml  -F upload=@portrait.jpg -F upload=@lessing.jpg -o temp-results/result.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document
 	echo To HTML
 	curl -s  -F upload=@test.xml  -o temp-results/result.html http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/
 	curl -s  -F upload=@test.xml  -o temp-results/result2.html http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/?properties=$(P)
 	echo From DocX
 	curl -s  -o temp-results/result.xml -F upload=@test.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml
-	echo ODD to HTML via Lite
-	curl -s  -F upload=@test.odd  -o temp-results/result3.html http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml
 	echo ODD to RELAXNG
 	curl -s  -F upload=@test.odd  -o temp-results/result.rng http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/relaxng%3Aapplication%3Axml-relaxng/
-	echo Docbook to TEI
-	curl -s  -F upload=@test.dbk  -o temp-results/result4.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/DBK%3Atext%3Axml/TEI%3Atext%3Axml
 	echo Word .doc to ePub
 	curl -s  -o temp-results/result2.epub -F upload=@test.doc http://$(SERVER):$(PORT)/ege-webservice/Conversions/doc%3Aapplication%3Amsword/oo%3Aapplication%3Avnd.oasis.opendocument.text/TEI%3Atext%3Axml/epub%3Aapplication%3Aepub%2Bzip
 	echo TEI To ODT
@@ -50,10 +48,24 @@ test:
 	echo ODD to DTD
 	curl -s  -F upload=@test.odd  -o temp-results/result4.dtd http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/dtd%3Aapplication%3Axml-dtd/
 	echo ODD to Lite
-	curl -s  -F upload=@test.odd  -o temp-results/result4.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/TEI%3Atext%3Axml/
+	curl -s  -F upload=@test.odd  -o temp-results/result5.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/TEI%3Atext%3Axml/
 	echo ODD to Compiled
 	curl -s  -F upload=@test.odd  -o temp-results/result4.oddc http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/
 	echo ODD to HTML
 	curl -s  -F upload=@test.odd  -o temp-results/result4.html http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/oddhtml%3Aapplication%3Axhtml%2Bxml/
+	echo ODD to RELAXNG in French
+	curl -s  -F upload=@test.odd  -o temp-results/result2.rng http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/relaxng%3Aapplication%3Axml-relaxng/?properties=$(L)
+	echo TEI to NLM
+	curl -s  -F upload=@test.xml  -o temp-results/result.nlm http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/NLM%3Atext%3Axml
+	echo Docbook to TEI
+	curl -s  -F upload=@test.dbk  -o temp-results/result4.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/DBK%3Atext%3Axml/TEI%3Atext%3Axml
+	echo TEI to NLM
+	curl -s  -F upload=@test.xml  -o temp-results/result.nlm http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/NLM%3Atext%3Axml
+	echo ODD to ISOSCH
+	curl -s  -F upload=@test2.odd  -o temp-results/result.isosch http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/isosch%3Atext%3Axml/
+	echo Compiled ODD to ISOSCH
+	curl -s  -F upload=@test.oddc  -o temp-results/result.isosch http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODDC%3Atext%3Axml/isosch%3Atext%3Axml/
+	echo ODD to HTML via Lite
+	curl -s  -F upload=@test.odd  -o temp-results/result3.html http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/
 	echo Differences
 	diff -r temp-results expected-results

@@ -1,6 +1,6 @@
 
 <!--
-DTD Generated 2010-08-28T21:29:30Z. 
+DTD Generated 2010-10-17T18:13:07Z. 
 Edition: 1.7.0. Last updated on July 6th 2010.
 Edition Location: http://www.tei-c.org/Vault/P5/1.7.0/
 
@@ -10,41 +10,19 @@ Edition Location: http://www.tei-c.org/Vault/P5/1.7.0/
 
 <!-- end datatypes -->
 
-<!-- start predeclared patterns -->
+<!--predeclared classes -->
 
-<!-- start rest of patterns -->
-
-<!ENTITY % macro.paraContent '( #PCDATA |
- _DUMMY_model.gLike |
- %model.phrase; |
- %model.inter; |
- %model.global;)*' >
-
-<!ENTITY % macro.limitedContent '( #PCDATA |
- %model.limitedPhrase; |
- %model.inter;)*' >
-
-<!ENTITY % macro.phraseSeq '( #PCDATA |
- _DUMMY_model.gLike |
- %model.phrase; |
- %model.global;)*' >
-
-<!ENTITY % macro.phraseSeq.limited '( #PCDATA |
- %model.limitedPhrase; |
- %model.global;)*' >
-
-<!ENTITY % macro.specialPara '( #PCDATA |
- _DUMMY_model.gLike |
- %model.phrase; |
- %model.inter; |
- %model.divPart; |
- %model.global;)*' >
-
-<!ENTITY % macro.anyXML ' ANY' >
-
-<!-- end patterns -->
-
-<!-- start classes -->
+<!ENTITY % model.entryPart ""> 
+<!ENTITY % model.entryPart_sequence ""> 
+<!ENTITY % model.entryPart_sequenceOptional ""> 
+<!ENTITY % model.entryPart_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.entryPart_sequenceRepeatable ""> 
+<!ENTITY % model.resourceLike ""> 
+<!ENTITY % model.resourceLike_sequence ""> 
+<!ENTITY % model.resourceLike_sequenceOptional ""> 
+<!ENTITY % model.resourceLike_sequenceOptionalRepeatable ""> 
+<!ENTITY % model.resourceLike_sequenceRepeatable ""> 
+<!--end of predeclared classes -->
 <!ENTITY % att.ascribed.attributes '
 who CDATA  #IMPLIED'> 
 <!ENTITY % att.ascribed.attribute.who '
@@ -744,7 +722,39 @@ version CDATA #IMPLIED'>
 <!ENTITY % model.resourceLike_sequenceOptional ""> 
 <!ENTITY % model.resourceLike_sequenceOptionalRepeatable ""> 
 <!ENTITY % model.resourceLike_sequenceRepeatable ""> 
-<!-- stop classes -->
+<!-- start predeclared patterns -->
+
+<!-- start rest of patterns -->
+
+<!ENTITY % macro.paraContent '( #PCDATA |
+ _DUMMY_model.gLike |
+ %model.phrase; |
+ %model.inter; |
+ %model.global;)*' >
+
+<!ENTITY % macro.limitedContent '( #PCDATA |
+ %model.limitedPhrase; |
+ %model.inter;)*' >
+
+<!ENTITY % macro.phraseSeq '( #PCDATA |
+ _DUMMY_model.gLike |
+ %model.phrase; |
+ %model.global;)*' >
+
+<!ENTITY % macro.phraseSeq.limited '( #PCDATA |
+ %model.limitedPhrase; |
+ %model.global;)*' >
+
+<!ENTITY % macro.specialPara '( #PCDATA |
+ _DUMMY_model.gLike |
+ %model.phrase; |
+ %model.inter; |
+ %model.divPart; |
+ %model.global;)*' >
+
+<!ENTITY % macro.anyXML ' ANY' >
+
+<!-- end patterns -->
 
 <!-- start elements -->
 
