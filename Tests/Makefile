@@ -67,5 +67,14 @@ test:
 	curl -s  -F upload=@test.oddc  -o temp-results/result.isosch http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODDC%3Atext%3Axml/isosch%3Atext%3Axml/
 	echo ODD to HTML via Lite
 	curl -s  -F upload=@test.odd  -o temp-results/result3.html http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/
+	echo TITE to ePUB
+	curl -s  -F upload=@test.tite  -o temp-results/test10.epub http://$(SERVER):$(PORT)/ege-webservice/Conversions/Tite%3Atext%3Axml/TEI%3Atext%3Axml/epub%3Aapplication%3Aepub%2Bzip/
 	echo Differences
 	diff -r temp-results expected-results
+
+foo:
+	echo To ePub
+	curl -s  -o temp-results/result9.epub -F upload=@test9.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/epub%3Aapplication%3Aepub%2Bzip
+
+
+

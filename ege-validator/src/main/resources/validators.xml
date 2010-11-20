@@ -3,7 +3,7 @@
 	<validator format="MASTER" mimeType="text/xml">
 		<dtd systemId="ege_master" root="TEI.2" />
 	</validator>
-	<validator format="TEI" mimeType="text/xml">
+	<validator format="ENRICH" mimeType="text/xml">
 		<scheme url="http://tei.oucs.ox.ac.uk/ENRICH/ODD/RomaResults/enrich.xsd" />
 	</validator>
 	<validator format="EAD" mimeType="text/xml">

@@ -301,9 +301,10 @@ public class ImageFetcher {
 			String coverImage = "cover.jpg";
 			File cover = new File(outputDir + coverImage);	
 		
-			String author = properties.get("author");
-			String title = properties.get("title");
+			String author = properties.get("author").replaceAll("[ \n]+", " ");
+			String title = properties.get("title").replaceAll("[ \n]+", " ");
 			if (author.matches("([^,]+), ([^,]+), (.+)")) {
+
 		            author = author.replaceAll("([^,]+), ([^,]+), (.+)","$2 $1");
 			}
 			if (title.length() > 60) {
@@ -313,6 +314,7 @@ public class ImageFetcher {
 				    title= title.substring(0, 60) + Rest.substring(0,stop) + "...";
 				}
 			}
+			//LOGGER.info("AFTER author is " + author + " and title is " + title);
 			BufferedImage img = ImageIO.read(coverTemplate);
 			Graphics2D g = (Graphics2D) img.getGraphics();
 

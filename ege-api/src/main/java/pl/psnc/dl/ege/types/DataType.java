@@ -27,7 +27,7 @@ public class DataType implements Comparable {
 		this.format = format;
 		this.mimeType = mimeType;
 		description = format + "," + mimeType;
-		documentFamily = "Undefined document formats";
+		documentFamily = "Document formats";
 	}
 
 	
@@ -45,7 +45,7 @@ public class DataType implements Comparable {
 		this.format = format;
 		this.mimeType = mimeType;
 		this.description = description;
-		documentFamily = "Undefined document formats";
+		documentFamily = "Document formats";
 	}
 
 	/**
