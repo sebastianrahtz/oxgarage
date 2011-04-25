@@ -1,5 +1,8 @@
 package pl.psnc.dl.ege.tei;
 
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -28,6 +31,7 @@ import net.sf.saxon.s9api.XsltExecutable;
 import net.sf.saxon.s9api.XsltTransformer;
 import net.sf.saxon.s9api.XdmNode;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.tei.exceptions.ConfigurationException;
 import org.tei.tei.DocXTransformationProperties;
@@ -73,12 +77,19 @@ public class TEIConverter implements Converter {
 			final ConversionActionArguments conversionDataTypes)
 			throws ConverterException, IOException {
 		boolean found = false;
-		try {
+
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		StringWriter writer = new StringWriter();
+		IOUtils.copy(inputStream, writer, encoding);
+		String theString = writer.toString();
+				try {
 			for (ConversionActionArguments cadt : ConverterConfiguration.CONVERSIONS) {
 				if (conversionDataTypes.equals(cadt)) {
 					String profile = cadt.getProperties().get(
 							ConverterConfiguration.PROFILE_KEY);
-					LOGGER.info("Converting FROM:  "
+					LOGGER(theString);
+					LOGGER.info(dateFormat.format(date) + ": converting FROM:  "
 						    + conversionDataTypes.getInputType().toString()
 						    + " TO "
 						    + conversionDataTypes.getOutputType().toString()

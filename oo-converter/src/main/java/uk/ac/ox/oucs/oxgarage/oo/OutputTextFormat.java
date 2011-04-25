@@ -5,7 +5,7 @@ public enum OutputTextFormat {
     /*
       supported formats
 
-     Name ("name", "mime type for target", "description", "extension", visible)
+       Name ("name", "mime type for target", "description", "extension", visible, cost)
 
      */
 	PDF("pdf","application/pdf", "PDF Document", "pdf", true, 4),

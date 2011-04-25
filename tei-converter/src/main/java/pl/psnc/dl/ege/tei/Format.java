@@ -21,7 +21,7 @@ public enum Format {
 
 	DOCX("docx","application/vnd.openxmlformats-officedocument.wordprocessingml.document","docx","TEI", "TEI P5 XML Document", "text", "Microsoft Word Document (.docx)", "text", true, 9),
 
-	ODT("oo","application/vnd.oasis.opendocument.text","oo","TEI", "TEI P5 XML Document", "text", "Open Office Text Document (.odt)", "text", true, 13),
+	ODT("oo","application/vnd.oasis.opendocument.text","oo","TEI", "TEI P5 XML Document", "text", "Open Office Text Document (.odt)", "text", true, 8),
 
 	LATEX("latex","application/x-latex","latex","TEI", "TEI P5 XML Document", "text", "LaTeX Document", "text", true, 10),
 	

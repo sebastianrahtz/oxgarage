@@ -14,7 +14,7 @@ public enum InputTextFormat {
 	RTF("rtf", "application/rtf", "Rich Text Format (.rtf)", "rtf", true, 6),
 	TXT("txt", "text/plain", "Plain Text (.txt)", "txt", true, 5),
 	SXW("sxw", "application/vnd.sun.xml.writer", "OpenOffice 1.0 Text Document (.sxw)", "sxw", true, 4),
-	HTML("xhtml", "application/xhtml+xml", "xHTML Document", "html", true, 6),  
+	HTML("xhtml", "application/xhtml+xml", "xHTML Document", "html", true, 9),  
 	WPD("wpd", "application/wordperfect", "WordPerfect Document (.wpd)", "wpd", true, 5);
 
 	private String name;
