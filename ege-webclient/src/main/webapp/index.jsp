@@ -114,7 +114,7 @@ document.write(d.getFullYear())
 	</div>
 </div>
 <div id="footer" >
-<a href="http://www.oucs.ox.ac.uk/publicity/internships/index.xml.ID=intern6">About OxGarage</a> | <a href="mailto:oxgarage@oucs.ox.ac.uk">Feedback</a>
+<a href="http://www.oucs.ox.ac.uk/oxgarage/">About OxGarage</a> | <a href="mailto:oxgarage@oucs.ox.ac.uk">Feedback</a>
  </div> 
 </body>
 </html>
