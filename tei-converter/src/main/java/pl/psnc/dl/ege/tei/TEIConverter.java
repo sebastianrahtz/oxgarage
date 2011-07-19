@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.StringWriter;
 import java.util.List;
 import java.util.Map;
 import java.util.Arrays;
@@ -81,14 +82,14 @@ public class TEIConverter implements Converter {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		StringWriter writer = new StringWriter();
-		IOUtils.copy(inputStream, writer, encoding);
+		/* IOUtils.copy(inputStream, writer);*/
 		String theString = writer.toString();
 				try {
 			for (ConversionActionArguments cadt : ConverterConfiguration.CONVERSIONS) {
 				if (conversionDataTypes.equals(cadt)) {
 					String profile = cadt.getProperties().get(
 							ConverterConfiguration.PROFILE_KEY);
-					LOGGER(theString);
+					LOGGER.info(theString);
 					LOGGER.info(dateFormat.format(date) + ": converting FROM:  "
 						    + conversionDataTypes.getInputType().toString()
 						    + " TO "
