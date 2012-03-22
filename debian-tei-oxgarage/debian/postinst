@@ -1,0 +1,6 @@
+#!/bin/sh
+chown -R tomcat6:tomcat6 /var/cache/oxgarage
+perl -p -i -e "s/localhost/`hostname -f`/" /var/lib/tomcat6/webapps/ege-webclient/WEB-INF/web.xml
+/etc/init.d/tomcat6 restart
+
+

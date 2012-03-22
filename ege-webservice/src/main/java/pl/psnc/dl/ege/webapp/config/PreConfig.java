@@ -28,5 +28,8 @@ public class PreConfig implements ServletContextListener
 		//loads local labels provider
 		LabelProvider lp = LabelProvider.getInstance(context.getRealPath("/WEB-INF/locale/"));
 		context.setAttribute(LABEL_PROVIDER, lp);
+
+		context.setAttribute("EGEConstants", "pl.psnc.dl.ege.configuration.EGEConstants;");
+
 	}
 }

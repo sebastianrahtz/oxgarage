@@ -9,9 +9,9 @@ public enum OutputPresentationFormat {
 
      */
 	PDF("pdf","application/pdf", "PDF Document", "pdf", true, 4),
-	ODP("odp", "application/vnd.oasis.opendocument.presentation", "Open Office Presentation (.odp)", "odp", true, 4),
-	SXI("sxi", "application/vnd.sun.xml.impress", "OpenOffice.org 1.0 Presentation (.sxi)", "sxi", true, 4),
-	PPT("ppt", "application/vnd.ms-powerpoint", "Microsoft PowerPoint Presentation (.ppt)", "ppt", true, 5),
+	ODP("odp", "application/vnd.oasis.opendocument.presentation", "Open Office (.odp)", "odp", true, 4),
+	SXI("sxi", "application/vnd.sun.xml.impress", "OpenOffice.org 1.0 (.sxi)", "sxi", true, 4),
+	PPT("ppt", "application/vnd.ms-powerpoint", "Microsoft PowerPoint (.ppt)", "ppt", true, 5),
 	SWF("swf", "application/x-shockwave-flash", "Macromedia Flash (.swf)", "swf", true, 6);
 
 	private String name;

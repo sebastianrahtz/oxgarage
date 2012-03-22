@@ -30,12 +30,12 @@ $().ready(
 				infoHidden = !infoHidden;				
 				if (infoHidden) {
 					$('a#showMore').empty();
-					$('a#showMore').append('+ Show advanced options');
+				    $('a#showMore').append('+ ' + lookupI18n('lang_showoptions'));
 					$("#moreOptions").hide('fast');
 				}
 				else {
 					$('a#showMore').empty();
-					$('a#showMore').append('- Hide advanced options');
+					$('a#showMore').append('- '+ lookupI18n('lang_hideoptions'));
 					$("#moreOptions").show('fast');
 				}
 			});
@@ -68,6 +68,25 @@ $().ready(
 				$('#' + ids[1]).show("fast");
 			});
 		});
+
+ function lookupI18n(label) {
+     var language = $(document).getUrlParam("lang");
+     if (language == null ) { language='en'; }
+     var translation = "(no translation for label " + label + ")";
+     $.ajax({
+        url: 'i18n.xml',
+	async:false,
+        success: function(xml) { 
+	    $(xml).find('translation').each(function(){
+                var id = $(this).attr('id');
+		if (id == label) {  
+		    translation = $(this).find(language).text(); 
+		}
+            });
+	}
+     });
+     return translation;
+ }
 
 /**
  * Perform parameterised ajax request.
@@ -128,7 +147,7 @@ function showError(msg) {
 		'padding-bottom' : '6px',
 		'height' : '150px'
 	});
-	$("#message").html("<p>Error occured. Please try again.</p>");
+    $("#message").html("<p>" + lookupI18n('lang_error') + "</p>");
 }
 
 function hideError() {
@@ -177,7 +196,7 @@ function conversionsListDataHandler(data) {
 		var documentFamily = descs[0].split(" ")[0];
 		if(container.children().children("#" + documentFamily).length==0) {
 			if(i!=0) container.append("</ul></li>");
-			container.append("<li class=\"documentFamilyItem\"><a href=\"#\" class=\"aDocFamily\" id=\"aDocFamily_" + documentFamily + "\"><img src=\"images/" + documentFamily.toLowerCase() + ".png\" /><strong>" + descs[0] + "</strong></a><ul id=\"" + documentFamily + "\" class=\"documentFamily\">");
+			container.append("<li class=\"documentFamilyItem\"><a href=\"#\" class=\"aDocFamily\" id=\"aDocFamily_" + documentFamily + "\"><img src=\"images/" + documentFamily.toLowerCase() + ".png\" /><strong>" + lookupI18n(descs[0]) + "</strong></a><ul id=\"" + documentFamily + "\" class=\"documentFamily\">");
 			$("#" + documentFamily).hide();
 		}
 		// create link from input type
@@ -193,7 +212,7 @@ function conversionsListDataHandler(data) {
 					$("#sendFile").attr("disabled", "");
 					var id = $(this).attr("id");
 					var li = parseInt(id.replace(/pSel_/, ""));
-					$("#message").html("<p>...Working, please wait...</p>");
+				        $("#message").html("<p>" + lookupI18n('lang_working') + "</p>");
 					$('#conversionFormDiv').animate({
 						opacity : 0.0
 						}, 150, function() {
@@ -229,7 +248,7 @@ function conversionsListDataHandler(data) {
 					resetPathSelection();
 					var id = $(this).attr("id");
 					var li = parseInt(id.replace(/pSela_/, ""));
-					$("#message").html("<p>...Working, please wait...</p>");
+				        $("#message").html("<p>" + lookupI18n('lang_working') + "</p>");
 					$('#conversionFormDiv').animate({
 						opacity : 0.0
 						}, 150, function() {
@@ -262,7 +281,7 @@ function conversionsListDataHandler(data) {
 	$("#message").animate({
 		opacity : 0.0
 		}, 250, function() {
-			$("#message").html("<p>Please select the type of the document you want to convert.</p>");
+			$("#message").html("<p>" + lookupI18n('lang_selecttype') + "</p>");
 		$("#message").animate({
 			opacity : 1.0
 			}, 250, function() {});					
@@ -561,7 +580,7 @@ function conversionsPathsDataHandler(data) {
 			$("#message").animate({
 				opacity : 0.0
 				}, 250, function() {
-					$("#message").html("<p>Choose the file, upload images and press convert.</p>");	
+					$("#message").html("<p>" + lookupI18n('lang_sayupload') + "</p>");	
 					$("#message").animate({
 					opacity : 1.0
 					}, 250, function() {
@@ -588,7 +607,7 @@ function conversionsPathsDataHandler(data) {
 			$("#message").animate({
 				opacity : 0.0
 				}, 250, function() {
-					$("#message").html("<p>Choose the file, upload images and press convert.</p>");	
+				    $("#message").html("<p>" + lookupI18n('lang_sayupload') + "</p>");	
 					$("#message").animate({
 					opacity : 1.0
 					}, 250, function() {
@@ -601,7 +620,7 @@ function conversionsPathsDataHandler(data) {
 	$("#message").animate({
 		opacity : 0.0
 		}, 250, function() {
-			$("#message").html("<p>Select the format into which you want to convert your document.</p>");
+			$("#message").html("<p>" + lookupI18n('lang_chooseoutput') + "</p>");
 			$("#message").animate({
 			opacity : 1.0
 			}, 250, function() {
@@ -671,7 +690,7 @@ function convertFile() {
 			$("#message").animate({
 				opacity : 0.0
 				}, 250, function() {
-					$("#message").html("<p>File submitted for conversion. Please wait until the download dialog appears...</p>");
+				    $("#message").html("<p>" + lookupI18n('lang_submitted') + "</p>");
 				$("#message").animate({
 					opacity : 1.0
 					}, 250, function() {
@@ -697,7 +716,7 @@ function convertFile() {
 				}
 			});
 		} else {
-			alert("No file specified! Please choose file you want to convert and try again.");
+		    alert(lookupI18n('lang_nofile'));
 		}
 	}
 }
@@ -713,7 +732,7 @@ function resolveErrorResponse(data, validationContainer){
 		if(typeof result != 'undefined' && result != null){
 			var msg = result.getAttribute("msg");
 			var exClass = result.getAttribute("exclass");
-			showError("<p>Error type : " + exClass + "</p><p>Error message : " + msg + "</p>");
+			showError("<p>Error: " + exClass + "</p><p>" + msg + "</p>");
 			$("#sendFile").attr("disabled", "");
 		}
 	}
@@ -727,7 +746,7 @@ function resetForm(){
 	$("#message").animate({
 		opacity : 0.0
 		}, 250, function() {
-			$("#message").html("<p>Please select the type of the document you want to convert.</p>");
+		    $("#message").html("<p>"+ lookupI18n('lang_selecttype') + "</p>");
 		$("#message").animate({
 			opacity : 1.0
 			}, 250, function() {
@@ -755,7 +774,7 @@ function resetForm(){
 	$("#moreOptions").hide('fast');
 	infoHidden = true;
 	$('a#showMore').empty();
-	$('a#showMore').append('+ Show advanced options');
+	$('a#showMore').append('+ ' + lookupI18n('lang_showoptions'));
 	var $inputs = $('#conversionsList li input[type=radio]');
 	$inputs.each(function() {
         	$(this).attr("checked", false);
@@ -766,10 +785,9 @@ function resetForm(){
 
 function showUrlPath() {
 	var props = new String(selectedConvPath.readOptionsAsXml());
-	if($("#urlPath").length==0) $("#moreOptions").append("<div id=\"urlPath\" class=\"vertOptions\"><p><strong>URL for conversion with current properties:</strong></p><div id=\"showPathWithProperties\"></div><p><strong>URL for conversion with default properties:</strong></p><div id=\"showPathWithoutProperties\"></div></div>");
+	if($("#urlPath").length==0) $("#moreOptions").append("<div id=\"urlPath\" class=\"vertOptions\"><p><strong>" + lookupI18n('urlCurrent') + ":</strong></p><div id=\"showPathWithProperties\"></div><p><strong>" + lookupI18n('urlDefault') + ":</strong></p><div id=\"showPathWithoutProperties\"></div></div>");
 
-	else $("#urlPath").html("<p><strong>URL for conversion with current properties:</strong></p><div id=\"showPathWithProperties\"></div><p><strong>URL for conversion with default properties:</strong></p><div id=\"showPathWithoutProperties\"></div></div>");
-
+	else $("#urlPath").html("<p><strong>" + lookupI18n('urlCurrent') + ":</strong></p><div id=\"showPathWithProperties\"></div><p><strong>" + lookupI18n('urlDefault') + ":</strong></p><div id=\"showPathWithoutProperties\"></div></div>");
 	$("#showPathWithProperties").text(selectedPathURL+"conversion?properties=" + props).html();
 	$("#showPathWithoutProperties").text(selectedPathURL).html();
 }

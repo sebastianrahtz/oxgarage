@@ -1,0 +1,55 @@
+#!/usr/bin/make -f
+export DH_COMPAT=5
+
+DESTDIR = $(CURDIR)/debian/tei-oxgarage
+
+configure: configure-stamp
+configure-stamp:
+	dh_testdir
+	touch configure-stamp
+
+
+build: build-stamp
+
+build-stamp: configure-stamp 
+	dh_testdir
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp configure-stamp
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+	mkdir -p $(DESTDIR)/var/lib/tomcat6/webapps
+	mkdir -p $(DESTDIR)/var/cache/oxgarage
+	mkdir -p $(DESTDIR)/etc
+	cp -r ../ege-webclient/target/ege-webclient $(DESTDIR)/var/lib/tomcat6/webapps
+	cp -r ../ege-webservice/target/ege-webservice $(DESTDIR)/var/lib/tomcat6/webapps
+	cp ../ege-webservice/target/ege-webservice/WEB-INF/lib/oxgarage.properties $(DESTDIR)/etc
+	mkdir -p $(DESTDIR)/var/cache/oxgarage
+	cp ../log4j.xml $(DESTDIR)/var/cache/oxgarage
+
+# Build architecture-independent files here.
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs 
+	dh_compress  --exclude=.xml --exclude=.xsl
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+# Build architecture-dependent files here.
+binary-arch: build install
+# We have nothing to do by default.
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install configure

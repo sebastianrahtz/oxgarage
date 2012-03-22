@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
+import pl.psnc.dl.ege.configuration.EGEConstants;
 
 import org.apache.log4j.Logger;
 
@@ -20,8 +21,6 @@ import org.apache.log4j.Logger;
 public final class LabelProvider
 {
 	private static LabelProvider instance = null;
-	
-	private static final String DEFAULT_LOCALE = "en"; 
 	
 	private static final String REGEXP_LABEL_CONT = "labels_[a-z][a-z].xml";
 	
@@ -74,7 +73,7 @@ public final class LabelProvider
 	 * @return
 	 */
 	public String getLabel(String key){
-		return getLabel(key,DEFAULT_LOCALE);
+	    return getLabel(key,EGEConstants.DEFAULT_LOCALE);
 	}
 	
 	/**

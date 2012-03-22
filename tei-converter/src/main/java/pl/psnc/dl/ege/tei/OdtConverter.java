@@ -126,7 +126,7 @@ public class OdtConverter extends ComplexConverter {
 	 * Sets all relevant XSLT parameters needed for conversion from TEI
 	 */
 	protected void setParametersFromTEI(XsltTransformer transformer) {
-		transformer.setParameter(new QName("dir"), new XdmAtomicValue(tempDirectoryNameURI));
+		transformer.setParameter(new QName("outputDir"), new XdmAtomicValue(tempDirectoryNameURI));
 	}
 
 	/**

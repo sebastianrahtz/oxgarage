@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="pl.psnc.dl.ege.tei.profileNames">Selectionner profil"</entry>
+<entry key="oxgarage.getImages">Copier et renommer tous les images fournis</entry>
+<entry key="oxgarage.getOnlineImages">Télécharger images référencés dans le document </entry>
+<entry key="oxgarage.textOnly">Supprimer images référencés dans le document</entry>
+<entry key="oxgarage.lang">Langue</entry>
+<entry key="oxgarage.title">Oxgarage Conversion</entry>
+</properties>

@@ -8,12 +8,12 @@ public enum OutputTextFormat {
        Name ("name", "mime type for target", "description", "extension", visible, cost)
 
      */
-	PDF("pdf","application/pdf", "PDF Document", "pdf", true, 4),
-	ODT("odt", "application/vnd.oasis.opendocument.text", "Open Office Text Document (.odt)", "odt", true, 4),
-	DOC("doc", "application/msword", "Microsoft Word Document (.doc)", "doc", true, 6),
+	PDF("pdf","application/pdf", "PDF", "pdf", true, 4),
+	ODT("odt", "application/vnd.oasis.opendocument.text", "Open Office Text (.odt)", "odt", true, 4),
+	DOC("doc", "application/msword", "Microsoft Word (.doc)", "doc", true, 6),
 	RTF("rtf", "application/rtf", "Rich Text Format (.rtf)", "rtf", true, 6),
 	TXT("txt", "text/plain", "Plain Text (.txt)", "txt", true, 5),
-	SXW("sxw", "application/vnd.sun.xml.writer", "OpenOffice 1.0 Text Document (.sxw)", "sxw", true, 5);
+	SXW("sxw", "application/vnd.sun.xml.writer", "OpenOffice 1.0 Text (.sxw)", "sxw", true, 5);
 
 	private String name;
 	private String mimeType;

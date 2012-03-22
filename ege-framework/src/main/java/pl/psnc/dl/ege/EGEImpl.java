@@ -56,9 +56,7 @@ public class EGEImpl
 
 	static {
 		try {
-			String pathToProps = EGEConstants.userHome + EGEConstants.fS
-					+ EGEConstants.egeDataDirectory + EGEConstants.fS
-					+ "configuration" + EGEConstants.fS + "log4j.xml";
+			String pathToProps = EGEConstants.OXGAPP + "log4j.xml";
 			File conf = new File(pathToProps);
 			if (conf.exists())
 				DOMConfigurator.configure(pathToProps);

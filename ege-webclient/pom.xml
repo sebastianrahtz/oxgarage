@@ -5,13 +5,26 @@
   <parent>
     <artifactId>ege</artifactId>
     <groupId>pl.psnc.dl.ege</groupId>
-    <version>0.4.3</version>
+    <version>0.5.0</version>
   </parent>
   <groupId>pl.psnc.dl.ege.webapp</groupId>
   <artifactId>ege-webclient</artifactId>
   <version>0.3</version>
   <packaging>war</packaging>
   <name>EGE Web Client</name>
+  <properties>
+
+    <project.build.sourceEncoding>
+      UTF-8
+    </project.build.sourceEncoding>
+
+    <project.reporting.outputEncoding>
+      UTF-8
+    </project.reporting.outputEncoding>
+
+  </properties>
+
+
   <url>/multiprojects/ege-webclient</url>
   <description>
 	EGE Web Client. Web client is separated user interface project for EGE RESTful web service functionality.

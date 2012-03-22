@@ -60,19 +60,10 @@ public class MultiXslConverter implements ConfigurableConverter {
 	
 	private static final String MASTER = "MASTER";
 
-	private static final String PATH;
-
 	private static final String STYLESHEETS_PATH;
 
-	private static final String TEICONFIG_PATH;		
-
-	private static final String SLASH = "/";
-	
 	static {
-		String pref = MultiXslConverter.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-		PATH = pref.substring(0, pref.lastIndexOf(SLASH));
-		TEICONFIG_PATH = PATH + File.separator + "tei-config"	+ File.separator;
-		STYLESHEETS_PATH = PATH + File.separator + "tei-config"	+ File.separator + "stylesheets" + File.separator;
+		STYLESHEETS_PATH = EGEConstants.TEIROOT + "stylesheet" + File.separator;
 	}
 	
 	/*
@@ -110,7 +101,7 @@ public class MultiXslConverter implements ConfigurableConverter {
 			ior.compressData(outTempDir, outputStream);
 		} catch (ZipException ex) {
 			throw new ConverterException(
-					"Error during EAD conversion : probably wrong input data.");
+					"Error during conversion unzipping : probably wrong input data.");
 		} catch (SaxonApiException ex) {
 			ex.printStackTrace();
 			throw new ConverterException(ex.getMessage());
@@ -293,7 +284,7 @@ public class MultiXslConverter implements ConfigurableConverter {
 				transformer.setInitialTemplate(new QName("main"));
 				transformer.setParameter(new QName("input-uri"), new XdmAtomicValue(inputFile.toString()));
 			}
-			transformer.setParameter(new QName("configDirectory"), new XdmAtomicValue(TEICONFIG_PATH));
+			transformer.setParameter(new QName("configDirectory"), new XdmAtomicValue(EGEConstants.TEIROOT));
 			Serializer result = new Serializer();
 			result.setOutputStream(fos);
 			transformer.setDestination(result);
@@ -328,7 +319,7 @@ public class MultiXslConverter implements ConfigurableConverter {
 
 	public void configure(Map<String, String> params) throws EGEException {
 		try {
-			xslUri = new File(STYLESHEETS_PATH + params.get("xsluri")).toURI();
+			xslUri = new File(STYLESHEETS_PATH + File.separator +params.get("xsluri")).toURI();
 			String iFormat = params.get("iFormat");
 			StringBuffer sb = new StringBuffer();
 			sb.append("jar:file:");

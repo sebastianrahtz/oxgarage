@@ -318,8 +318,6 @@ public abstract class ComplexConverter {
 	 * Creates a new temp directory
 	 */
 	protected File prepareTempDir() {
-		/*String tmpDir = new File(ConverterConfiguration.PATH).toString()
-				+ File.separator + "tei-config" + File.separator + "tmp";*/
 		String tmpDir = EGEConstants.TEMP_PATH;
 		String uid = UUID.randomUUID().toString();
 		File inTempDir = new File(tmpDir + File.separator + uid

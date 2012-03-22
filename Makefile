@@ -7,16 +7,6 @@ LIB=$(PREFIX)/$(APACHE)/webapps/ege-webservice/WEB-INF/lib/
 
 default: build
 
-debianize:
-	$(SUDO) $(PREFIX)/$(APACHE)/bin/shutdown.sh
-	sleep 5
-	$(SUDO) rm -rf $(PREFIX)/$(APACHE)/webapps/ege-webservice/WEB-INF/lib/tei-config/stylesheets
-	$(SUDO) rm $(PREFIX)/$(APACHE)/webapps/ege-webservice/WEB-INF/lib/tei-config/odd/p5subset.xml
-	$(SUDO) ln -s /usr/share/xml/tei/odd/p5subset.xml $(PREFIX)/$(APACHE)/webapps/ege-webservice/WEB-INF/lib/tei-config/odd/p5subset.xml
-	$(SUDO) ln -s /usr/share/xml/tei/stylesheet $(PREFIX)/$(APACHE)/webapps/ege-webservice/WEB-INF/lib/tei-config/stylesheets
-	$(SUDO) perl -p -i -e "s/localhost/`hostname -f`/" $(PREFIX)/$(APACHE)/webapps/ege-webclient/WEB-INF/web.xml
-	$(SUDO) $(PREFIX)/$(APACHE)/bin/startup.sh	
-
 install:
 	$(SUDO) $(PREFIX)/$(APACHE)/bin/shutdown.sh
 	sleep 5
@@ -28,6 +18,16 @@ install:
 
 build:
 	mvn install
+
+debversion:
+	(cd debian-tei-oxgarage;  dch -v `cat ../VERSION` new release)
+
+deb:
+	@echo BUILD Make Debian packages
+	rm -f tei*oxgarage*_*deb
+	rm -f tei*oxgarage*_*changes
+	rm -f tei*oxgarage*_*build
+	(cd debian-tei-oxgarage; debclean;debuild --no-lintian  -nc -b -i.svn -I.svn -uc -us)
 
 setup:
 	mvn install:install-file -DgroupId=jpf -DartifactId=jpf -Dversion=1.5.1 -Dpackaging=jar -Dfile=jpf-1.5.1.jar 
@@ -43,6 +43,13 @@ setup:
 	mvn install:install-file -DgroupId=com.sun.star -DartifactId=ridl -Dversion=3.1.0 -Dpackaging=jar -Dfile=jod-lib/ridl-3.1.0.jar
 	mvn install:install-file -DgroupId=org.apache.commons.cli -DartifactId=commons-cli -Dversion=1.1 -Dpackaging=jar -Dfile=jod-lib/commons-cli-1.1.jar
 
-
 test:
 	(cd Tests;make)	
+
+clean:
+	mvn clean
+	rm -f tei*oxgarage*_*deb
+	rm -f tei*oxgarage*_*changes
+	rm -f tei*oxgarage*_*build
+	-rm -rf debian-tei-oxgarage/debian/tei-oxgarage
+	-rm -rf Tests/temp-results

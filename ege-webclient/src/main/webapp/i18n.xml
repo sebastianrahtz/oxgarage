@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+  <translation id="lang_title">
+    <en>OxGarage Conversion</en>
+    <fr>Conversions disponibles</fr>
+  </translation>
+  <translation id="lang_working">
+    <en>... Working, please wait...</en>
+    <fr>... conversion en cours : patienter SVP...</fr>
+  </translation>
+  <translation id="lang_selectfile">
+    <en>Select file to convert</en>
+    <fr>Sélectionner un ficher</fr>
+  </translation>
+  <translation id="lang_advanced">
+    <en>Show advanced options</en>
+    <fr>Afficher les options avancées</fr>
+  </translation>
+  <translation id="lang_uploadimages">
+    <en>Upload images</en>
+    <fr>Charger des images</fr>
+  </translation>
+  <translation id="lang_convertfrom">
+    <en>Convert from</en>
+    <fr>à partir de ce format</fr>
+  </translation>
+  <translation id="lang_convertto">
+    <en>Convert to</en>
+    <fr>vers ce format</fr>
+  </translation>
+  <translation id="lang_upload2">
+    <en>You can upload image files and .zip files containing images</en>
+    <fr>Vous pouvez charger des fichiers mode images individuels ou
+    regroupés en archive zip</fr>
+  </translation>
+  <translation id="lang_moreimages">
+    <en>Add more images</en>
+    <fr>Encore d' images</fr>
+  </translation>
+  <translation id="lang_selecttype">
+    <en>Please select the type of the document you want to convert</en>
+    <fr>Sélectionner le format à partir duquel vous désirez effectuer
+    une transformation</fr>
+  </translation>
+  <translation id="lang_sayupload">
+    <en>Choose the file, upload images and press convert</en>
+    <fr>Sélectionner le fichier, charger les images eventuelles, et
+    taper Effectuer la conversion</fr>
+  </translation>
+  <translation id="lang_chooseoutput">
+    <en>Select the format into which you want to convert your document</en>
+    <fr>Sélectionner le format vers lequel vous désirez effectuer une transformation</fr>
+  </translation>
+  <translation id="lang_submitted">
+    <en>File submitted for conversion. Please wait until the download dialog appears...</en>
+    <fr>Fichier soumis. Veuillez attendre l'affichage de la boîte de dialogue Téléchargement...</fr>
+  </translation>
+  <translation id="lang_error">
+    <en>Error occured. Please try again</en>
+    <fr>Une erreur s'est produite. S'il vous plaît essayez de nouveau</fr>
+  </translation>
+  <translation id="lang_showoptions">
+    <en>Show advanced options</en>
+    <fr>Afficher les options avancées</fr>
+  </translation>
+  <translation id="lang_hideoptions">
+    <en>Hide advanced options</en>
+    <fr>Cacher les options avancées</fr>
+  </translation>
+  <translation id="lang_nofile">
+    <en>No file specified! Please choose file you want to convert and try again</en>
+    <fr>Aucun fichier selectionné! S'il vous plaît choisir le fichier que
+    vous souhaitez convertir et essayez à nouveau</fr>
+  </translation>
+  <translation id="urlCurrent">
+    <en>URL for conversion with current properties</en>
+    <fr>URL équivalent</fr>
+  </translation>
+  <translation id="urlDefault">
+    <en>URL for conversion with default properties</en>
+    <fr>URL équivalent par défaut</fr>
+  </translation>
+  <translation id="Documents">
+    <en>Documents</en>
+    <fr>Documents</fr>
+  </translation>
+  <translation id="Presentations">
+    <en>Presentations</en>
+    <fr>Présentations</fr>
+  </translation>
+  <translation id="Spreadsheets">
+    <en>Spreadsheets</en>
+    <fr>Tableur</fr>
+  </translation>
+</translations>

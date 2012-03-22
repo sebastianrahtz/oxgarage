@@ -9,11 +9,14 @@ import java.io.BufferedInputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.io.IOException;
+/*
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.UUID;
+*/
+import java.util.*;
 import java.awt.image.BufferedImage;
 
 import net.sf.saxon.s9api.XdmNode;
@@ -307,14 +310,26 @@ public class ImageFetcher {
 
 		            author = author.replaceAll("([^,]+), ([^,]+), (.+)","$2 $1");
 			}
-			if (title.length() > 60) {
-			    String Rest= title.substring(60,title.length());
+			int tLen = title.length();
+			if (tLen > 60) {
+			    int firstTarget = 40;
+			    String Rest= title.substring(firstTarget,tLen);
 			    int stop = Rest.indexOf(' ');
 			    if (stop > -1) {
-				    title= title.substring(0, 60) + Rest.substring(0,stop) + "...";
+				firstTarget = firstTarget + stop;
+				}
+			    int secondTarget = 10;
+			    String reverse = new StringBuffer(title).reverse().toString();
+			    Rest= reverse.substring(secondTarget,tLen);
+			    stop = Rest.indexOf(' ');
+			    if (stop > -1) {
+				secondTarget = secondTarget + stop;
+				}
+			    int Gap = (tLen - secondTarget) - firstTarget;
+			    if ( Gap > 9) {
+				    title= title.substring(0, firstTarget) + "..." + title.substring(tLen - secondTarget - 1, tLen);
 				}
 			}
-			//LOGGER.info("AFTER author is " + author + " and title is " + title);
 			BufferedImage img = ImageIO.read(coverTemplate);
 			Graphics2D g = (Graphics2D) img.getGraphics();
 
@@ -322,10 +337,10 @@ public class ImageFetcher {
 			g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
                             RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 			int maxAuthorFontSize = 73;
-			FontMarginTuple authorProps = calculateFontMargin(new Font("MinionPro", Font.PLAIN, maxAuthorFontSize), 575, g, author, 2);
+			FontMarginTuple authorProps = calculateFontMargin(new Font("MinionPro", Font.PLAIN, maxAuthorFontSize), 565, g, author, 2);
 
 			int maxTitleFontSize = 73;
-			FontMarginTuple titleProps = calculateFontMargin(new Font("MinionPro", Font.BOLD, maxTitleFontSize), 585, g, title, 5);
+			FontMarginTuple titleProps = calculateFontMargin(new Font("MinionPro", Font.BOLD, maxTitleFontSize), 575, g, title, 5);
 
 			Font authorFont = authorProps.font;
 			int[] authorMargin = authorProps.margin;
@@ -353,7 +368,7 @@ public class ImageFetcher {
 				    topMargin = marginY + 200;
 			    }
 			for(int i = 0; i < lines.length; i++)
-			     g.drawString(lines[i], titleMargin[i],topMargin + i * 75 );
+			     g.drawString(lines[i], titleMargin[i] + 10 ,topMargin + i * 75 );
 			
 
 			g.setColor(Color.black);
@@ -361,7 +376,7 @@ public class ImageFetcher {
 			lines = authorText.split("\n");
 			topMargin = marginY + 565;
 			for(int i = 0; i < lines.length; i++)
-			    g.drawString(lines[i], authorMargin[i], topMargin + i * 75 );
+			    g.drawString(lines[i], authorMargin[i] + 10, topMargin + i * 75 );
 
 			ImageIO.write(img, "jpg", cover);
 			return coverImage;

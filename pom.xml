@@ -4,7 +4,7 @@
   <groupId>pl.psnc.dl.ege</groupId>
   <artifactId>ege</artifactId>
   <packaging>pom</packaging>
-  <version>0.4.3</version>
+  <version>0.5.0</version>
   <name>Enrich Garage Engine</name>
   <url>http://dl.psnc.pl/software/EGE/</url>
   <licenses>
@@ -80,36 +80,35 @@
     <module>ege-framework</module>
   </modules>
   <build>
+<plugins>
+<plugin>
+		<artifactId>maven-assembly-plugin</artifactId>
+		<version>2.2-beta-4</version>
+		<configuration>
+			<descriptors>
+				<descriptor>src/main/assembly/dist.xml</descriptor>
+				<descriptor>src/main/assembly/site.xml</descriptor>
+			</descriptors>
+			<finalName>ege-webapp-${project.version}</finalName>
+		</configuration>
+	</plugin>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-compiler-plugin</artifactId>
+   <configuration>
+     <compilerArgument>-verbose </compilerArgument>
+     <source>1.5</source>
+     <target>1.5</target>
+   </configuration>
+</plugin>
+</plugins>
+</build>
+<reporting>
     <plugins>
       <plugin>
-	<artifactId>maven-assembly-plugin</artifactId>
-	<version>2.2-beta-4</version>
-	<configuration>
-	  <descriptors>
-	    <descriptor>src/main/assembly/dist.xml</descriptor>
-	    <descriptor>src/main/assembly/site.xml</descriptor>
-	  </descriptors>
-	  <finalName>ege-webapp-${project.version}</finalName>
-	</configuration>
-      </plugin>
-      <plugin>
 	<groupId>org.apache.maven.plugins</groupId>
-	<version>2.3.2</version>
-	<artifactId>maven-compiler-plugin</artifactId>
-	<configuration>
-	  <compilerArgument>-verbose </compilerArgument>
-	  <source>1.5</source>
-	  <target>1.5</target>
-	</configuration>
-      </plugin>
-    </plugins>
-  </build>
-  <reporting>
-    <plugins>
-      <plugin>
-	<groupId>org.apache.maven.plugins</groupId>
-	<version>2.3.2</version>
 	<artifactId>maven-project-info-reports-plugin</artifactId>
+	<version>2.3</version>
 	<reportSets>
 	  <reportSet>
 	    <reports>
@@ -122,3 +121,4 @@
     </plugins>
   </reporting>
 </project>
+	

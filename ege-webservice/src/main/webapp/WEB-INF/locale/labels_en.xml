@@ -6,4 +6,5 @@
 <entry key="oxgarage.getOnlineImages">Download images located on the internet</entry>
 <entry key="oxgarage.textOnly">Convert text only, don't include any images from the document</entry>
 <entry key="oxgarage.lang">Language</entry>
+<entry key="oxgarage.title">Oxgarage Document Conversion</entry>
 </properties>

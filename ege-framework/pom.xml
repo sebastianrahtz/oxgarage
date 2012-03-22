@@ -4,12 +4,25 @@
   <parent>
     <artifactId>ege</artifactId>
     <groupId>pl.psnc.dl.ege</groupId>
-    <version>0.4.3</version>
+    <version>0.5.0</version>
   </parent>
   <groupId>pl.psnc.dl.ege</groupId>
   <artifactId>ege-framework</artifactId>
   <version>0.3</version>
   <name>EGE Framework</name>
+  <properties>
+
+    <project.build.sourceEncoding>
+      UTF-8
+    </project.build.sourceEncoding>
+
+    <project.reporting.outputEncoding>
+      UTF-8
+    </project.reporting.outputEncoding>
+
+  </properties>
+
+
   <url>multiprojects/ege-framework/</url>
   <description>
 	Basic EGE API implementation. Provides plugin mechanism based on JPF (Java Plugin Framework).
@@ -81,6 +94,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+	<version>2.3.2</version>
         <configuration>
           <source>1.6</source>
           <target>1.6</target>

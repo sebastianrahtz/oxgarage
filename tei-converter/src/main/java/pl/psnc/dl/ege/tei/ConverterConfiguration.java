@@ -12,11 +12,7 @@ import pl.psnc.dl.ege.configuration.EGEConstants;
 final class ConverterConfiguration
 {
 
-	public static final String DEFAULT_PROFILE = "default";
-
 	public static final String PROFILE_NOT_FOUND_MSG = "Profile not found, setting default profile...";
-
-	public static final String SLASH = "/";
 
 	public static final String TEI = "TEI";
 
@@ -24,8 +20,6 @@ final class ConverterConfiguration
 	
 	public static final String ZIP_MIME = "application/zip";
 	
-	public static final String PATH;
-
 	public static final String STYLESHEETS_PATH;
 
 	public static final List<ConversionActionArguments> CONVERSIONS = new ArrayList<ConversionActionArguments>();
@@ -42,14 +36,9 @@ final class ConverterConfiguration
 
 
 	static {
-		String pref = TEIConverter.class.getProtectionDomain().getCodeSource()
-				.getLocation().getPath();
-		PATH = pref.substring(0, pref.lastIndexOf(SLASH));
-		STYLESHEETS_PATH = PATH + File.separator + "tei-config"
-				+ File.separator + "stylesheets" + File.separator;
-		File basePath = new File(PATH + File.separator + "tei-config"
-				+ File.separator + "stylesheets" + File.separator + "profiles"
-				+ File.separator);
+		STYLESHEETS_PATH = EGEConstants.TEIROOT + "stylesheet" ;
+		File basePath = new File(STYLESHEETS_PATH +  File.separator + "profiles" + File.separator);
+
 		if (basePath.exists()) {
 			for (Format format : Format.values()) {
 				StringBuffer sbParams = new StringBuffer();
@@ -86,9 +75,9 @@ final class ConverterConfiguration
 				String[] profileDirNames = basePath.list();
 				Arrays.sort(profileDirNames);
 				List<String> profileNames = new ArrayList<String> (Arrays.asList(profileDirNames));
-				if(profileNames.contains("default")) {
-					profileNames.remove("default");
-					profileNames.add(0, "default");
+				if(profileNames.contains(EGEConstants.DEFAULT_PROFILE)) {
+					profileNames.remove(EGEConstants.DEFAULT_PROFILE);
+					profileNames.add(0, EGEConstants.DEFAULT_PROFILE);
 				}
 				for (String profileName : profileNames) {
 					File profileDir = new File(basePath + File.separator

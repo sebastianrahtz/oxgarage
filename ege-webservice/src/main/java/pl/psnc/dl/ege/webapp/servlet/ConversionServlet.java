@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.FileUploadException;
@@ -80,8 +81,7 @@ public class ConversionServlet extends HttpServlet {
 
 	private static final String APPLICATION_OCTET_STREAM = "application/octet-stream";
 
-	private static final Logger LOGGER = Logger
-			.getLogger(ConversionServlet.class);
+	private static final Logger LOGGER = Logger			.getLogger(ConversionServlet.class);
 
 	private static final long serialVersionUID = 1L;
 
@@ -152,16 +152,16 @@ public class ConversionServlet extends HttpServlet {
 	protected void printConversionsPaths(HttpServletResponse response,
 			RequestResolver rr, List<ConversionsPath> paths) throws IOException {
 		LabelProvider lp = getLabelProvider();
+		response.setContentType("text/xml");
 		PrintWriter out = response.getWriter();
 		if (paths.isEmpty()) {
 			response.setStatus(HttpServletResponse.SC_NO_CONTENT);
 			return;
 		}
-		response.setContentType("text/xml");
 		StringBuffer resp = new StringBuffer();
 		StringBuffer sbpath = new StringBuffer();
 		StringBuffer pathopt = new StringBuffer();
-		resp.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+		resp.append("<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>");
 		resp.append("<conversions-paths xmlns:xlink=\"http://www.w3.org/1999/xlink\">");
 		int counter = 0;
 		String reqTransf;
@@ -193,7 +193,7 @@ public class ConversionServlet extends HttpServlet {
 				String paramsDefs = ca.getConversionActionArguments().getPropertiesDefinitions();
 				if (paramsDefs.length() > 0) {
 					Properties props = new Properties();
-					props.loadFromXML(new ByteArrayInputStream(paramsDefs.getBytes()));
+					props.loadFromXML(new ByteArrayInputStream(paramsDefs.getBytes("UTF-8")));
 					Set<Object> keySet = new TreeSet(props.keySet());
 					for (Object key : keySet) {
 						if (!key.toString().endsWith(".type")) {
@@ -232,7 +232,6 @@ public class ConversionServlet extends HttpServlet {
 			throws IOException {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/xml");
-
 		out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 		out.println("<input-data-types xmlns:xlink=\"http://www.w3.org/1999/xlink\">");
 		String prefix = rr.getRequest().getRequestURL().toString()

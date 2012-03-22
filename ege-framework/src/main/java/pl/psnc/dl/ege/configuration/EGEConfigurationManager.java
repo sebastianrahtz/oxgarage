@@ -178,7 +178,7 @@ public class EGEConfigurationManager
 			}
 		}
 		catch (Exception e) {
-			LOGGER.error("Could not retrieve directory name from config file",
+			LOGGER.error("Could not retrieve directory name " + location + " from config file",
 				e);
 		}
 
@@ -193,7 +193,7 @@ public class EGEConfigurationManager
 			URLConnection connection = url.openConnection();
 			if (connection instanceof JarURLConnection) {
 				File destDir = new File(getExtensionsDirectory()
-						+ EGEConstants.fS + dirName);
+						+ File.separator + dirName);
 				destDir.mkdirs();
 
 				EGEIOUtils.unzipFile(((JarURLConnection) connection).getJarFile(), destDir);
@@ -220,8 +220,8 @@ public class EGEConfigurationManager
 		if (new File(directory, string).exists()) {
 			return string;
 		}
-		if (new File(directory, "META-INF" + EGEConstants.fS + string).exists()) {
-			return "META-INF" + EGEConstants.fS + string;
+		if (new File(directory, "META-INF" + File.separator + string).exists()) {
+			return "META-INF" + File.separator + string;
 		}
 		return null;
 	}
@@ -414,10 +414,7 @@ public class EGEConfigurationManager
 	}
 
 	private void getXslExtensions(List<Extension> extensions, ExtensionPoint ep) {
-		String SLASH = "/";		
-		String pref = EGEConfigurationManager.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-		String PATH = pref.substring(0, pref.lastIndexOf(SLASH));
-		String STYLESHEETS_PATH = PATH + File.separator + "tei-config"	+ File.separator;// + "stylesheets" + File.separator;	
+		String STYLESHEETS_PATH = EGEConstants.TEIROOT + "stylesheet";
 		List<File> pluginFiles = new ArrayList<File>();
 		searchForData(new File(STYLESHEETS_PATH), "plugin.xml", pluginFiles);
 		// read each plugin.xml file and add the extensions to the XslConverter plugin

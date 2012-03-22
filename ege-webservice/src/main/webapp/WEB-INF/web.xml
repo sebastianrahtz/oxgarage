@@ -15,6 +15,10 @@
 		<display-name>ConversionServlet</display-name>
 		<servlet-name>ConversionServlet</servlet-name>
 		<servlet-class>pl.psnc.dl.ege.webapp.servlet.ConversionServlet</servlet-class>
+		<init-param>
+		  <param-name>oxgarageproperties</param-name>
+		  <param-value>WEB-INF/oxgarage.properties</param-value>
+		</init-param>	
 	</servlet>
 	<servlet>
 		<description>
@@ -25,6 +29,10 @@
 		<servlet-name>ValidationServlet</servlet-name>
 		<servlet-class>
 		pl.psnc.dl.ege.webapp.servlet.ValidationServlet</servlet-class>
+		<init-param>
+		  <param-name>oxgarageproperties</param-name>
+		  <param-value>WEB-INF/oxgarage.properties</param-value>
+		</init-param>	
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ConversionServlet</servlet-name>

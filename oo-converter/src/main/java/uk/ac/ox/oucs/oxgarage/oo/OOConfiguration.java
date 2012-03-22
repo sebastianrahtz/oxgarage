@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.io.File;
+import pl.psnc.dl.ege.configuration.EGEConstants;
 import java.io.FileNotFoundException;
 
 import pl.psnc.dl.ege.types.DataType;
@@ -42,10 +43,7 @@ public class OOConfiguration {
 		ConversionFamilies = OOConversionsFamily.getFamilies();		
 		getConversions();
 		constructExtensionsMap();
-		String pref = OOConfiguration.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-		String SLASH = "/";
-		String PATH = pref.substring(0, pref.lastIndexOf(SLASH));
-		String CONFIG_PATH = PATH + File.separator + "tei-config" + File.separator + "configuration" + File.separator + "OpenOfficeConfig";
+		String CONFIG_PATH = EGEConstants.OpenOfficeConfig;
 		String pathToOffice = null;
 		try { 
 			Scanner scanner = new Scanner(new File(CONFIG_PATH));
@@ -65,7 +63,7 @@ public class OOConfiguration {
 	}
 
 	public static String getExtension(DataType dataType) {
-		return extensions.get(dataType.getFormat() + "/" + dataType.getMimeType());
+		return extensions.get(dataType.getFormat() + File.separator + dataType.getMimeType());
 	}
 
 	private static void constructExtensionsMap() {

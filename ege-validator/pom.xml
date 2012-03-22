@@ -4,12 +4,25 @@
   <parent>
     <artifactId>ege</artifactId>
     <groupId>pl.psnc.dl.ege</groupId>
-    <version>0.4.3</version>
+    <version>0.5.0</version>
   </parent>
   <groupId>pl.psnc.dl.ege.validator</groupId>
   <artifactId>ege-validator</artifactId>
   <version>0.3</version>
   <name>EGE Validator</name>
+  <properties>
+
+    <project.build.sourceEncoding>
+      UTF-8
+    </project.build.sourceEncoding>
+
+    <project.reporting.outputEncoding>
+      UTF-8
+    </project.reporting.outputEncoding>
+
+  </properties>
+
+
   <url>/multiprojects/ege-validator</url>
   <description>
 	EGE validation plugin. Provides validation for EGE XML supported formats.
@@ -86,7 +99,7 @@
             <descriptor>src/main/assembly/dist.xml</descriptor>
             <descriptor>src/main/assembly/src.xml</descriptor>
           </descriptors>
-          <finalName>${artifactId}-${project.version}</finalName>
+          <finalName>${project.artifactId}-${project.version}</finalName>
         </configuration>
       </plugin>
     </plugins>
@@ -96,6 +109,8 @@
       <plugin>
 	<groupId>org.apache.maven.plugins</groupId>
 	<artifactId>maven-compiler-plugin</artifactId>
+	<version>2.3.2</version>
+
 	<configuration>
 	  <source>1.6</source>
 	  <target>1.6</target>

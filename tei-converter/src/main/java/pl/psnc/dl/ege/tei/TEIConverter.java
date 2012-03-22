@@ -134,7 +134,7 @@ public class TEIConverter implements Converter {
 			if (!ConverterConfiguration.checkProfile(profile, Format.DOCX
 					.getProfile())) {
 				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
-				profile = ConverterConfiguration.DEFAULT_PROFILE;
+				profile = EGEConstants.DEFAULT_PROFILE;
 			}
 			transformFromDocX(inputStream, outputStream, profile, properties);
 		}
@@ -143,7 +143,7 @@ public class TEIConverter implements Converter {
 			if (!ConverterConfiguration.checkProfile(profile, Format.DOCX
 					.getProfile())) {
 				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
-				profile = ConverterConfiguration.DEFAULT_PROFILE;
+				profile = EGEConstants.DEFAULT_PROFILE;
 			}
 			Processor proc = SaxonProcFactory.getProcessor();
 			XsltCompiler comp = proc.newXsltCompiler();
@@ -156,7 +156,7 @@ public class TEIConverter implements Converter {
 			if (!ConverterConfiguration.checkProfile(profile, Format.ODT
 					.getProfile())) {
 				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
-				profile = ConverterConfiguration.DEFAULT_PROFILE;
+				profile = EGEConstants.DEFAULT_PROFILE;
 			}
 			transformFromOdt(inputStream, outputStream, profile, properties);
 		}
@@ -165,7 +165,7 @@ public class TEIConverter implements Converter {
 			if (!ConverterConfiguration.checkProfile(profile, Format.ODT
 					.getProfile())) {
 				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
-				profile = ConverterConfiguration.DEFAULT_PROFILE;
+				profile = EGEConstants.DEFAULT_PROFILE;
 			}
 			Processor proc = SaxonProcFactory.getProcessor();
 			XsltCompiler comp = proc.newXsltCompiler();
@@ -177,7 +177,7 @@ public class TEIConverter implements Converter {
 			if (!ConverterConfiguration.checkProfile(profile, Format.ODDHTML
 					.getProfile())) {
 				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
-				profile = ConverterConfiguration.DEFAULT_PROFILE;
+				profile = EGEConstants.DEFAULT_PROFILE;
 			}
 			properties.put("extension", "html");
 			performXsltTransformation(inputStream, outputStream, Format.ODDHTML
@@ -188,7 +188,7 @@ public class TEIConverter implements Converter {
 			if (!ConverterConfiguration.checkProfile(profile, Format.XHTML
 					.getProfile())) {
 				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
-				profile = ConverterConfiguration.DEFAULT_PROFILE;
+				profile = EGEConstants.DEFAULT_PROFILE;
 			}
 			properties.put("extension", "html");
 			performXsltTransformation(inputStream, outputStream, Format.XHTML
@@ -199,7 +199,7 @@ public class TEIConverter implements Converter {
 			if (!ConverterConfiguration.checkProfile(profile, Format.RELAXNG
 					.getProfile())) {
 				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
-				profile = ConverterConfiguration.DEFAULT_PROFILE;
+				profile = EGEConstants.DEFAULT_PROFILE;
 			}
 			properties.put("extension", "rng");
 			performXsltTransformation(inputStream, outputStream, Format.RELAXNG
@@ -210,7 +210,7 @@ public class TEIConverter implements Converter {
 			if (!ConverterConfiguration.checkProfile(profile, Format.DTD
 					.getProfile())) {
 				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
-				profile = ConverterConfiguration.DEFAULT_PROFILE;
+				profile = EGEConstants.DEFAULT_PROFILE;
 			}
 			properties.put("extension", "dtd");
 			performXsltTransformation(inputStream, outputStream, Format.DTD
@@ -222,7 +222,7 @@ public class TEIConverter implements Converter {
 			if (!ConverterConfiguration.checkProfile(profile, Format.LITE
 					.getProfile())) {
 				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
-				profile = ConverterConfiguration.DEFAULT_PROFILE;
+				profile = EGEConstants.DEFAULT_PROFILE;
 			}
 			properties.put("extension", "xml");
 			performXsltTransformation(inputStream, outputStream, Format.LITE
@@ -233,7 +233,7 @@ public class TEIConverter implements Converter {
 			if (!ConverterConfiguration.checkProfile(profile, Format.LATEX
 					.getProfile())) {
 				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
-				profile = ConverterConfiguration.DEFAULT_PROFILE;
+				profile = EGEConstants.DEFAULT_PROFILE;
 			}
 			properties.put("extension", "tex");
 			performXsltTransformation(inputStream, outputStream, Format.LATEX
@@ -245,7 +245,7 @@ public class TEIConverter implements Converter {
 			if (!ConverterConfiguration.checkProfile(profile, Format.FO
 					.getProfile())) {
 				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
-				profile = ConverterConfiguration.DEFAULT_PROFILE;
+				profile = EGEConstants.DEFAULT_PROFILE;
 			}
 			properties.put("extension", "fo");
 			performXsltTransformation(inputStream, outputStream, Format.FO
@@ -256,9 +256,33 @@ public class TEIConverter implements Converter {
 			if (!ConverterConfiguration.checkProfile(profile, Format.EPUB
 					.getProfile())) {
 				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
-				profile = ConverterConfiguration.DEFAULT_PROFILE;
+				profile = EGEConstants.DEFAULT_PROFILE;
 			}
 			transformToEpub(inputStream, outputStream, profile, Format.EPUB.getProfile(), properties);
+		}
+		// to TEXT
+		else if (Format.TEXT.getMimeType().equals(toMimeType)
+			 && fromDataType.getFormat().equals(Format.TEXT.getFormatName())) {
+			if (!ConverterConfiguration.checkProfile(profile, Format.TEXT
+					.getProfile())) {
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				profile = EGEConstants.DEFAULT_PROFILE;
+			}
+			properties.put("extension", "txt");
+			performXsltTransformation(inputStream, outputStream, Format.TEXT
+					.getProfile(), profile, properties);
+		}
+		// to RDF
+		else if (Format.RDF.getMimeType().equals(toMimeType)
+			 && fromDataType.getFormat().equals(Format.RDF.getFormatName())) {
+			if (!ConverterConfiguration.checkProfile(profile, Format.RDF
+					.getProfile())) {
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				profile = EGEConstants.DEFAULT_PROFILE;
+			}
+			properties.put("extension", "rdf");
+			performXsltTransformation(inputStream, outputStream, Format.RDF
+					.getProfile(), profile, properties);
 		}
 	}
 
@@ -617,16 +641,15 @@ public class TEIConverter implements Converter {
 			Processor proc = SaxonProcFactory.getProcessor();
 			XsltCompiler comp = proc.newXsltCompiler();
 			// get images and correct graphics tags
-			XdmNode initialNode = getImages(inTmpDir.toString(), outTempDir.toString(), "OEBPS" + File.separator + "media" + 
+			XdmNode initialNode = getImages(inTmpDir.toString(), outTempDir.toString(), "OPS" + File.separator + "media" + 
 							File.separator, "media" + File.separator, inputFile, proc, is, "toEpub", properties);
 			XsltExecutable exec = comp.compile(resolveConfiguration(id, comp, profile));
 			XsltTransformer transformer = exec.load();
 			String dirname = outTempDir.toURI().toString();
 			transformer.setParameter(new QName("directory"), new XdmAtomicValue(dirname));
-			transformer.setParameter(new QName("outputDir"), new XdmAtomicValue(dirname + File.separator + "OEBPS" + File.separator));
-			File coverTemplate = new File (ConverterConfiguration.PATH + File.separator + 
-			"tei-config"+ File.separator + "stylesheets" + File.separator +  "profiles" + File.separator + profile + File.separator + "epub" + File.separator + "cover.jpg");
-			String coverOutputDir = outTempDir + File.separator + "OEBPS" + File.separator;
+			transformer.setParameter(new QName("outputDir"), new XdmAtomicValue(dirname + File.separator + "OPS" + File.separator));
+			File coverTemplate = new File (ConverterConfiguration.STYLESHEETS_PATH + File.separator + "profiles" + File.separator + profile + File.separator + "epub" + File.separator + "cover.jpg");
+			String coverOutputDir = outTempDir + File.separator + "OPS" + File.separator;
 			String coverImage = ImageFetcher.generateCover(coverTemplate, coverOutputDir, properties);
 			transformer.setParameter(new QName("coverimage"), new XdmAtomicValue(coverImage));
 			setTransformationParameters(transformer, id);
@@ -709,11 +732,10 @@ public class TEIConverter implements Converter {
 	private StreamSource resolveConfiguration(final String id,
 			XsltCompiler comp, String profile) throws IOException {
 		comp.setURIResolver(TEIConverterURIResolver
-				.newInstance(ConverterConfiguration.PATH + "/" + "tei-config"
-						+ "/" + "stylesheets" + "/" + "profiles" + "/"
-						+ profile + "/" + id));
+				.newInstance(ConverterConfiguration.STYLESHEETS_PATH + File.separator + "profiles" + File.separator
+						+ profile + File.separator + id));
 		return new StreamSource(new FileInputStream(new File(
-				ConverterConfiguration.STYLESHEETS_PATH + "profiles"
+				ConverterConfiguration.STYLESHEETS_PATH + File.separator + "profiles"
 						+ File.separator + profile + File.separator + id
 						+ File.separator + "to.xsl")));
 	}

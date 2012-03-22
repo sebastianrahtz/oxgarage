@@ -8,10 +8,10 @@ public enum OutputSpreadsheetFormat {
      Name ("name", "mime type for target", "description", "extension", visible)
 
      */
-	PDF("pdf","application/pdf", "PDF Document", "pdf", true, 4),
-	ODS("ods", "application/vnd.oasis.opendocument.spreadsheet", "Open Office Spreadsheet (.ods)", "ods", true, 4),
-	SXC("sxc", "application/vnd.sun.xml.calc", "OpenOffice 1.0 Spreadsheet (.sxc)", "sxc", true, 4),
-	XLS("xls", "application/vnd.ms-excel", "Microsoft Excel Document (.xls)", "xls", true, 5),
+	PDF("pdf","application/pdf", "PDF", "pdf", true, 4),
+	ODS("ods", "application/vnd.oasis.opendocument.spreadsheet", "Open Office (.ods)", "ods", true, 4),
+	SXC("sxc", "application/vnd.sun.xml.calc", "OpenOffice 1.0  (.sxc)", "sxc", true, 4),
+	XLS("xls", "application/vnd.ms-excel", "Microsoft Excel (.xls)", "xls", true, 5),
 	CSV("csv", "text/csv", "Comma-Separated Values (.csv)", "csv", true, 5),
 	TSV("tsv", "text/tsv", "Tab-Separated Values (.tsv)", "tsv", true, 5);
 
