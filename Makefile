@@ -20,9 +20,9 @@ build:
 	mvn install
 
 debversion:
-	(cd debian-tei-oxgarage;  dch -v `cat ../VERSION` new release)
+	sh ./mydch debian-tei-oxgarage/debian/changelog
 
-deb:
+deb: debversion
 	@echo BUILD Make Debian packages
 	rm -f tei*oxgarage*_*deb
 	rm -f tei*oxgarage*_*changes
