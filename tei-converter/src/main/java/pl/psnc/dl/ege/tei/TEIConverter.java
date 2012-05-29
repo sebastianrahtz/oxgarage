@@ -85,7 +85,7 @@ public class TEIConverter implements Converter {
 				if (conversionDataTypes.equals(cadt)) {
 					String profile = cadt.getProperties().get(
 							ConverterConfiguration.PROFILE_KEY);
-					LOGGER.info(dateFormat.format(date) + ": converting FROM:  "
+					LOGGER.info(dateFormat.format(date) + ": Converting FROM:  "
 						    + conversionDataTypes.getInputType().toString()
 						    + " TO "
 						    + conversionDataTypes.getOutputType().toString()
