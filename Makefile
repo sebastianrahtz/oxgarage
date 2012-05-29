@@ -17,6 +17,7 @@ install:
 	sleep 5
 
 build:
+	@echo Maven build
 	mvn install
 
 debversion:
