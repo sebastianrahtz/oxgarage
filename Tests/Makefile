@@ -10,6 +10,8 @@ test:
 	curl -s -o conversions.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions
 	rm -rf temp-results
 	mkdir  temp-results
+	echo TCP to TEI P5
+	curl -s  -F upload=@A00005.zip http://$(SERVER):$(PORT)/ege-webservice/Conversions/TCP%3Atext%3Axml/TEI%3Atext%3Axml/
 	echo ODD to DTD
 	curl -s  -F upload=@test.odd  -o temp-results/result4.dtd http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/dtd%3Aapplication%3Axml-dtd/
 	perl -p -i -e 's/DTD Generated.*/DTD/' temp-results/result4.dtd

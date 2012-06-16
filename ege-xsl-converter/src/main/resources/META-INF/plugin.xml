@@ -57,7 +57,7 @@
 	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="TCPToP5Converter">
 		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
 		<parameter id="name" value="TCP to P5"/>
-		<parameter id="xsluri" value="profiles/default/tcp/from.xsl" />
+		<parameter id="xsluri" value="tcp/tcp2tei.xsl" />
 		<parameter id="iMimeType" value="text/xml" />
 		<parameter id="iFormat" value="TCP" />
 		<parameter id="iDescription" value="TCP XML Document" />		

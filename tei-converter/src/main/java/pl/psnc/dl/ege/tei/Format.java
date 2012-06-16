@@ -27,10 +27,9 @@ public enum Format {
 	
 	FO("fo","application/xslfo+xml","fo","TEI", "TEI P5 XML Document", "text", "XSL-FO", "text", true, 10),
 
-	EPUB("epub","application/epub+zip","epub","TEI", "TEI P5 XML Document", "text", "ePub", "text", true, 9),
-
+	EPUB("epub","application/epub+zip","epub","TEI", "TEI P5 XML Document", "text", "ePub", "text", true, 9),     
 	TEXT("txt","text/plain","txt","TEI", "TEI P5 XML Document", "text", "Plain text", "text", true, 5),
-	RDF("rdf","application/rdf+xml","rdf","TEI", "TEI P5 XML Document", "text", "RDF XML", "text", true, 5);
+	    RDF("rdf","application/rdf+xml","rdf","TEI", "TEI P5 XML Document", "text", "RDF XML", "text", true, 5);
 
 
 

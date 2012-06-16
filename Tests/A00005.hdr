@@ -1,0 +1,34 @@
+<HEADER><FILEDESC>
+<TITLESTMT>
+<TITLE TYPE="245">Here begynneth a shorte and abreue table on the Cronycles ...</TITLE>
+</TITLESTMT>
+<EXTENT>151 600dpi TIFF G4 page images</EXTENT>
+<PUBLICATIONSTMT>
+<PUBLISHER>University of Michigan, Digital Library Production Service</PUBLISHER><PUBPLACE>Ann Arbor, Michigan</PUBPLACE>
+<DATE>2007 January (TCP phase 1)</DATE>
+<IDNO TYPE="marc">99842408</IDNO>
+<IDNO TYPE="stc">STC (2nd ed.) 10000.</IDNO>
+<IDNO TYPE="vid">7058</IDNO>
+<IDNO TYPE="DLPS">A00005</IDNO>
+<AVAILABILITY>
+<P>This keyboarded and encoded edition of the work described above is co-owned by the institutions providing financial support to the Early English Books Online Text Creation Partnership. Searching, reading, printing, or downloading EEBO-TCP texts is reserved for the authorized users of these project partner institutions. Permission must be granted for subsequent distribution, in print or electronically, of this text, in whole or in part. Please contact project staff at eebotcp-info@umich.edu for further information or permissions.</P>
+</AVAILABILITY></PUBLICATIONSTMT>
+<SOURCEDESC>
+<BIBLFULL>
+<TITLESTMT>
+<TITLE TYPE="245">Here begynneth a shorte and abreue table on the Cronycles ...</TITLE>
+<TITLE TYPE="alt">Here begynneth a shorte and abreve table on the cronycles.</TITLE>
+<TITLE TYPE="alt">In soo moche that it is necessary to all creatures of crysten relygyon, or of false relygyon.</TITLE>
+<TITLE TYPE="add">Polycronicon.</TITLE><AUTHOR>Higden, Ranulf, d. 1364.</AUTHOR>
+<AUTHOR>Trevisa, John, d. 1402,</AUTHOR>
+</TITLESTMT>
+<EXTENT>[2], Cxxviii, [16] leaves : ill. (woodcuts)</EXTENT>
+<PUBLICATIONSTMT><PUBPLACE>[Enprynted at Londo[n] :</PUBPLACE><PUBLISHER>In powlys chyrche yarde at the west dore of powlys besyde my lorde of londons palays by me Iulyan Notary,</PUBLISHER><DATE>In the yere of our lorde god. M.CCCCC.xv. [1515]]</DATE></PUBLICATIONSTMT><NOTESSTMT><NOTE><P>Saint Albans chronicle.</P></NOTE><NOTE><P>Known as "The Saint Albans chronicle"; not the same compilation as the "Chronicles of England" first printed by Caxton (STC 9991-4).</P></NOTE><NOTE><P>Title from opening words of text, pi1v.</P></NOTE><NOTE><P>Imprint from colophon.</P></NOTE><NOTE><P>Text commences on leaf i: In soo moche that it is necessary to all creatures of crysten relygyon, or of false relygyon ..</P></NOTE><NOTE><P>Includes "The dyscrypcyon of Englonde", an excerpt from: Higden, Ranulf.  Polycronicon.</P></NOTE><NOTE><P>The first page contains woodcuts with ornamenal border. The bottom border contains Maltese crosses, thus the first quire is sometimes said to be signed with a cross.</P></NOTE><NOTE><P>Reproduction of the original in the British Library.</P></NOTE></NOTESSTMT>
+</BIBLFULL>
+</SOURCEDESC>
+</FILEDESC>
+<ENCODINGDESC><PROJECTDESC><P>Header created with script marc2tei.pl on 2001-12-12.</P></PROJECTDESC><EDITORIALDECL N="4"><P>Encoding has been done using the recommendations for Level 4 of the TEI in Libraries Guidelines.  Digital page images are linked to the text file.</P></EDITORIALDECL></ENCODINGDESC><PROFILEDESC>
+<TEXTCLASS>
+<KEYWORDS><TERM>Great Britain -- History -- To 1485 -- Early works to 1800.</TERM><TERM>England -- Description and travel -- Early works to 1800.</TERM></KEYWORDS>
+</TEXTCLASS></PROFILEDESC>
+</HEADER>
