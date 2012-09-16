@@ -8,7 +8,7 @@ public enum InputTextFormat {
      Name ("name", "mime type for target", "description", "extension", visible)
 
      */
-	ODT("odt", "application/vnd.oasis.opendocument.text", "Open Office Text (.odt)", "odt", true, 4),
+	ODT("odt", "application/vnd.oasis.opendocument.text", "OpenOffice Text (.odt)", "odt", true, 4),
 	DOC("doc", "application/msword", "Microsoft Word (.doc)", "doc", true, 7),
 	DOCX("docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "Microsoft Word (.docx)", "docx", true, 7),
 	RTF("rtf", "application/rtf", "Rich Text Format (.rtf)", "rtf", true, 6),

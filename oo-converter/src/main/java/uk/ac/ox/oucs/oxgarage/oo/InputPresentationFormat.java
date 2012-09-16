@@ -8,7 +8,7 @@ public enum InputPresentationFormat {
      Name ("name", "mime type for target", "description", "extension", visible)
 
      */
-	ODP("odp", "application/vnd.oasis.opendocument.presentation", "Open Office (.odp)", "odp", true, 4),
+	ODP("odp", "application/vnd.oasis.opendocument.presentation", "OpenOffice (.odp)", "odp", true, 4),
 	SXI("sxi", "application/vnd.sun.xml.impress", "OpenOffice.org 1.0 (.sxi)", "sxi", true, 4),
 	PPT("ppt", "application/vnd.ms-powerpoint", "Microsoft PowerPoint (.ppt)", "ppt", true, 5),
 	PPTX("pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "Microsoft PowerPoint (.pptx)", "pptx", true, 5);

@@ -16,7 +16,7 @@ import pl.psnc.dl.ege.types.ConversionActionArguments;
  * Configuration for OOConverter
  * </p>
  * 
- * Provides configuration for the OpenOffice Converter, containing path to Open Office home directory and possible conversions families
+ * Provides configuration for the OpenOffice Converter, containing path to OpenOffice home directory and possible conversions families
  * 
  * @author Lukas Platinsky
  * 

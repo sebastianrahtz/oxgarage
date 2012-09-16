@@ -9,7 +9,7 @@ public enum OutputSpreadsheetFormat {
 
      */
 	PDF("pdf","application/pdf", "PDF", "pdf", true, 4),
-	ODS("ods", "application/vnd.oasis.opendocument.spreadsheet", "Open Office (.ods)", "ods", true, 4),
+	ODS("ods", "application/vnd.oasis.opendocument.spreadsheet", "OpenOffice (.ods)", "ods", true, 4),
 	SXC("sxc", "application/vnd.sun.xml.calc", "OpenOffice 1.0  (.sxc)", "sxc", true, 4),
 	XLS("xls", "application/vnd.ms-excel", "Microsoft Excel (.xls)", "xls", true, 5),
 	CSV("csv", "text/csv", "Comma-Separated Values (.csv)", "csv", true, 5),

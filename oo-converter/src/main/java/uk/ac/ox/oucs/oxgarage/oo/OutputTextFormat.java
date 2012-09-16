@@ -9,7 +9,7 @@ public enum OutputTextFormat {
 
      */
 	PDF("pdf","application/pdf", "PDF", "pdf", true, 4),
-	ODT("odt", "application/vnd.oasis.opendocument.text", "Open Office Text (.odt)", "odt", true, 4),
+	ODT("odt", "application/vnd.oasis.opendocument.text", "OpenOffice Text (.odt)", "odt", true, 4),
 	DOC("doc", "application/msword", "Microsoft Word (.doc)", "doc", true, 6),
 	RTF("rtf", "application/rtf", "Rich Text Format (.rtf)", "rtf", true, 6),
 	TXT("txt", "text/plain", "Plain Text (.txt)", "txt", true, 5),
