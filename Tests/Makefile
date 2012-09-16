@@ -79,7 +79,6 @@ test:
 	diff -x .svn -r temp-results expected-results
 
 foo:
-	echo To HTML
-	curl -s  -F upload=@test.xml  -o temp-results/result.html http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/?properties=$(P)
-	curl -s -o conversions.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml
+	echo P4 to P5
+	curl -s  -F upload=@testp4.xml  -o temp-results/result.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/P4%3Atext%3Axml/TEI%3Atext%3Axml/
 
