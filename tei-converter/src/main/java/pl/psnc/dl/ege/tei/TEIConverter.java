@@ -649,9 +649,11 @@ public class TEIConverter implements Converter {
 			transformer.setParameter(new QName("directory"), new XdmAtomicValue(dirname));
 			transformer.setParameter(new QName("outputDir"), new XdmAtomicValue(dirname + File.separator + "OPS" + File.separator));
 			File coverTemplate = new File (ConverterConfiguration.STYLESHEETS_PATH + File.separator + "profiles" + File.separator + profile + File.separator + "epub" + File.separator + "cover.jpg");
-			String coverOutputDir = outTempDir + File.separator + "OPS" + File.separator;
-			String coverImage = ImageFetcher.generateCover(coverTemplate, coverOutputDir, properties);
-			transformer.setParameter(new QName("coverimage"), new XdmAtomicValue(coverImage));
+			if (coverTemplates.exists()) { 
+			    String coverOutputDir = outTempDir + File.separator + "OPS" + File.separator;
+			    String coverImage = ImageFetcher.generateCover(coverTemplate, coverOutputDir, properties);
+			    transformer.setParameter(new QName("coverimage"), new XdmAtomicValue(coverImage));
+			}
 			setTransformationParameters(transformer, id);
 			transformer.setInitialContextNode(initialNode);
 			Serializer result = new Serializer();
