@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
@@ -316,8 +317,8 @@ public class ConversionServlet extends HttpServlet {
 			ZipException {
 		InputStream is = null;
 		OutputStream os = null;
-		if (ServletFileUpload.isMultipartContent(rr.getRequest())) {
-			ServletFileUpload upload = new ServletFileUpload();
+		if (ServletFileUpload.isMultipartContent(rr.getRequest())) { 
+		    ServletFileUpload upload = new ServletFileUpload();
 			FileItemIterator iter = upload.getItemIterator(rr.getRequest());
 			while (iter.hasNext()) {
 				FileItemStream item = iter.next();
@@ -448,11 +449,85 @@ public class ConversionServlet extends HttpServlet {
 					}
 				}
 			}
-		} else {
+		}
+	        else {
+		    String oddData = rr.getRequest().getParameter("odd");
+		    String fN = rr.getRequest().getParameter("filename");
+		    if (oddData == null || oddData.trim().isEmpty()) {
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
 			return;
+		    }
+		    applyConversionsProperties(rr.getConversionProperties(), cpath, "odd");
+		    //		    response.setContentType("text/html");
+		    //              PrintWriter out = response.getWriter(); 
+		    //		    out.println("<p><pre><![CDATA[Field odds has the value " + URLDecoder.decode(oddData) + "]]></pre></p>");		    
+		    DataBuffer buffer = new DataBuffer(0, EGEConstants.BUFFER_TEMP_PATH);
+		    InputStream ins = new ByteArrayInputStream(oddData.getBytes());
+		    File zipFile = null;
+		    FileOutputStream fos = null;
+		    String newTemp = UUID.randomUUID().toString();
+		    IOResolver ior = EGEConfigurationManager.getInstance().getStandardIOResolver();
+		    zipFile = new File(EGEConstants.BUFFER_TEMP_PATH + File.separator + newTemp + EZP_EXT);
+		    fos = new FileOutputStream(zipFile);
+		    File szipFile = new File(EGEConstants.BUFFER_TEMP_PATH
+					     + File.separator + newTemp + ZIP_EXT);
+		    fos = new FileOutputStream(szipFile);
+		    try {
+			try {
+			    ege.performConversion(ins, fos, cpath);
+			} finally {
+			    fos.close();
+			}
+			boolean isComplex = EGEIOUtils
+			    .isComplexZip(szipFile);
+			response.setContentType(APPLICATION_OCTET_STREAM);
+			if (isComplex) {
+			    String fileExt;
+			    if (cpath.getOutputDataType().getMimeType()
+				.equals(APPLICATION_MSWORD)) {
+				fileExt = DOCX_EXT;
+			    } else if (cpath.getOutputDataType().getMimeType()
+				       .equals(APPLICATION_EPUB)) {
+				fileExt = EPUB_EXT; 
+			    } else if (cpath.getOutputDataType().getMimeType()
+				       .equals(APPLICATION_ODT)) {
+				fileExt = ODT_EXT; 
+			    }else {
+				fileExt = ZIP_EXT;
+			    }
+			    response.setHeader("Content-Disposition",
+					       "attachment; filename=\"" + fN + fileExt + "\"");
+			    FileInputStream fis = new FileInputStream(
+								      szipFile);
+			    os = response.getOutputStream();
+			    try {
+				EGEIOUtils.copyStream(fis, os);
+			    } finally {
+				fis.close();
+			    }
+			} else {
+			    String fileExt = getMimeExtensionProvider()
+				.getFileExtension(cpath.getOutputDataType().getMimeType());
+			    response.setHeader("Content-Disposition",
+					       "attachment; filename=\"" + fN + fileExt + "\"");
+			    os = response.getOutputStream();
+			    EGEIOUtils.unzipSingleFile(new ZipFile(szipFile), os);
+			}
+		    } finally {
+			ins.close();
+			if (os != null) {
+			    os.flush();
+			    os.close();
+			}
+			buffer.clear(true);
+			szipFile.delete();
+			if (zipFile != null) {
+			    zipFile.delete();
+			}
+		    }
 		}
 	}
+
 
 	private void applyConversionsProperties(String properties, ConversionsPath cP, String fileName) 
 					throws RequestResolvingException {
