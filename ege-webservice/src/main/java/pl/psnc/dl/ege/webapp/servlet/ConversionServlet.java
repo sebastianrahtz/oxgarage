@@ -451,7 +451,7 @@ public class ConversionServlet extends HttpServlet {
 			}
 		}
 	        else {
-		    String inputData = URLDecoder.decode(rr.getRequest().getParameter("input"));
+		    String inputData = rr.getRequest().getParameter("input");
 		    String fN = rr.getRequest().getParameter("filename");
 		    if (inputData == null || inputData.trim().isEmpty()) {
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
