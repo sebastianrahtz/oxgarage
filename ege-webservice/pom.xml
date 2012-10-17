@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>pl.psnc.dl.ege.webapp</groupId>
   <artifactId>ege-webservice</artifactId>
-  <version>0.4.2</version>
+  <version>0.5.2</version>
   <packaging>war</packaging>
   <name>EGE Web Service</name>
   <properties>
