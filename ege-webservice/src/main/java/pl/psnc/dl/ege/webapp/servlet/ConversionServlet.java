@@ -257,7 +257,7 @@ public class ConversionServlet extends HttpServlet {
 			ConversionRequestResolver rr = new ConversionRequestResolver(
 					request, Method.POST);
 			List<DataType> pathFrame = (List<DataType>) rr.getData();
-			performConversion(response, rr, pathFrame);
+			processConversion(response, rr, pathFrame);
 		} catch (RequestResolvingException ex) {
 			if (ex.getStatus().equals(
 					RequestResolvingException.Status.BAD_REQUEST)) {
@@ -276,7 +276,7 @@ public class ConversionServlet extends HttpServlet {
 	/*
 	 * Performs conversion.
 	 */
-	protected void performConversion(HttpServletResponse response,
+	protected void processConversion(HttpServletResponse response,
 			ConversionRequestResolver rr, List<DataType> pathFrame)
 			throws IOException, FileUploadException, EGEException,
 			ConverterException, RequestResolvingException {
@@ -451,24 +451,30 @@ public class ConversionServlet extends HttpServlet {
 			}
 		}
 	        else {
-		    String oddData = rr.getRequest().getParameter("odd");
+		    String inputData = URLDecoder.decode(rr.getRequest().getParameter("input"));
 		    String fN = rr.getRequest().getParameter("filename");
-		    if (oddData == null || oddData.trim().isEmpty()) {
+		    if (inputData == null || inputData.trim().isEmpty()) {
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
 			return;
 		    }
-		    applyConversionsProperties(rr.getConversionProperties(), cpath, "odd");
-		    //		    response.setContentType("text/html");
-		    //              PrintWriter out = response.getWriter(); 
-		    //		    out.println("<p><pre><![CDATA[Field odds has the value " + URLDecoder.decode(oddData) + "]]></pre></p>");		    
+		    applyConversionsProperties(rr.getConversionProperties(), cpath, "input");
+
+		    is = new ByteArrayInputStream(inputData.getBytes());
 		    DataBuffer buffer = new DataBuffer(0, EGEConstants.BUFFER_TEMP_PATH);
-		    InputStream ins = new ByteArrayInputStream(oddData.getBytes());
+		    String alloc = buffer.allocate(is);
+		    InputStream ins = buffer.getDataAsStream(alloc);
+		    is.close();
 		    File zipFile = null;
 		    FileOutputStream fos = null;
 		    String newTemp = UUID.randomUUID().toString();
 		    IOResolver ior = EGEConfigurationManager.getInstance().getStandardIOResolver();
-		    zipFile = new File(EGEConstants.BUFFER_TEMP_PATH + File.separator + newTemp + EZP_EXT);
+		    File buffDir = new File(buffer.getDataDir(alloc));
+		    // Check if there are any images to copy
+		    zipFile = new File(EGEConstants.BUFFER_TEMP_PATH
+				       + File.separator + newTemp + EZP_EXT);
 		    fos = new FileOutputStream(zipFile);
+		    ior.compressData(buffDir, fos);
+		    ins = new FileInputStream(zipFile);
 		    File szipFile = new File(EGEConstants.BUFFER_TEMP_PATH
 					     + File.separator + newTemp + ZIP_EXT);
 		    fos = new FileOutputStream(szipFile);
@@ -525,6 +531,8 @@ public class ConversionServlet extends HttpServlet {
 			    zipFile.delete();
 			}
 		    }
+		      
+		    
 		}
 	}
 
