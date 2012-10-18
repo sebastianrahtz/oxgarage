@@ -239,6 +239,17 @@ public class TEIConverter implements Converter {
 			performXsltTransformation(inputStream, outputStream, Format.LATEX
 					.getProfile(), profile, properties);
 		}
+		// to ODDJSON
+		else if (Format.ODDJSON.getMimeType().equals(toMimeType)) {
+			if (!ConverterConfiguration.checkProfile(profile, Format.ODDJSON
+					.getProfile())) {
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				profile = EGEConstants.DEFAULT_PROFILE;
+			}
+			properties.put("extension", "json");
+			performXsltTransformation(inputStream, outputStream, Format.ODDJSON
+					.getProfile(), profile, properties);
+		}
 		// to FO
 		else if (Format.FO.getMimeType().equals(toMimeType)) {
 				//&& Format.FO.getFormatName().equals(dataType.getFormat())) {

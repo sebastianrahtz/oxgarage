@@ -18,6 +18,7 @@
 	<mime-ext mime="application/vnd.sun.xml.calc" ext=".sxc" />
 	<mime-ext mime="application/vnd.ms-excel" ext=".xls" />
 	<mime-ext mime="text/csv" ext=".csv" />
+	<mime-ext mime="application/json" ext=".json" />
 	<mime-ext mime="text/tsv" ext=".tsv" />
 	<mime-ext mime="application/vnd.oasis.opendocument.presentation" ext=".odp" />
 	<mime-ext mime="application/vnd.sun.xml.impress" ext=".sxi" />

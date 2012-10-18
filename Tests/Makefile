@@ -10,6 +10,8 @@ test:
 	curl -s -o conversions.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions
 	rm -rf temp-results
 	mkdir  temp-results
+	echo ODD to JSON
+	curl -s  -F upload=@test.odd  -o temp-results/test.js http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/oddjson%3Aapplication%3Ajson/
 	echo TCP to TEI P5
 	curl -s  -F upload=@A00005.xml -F upload=@A00005.hdr http://$(SERVER):$(PORT)/ege-webservice/Conversions/TCP%3Atext%3Axml/TEI%3Atext%3Axml/
 	echo ODD to DTD
