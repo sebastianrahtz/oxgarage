@@ -83,6 +83,9 @@
 \usepackage[normalem]{ulem}
 \usepackage{fancyvrb}
 \usepackage{fancyhdr}
+\usepackage{marginnote}
+\renewcommand*{\marginfont}{\itshape\footnotesize}
+\setlength\marginparwidth{.75in}
 \usepackage{graphicx}
 
 \def\Gin@extensions{.pdf,.png,.jpg,.mps,.tif}
@@ -251,7 +254,7 @@
     \def\DivIVStar[#1]#2{\subsubsection*{#2}}
     \def\DivVStar[#1]#2{\paragraph*{#2}}
 }
-\def\TheFullDate{2008-02-01}
+\def\TheFullDate{}
 \def\TheID{\makeatother }
 \def\TheDate{2008-02-01}
 \title{Encoding for Interchange: an introduction to the TEI}
@@ -289,7 +292,7 @@
 \catcode`\^=12\relax
 \catcode`\#=12\relax
 \catcode`\%=12\relax
-\frontmatter 
+      \frontmatter 
   \begin{titlepage}
   \title{TEI Lite:  Encoding for Interchange: an introduction to the TEI  — Revised for TEI P5 release}\author{C. M. Sperberg-McQueen}
   \maketitle
@@ -513,7 +516,7 @@ A TEI-recommended way of carrying out most of these is described in the remainde
 All TEI-conformant texts contain (a) a \emph{TEI header} (marked up as a \texttt{<teiHeader>} element) and (b) the transcription of the text proper (marked up as a \texttt{<text>} element). These two elements are combined together to form a single \texttt{<TEI>} element.  \par
 The TEI header provides information analogous to that provided by the title page of a printed text.  It has up to four parts: a bibliographic description of the machine-readable text, a description of the way it has been encoded, a non-bibliographic description of the text (a \emph{text profile}), and a revision history. The header is described in more detail in section U5-header.\par
 A TEI text may be \emph{unitary} (a single work) or \emph{composite} (a collection of single works, such as an anthology). In either case, the text may have an optional \emph{front} or \emph{back}. In between is the \emph{body} of the text, which, in the case of a composite text, may consist of \emph{group}s, each containing more groups or texts.\par
-A unitary text will be encoded using an overall structure like this: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{TEI}>}\mbox{}\newline 
+A unitary text will be encoded using an overall structure like this: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{TEI} xmlns="http://www.tei-c.org/ns/1.0">}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{teiHeader}>}\mbox{}\newline 
 \begin{it}<!-- [ TEI Header information ]  -->\end{it}\mbox{}\newline 
 \hspace*{6pt}{</\textbf{teiHeader}>}\mbox{}\newline 
@@ -529,7 +532,7 @@ A unitary text will be encoded using an overall structure like this: \par\bgroup
 \hspace*{6pt}\hspace*{6pt}{</\textbf{back}>}\mbox{}\newline 
 \hspace*{6pt}{</\textbf{text}>}\mbox{}\newline 
 {</\textbf{TEI}>}\end{shaded}\egroup\par \par
-A composite text also has an optional front and back. In between occur one or more groups of texts, each with its own optional front and back matter. A composite text will thus be encoded using an overall structure like this: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{TEI}>}\mbox{}\newline 
+A composite text also has an optional front and back. In between occur one or more groups of texts, each with its own optional front and back matter. A composite text will thus be encoded using an overall structure like this: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{TEI} xmlns="http://www.tei-c.org/ns/1.0">}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{teiHeader}>}\mbox{}\newline 
 \begin{it}<!--[ header information for the composite ]-->\end{it}\mbox{}\newline 
 \hspace*{6pt}{</\textbf{teiHeader}>}\mbox{}\newline 
@@ -567,11 +570,11 @@ A composite text also has an optional front and back. In between occur one or mo
 \hspace*{6pt}\hspace*{6pt}{</\textbf{back}>}\mbox{}\newline 
 \hspace*{6pt}{</\textbf{text}>}\mbox{}\newline 
 {</\textbf{TEI}>}\end{shaded}\egroup\par \par
-It is also possible to define a composite of TEI texts, each with its own header. Such a collection is known as a \emph{TEI corpus}, and may itself have a header: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{teiCorpus}>}\mbox{}\newline 
+It is also possible to define a composite of TEI texts, each with its own header. Such a collection is known as a \emph{TEI corpus}, and may itself have a header: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{teiCorpus} xmlns="http://www.tei-c.org/ns/1.0">}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{teiHeader}>}\mbox{}\newline 
 \begin{it}<!--[header information for the corpus]-->\end{it}\mbox{}\newline 
 \hspace*{6pt}{</\textbf{teiHeader}>}\mbox{}\newline 
-\hspace*{6pt}{<\textbf{TEI}>}\mbox{}\newline 
+\hspace*{6pt}{<\textbf{TEI} xmlns="http://www.tei-c.org/ns/1.0">}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{<\textbf{teiHeader}>}\mbox{}\newline 
 \begin{it}<!--[header information for first text]-->\end{it}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{</\textbf{teiHeader}>}\mbox{}\newline 
@@ -579,7 +582,7 @@ It is also possible to define a composite of TEI texts, each with its own header
 \begin{it}<!--[first text in corpus]-->\end{it}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{</\textbf{text}>}\mbox{}\newline 
 \hspace*{6pt}{</\textbf{TEI}>}\mbox{}\newline 
-\hspace*{6pt}{<\textbf{TEI}>}\mbox{}\newline 
+\hspace*{6pt}{<\textbf{TEI} xmlns="http://www.tei-c.org/ns/1.0">}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{<\textbf{teiHeader}>}\mbox{}\newline 
 \begin{it}<!--[header information for second text]-->\end{it}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{</\textbf{teiHeader}>}\mbox{}\newline 
@@ -594,14 +597,14 @@ For example, here are the elements discussed so far:
 As indicated above, a simple TEI document at the textual level consists of the following elements:     Elements specific to front and back matter are described below in section U5-fronbac. In this section we discuss the elements making up the body of a text. 
 \DivII[Text Division Elements]{Text Division Elements}\label{divs}\par
 The body of a prose text may be just a series of paragraphs, or these paragraphs may be grouped together into chapters, sections, subsections, etc. Each paragraph is tagged using the \texttt{<p>} tag. The \texttt{<div>} element is used to represent any such grouping of paragraphs.     \par
-The \textbf{@type} attribute on the \texttt{<div>} element may be used to supply a conventional name for this category of text division, or otherwise distinguish them.  Typical values might be ‘book’, ‘chapter’, ‘section’, ‘part’, ‘poem’, ‘song’, etc.  For a given project, it will usually be advisable to define and adhere to a specific list of such values.  \par
+The \textit{@type} attribute on the \texttt{<div>} element may be used to supply a conventional name for this category of text division, or otherwise distinguish them.  Typical values might be ‘book’, ‘chapter’, ‘section’, ‘part’, ‘poem’, ‘song’, etc.  For a given project, it will usually be advisable to define and adhere to a specific list of such values.  \par
 A \texttt{<div>} element may itself contain further, nested, \texttt{<div>}s, thus mimicking the traditional structure of a book, which can be decomposed hierarchically into units such as parts, containing chapters, containing sections, and so on. TEI texts in general conform to this simple hierarchic model.\par
- The \textbf{@xml:id} attribute may be used to supply a unique identifier for the division, which may be used for cross references or other links to it, such as a commentary, as further discussed in section U5-ptrs. It is often useful to provide an \textbf{@xml:id} attribute for every major structural unit in a text, and to derive its values in some systematic way, for example by appending a section number to a short code for the title of the work in question, as in the examples below.\par
-The \textbf{@n} attribute may be used to supply (additionally or alternatively) a short mnemonic name or number for the division.  If a conventional form of reference or abbreviation for the parts of a work already exists (such as the book/chapter/verse pattern of Biblical citations), the \textbf{@n} attribute is the place to record it.\par
-The \textbf{@xml:lang} attribute may be used to specify the language of the division.  Languages are identified by an internationally defined code, as further discussed in section z636 below.\par
-The \textbf{@rend} attribute may be used to supply information about the rendition (appearance) of a division, or any other element, as further discussed in section U5-hilites below. As with the \textbf{@type} attribute, a project will often find it useful to predefine the possible values for this attribute, but TEI Lite does not constrain it in anyway. \par
- These four attributes, \textbf{@xml:id}, \textbf{@n}, \textbf{@xml:lang}, and \textbf{@rend} are so widely useful that they are allowed on any element in any TEI schema: they are \emph{global attributes}.  Other global attributes defined in the TEI Lite scheme are discussed in section xatts.\par
-The value of every \textbf{@xml:id} attribute should be unique within a document. One simple way of ensuring that this is so is to make it reflect the hierarchic structure of the document. For example, Smith's \textit{Wealth of Nations} as first published consists of five books, each of which is divided into chapters, while some chapters are further subdivided into parts. We might define \textbf{@xml:id} values for this structure as follows:  \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{body}>}\mbox{}\newline 
+ The \textit{@xml:id} attribute may be used to supply a unique identifier for the division, which may be used for cross references or other links to it, such as a commentary, as further discussed in section U5-ptrs. It is often useful to provide an \textit{@xml:id} attribute for every major structural unit in a text, and to derive its values in some systematic way, for example by appending a section number to a short code for the title of the work in question, as in the examples below.\par
+The \textit{@n} attribute may be used to supply (additionally or alternatively) a short mnemonic name or number for the division.  If a conventional form of reference or abbreviation for the parts of a work already exists (such as the book/chapter/verse pattern of Biblical citations), the \textit{@n} attribute is the place to record it.\par
+The \textit{@xml:lang} attribute may be used to specify the language of the division.  Languages are identified by an internationally defined code, as further discussed in section z636 below.\par
+The \textit{@rend} attribute may be used to supply information about the rendition (appearance) of a division, or any other element, as further discussed in section U5-hilites below. As with the \textit{@type} attribute, a project will often find it useful to predefine the possible values for this attribute, but TEI Lite does not constrain it in anyway. \par
+ These four attributes, \textit{@xml:id}, \textit{@n}, \textit{@xml:lang}, and \textit{@rend} are so widely useful that they are allowed on any element in any TEI schema: they are \emph{global attributes}.  Other global attributes defined in the TEI Lite scheme are discussed in section xatts.\par
+The value of every \textit{@xml:id} attribute should be unique within a document. One simple way of ensuring that this is so is to make it reflect the hierarchic structure of the document. For example, Smith's \textit{Wealth of Nations} as first published consists of five books, each of which is divided into chapters, while some chapters are further subdivided into parts. We might define \textit{@xml:id} values for this structure as follows:  \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{body}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{div}\hspace*{6pt}n="{I}"\hspace*{6pt}type="{book}"\hspace*{6pt}xml:id="{WN1}">}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{<\textbf{div}\hspace*{6pt}n="{I.1}"\hspace*{6pt}type="{chapter}"\hspace*{6pt}xml:id="{WN101}">}\mbox{}\newline 
 \begin{it}<!-- ... -->\end{it}\mbox{}\newline 
@@ -624,7 +627,7 @@ The value of every \textbf{@xml:id} attribute should be unique within a document
 \begin{it}<!-- ... -->\end{it}\mbox{}\newline 
 \hspace*{6pt}{</\textbf{div}>}\mbox{}\newline 
 {</\textbf{body}>}\end{shaded}\egroup\par \par
-A different numbering scheme may be used for \textbf{@xml:id} and \textbf{@n} attributes: this is often useful where a canonical reference scheme is used which does not tally with the structure of the work.  For example, in a novel divided into books each containing chapters, where the chapters are numbered sequentially through the whole work, rather than within each book, one might use a scheme such as the following:  \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{body}>}\mbox{}\newline 
+A different numbering scheme may be used for \textit{@xml:id} and \textit{@n} attributes: this is often useful where a canonical reference scheme is used which does not tally with the structure of the work.  For example, in a novel divided into books each containing chapters, where the chapters are numbered sequentially through the whole work, rather than within each book, one might use a scheme such as the following:  \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{body}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{div}\hspace*{6pt}n="{1}"\hspace*{6pt}type="{Volume}"\hspace*{6pt}xml:id="{TS01}">}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{<\textbf{div}\hspace*{6pt}n="{1}"\hspace*{6pt}type="{Chapter}"\hspace*{6pt}xml:id="{TS011}">}\mbox{}\newline 
 \begin{it}<!-- ... -->\end{it}\mbox{}\newline 
@@ -641,7 +644,7 @@ A different numbering scheme may be used for \textbf{@xml:id} and \textbf{@n} at
 \begin{it}<!-- ... -->\end{it}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{</\textbf{div}>}\mbox{}\newline 
 \hspace*{6pt}{</\textbf{div}>}\mbox{}\newline 
-{</\textbf{body}>}\end{shaded}\egroup\par \noindent  Here the work has two volumes, each containing two chapters. The chapters are numbered conventionally 1 to 4, but the \textbf{@xml:id} values specified allow them to be regarded additionally as if they were numbered 1.1, 1.2, 2.1, 2.2.
+{</\textbf{body}>}\end{shaded}\egroup\par \noindent  Here the work has two volumes, each containing two chapters. The chapters are numbered conventionally 1 to 4, but the \textit{@xml:id} values specified allow them to be regarded additionally as if they were numbered 1.1, 1.2, 2.1, 2.2.
 \DivII[Headings and Closings]{Headings and Closings}\label{h25}\par
 Every \texttt{<div>}  may have a title or heading at its start, and (less commonly) a closing such as ‘End of Chapter 1’.  The following elements may be used to transcribe them:    Some other elements which may be necessary at the beginning or ending of text divisions are discussed below in section h52.\par
 Whether or not headings and trailers are included in a transcription is a matter for the individual transcriber to decide. Where a heading is completely regular (for example ‘Chapter 1’) or may be automatically constructed from attribute values (e.g. \texttt{<div type="Chapter" n="1">}), it may be omitted; where it contains otherwise unrecoverable text it should always be included. For example, the start of Hardy's \textit{Under the Greenwood Tree} might be encoded as follows:  \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{div}\hspace*{6pt}n="{Winter}"\hspace*{6pt}type="{Part}"\hspace*{6pt}xml:id="{UGT1}">}\mbox{}\newline 
@@ -675,7 +678,7 @@ Here, for example, is the start of a poetic text in which verse lines and stanza
 \hspace*{6pt}{<\textbf{l}>}And (holy writs excepted) made to yeeld to none,{</\textbf{l}>}\mbox{}\newline 
 {</\textbf{lg}>}\end{shaded}\egroup\par \par
 Note that the \texttt{<l>} element marks verse lines, not typographic lines: the original lineation of the first few lines above has not therefore been made explicit by this encoding, and may be lost. The \texttt{<lb>} element described in section U5-pln may be used to mark typographic lines if so desired.\par
-Sometimes, particularly in dramatic texts, verse lines are split between speakers. The easiest way of encoding this is to use the \textbf{@part} attribute to indicate that the lines so fragmented are incomplete, as in this example: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{div}\hspace*{6pt}n="{I}"\hspace*{6pt}type="{Act}">}\mbox{}\newline 
+Sometimes, particularly in dramatic texts, verse lines are split between speakers. The easiest way of encoding this is to use the \textit{@part} attribute to indicate that the lines so fragmented are incomplete, as in this example: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{div}\hspace*{6pt}n="{I}"\hspace*{6pt}type="{Act}">}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{head}>}ACT I{</\textbf{head}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{div}\hspace*{6pt}n="{1}"\hspace*{6pt}type="{Scene}">}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{<\textbf{head}>}SCENE I{</\textbf{head}>}\mbox{}\newline 
@@ -726,7 +729,7 @@ The same mechanism may be applied to stanzas which are divided between two speak
 \hspace*{6pt}{</\textbf{sp}>}\mbox{}\newline 
 \begin{it}<!-- ... -->\end{it}\mbox{}\newline 
 {</\textbf{div}>}\end{shaded}\egroup\par \noindent  \par
-This example shows how dialogue presented in a prose work as if it were drama should be encoded. It also demonstrates the use of the \textbf{@who} attribute to bear a code identifying the speaker of the piece of dialogue concerned: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{div}>}\mbox{}\newline 
+This example shows how dialogue presented in a prose work as if it were drama should be encoded. It also demonstrates the use of the \textit{@who} attribute to bear a code identifying the speaker of the piece of dialogue concerned: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{div}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{sp}\hspace*{6pt}who="{OPI}">}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{<\textbf{speaker}>}The reverend Doctor Opimiam{</\textbf{speaker}>}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{<\textbf{p}>}I do not think I have named a single unpresentable fish.{</\textbf{p}>}\mbox{}\newline 
@@ -744,19 +747,19 @@ This example shows how dialogue presented in a prose work as if it were drama sh
 \hspace*{6pt}{</\textbf{sp}>}\mbox{}\newline 
 {</\textbf{div}>}\end{shaded}\egroup\par 
 \DivI[Page and Line Numbers]{Page and Line Numbers}\label{U5-pln}\par
-Page and line breaks may be marked with the following empty elements.   These elements mark a single point in the text, not a span of text. The global \textbf{@n} attribute should be used to supply the number of the page or line beginning at the tag.  \par
+Page and line breaks may be marked with the following empty elements.   These elements mark a single point in the text, not a span of text. The global \textit{@n} attribute should be used to supply the number of the page or line beginning at the tag.  \par
 When working from a paginated original, it is often useful to record its pagination, if only to simplify later proof-reading. Recording the line breaks may be useful for the same reason; treatment of end-of-line hyphenation in printed source texts will require some consideration.\par
-If pagination, etc., are marked for more than one edition, specify the edition in question using the \textbf{@ed} attribute, and supply as many tags are necessary. For example, in the following passage we indicate where the page breaks occur in two different editions (‘ED1’ and ‘ED2’) \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{p}>}I wrote to Moor House and to Cambridge immediately, to\mbox{}\newline 
+If pagination, etc., are marked for more than one edition, specify the edition in question using the \textit{@ed} attribute, and supply as many tags are necessary. For example, in the following passage we indicate where the page breaks occur in two different editions (‘ED1’ and ‘ED2’) \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{p}>}I wrote to Moor House and to Cambridge immediately, to\mbox{}\newline 
  say what I had done: fully explaining also why I had thus\mbox{}\newline 
  acted. Diana and {<\textbf{pb}\hspace*{6pt}ed="{ED1}"\hspace*{6pt}n="{475}"/>} Mary approved the\mbox{}\newline 
  step unreservedly. Diana announced that she would\mbox{}\newline 
 {<\textbf{pb}\hspace*{6pt}ed="{ED2}"\hspace*{6pt}n="{485}"/>}just give me time to get over the\mbox{}\newline 
  honeymoon, and then she would come and see me.{</\textbf{p}>}\end{shaded}\egroup\par \par
-The \texttt{<pb>} and \texttt{<lb>} elements are special cases of the general class of \emph{milestone} elements which mark reference points within a text.  TEI Lite also includes a generic \texttt{<milestone>} element, which is not restricted to special cases but can  mark any kind of reference point:  for example, a column break, the start of a new kind of section not otherwise tagged, or in general any significant change in the text not marked by an XML element. The names used for types of unit and for editions referred to by the \textbf{@ed} and \textbf{@unit} attributes may be chosen freely, but should be documented in the header. The \texttt{<milestone>} element may be used to replace the others, or the others may be used as a set; they should not be mixed arbitrarily.
+The \texttt{<pb>} and \texttt{<lb>} elements are special cases of the general class of \emph{milestone} elements which mark reference points within a text.  TEI Lite also includes a generic \texttt{<milestone>} element, which is not restricted to special cases but can  mark any kind of reference point:  for example, a column break, the start of a new kind of section not otherwise tagged, or in general any significant change in the text not marked by an XML element. The names used for types of unit and for editions referred to by the \textit{@ed} and \textit{@unit} attributes may be chosen freely, but should be documented in the header. The \texttt{<milestone>} element may be used to replace the others, or the others may be used as a set; they should not be mixed arbitrarily.
 \DivI[Marking Highlighted Phrases]{Marking Highlighted Phrases}\label{U5-hilites}
 \DivII[Changes of Typeface, etc.]{Changes of Typeface, etc.}\label{faces}\par
 Highlighted words or phrases are those made visibly different from the rest of the text, typically by a change of type font, handwriting style, ink colour etc., which is intended to draw the reader's attention to some associated change.\par
-The global \textbf{@rend} attribute can be attached to any element, and used wherever necessary to specify details of the highlighting used for it. For example, a heading rendered in bold might be tagged \texttt{<head rend="bold">}, and one in italic \texttt{<head rend="italic">}.\par
+The global \textit{@rend} attribute can be attached to any element, and used wherever necessary to specify details of the highlighting used for it. For example, a heading rendered in bold might be tagged \texttt{<head rend="bold">}, and one in italic \texttt{<head rend="italic">}.\par
 It is not always possible or desirable to interpret the reasons for such changes of rendering in a text.  In such cases, the element \texttt{<hi>} may be used to mark a sequence of  highlighted text without making any claim as to its status. \par
 In the following example, the use of a distinct typeface for the subheading and for the included name are recorded but not interpreted: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{p}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{hi}\hspace*{6pt}rend="{gothic}">}And this Indenture further witnesseth{</\textbf{hi}>}\mbox{}\newline 
@@ -764,9 +767,11 @@ In the following example, the use of a distinct typeface for the subheading and 
  in consideration of the said intended marriage ...\mbox{}\newline 
 {</\textbf{p}>}\end{shaded}\egroup\par \par
 Alternatively, where the cause for the highlighting can be identified with confidence, a number of other, more specific, elements are available. \par
-Some features (notably quotations and glosses) may be found in a text either marked by highlighting, or with quotation marks.  In either case, the elements \texttt{<q>} and \texttt{<gloss>} (as discussed in the following section) should be used. If the rendition is to be recorded, use the global \textbf{@rend} attribute.\par
-As an example of the elements defined here, consider the following sentence:  \begin{quote}
-    On the one hand the \textit{Nibelungenlied} is associated with the new rise of romance of twelfth-century France, the \textit{romans d'antiquité}, the romances of Chrétien de Troyes, and the German adaptations of these works by Heinrich van Veldeke, Hartmann von Aue, and Wolfram von Eschenbach. \end{quote} Interpreting the role of the highlighting, the sentence might look like this: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{p}>}On the one hand the {<\textbf{title}>}Nibelungenlied{</\textbf{title}>} is associated\mbox{}\newline 
+Some features (notably quotations and glosses) may be found in a text either marked by highlighting, or with quotation marks.  In either case, the elements \texttt{<q>} and \texttt{<gloss>} (as discussed in the following section) should be used. If the rendition is to be recorded, use the global \textit{@rend} attribute.\par
+As an example of the elements defined here, consider the following sentence: 
+\begin{quote}
+On the one hand the \textit{Nibelungenlied} is associated with the new rise of romance of twelfth-century France, the \textit{romans d'antiquité}, the romances of Chrétien de Troyes, and the German adaptations of these works by Heinrich van Veldeke, Hartmann von Aue, and Wolfram von Eschenbach.\end{quote}
+ Interpreting the role of the highlighting, the sentence might look like this: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{p}>}On the one hand the {<\textbf{title}>}Nibelungenlied{</\textbf{title}>} is associated\mbox{}\newline 
  with the new rise of romance of twelfth-century France, the\mbox{}\newline 
 {<\textbf{foreign}>}romans d'antiquité{</\textbf{foreign}>}, the romances of\mbox{}\newline 
  Chrétien de Troyes, ...{</\textbf{p}>}\end{shaded}\egroup\par \noindent  Describing only the appearance of the original, it might look like this: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{p}>}On the one hand the {<\textbf{hi}\hspace*{6pt}rend="{italic}">}Nibelungenlied{</\textbf{hi}>}\mbox{}\newline 
@@ -780,21 +785,21 @@ Here is a simple example of a quotation: \par\bgroup\ttfamily\small\selectfont \
  Dr. Johnson's description of the\mbox{}\newline 
  lexicographer as {<\textbf{q}>}a harmless drudge.{</\textbf{q}>}\mbox{}\newline 
 {</\textbf{p}>}\end{shaded}\egroup\par \noindent  \par
-To record how a quotation was printed (for example, \emph{in-line} or set off as a \emph{display} or \emph{block quotation}), the \textbf{@rend} attribute should be used. This may also be used to indicate the kind of quotation marks used.\par
+To record how a quotation was printed (for example, \emph{in-line} or set off as a \emph{display} or \emph{block quotation}), the \textit{@rend} attribute should be used. This may also be used to indicate the kind of quotation marks used.\par
 Direct speech interrupted by a narrator can be represented simply by ending the quotation and beginning it again after the interruption, as in the following example: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{p}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{q}>}Who-e debel you?{</\textbf{q}>} — he at last said — {<\textbf{q}>}you\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt} no speak-e, damme, I kill-e.{</\textbf{q}>} And so saying, the lighted\mbox{}\newline 
  tomahawk began flourishing about me in the dark.\mbox{}\newline 
-{</\textbf{p}>}\end{shaded}\egroup\par \noindent  If it is important to convey the idea that the two \texttt{<q>} elements together make up a single speech, the linking attributes \textbf{@next} and \textbf{@prev} may be used, as described in section xatts.\par
-Quotations may be accompanied by a reference to the source or speaker, using the \textbf{@who} attribute, whether or not the source is given in the text, as in the following example: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{q}\hspace*{6pt}who="{Wilson}">}Spaulding, he came down into the office just this\mbox{}\newline 
+{</\textbf{p}>}\end{shaded}\egroup\par \noindent  If it is important to convey the idea that the two \texttt{<q>} elements together make up a single speech, the linking attributes \textit{@next} and \textit{@prev} may be used, as described in section xatts.\par
+Quotations may be accompanied by a reference to the source or speaker, using the \textit{@who} attribute, whether or not the source is given in the text, as in the following example: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{q}\hspace*{6pt}who="{Wilson}">}Spaulding, he came down into the office just this\mbox{}\newline 
  day eight weeks with this very paper in his hand, and he\mbox{}\newline 
  says:—{<\textbf{q}\hspace*{6pt}who="{Spaulding}">}I wish to the Lord, Mr. Wilson, that\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt} I was a red-headed man.{</\textbf{q}>}\mbox{}\newline 
 {</\textbf{q}>}\end{shaded}\egroup\par \noindent   This example also demonstrates how quotations may be embedded within other quotations: one speaker (Wilson) quotes another speaker (Spaulding).\par
-The creator of the electronic text must decide whether quotation marks are replaced by the tags or whether the tags are added and the quotation marks kept. If the quotation marks are removed from the text, the \textbf{@rend} attribute may be used to record the way in which they were rendered in the copy text.\par
+The creator of the electronic text must decide whether quotation marks are replaced by the tags or whether the tags are added and the quotation marks kept. If the quotation marks are removed from the text, the \textit{@rend} attribute may be used to record the way in which they were rendered in the copy text.\par
 As with highlighting, it is not always possible and may not be considered desirable to interpret the function of quotation marks in a text in this way.  In such cases, the tag \texttt{<hi rend="quoted">} might be used to mark quoted text without making any claim as to its status.
 \DivII[Foreign Words or Expressions]{Foreign Words or Expressions}\label{z636}\par
-Words or phrases which are not in the main language of the texts may be tagged as such in one of two ways. If the word or phrase is already tagged for some reason, the element indicated should bear a value for the global \textbf{@xml:lang} attribute indicating the language used. Where there is no applicable element, the element \texttt{<foreign>} may be used, again using the \textbf{@xml:lang} attribute.  For example: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{p}>}John has real\mbox{}\newline 
+Words or phrases which are not in the main language of the texts may be tagged as such in one of two ways. If the word or phrase is already tagged for some reason, the element indicated should bear a value for the global \textit{@xml:lang} attribute indicating the language used. Where there is no applicable element, the element \texttt{<foreign>} may be used, again using the \textit{@xml:lang} attribute.  For example: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{p}>}John has real\mbox{}\newline 
 {<\textbf{foreign}\hspace*{6pt}xml:lang="{fra}">}savoir-faire{</\textbf{foreign}>}.{</\textbf{p}>}\mbox{}\newline 
 {<\textbf{p}>}Have you read {<\textbf{title}\hspace*{6pt}xml:lang="{deu}">}Die Dreigroschenoper{</\textbf{title}>}?{</\textbf{p}>}\mbox{}\newline 
 {<\textbf{p}>}\mbox{}\newline 
@@ -802,8 +807,8 @@ Words or phrases which are not in the main language of the texts may be tagged a
  know-how.\mbox{}\newline 
 {</\textbf{p}>}\mbox{}\newline 
 {<\textbf{p}>}The court issued a writ of {<\textbf{term}\hspace*{6pt}xml:lang="{lat}">}mandamus{</\textbf{term}>}.{</\textbf{p}>}\end{shaded}\egroup\par \par
-As these examples show, the \texttt{<foreign>} element should not be used to tag foreign words if some other more specific element such as \texttt{<title>}, \texttt{<mentioned>}, or \texttt{<term>} applies. The global \textbf{@xml:lang} attribute may be attached to any element to show that it uses some other language than that of the surrounding text.\par
-The codes used to identify languages, supplied on the \textbf{@xml:lang} attribute, must be constructed in a particular way, and must conform to common Internet standards\footnote{The relevant standards are RFC 3066, and the lists of two and three language identifiers maintained as part of ISO 639 (see http://www.w3.org/WAI/ER/IG/ert/iso639.htm)}, as further explained in the relevant section of the TEI Guidelines. Some simple example codes for a few languages are given here:  \par 
+As these examples show, the \texttt{<foreign>} element should not be used to tag foreign words if some other more specific element such as \texttt{<title>}, \texttt{<mentioned>}, or \texttt{<term>} applies. The global \textit{@xml:lang} attribute may be attached to any element to show that it uses some other language than that of the surrounding text.\par
+The codes used to identify languages, supplied on the \textit{@xml:lang} attribute, must be constructed in a particular way, and must conform to common Internet standards\footnote{The relevant standards are RFC 3066, and the lists of two and three language identifiers maintained as part of ISO 639 (see http://www.w3.org/WAI/ER/IG/ert/iso639.htm)}, as further explained in the relevant section of the TEI Guidelines. Some simple example codes for a few languages are given here:  \par 
 \begin{longtable}{P{0.18133333333333335\textwidth}P{0.22666666666666666\textwidth}P{0.221\textwidth}P{0.221\textwidth}}
 zh or zho\tabcellsep Chinese\tabcellsep grc\tabcellsep Ancient Greek\\
 en\tabcellsep English\tabcellsep ell or el\tabcellsep Greek\\
@@ -812,8 +817,8 @@ fr or fra\tabcellsep French\tabcellsep la or lat\tabcellsep Latin\\
 de or deu\tabcellsep German\tabcellsep sa or san\tabcellsep Sanskrit\end{longtable} \par
   
 \DivI[Notes]{Notes}\label{U5-notes}\par
-All notes, whether printed as footnotes, endnotes, marginalia, or elsewhere, should be marked using the same element:   Where possible, the body of a note should be inserted in the text at the point at which its identifier or mark first appears. This may not be possible for example with marginalia, which may not be anchored to an exact location.  For simplicity, it may be adequate to position marginal notes before the relevant paragraph or other element.  Notes may also be placed in a separate division of the text (as end-notes are, in printed books) and linked to the relevant portion of the text using their \textbf{@target} attribute.\par
-The \textbf{@n} attribute may be used to supply the number or identifier of a note if this is required.  The \textbf{@resp} attribute should be used consistently to distinguish between authorial and editorial notes, if the work has both kinds; otherwise, the TEI header should state which kind they are.\par
+All notes, whether printed as footnotes, endnotes, marginalia, or elsewhere, should be marked using the same element:   Where possible, the body of a note should be inserted in the text at the point at which its identifier or mark first appears. This may not be possible for example with marginalia, which may not be anchored to an exact location.  For simplicity, it may be adequate to position marginal notes before the relevant paragraph or other element.  Notes may also be placed in a separate division of the text (as end-notes are, in printed books) and linked to the relevant portion of the text using their \textit{@target} attribute.\par
+The \textit{@n} attribute may be used to supply the number or identifier of a note if this is required.  The \textit{@resp} attribute should be used consistently to distinguish between authorial and editorial notes, if the work has both kinds; otherwise, the TEI header should state which kind they are.\par
 Examples: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{p}>}Collections are ensembles of distinct\mbox{}\newline 
  entities or objects of any sort.\mbox{}\newline 
 {<\textbf{note}\hspace*{6pt}n="{1}"\hspace*{6pt}place="{foot}">}We explain below why we use the uncommon term\mbox{}\newline 
@@ -837,7 +842,7 @@ Explicit cross references or links from one point in a text to another in the sa
 A cross reference from one point within a single document to another can be encoded using either of the following elements:    \par
 The difference between these two elements is that \texttt{<ptr>} is an empty element, simply marking a point from which a link is to be made, whereas \texttt{<ref>} may contain some text as well — typically the text of the cross-reference itself. The \texttt{<ptr>} element would be used for a cross reference which is to be indicated by some non-verbal means such as a symbol or icon, or in an electronic text by a button. It is also useful in document production systems, where the formatter can generate the correct verbal form of the cross reference.\par
 The following two forms, for example, are logically equivalent (assuming we have documented somewhere the exact verbal form of cross references represented by \texttt{<ptr>} elements): \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}See especially {<\textbf{ref}\hspace*{6pt}target="{#SEC12}">}section 12 on page\mbox{}\newline 
- 34{</\textbf{ref}>}.\end{shaded}\egroup\par \noindent  \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}See especially {<\textbf{ptr}\hspace*{6pt}target="{#SEC12}"/>}.\end{shaded}\egroup\par \noindent   The value of the       \textbf{@target} attribute must have been used as the  identifier of some other element within the current document.  This implies that the passage or phrase being pointed at must bear an identifier, and must therefore be tagged as an element of some kind. In the following example, the cross reference is to a \texttt{<div>} element: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{} ...\mbox{}\newline 
+ 34{</\textbf{ref}>}.\end{shaded}\egroup\par \noindent  \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}See especially {<\textbf{ptr}\hspace*{6pt}target="{#SEC12}"/>}.\end{shaded}\egroup\par \noindent   The value of the       \textit{@target} attribute must have been used as the  identifier of some other element within the current document.  This implies that the passage or phrase being pointed at must bear an identifier, and must therefore be tagged as an element of some kind. In the following example, the cross reference is to a \texttt{<div>} element: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{} ...\mbox{}\newline 
  see especially {<\textbf{ptr}\hspace*{6pt}target="{#SEC12}"/>}.\mbox{}\newline 
  ...\mbox{}\newline 
 \mbox{}\newline 
@@ -845,7 +850,7 @@ The following two forms, for example, are logically equivalent (assuming we have
 \hspace*{6pt}{<\textbf{head}>}Concerning Identifiers{</\textbf{head}>}\mbox{}\newline 
 \begin{it}<!-- ... -->\end{it}\mbox{}\newline 
 {</\textbf{div}>}\end{shaded}\egroup\par \noindent   \par
-Because the \textbf{@xml:id} attribute is global, any element in a document may be pointed to in this way. In the following example, a paragraph has been given an identifier so that it may be pointed at: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{} ...\mbox{}\newline 
+Because the \textit{@xml:id} attribute is global, any element in a document may be pointed to in this way. In the following example, a paragraph has been given an identifier so that it may be pointed at: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{} ...\mbox{}\newline 
  this is discussed in {<\textbf{ref}\hspace*{6pt}target="{#pspec}">}the paragraph on links{</\textbf{ref}>}\mbox{}\newline 
  ...\mbox{}\newline 
 \mbox{}\newline 
@@ -855,28 +860,28 @@ Sometimes the target of a cross reference  does not correspond with any particul
 In the following (imaginary) example, \texttt{<ref>} elements have been used to represent points in this text which are to be linked in some way to other parts of it; in the first case to a point, and in the second, to a sequence of words: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{} Returning to {<\textbf{ref}\hspace*{6pt}target="{#ABCD}">}the point where I dozed\mbox{}\newline 
  off{</\textbf{ref}>}, I noticed that {<\textbf{ref}\hspace*{6pt}target="{#EFGH}">}three\mbox{}\newline 
  words{</\textbf{ref}>} had been circled in red by a previous reader\end{shaded}\egroup\par \par
-This encoding requires that elements with the specified identifiers (\textbf{@ABCD} and \textbf{@EFGH} in this example) are to be found somewhere else in the current document. Assuming that no element already exists to carry these identifiers, the \texttt{<anchor>} and \texttt{<seg>} elements may be used: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{} .... {<\textbf{anchor}\hspace*{6pt}type="{bookmark}"\hspace*{6pt}xml:id="{ABCD}"/>} ....\mbox{}\newline 
+This encoding requires that elements with the specified identifiers (\textit{@ABCD} and \textit{@EFGH} in this example) are to be found somewhere else in the current document. Assuming that no element already exists to carry these identifiers, the \texttt{<anchor>} and \texttt{<seg>} elements may be used: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{} .... {<\textbf{anchor}\hspace*{6pt}type="{bookmark}"\hspace*{6pt}xml:id="{ABCD}"/>} ....\mbox{}\newline 
  ....{<\textbf{seg}\hspace*{6pt}type="{target}"\hspace*{6pt}xml:id="{EFGH}">} ... {</\textbf{seg}>} ...\end{shaded}\egroup\par \par
-The \textbf{@type} attribute should be used (as above) to distinguish amongst different purposes for which these general purpose elements might be used in a text. Some other uses are  discussed in section xatts below.
+The \textit{@type} attribute should be used (as above) to distinguish amongst different purposes for which these general purpose elements might be used in a text. Some other uses are  discussed in section xatts below.
 \DivII[Pointing to other documents]{Pointing to other documents}\label{xptrs}\par
-So far, we have shown how the elements \texttt{<ptr>} and \texttt{<ref>} may be used for cross-references or links whose targets occur within the same document as their source. However, the same elements may also be used to refer to elements in any other XML document or resource, such as a document on the web, or a database component.  This is possible because the value of the \textbf{@target} attribute may be any valid \emph{universal resource indicator} (URI). A full definition of this term, defined by the W3C (the consortium which manages the development and maintenance of the World Wide Web), is beyond the scope of this tutorial: however, the most frequently encountered version of a URI is the familiar ‘URL’ used to indicate a web page, such as \texttt{http://www.tei-c.org/index.xml}. \par
-A URL may reference a web page or just a part of one, for example \texttt{http://www.tei-c.org/index.xml#SEC2}.  The sharp sign indicates that what follows it is the identifier of an element to be located within the XML document identified by what precedes it: this example will therefore locate an element which has an \textbf{@xml:id} attribute value of ‘SEC2’ within the document retrieved from \texttt{http://www.tei-c.org/index.xml}. In the examples we have discussed so far, the part to the left of the sharp sign has been omitted: this is understood to mean that the referenced element is to be located within the current document.\par
+So far, we have shown how the elements \texttt{<ptr>} and \texttt{<ref>} may be used for cross-references or links whose targets occur within the same document as their source. However, the same elements may also be used to refer to elements in any other XML document or resource, such as a document on the web, or a database component.  This is possible because the value of the \textit{@target} attribute may be any valid \emph{universal resource indicator} (URI). A full definition of this term, defined by the W3C (the consortium which manages the development and maintenance of the World Wide Web), is beyond the scope of this tutorial: however, the most frequently encountered version of a URI is the familiar ‘URL’ used to indicate a web page, such as \texttt{http://www.tei-c.org/index.xml}. \par
+A URL may reference a web page or just a part of one, for example \texttt{http://www.tei-c.org/index.xml#SEC2}.  The sharp sign indicates that what follows it is the identifier of an element to be located within the XML document identified by what precedes it: this example will therefore locate an element which has an \textit{@xml:id} attribute value of ‘SEC2’ within the document retrieved from \texttt{http://www.tei-c.org/index.xml}. In the examples we have discussed so far, the part to the left of the sharp sign has been omitted: this is understood to mean that the referenced element is to be located within the current document.\par
 Within a URL, parts of an XML document can be specified by means of other more sophisticated mechanisms, using a special language called Xpath, also defined by the W3C.  This is particularly useful where the elements to be linked to do not bear identifiers and must therefore be located by some other means.  A full specification of the language is well beyond the scope of this document; here we provide only a flavour of its power. \par
 In the XPath language, locations are defined as a series of \emph{steps}, each one identifying some part of the document, often in terms of the locations identified by the previous step.  For example, you would point to the third sentence of the second paragraph of chapter two by selecting chapter two in the first step, the second paragraph in the second step, and the third sentence in the last step. A step can be defined in terms of the document tree itself, using such concepts as ‘parent’, ‘descendent’, ‘preceding’, etc. or, more loosely, in terms of text patterns, word or character positions. 
 \DivII[Special kinds of Linking]{Special kinds of Linking}\label{xatts}\par
 The following special purpose \emph{linking} attributes are defined for every element in the TEI Lite scheme: \begin{description}
 
-\item[\textbf{@ana}]links an element with its interpretation.
-\item[\textbf{@corresp}]links an element with one or more other corresponding elements.
-\item[\textbf{@next}]links an element to the next element in an aggregate.
-\item[\textbf{@prev}]links an element to the previous element in an aggregate.
+\item[\textit{@ana}]links an element with its interpretation.
+\item[\textit{@corresp}]links an element with one or more other corresponding elements.
+\item[\textit{@next}]links an element to the next element in an aggregate.
+\item[\textit{@prev}]links an element to the previous element in an aggregate.
 \end{description} \par
-The \textbf{@ana} (analysis) attribute is intended for use where a set of abstract analyses or interpretations have been defined somewhere within a document, as further discussed in section U5-anal. For example, a linguistic analysis of the sentence ‘John loves Nancy’ might be encoded as follows: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{seg}\hspace*{6pt}ana="{SVO}"\hspace*{6pt}type="{sentence}">}\mbox{}\newline 
+The \textit{@ana} (analysis) attribute is intended for use where a set of abstract analyses or interpretations have been defined somewhere within a document, as further discussed in section U5-anal. For example, a linguistic analysis of the sentence ‘John loves Nancy’ might be encoded as follows: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{seg}\hspace*{6pt}ana="{SVO}"\hspace*{6pt}type="{sentence}">}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{seg}\hspace*{6pt}ana="{#NP1}"\hspace*{6pt}type="{lex}">}John{</\textbf{seg}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{seg}\hspace*{6pt}ana="{#VVI}"\hspace*{6pt}type="{lex}">}loves{</\textbf{seg}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{seg}\hspace*{6pt}ana="{#NP1}"\hspace*{6pt}type="{lex}">}Nancy{</\textbf{seg}>}\mbox{}\newline 
-{</\textbf{seg}>}\end{shaded}\egroup\par \noindent   This encoding implies the existence elsewhere in the document of elements with identifiers ‘SVO’, ‘NP1’, and ‘VV1’ where the significance of these particular codes is explained. Note the use of the \texttt{<seg>} element to mark particular components of the analysis, distinguished by the \textbf{@type} attribute.\par
-The \textbf{@corresp} (corresponding) attribute provides a simple way of representing some form of correspondence between two elements in a text. For example, in a multilingual text, it may be used to link translation equivalents, as in the following example \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{seg}\hspace*{6pt}corresp="{#EN1}"\hspace*{6pt}xml:id="{FR1}"\hspace*{6pt}xml:lang="{fra}">}Jean aime Nancy{</\textbf{seg}>}\mbox{}\newline 
+{</\textbf{seg}>}\end{shaded}\egroup\par \noindent   This encoding implies the existence elsewhere in the document of elements with identifiers ‘SVO’, ‘NP1’, and ‘VV1’ where the significance of these particular codes is explained. Note the use of the \texttt{<seg>} element to mark particular components of the analysis, distinguished by the \textit{@type} attribute.\par
+The \textit{@corresp} (corresponding) attribute provides a simple way of representing some form of correspondence between two elements in a text. For example, in a multilingual text, it may be used to link translation equivalents, as in the following example \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{seg}\hspace*{6pt}corresp="{#EN1}"\hspace*{6pt}xml:id="{FR1}"\hspace*{6pt}xml:lang="{fra}">}Jean aime Nancy{</\textbf{seg}>}\mbox{}\newline 
 {<\textbf{seg}\hspace*{6pt}corresp="{#FR1}"\hspace*{6pt}xml:id="{EN1}"\hspace*{6pt}xml:lang="{en}">}John loves Nancy{</\textbf{seg}>}\end{shaded}\egroup\par \par
 The same mechanism may be used for a variety of purposes. In the following example, it has been used to represent anaphoric correspondences between ‘the show’ and ‘Shirley’, and between ‘NBC’ and ‘the network’: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{p}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{title}\hspace*{6pt}xml:id="{shirley}">}Shirley{</\textbf{title}>}, which made\mbox{}\newline 
@@ -886,7 +891,7 @@ The same mechanism may be used for a variety of purposes. In the following examp
  says {<\textbf{seg}\hspace*{6pt}corresp="{#shirley}"\hspace*{6pt}xml:id="{show}">}the show{</\textbf{seg}>}\mbox{}\newline 
  still is being considered.\mbox{}\newline 
 {</\textbf{p}>}\end{shaded}\egroup\par \par
-The \textbf{@next} and \textbf{@prev} attributes provide a simple way of linking together the components of a discontinuous  element, as in the following example: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{q}\hspace*{6pt}next="{#Q1b}"\hspace*{6pt}xml:id="{Q1a}">}Who-e debel you?{</\textbf{q}>}\mbox{}\newline 
+The \textit{@next} and \textit{@prev} attributes provide a simple way of linking together the components of a discontinuous  element, as in the following example: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{q}\hspace*{6pt}next="{#Q1b}"\hspace*{6pt}xml:id="{Q1a}">}Who-e debel you?{</\textbf{q}>}\mbox{}\newline 
  — he at last said — {<\textbf{q}\hspace*{6pt}prev="{#Q1a}"\hspace*{6pt}xml:id="{Q1b}">}you no speak-e,\mbox{}\newline 
  damme, I kill-e.{</\textbf{q}>} And so saying,\mbox{}\newline 
  the lighted tomahawk began flourishing\mbox{}\newline 
@@ -934,7 +939,7 @@ interventions.\end{shaded}
 \par\egroup 
 
  then it might be felt desirable to correct the obvious error, but at the same time to record the deletion of the superfluous second \emph{for}, thus:  \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}The following elements are provided for\mbox{}\newline 
-{<\textbf{del}\hspace*{6pt}resp="{#LB}">}for{</\textbf{del}>} simple editorial interventions.\end{shaded}\egroup\par \noindent  The attribute value \texttt{LB} on the \textbf{@resp} attribute indicates that ‘LB’ corrected the duplication of \emph{for}.\par
+{<\textbf{del}\hspace*{6pt}resp="{#LB}">}for{</\textbf{del}>} simple editorial interventions.\end{shaded}\egroup\par \noindent  The attribute value \texttt{LB} on the \textit{@resp} attribute indicates that ‘LB’ corrected the duplication of \emph{for}.\par
 If the source read\par\bgroup\ttfamily\small\selectfont \vskip 10pt\begin{shaded}
 \obeylines\obeyspaces The following elements provided for
 simple editorial interventions.\end{shaded}
@@ -976,9 +981,9 @@ The \texttt{<abbr>} element is useful as a means of distinguishing semi-lexical 
 {<\textbf{abbr}>}CC{</\textbf{abbr}>} is defined by that calibration of values which\mbox{}\newline 
  motivates the elements of its {<\textbf{abbr}>}GSP{</\textbf{abbr}>};\end{shaded}\egroup\par \noindent  \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}Every manufacturer of {<\textbf{abbr}>}3GL{</\textbf{abbr}>} or {<\textbf{abbr}>}4GL{</\textbf{abbr}>}\mbox{}\newline 
  languages is currently nailing on {<\textbf{abbr}>}OOP{</\textbf{abbr}>} extensions\end{shaded}\egroup\par \noindent  \par
-The \textbf{@type} attribute may be used to distinguish types of abbreviation by their function. \par
+The \textit{@type} attribute may be used to distinguish types of abbreviation by their function. \par
 The \texttt{<expan>} element is used to mark an expansion supplied by an encoder. This element is particularly useful in the transcription of manuscript materials. For example, the character p with a bar through its descender as a conventional representation for the word ‘per’ is commonly encountered in Medieval European manuscripts. An encoder may choose to expand this as follows: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{expan}>}per{</\textbf{expan}>}\end{shaded}\egroup\par \noindent  \par
-The expansion corresponding with an abbreviated form may not always contain the same letters as the abbreviation. Where it does, however, common editorial practice is  to italicize or otherwise signal which letters have been supplied. The \texttt{<expan>} element should not be used for this purpose since its function is to indicate an expanded form, not a part of one.  For example, consider the common abbreviation ‘wt’ (for ‘with’) found in medieval texts. In a modern edition, an editor might wish to represent this as ‘w\textbf{i}t\textbf{h}’, italicising the letters not found in the source. An appropriate encoding for this purpose would be  \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{expan}>}w{<\textbf{hi}>}i{</\textbf{hi}>}t{<\textbf{hi}>}h{</\textbf{hi}>}\mbox{}\newline 
+The expansion corresponding with an abbreviated form may not always contain the same letters as the abbreviation. Where it does, however, common editorial practice is  to italicize or otherwise signal which letters have been supplied. The \texttt{<expan>} element should not be used for this purpose since its function is to indicate an expanded form, not a part of one.  For example, consider the common abbreviation ‘wt’ (for ‘with’) found in medieval texts. In a modern edition, an editor might wish to represent this as ‘w\textit{i}t\textit{h}’, italicising the letters not found in the source. An appropriate encoding for this purpose would be  \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{expan}>}w{<\textbf{hi}>}i{</\textbf{hi}>}t{<\textbf{hi}>}h{</\textbf{hi}>}\mbox{}\newline 
 {</\textbf{expan}>}\end{shaded}\egroup\par \noindent  \par
 To record both an abbreviation and its expansion, the \texttt{<choice>} element mentioned above may be used to group the abbreviated form with its proposed expansion:  \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{choice}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{abbr}>}wt{</\textbf{abbr}>}\mbox{}\newline 
@@ -988,7 +993,7 @@ To record both an abbreviation and its expansion, the \texttt{<choice>} element 
 The TEI scheme defines elements for a large number of ‘data-like’ features which may appear almost anywhere within almost any kind of text. These features may be of particular interest in a range of disciplines; they all relate to objects external to the text itself, such as the names of persons and places, numbers and dates. They also pose particular problems for many natural language processing (NLP) applications because of the variety of ways in which they may be presented within a text. The elements described here, by making such features explicit, reduce the complexity of processing texts containing them.
 \DivII[Names and Referring Strings]{Names and Referring Strings}\label{nomen}\par
 A \emph{referring string} is a phrase which refers to some person, place, object, etc. Two elements are provided to mark such strings:      \par
-  The \textbf{@type} attribute is used to distinguish amongst (for example) names of persons, places and organizations, where this is possible: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{q}>}My dear {<\textbf{rs}\hspace*{6pt}type="{person}">}Mr. Bennet{</\textbf{rs}>}, {</\textbf{q}>}\mbox{}\newline 
+  The \textit{@type} attribute is used to distinguish amongst (for example) names of persons, places and organizations, where this is possible: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{q}>}My dear {<\textbf{rs}\hspace*{6pt}type="{person}">}Mr. Bennet{</\textbf{rs}>}, {</\textbf{q}>}\mbox{}\newline 
  said his lady to him one day, \mbox{}\newline 
 {<\textbf{q}>}have you heard\mbox{}\newline 
  that {<\textbf{rs}\hspace*{6pt}type="{place}">}Netherfield Park{</\textbf{rs}>} is let\mbox{}\newline 
@@ -1002,7 +1007,7 @@ As the following example shows, the \texttt{<rs>} element may be used for any re
  one day...\end{shaded}\egroup\par \par
 The \texttt{<name>} element by contrast is provided for the special case of referencing strings which consist only of proper nouns; it may be used synonymously with the \texttt{<rs>} element, or nested within it if a referring string contains a mixture of common and proper nouns.\par
 Simply tagging something as a name is rarely enough to enable automatic processing of personal names into the canonical forms usually required for reference purposes. The name as it appears in the text may be inconsistently spelled, partial, or vague.  Moreover, name prefixes such as \emph{van} or \emph{de la},  may or may not be included as part of the reference form of a name, depending on the language and country of origin of the bearer.\par
-The \textbf{@key}  attribute provides an alternative normalized identifier for the object being named, like  a database record key. It  may thus be useful as a means of gathering together all references to the same individual or location scattered throughout a document: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{q}>}My dear {<\textbf{rs}\hspace*{6pt}key="{BENM1}"\hspace*{6pt}type="{person}">}Mr. Bennet{</\textbf{rs}>},\mbox{}\newline 
+The \textit{@key}  attribute provides an alternative normalized identifier for the object being named, like  a database record key. It  may thus be useful as a means of gathering together all references to the same individual or location scattered throughout a document: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{q}>}My dear {<\textbf{rs}\hspace*{6pt}key="{BENM1}"\hspace*{6pt}type="{person}">}Mr. Bennet{</\textbf{rs}>},\mbox{}\newline 
 {</\textbf{q}>} said {<\textbf{rs}\hspace*{6pt}key="{BENM2}"\hspace*{6pt}type="{person}">}his lady{</\textbf{rs}>}\mbox{}\newline 
  to him one day, \mbox{}\newline 
 {<\textbf{q}>}have you heard that\mbox{}\newline 
@@ -1026,7 +1031,7 @@ The \texttt{<index>} element discussed in \url{indexing} may be more appropriate
 {</\textbf{p}>}\end{shaded}\egroup\par \noindent   	   Although adequate for many simple applications, these methods have  two inconveniences: if the name occurs many times, then its  regularised form must be repeated many times; and the burden of  additional XML markup in the body of the text may be inconvenient to  maintain and complex to process. For applications such as onomastics,  relating to persons or places named rather than the name itself, or wherever a detailed analysis of the component parts of a name is needed, the full TEI Guidelines provide a range of other solutions.
 \DivII[Dates and Times]{Dates and Times}\par
 Tags for the more detailed encoding of times and dates include the following:  \par
-The \textbf{@value} attribute specifies a normalized form for the date or time, using one of the standard formats defined by  ISO 8601. Partial dates or times (e.g. ‘1990’, ‘September 1990’, ‘twelvish’) can  be expressed by  omitting a part of the value supplied, as in the following examples: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{date}\hspace*{6pt}when="{1980-02-21}">}21 Feb 1980{</\textbf{date}>}\mbox{}\newline 
+The \textit{@value} attribute specifies a normalized form for the date or time, using one of the standard formats defined by  ISO 8601. Partial dates or times (e.g. ‘1990’, ‘September 1990’, ‘twelvish’) can  be expressed by  omitting a part of the value supplied, as in the following examples: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{date}\hspace*{6pt}when="{1980-02-21}">}21 Feb 1980{</\textbf{date}>}\mbox{}\newline 
 {<\textbf{date}\hspace*{6pt}when="{1990}">}1990{</\textbf{date}>}\mbox{}\newline 
 {<\textbf{date}\hspace*{6pt}when="{1990-09}">}September 1990{</\textbf{date}>}\mbox{}\newline 
 {<\textbf{date}\hspace*{6pt}when="{--09}">}September{</\textbf{date}>}\mbox{}\newline 
@@ -1047,7 +1052,7 @@ For example: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{
 {<\textbf{num}\hspace*{6pt}type="{ordinal}"\hspace*{6pt}value="{5}">}5th{</\textbf{num}>}\end{shaded}\egroup\par 
 \DivI[Lists]{Lists}\label{U5-lists}\par
 The element \texttt{<list>} is used to mark any kind of \emph{list}.  A list is a sequence of text items, which may be ordered, unordered, or a glossary list.  Each item may be preceded by an item label (in a glossary list, this label is the term being defined):   \par
-Individual list items are tagged with \texttt{<item>}.  The first \texttt{<item>} may optionally be preceded by a \texttt{<head>}, which gives a heading for the list.  The numbering of a list may be omitted, indicated using the \textbf{@n} attribute on each item, or (rarely) tagged as content using the \texttt{<label>} element.  The following are all thus equivalent: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{list}>}\mbox{}\newline 
+Individual list items are tagged with \texttt{<item>}.  The first \texttt{<item>} may optionally be preceded by a \texttt{<head>}, which gives a heading for the list.  The numbering of a list may be omitted, indicated using the \textit{@n} attribute on each item, or (rarely) tagged as content using the \texttt{<label>} element.  The following are all thus equivalent: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{list}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{head}>}A short list{</\textbf{head}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{item}>}First item in list.{</\textbf{item}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{item}>}Second item in list.{</\textbf{item}>}\mbox{}\newline 
@@ -1149,8 +1154,10 @@ A list need not necessarily be displayed in list format.  For example, \par\bgro
 Lists of bibliographic items should be tagged using the \texttt{<listBibl>} element, described in the next section.
 \DivI[Bibliographic Citations]{Bibliographic Citations}\label{U5-bibls}\par
 It is often useful to distinguish bibliographic citations where they occur within texts being transcribed for research, if only so that they will be properly formatted when the text is printed out. The element \texttt{<bibl>} is provided for this purpose.  Where the components of a bibliographic reference are to be distinguished, the following elements may be used as appropriate. It is generally useful to mark at least those parts (such as the titles of articles, books, and journals) which will need special formatting.  The other elements are provided for cases where particular interest attaches to such details. \par
-For example, the following editorial note might be transcribed as shown:  \begin{quote}
-    He was a member of Parliament for Warwickshire in 1445, and died March 14, 1470 (according to Kittredge, \textit{Harvard Studies} 5. 88ff). \end{quote} \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}He was a member of Parliament for Warwickshire in 1445, and died\mbox{}\newline 
+For example, the following editorial note might be transcribed as shown: 
+\begin{quote}
+He was a member of Parliament for Warwickshire in 1445, and died March 14, 1470 (according to Kittredge, \textit{Harvard Studies} 5. 88ff).\end{quote}
+ \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}He was a member of Parliament for Warwickshire in 1445, and died\mbox{}\newline 
  March 14, 1470 (according to {<\textbf{bibl}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{author}>}Kittredge{</\textbf{author}>},\mbox{}\newline 
 {<\textbf{title}>}Harvard Studies{</\textbf{title}>}\mbox{}\newline 
@@ -1223,17 +1230,17 @@ As the name suggests, the \texttt{<s>} element is most commonly used (in linguis
 \hspace*{6pt}\hspace*{6pt}\hspace*{6pt}{<\textbf{s}\hspace*{6pt}n="{005}">}Mary, I have been married to Mr Rochester\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}\hspace*{6pt}\hspace*{6pt}\hspace*{6pt}\hspace*{6pt} this morning.{</\textbf{s}>}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{</\textbf{q}>} ... {</\textbf{p}>}\mbox{}\newline 
-{</\textbf{div}>}\end{shaded}\egroup\par \noindent   Note that  \texttt{<s>} elements cannot nest: the beginning of one \texttt{<s>} element implies that the previous one has finished. When s-units are tagged as shown above, it is advisable to tag the entire text end-to-end, so that every word in the text being analysed will be contained by exactly one \texttt{<s>} element, whose identifier can then be used to specify a unique reference for it. If the identifiers used are unique within the document, then the \textbf{@xml:id} attribute might be used in preference to the \textbf{@n} used in the above  example.
+{</\textbf{div}>}\end{shaded}\egroup\par \noindent   Note that  \texttt{<s>} elements cannot nest: the beginning of one \texttt{<s>} element implies that the previous one has finished. When s-units are tagged as shown above, it is advisable to tag the entire text end-to-end, so that every word in the text being analysed will be contained by exactly one \texttt{<s>} element, whose identifier can then be used to specify a unique reference for it. If the identifiers used are unique within the document, then the \textit{@xml:id} attribute might be used in preference to the \textit{@n} used in the above  example.
 \DivII[General-Purpose Interpretation Elements]{General-Purpose Interpretation Elements}\par
-A more general purpose segmentation element, the \texttt{<seg>} has   already been introduced for use in identifying otherwise unmarked   targets of cross references and hypertext links (see section U5-ptrs); it identifies some phrase-level portion of text   to which the encoder may assign a user-specified \textbf{@type}, as   well as a unique identifier; it may thus be used to tag textual   features for which there is no provision in the published TEI   Guidelines.\par
-For example, the Guidelines provide no   ‘apostrophe’ element to mark parts of a literary   text in which the narrator addresses the reader (or hearer)   directly. One approach might be to regard these as instances of the   \texttt{<q>} element, distinguished from others by an appropriate   value for the \textbf{@who} attribute. A possibly simpler, and   certainly more general, solution would however be to use the   \texttt{<seg>} element as follows:  \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{div}\hspace*{6pt}n="{38}"\hspace*{6pt}type="{chapter}">}\mbox{}\newline 
+A more general purpose segmentation element, the \texttt{<seg>} has   already been introduced for use in identifying otherwise unmarked   targets of cross references and hypertext links (see section U5-ptrs); it identifies some phrase-level portion of text   to which the encoder may assign a user-specified \textit{@type}, as   well as a unique identifier; it may thus be used to tag textual   features for which there is no provision in the published TEI   Guidelines.\par
+For example, the Guidelines provide no   ‘apostrophe’ element to mark parts of a literary   text in which the narrator addresses the reader (or hearer)   directly. One approach might be to regard these as instances of the   \texttt{<q>} element, distinguished from others by an appropriate   value for the \textit{@who} attribute. A possibly simpler, and   certainly more general, solution would however be to use the   \texttt{<seg>} element as follows:  \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{div}\hspace*{6pt}n="{38}"\hspace*{6pt}type="{chapter}">}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{p}>}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{<\textbf{seg}\hspace*{6pt}type="{apostrophe}">}Reader, I married him.{</\textbf{seg}>}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt} A quiet wedding we had: ...{</\textbf{p}>}\mbox{}\newline 
-{</\textbf{div}>}\end{shaded}\egroup\par \noindent    The \textbf{@type} attribute on the \texttt{<seg>} element can take any value, and so can be used to record phrase-level phenomena of any kind; it is good practice to record the values used and their significance in the header.\par
-A \texttt{<seg>} element of one type (unlike the \texttt{<s>} element which it superficially resembles) can be nested within a \texttt{<seg>} element of the same or another type. This enables quite complex structures to be represented; some examples were given in section xatts above. However, because it must respect the requirement that elements be properly nested, and may not cut across each other, it cannot cope with the common requirement to associate an interpretation with arbitrary segments of a text which may completely ignore the document hierarchy. It also requires that the interpretation itself be represented by a single coded value in the \textbf{@type} attribute.\par
+{</\textbf{div}>}\end{shaded}\egroup\par \noindent    The \textit{@type} attribute on the \texttt{<seg>} element can take any value, and so can be used to record phrase-level phenomena of any kind; it is good practice to record the values used and their significance in the header.\par
+A \texttt{<seg>} element of one type (unlike the \texttt{<s>} element which it superficially resembles) can be nested within a \texttt{<seg>} element of the same or another type. This enables quite complex structures to be represented; some examples were given in section xatts above. However, because it must respect the requirement that elements be properly nested, and may not cut across each other, it cannot cope with the common requirement to associate an interpretation with arbitrary segments of a text which may completely ignore the document hierarchy. It also requires that the interpretation itself be represented by a single coded value in the \textit{@type} attribute.\par
 Neither restriction applies to the \texttt{<interp>} element, which provides powerful features for the encoding of quite complex interpretive information in a relatively straightforward manner.     These elements allows the encoder to specify both the class of an interpretation, and the particular instance of that class which the interpretation involves. Thus, whereas with \texttt{<seg>} one can say simply that something is an apostrophe, with \texttt{<interp>} one can say that it is an instance (apostrophe) of a larger class (rhetorical figures).\par
-Moreover, \texttt{<interp>}  is an empty element, which must be linked to the passage to which it applies either by means of the \textbf{@ana}  attribute discussed in section xatts  above, or by means of its own \textbf{@inst} attribute. This means that any kind of analysis can be represented, with no need to respect the document hierarchy, and also facilitates the grouping of analyses of a particular type together. A special purpose \texttt{<interpGrp>} element is provided for the latter purpose.\par
+Moreover, \texttt{<interp>}  is an empty element, which must be linked to the passage to which it applies either by means of the \textit{@ana}  attribute discussed in section xatts  above, or by means of its own \textit{@inst} attribute. This means that any kind of analysis can be represented, with no need to respect the document hierarchy, and also facilitates the grouping of analyses of a particular type together. A special purpose \texttt{<interpGrp>} element is provided for the latter purpose.\par
 For example, suppose that you wish to mark such diverse aspects of a text as  themes or subject matter, rhetorical figures, and the locations of individual scenes of the narrative. Different portions of our sample passage from \textit{Jane Eyre} for example, might be associated with the rhetorical figures of apostrophe, hyperbole, and metaphor; with subject-matter references to churches, servants, cooking, postal service, and honeymoons; and with scenes located in the church, in the kitchen, and in an unspecified location (drawing room?).\par
 These interpretations could be placed anywhere within the \texttt{<text>} element; it is however good practice to put them all in the same place (e.g. a separate section of the front or back matter), as in the following example: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{back}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{div}\hspace*{6pt}type="{Interpretations}">}\mbox{}\newline 
@@ -1267,12 +1274,12 @@ The evident redundancy of this encoding can be considerably reduced by using the
 \hspace*{6pt}\hspace*{6pt}{</\textbf{p}>}\mbox{}\newline 
 \hspace*{6pt}{</\textbf{div}>}\mbox{}\newline 
 {</\textbf{back}>}\end{shaded}\egroup\par \par
-Once these interpretation elements have been defined, they can be linked with the parts of the text to which they apply in either or both of two ways. The \textbf{@ana} attribute can be used on whichever element is appropriate: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{div}\hspace*{6pt}n="{38}"\hspace*{6pt}type="{chapter}">}\mbox{}\newline 
+Once these interpretation elements have been defined, they can be linked with the parts of the text to which they apply in either or both of two ways. The \textit{@ana} attribute can be used on whichever element is appropriate: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{div}\hspace*{6pt}n="{38}"\hspace*{6pt}type="{chapter}">}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{p}\hspace*{6pt}ana="{#set-church #set-kitch}"\hspace*{6pt}xml:id="{P38.1}">}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{<\textbf{s}\hspace*{6pt}ana="{#fig-apos}"\hspace*{6pt}xml:id="{P38.1.1}">}Reader, I married him.{</\textbf{s}>}\mbox{}\newline 
 \hspace*{6pt}{</\textbf{p}>}\mbox{}\newline 
 {</\textbf{div}>}\end{shaded}\egroup\par \noindent   Note in this example that since the paragraph has two settings (in the church  and in the kitchen), the identifiers of both have been supplied.\par
-Alternatively, the \texttt{<interp>} elements can point to all the parts of the text to which they apply, using their \textbf{@inst} attribute: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{interp}\mbox{}\newline 
+Alternatively, the \texttt{<interp>} elements can point to all the parts of the text to which they apply, using their \textit{@inst} attribute: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{interp}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}inst="{#P38.1.1}"\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}resp="{#LB-MSM}"\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}type="{figureOfSpeech}"\mbox{}\newline 
@@ -1310,7 +1317,7 @@ The following example shows how these elements might be used to encode a passage
  the value {<\textbf{val}>}HELLO WORLD{</\textbf{val}>}\mbox{}\newline 
  is then assigned.{</\textbf{p}>}\end{shaded}\egroup\par \par
 A formatting application, given a text like that above, can be instructed to format examples appropriately (e.g. to preserve line breaks, or to use a distinctive font). Similarly, the use of tags such as \texttt{<ident>} greatly facilitates the construction of a useful index.\par
-The \texttt{<formula>} element should be used to enclose a mathematical or chemical formula presented within the text as a distinct item. Since formulae generally include a large variety of special typographic features not otherwise present in ordinary text, it will usually be necessary to present the body of the formula in a specialized notation. The notation used should be specified by the \textbf{@notation} attribute, as in the following example: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{formula}\hspace*{6pt}notation="{tex}">} ⃥begin❴math❵E = mc^❴2❵⃥end❴math❵\mbox{}\newline 
+The \texttt{<formula>} element should be used to enclose a mathematical or chemical formula presented within the text as a distinct item. Since formulae generally include a large variety of special typographic features not otherwise present in ordinary text, it will usually be necessary to present the body of the formula in a specialized notation. The notation used should be specified by the \textit{@notation} attribute, as in the following example: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{formula}\hspace*{6pt}notation="{tex}">} ⃥begin❴math❵E = mc^❴2❵⃥end❴math❵\mbox{}\newline 
 {</\textbf{formula}>}\end{shaded}\egroup\par \par
 A particular problem arises when XML encoding is the subject of discussion within a technical document, itself encoded in XML. In such a document, it is clearly essential to distinguish clearly the markup occurring within examples from that marking up the document itself, and end-tags are highly likely to occur. One       simple solution is to use the predefined entity reference       \texttt{&lt;} to represent each < character which marks       the start of an XML tag within the examples. A more general solution is to mark off the whole body of each example as containing data which is not to be scanned for XML mark-up by the parser. This is achieved by enclosing it within  a special XML construct called a \emph{\texttt{CDATA} marked section},  as in the following example: \par\bgroup\ttfamily\small\selectfont \vskip 10pt\begin{shaded}
 \obeylines\obeyspaces <p>A list should be encoded as follows:
@@ -1350,7 +1357,7 @@ The \texttt{<divGen>} element can be placed anywhere that a division element wou
 \hspace*{6pt}{</\textbf{div}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{divGen}\hspace*{6pt}n="{Index}"\hspace*{6pt}type="{index}"/>}\mbox{}\newline 
 {</\textbf{back}>}\end{shaded}\egroup\par \par
-This example also demonstrates the use of the \textbf{@type} attribute to distinguish the different kinds of division to be generated: in the first case a table of contents (a \emph{toc}) and in the second an index.\par
+This example also demonstrates the use of the \textit{@type} attribute to distinguish the different kinds of division to be generated: in the first case a table of contents (a \emph{toc}) and in the second an index.\par
 When an existing index or table of contents is to be encoded (rather than one being generated) for some reason, the \texttt{<list>} element discussed in section U5-lists should be used. 
 \DivII[Index Generation]{Index Generation}\label{indexing}\par
 While production of a table of contents from a properly tagged document is generally unproblematic for an automatic processor, the production of a good quality index will often require more careful tagging. It may not be enough simply to produce a list of all parts tagged in some particular way, although extracting (for example) all occurrences of elements such as \texttt{<term>} or \texttt{<name>} will often be a good departure point for an index. \par
@@ -1370,7 +1377,7 @@ For example, the second paragraph of this section might include the following:\p
  which may be used ...\end{shaded}\egroup\par \par
 The \texttt{<index>} element can also be used to provide a form of interpretive or analytic information.  For example, in a study of Ovid, it might be desired to record all the poet's references to different figures, for comparative stylistic study.  In the following lines of the \textit{Metamorphoses}, such a study would record the poet's references to Jupiter (as \emph{deus}, \emph{se}, and as the subject of \emph{confiteor} [in inflectional form number 227]), to Jupiter-in-the-guise-of-a-bull (as \emph{imago tauri fallacis} and the subject of \emph{teneo}), and so on.\footnote{The analysis is taken, with permission, from Willard McCarty and Burton Wright, \textit{An Analytical Onomasticon to the Metamorphoses of Ovid} (Princeton: Princeton University Press, forthcoming).  Some simplifications have been undertaken.} \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{l}\hspace*{6pt}n="{3.001}">}iamque deus posita fallacis imagine tauri{</\textbf{l}>}\mbox{}\newline 
 {<\textbf{l}\hspace*{6pt}n="{3.002}">}se confessus erat Dictaeaque rura tenebat{</\textbf{l}>}\end{shaded}\egroup\par \noindent  This need might be met using the \texttt{<note>} element discussed in section in U5-notes, or with the \texttt{<interp>} element discussed in section U5-anal. Here we demonstrate how it might also be satisfied by using the \texttt{<index>} element.\par
-We assume that the object is to generate more than one index: one for names of deities (called \textbf{@dn}), another for onomastic references (called \textbf{@on}),  a third for pronominal references (called \textbf{@pr}) and so forth. One way of achieving this might be as follows: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{l}\hspace*{6pt}n="{3.001}">}iamque deus posita fallacis imagine tauri\mbox{}\newline 
+We assume that the object is to generate more than one index: one for names of deities (called \textit{@dn}), another for onomastic references (called \textit{@on}),  a third for pronominal references (called \textit{@pr}) and so forth. One way of achieving this might be as follows: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{l}\hspace*{6pt}n="{3.001}">}iamque deus posita fallacis imagine tauri\mbox{}\newline 
 {<\textbf{index}\hspace*{6pt}indexName="{dn}">}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{<\textbf{term}>}Iuppiter{</\textbf{term}>}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{<\textbf{index}>}\mbox{}\newline 
@@ -1423,7 +1430,7 @@ There are two important exceptions: the characters & and < may not be entered di
 For many purposes, particularly in older texts, the preliminary material such as title pages, prefatory epistles, etc., may provide very useful additional linguistic or social information. P5 provides a set of recommendations for distinguishing the textual elements most commonly encountered in front matter, which are summarized       here.
 \DivIII[Title Page]{Title Page}\label{h51}\par
 The start of a title page should be marked with the element \texttt{<titlePage>}.  All text contained on the page should be transcribed and tagged with the appropriate element from the following list: \par
-Typeface distinctions should be marked with the \textbf{@rend} attribute when necessary, as described above. Very detailed description of the letter spacing and sizing used in ornamental titles is not as yet provided for by the Guidelines. Changes of language should be marked by appropriate use of the \textbf{@lang} attribute or the \texttt{<foreign>} element, as necessary. Names, wherever they appear, should be tagged using the \texttt{<name>}, as elsewhere.\par
+Typeface distinctions should be marked with the \textit{@rend} attribute when necessary, as described above. Very detailed description of the letter spacing and sizing used in ornamental titles is not as yet provided for by the Guidelines. Changes of language should be marked by appropriate use of the \textit{@lang} attribute or the \texttt{<foreign>} element, as necessary. Names, wherever they appear, should be tagged using the \texttt{<name>}, as elsewhere.\par
 Two example title pages follow: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{titlePage}\hspace*{6pt}rend="{Roman}">}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{docTitle}>}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{<\textbf{titlePart}\hspace*{6pt}type="{main}">} PARADISE REGAIN'D. A POEM In IV {<\textbf{hi}>}BOOKS{</\textbf{hi}>}.\mbox{}\newline 
@@ -1465,7 +1472,7 @@ Two example title pages follow: \par\bgroup\ttfamily\small\selectfont \begin{sha
 \hspace*{6pt}{<\textbf{docDate}>}1860.{</\textbf{docDate}>}\mbox{}\newline 
 {</\textbf{titlePage}>}\end{shaded}\egroup\par 
 \DivIII[Prefatory Matter]{Prefatory Matter}\label{h52}\par
-Major blocks of text within the front matter should be marked as \texttt{<div>} or \texttt{<div>} elements; the following suggested values for the \textbf{@type} attribute may be used to distinguish various common types of prefatory matter: \begin{description}
+Major blocks of text within the front matter should be marked as \texttt{<div>} or \texttt{<div>} elements; the following suggested values for the \textit{@type} attribute may be used to distinguish various common types of prefatory matter: \begin{description}
 
 \item[foreword]a text addressed to the reader, by the author, editor or publisher, possibly in the form of a letter.
 \item[preface]a text addressed to the reader, by the author, editor or publisher, possibly in the form of a letter.
@@ -1495,7 +1502,7 @@ As an example, the dedication at the start of Milton's \textit{Comus} should be 
 {</\textbf{div}>}\end{shaded}\egroup\par 
 \DivII[Back Matter]{Back Matter}
 \DivIII[Structural Divisions of Back Matter]{Structural Divisions of Back Matter}\par
-Because of variations in publishing practice, back matter can contain virtually any of the elements listed above for front matter, and the same elements should be used where this is so.  Additionally, back matter may contain the following types of matter within the \texttt{<back>} element.  Like the structural divisions of the body, these should be marked as  \texttt{<div>} elements, and distinguished by the following suggested values of the \textbf{@type} attribute: \begin{description}
+Because of variations in publishing practice, back matter can contain virtually any of the elements listed above for front matter, and the same elements should be used where this is so.  Additionally, back matter may contain the following types of matter within the \texttt{<back>} element.  Like the structural divisions of the body, these should be marked as  \texttt{<div>} elements, and distinguished by the following suggested values of the \textit{@type} attribute: \begin{description}
 
 \item[appendix]an appendix.
 \item[glossary]a list of words and definitions, typically marked up as a  \texttt{<list type="gloss">} element .
@@ -1506,7 +1513,7 @@ Because of variations in publishing practice, back matter can contain virtually 
 \end{description} 
 \DivI[The Electronic Title Page]{The Electronic Title Page}\label{U5-header}\par
 Every TEI text has a header which provides information analogous to that provided by the title page of printed text. The header is introduced by the element \texttt{<teiHeader>} and has four major parts: \par
-    A corpus or collection of texts, which share many characteristics, may have one header for the corpus and individual headers for each component of the corpus.  In this case the \textbf{@type} attribute indicates the type of header. \texttt{<teiHeader type="corpus">} introduces the header for corpus-level information.\par
+    A corpus or collection of texts, which share many characteristics, may have one header for the corpus and individual headers for each component of the corpus.  In this case the \textit{@type} attribute indicates the type of header. \texttt{<teiHeader type="corpus">} introduces the header for corpus-level information.\par
 Some of the header elements contain running prose which consists of one or more \texttt{<p>}s.  Others are grouped: \begin{itemize}
 
 \item Elements whose names end in \emph{Stmt}(for statement) usually enclose a group of elements recording some structured information.
@@ -1678,7 +1685,7 @@ Example: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\
 {</\textbf{creation}>}\end{shaded}\egroup\par \par
 The \texttt{<langUsage>} element is useful where a text contains many different languages. It may contain \texttt{<language>} elements to document each particular language used:  an example is needed. \par
 The \texttt{<textClass>} element classifies a text by reference to the system or systems defined by the \texttt{<classDecl>} element, and contains one or more of the following elements:  \par
-The element \texttt{<keywords>} contains a list of keywords or phrases identifying the topic or nature of a text. The attribute \textbf{@scheme} links these to the classification system defined in \texttt{<taxonomy>}. \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{textClass}>}\mbox{}\newline 
+The element \texttt{<keywords>} contains a list of keywords or phrases identifying the topic or nature of a text. The attribute \textit{@scheme} links these to the classification system defined in \texttt{<taxonomy>}. \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{textClass}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{keywords}\hspace*{6pt}scheme="{LCSH}">}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}{<\textbf{list}>}\mbox{}\newline 
 \hspace*{6pt}\hspace*{6pt}\hspace*{6pt}{<\textbf{item}>}English literature -- History and criticism --\mbox{}\newline 
@@ -1691,11 +1698,11 @@ The element \texttt{<keywords>} contains a list of keywords or phrases identifyi
 \hspace*{6pt}{</\textbf{keywords}>}\mbox{}\newline 
 {</\textbf{textClass}>}\end{shaded}\egroup\par 
 \DivII[The Revision Description]{The Revision Description}\par
-The \texttt{<revisionDesc>} element provides a change log in which each change made to a text may be recorded. The log may be recorded as a sequence of \texttt{<change>} elements each of which contains a brief description of the change. The attributes \textbf{@date} and \textbf{@who} may be used to identify when the change was carried out and the agency responsible for it. \par
+The \texttt{<revisionDesc>} element provides a change log in which each change made to a text may be recorded. The log may be recorded as a sequence of \texttt{<change>} elements each of which contains a brief description of the change. The attributes \textit{@date} and \textit{@who} may be used to identify when the change was carried out and the agency responsible for it. \par
 Example: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{revisionDesc}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{change}\hspace*{6pt}when="{1991-03-06}"\hspace*{6pt}who="{EMB}">}File format updated{</\textbf{change}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{change}\hspace*{6pt}when="{1990-05-25}"\hspace*{6pt}who="{EMB}">}Stuart's corrections entered{</\textbf{change}>}\mbox{}\newline 
 {</\textbf{revisionDesc}>}\end{shaded}\egroup\par 
 \DivI[List of Elements Described]{List of Elements Described}\label{U5-taglist}\par
-The following list shows all the elements defined for the TEI   Lite schema, with a brief description of each, and a link to its full specification in the Appendix.    
+The following list shows all the elements defined for the TEI   Lite schema, with a brief description of each, and a link to its full specification in the Appendix.     
 \end{document}

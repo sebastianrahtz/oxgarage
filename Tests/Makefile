@@ -20,6 +20,7 @@ test:
 	diff temp-results/result4.dtd expected-results/result4.dtd
 	echo To LaTeX
 	curl -s  -F upload=@test.xml  -o temp-results/result2.tex http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/latex%3Aapplication%3Ax-latex
+	perl -p -i -e 's/TheFullDate{.*}/TheFullDate{}/' temp-results/result2.tex
 	diff temp-results/result2.tex expected-results/result2.tex
 	echo To ePub
 	curl -s  -o temp-results/result.epub -F upload=@test.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/epub%3Aapplication%3Aepub%2Bzip

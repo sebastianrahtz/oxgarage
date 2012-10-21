@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.net.URLDecoder;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
@@ -257,7 +256,7 @@ public class ConversionServlet extends HttpServlet {
 			ConversionRequestResolver rr = new ConversionRequestResolver(
 					request, Method.POST);
 			List<DataType> pathFrame = (List<DataType>) rr.getData();
-			processConversion(response, rr, pathFrame);
+			performConversion(response, rr, pathFrame);
 		} catch (RequestResolvingException ex) {
 			if (ex.getStatus().equals(
 					RequestResolvingException.Status.BAD_REQUEST)) {
@@ -276,14 +275,16 @@ public class ConversionServlet extends HttpServlet {
 	/*
 	 * Performs conversion.
 	 */
-	protected void processConversion(HttpServletResponse response,
+	protected void performConversion(HttpServletResponse response,
 			ConversionRequestResolver rr, List<DataType> pathFrame)
 			throws IOException, FileUploadException, EGEException,
 			ConverterException, RequestResolvingException {
 		EGE ege = new EGEImpl();
 		List<ConversionsPath> cp = ege.findConversionPaths(pathFrame.get(0));
 		ConversionsPath cpath = null;
-		boolean found = false;
+		boolean found = false;	
+		InputStream is = null;
+		String fname;
 		for (ConversionsPath path : cp) {
 			if ((pathFrame.size() - 1) != path.getPath().size()) {
 				continue;
@@ -306,236 +307,175 @@ public class ConversionServlet extends HttpServlet {
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
 			return;
 		} else {
-			doConvert(response, rr, ege, cpath);
-		}
-	}
-
-	private void doConvert(HttpServletResponse response,
-			ConversionRequestResolver rr, EGE ege, ConversionsPath cpath)
-			throws FileUploadException, IOException, RequestResolvingException,
-			EGEException, FileNotFoundException, ConverterException,
-			ZipException {
-		InputStream is = null;
-		OutputStream os = null;
 		if (ServletFileUpload.isMultipartContent(rr.getRequest())) { 
 		    ServletFileUpload upload = new ServletFileUpload();
 			FileItemIterator iter = upload.getItemIterator(rr.getRequest());
 			while (iter.hasNext()) {
-				FileItemStream item = iter.next();
-				if (!item.isFormField()) {
-					is = item.openStream();
-					applyConversionsProperties(rr.getConversionProperties(), cpath, item.getName());
-					// creating temporary data buffer
-					DataBuffer buffer = new DataBuffer(0, EGEConstants.BUFFER_TEMP_PATH);
-					String alloc = buffer.allocate(is);
-					InputStream ins = buffer.getDataAsStream(alloc);
-					is.close();
-					// input validation - print result if fatal error
-					// occurs.
+			    FileItemStream item = iter.next();
+			    if (!item.isFormField()) {
+				is = item.openStream();
+				int dotIndex = item.getName().lastIndexOf(".");					
+				fname = null;						
+				if(dotIndex == -1 || dotIndex == 0) fname = item.getName();	
+				else fname = item.getName().substring(0, dotIndex);				
+				// creating temporary data buffer
+				DataBuffer buffer = new DataBuffer(0, EGEConstants.BUFFER_TEMP_PATH);
+				String alloc = buffer.allocate(is);
+				InputStream ins = buffer.getDataAsStream(alloc);
+				is.close();
+				// input validation - print result if fatal error
+				// occurs.
+				try {
+				    ValidationResult vRes = ege.performValidation(ins, cpath.getInputDataType());
+				    if (vRes.getStatus().equals(ValidationResult.Status.FATAL)) {
+					ValidationServlet valServ = new ValidationServlet();
+					valServ.printValidationResult(response, vRes);
 					try {
-						ValidationResult vRes = ege.performValidation(ins, cpath.getInputDataType());
-						if (vRes.getStatus().equals(ValidationResult.Status.FATAL)) {
-							ValidationServlet valServ = new ValidationServlet();
-							valServ.printValidationResult(response, vRes);
-							try {
-								ins.close();
-							} finally {
-								buffer.removeData(alloc, true);
-							}
-							return;
-						}
-					} catch (ValidatorException vex) {
-						LOGGER.debug(vex.getMessage());
+					    ins.close();
 					} finally {
-						try {
-							ins.close();
-						} catch (Exception ex) {
-							// do nothing
-						}
+					    buffer.removeData(alloc, true);
 					}
-					File zipFile = null;
-					FileOutputStream fos = null;
-					String newTemp = UUID.randomUUID().toString();
-					IOResolver ior = EGEConfigurationManager.getInstance().getStandardIOResolver();
-					File buffDir = new File(buffer.getDataDir(alloc));
-					// Check if there are any images to copy
-					if(iter.hasNext()) {
-						// Create directory for images
-						File images = new File(buffDir + File.separator + imagesDirectory + File.separator);
-						images.mkdir();
-						File saveTo = null;
-						FileItemStream imageItem = null;
-						do { // Save all images to that directory
-							imageItem = iter.next();
-							// when input form for images is not empty, save images
-							if(imageItem.getName()!=null && imageItem.getName().length()!=0) {
-								saveTo = new File(images + File.separator + imageItem.getName());
-								InputStream imgis = imageItem.openStream();
-								OutputStream imgos = new FileOutputStream(saveTo);
-								byte[] buf = new byte[1024];
-								int len; 
-								while ((len = imgis.read(buf)) > 0) { 
-									imgos.write(buf, 0, len); 
-								} 
-								imgis.close(); 
-								imgos.close(); 
-							}
-						} while(iter.hasNext());
-					}
-					zipFile = new File(EGEConstants.BUFFER_TEMP_PATH
-							+ File.separator + newTemp + EZP_EXT);
-					fos = new FileOutputStream(zipFile);
-					ior.compressData(buffDir, fos);
-					ins = new FileInputStream(zipFile);
-					File szipFile = new File(EGEConstants.BUFFER_TEMP_PATH
-							+ File.separator + newTemp + ZIP_EXT);
-					fos = new FileOutputStream(szipFile);
-					try {
-						try {
-							ege.performConversion(ins, fos, cpath);
-						} finally {
-							fos.close();
-						}
-						boolean isComplex = EGEIOUtils
-								.isComplexZip(szipFile);
-						response.setContentType(APPLICATION_OCTET_STREAM);
-						int dotIndex = item.getName().lastIndexOf(".");					
-						String fN = null;						
-						if(dotIndex == -1 || dotIndex == 0) fN = item.getName();	
-						else fN = item.getName().substring(0, dotIndex);
-						if (isComplex) {
-							String fileExt;
-							if (cpath.getOutputDataType().getMimeType()
-									.equals(APPLICATION_MSWORD)) {
-								fileExt = DOCX_EXT;
-							} else if (cpath.getOutputDataType().getMimeType()
-									.equals(APPLICATION_EPUB)) {
-								fileExt = EPUB_EXT; 
-							} else if (cpath.getOutputDataType().getMimeType()
-									.equals(APPLICATION_ODT)) {
-								fileExt = ODT_EXT; 
-							}else {
-								fileExt = ZIP_EXT;
-							}
-							response.setHeader("Content-Disposition",
-									"attachment; filename=\"" + fN + fileExt + "\"");
-							FileInputStream fis = new FileInputStream(
-									szipFile);
-							os = response.getOutputStream();
-							try {
-								EGEIOUtils.copyStream(fis, os);
-							} finally {
-								fis.close();
-							}
-						} else {
-							String fileExt = getMimeExtensionProvider()
-									.getFileExtension(cpath.getOutputDataType().getMimeType());
-							response.setHeader("Content-Disposition",
-									"attachment; filename=\"" + fN + fileExt + "\"");
-							os = response.getOutputStream();
-							EGEIOUtils.unzipSingleFile(new ZipFile(szipFile), os);
-						}
-					} finally {
-						ins.close();
-						if (os != null) {
-							os.flush();
-							os.close();
-						}
-						buffer.clear(true);
-						szipFile.delete();
-						if (zipFile != null) {
-							zipFile.delete();
-						}
-					}
+					return;
+				    }
+				} catch (ValidatorException vex) {
+				    LOGGER.debug(vex.getMessage());
+				} finally {
+				    try {
+					ins.close();
+				    } catch (Exception ex) {
+					// do nothing
+				    }
 				}
+				File bDir = new File(buffer.getDataDir(alloc));
+				doConvert(response, rr, ege, cpath, ins, fname, iter, bDir);
+				buffer.clear(true);
+			    }
 			}
 		}
-	        else {
-		    String inputData = rr.getRequest().getParameter("input");
-		    String fN = rr.getRequest().getParameter("filename");
-		    if (inputData == null || inputData.trim().isEmpty()) {
-			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-			return;
-		    }
-		    applyConversionsProperties(rr.getConversionProperties(), cpath, "input");
-
-		    is = new ByteArrayInputStream(inputData.getBytes());
-		    DataBuffer buffer = new DataBuffer(0, EGEConstants.BUFFER_TEMP_PATH);
-		    String alloc = buffer.allocate(is);
-		    InputStream ins = buffer.getDataAsStream(alloc);
-		    is.close();
-		    File zipFile = null;
-		    FileOutputStream fos = null;
-		    String newTemp = UUID.randomUUID().toString();
-		    IOResolver ior = EGEConfigurationManager.getInstance().getStandardIOResolver();
-		    File buffDir = new File(buffer.getDataDir(alloc));
-		    // Check if there are any images to copy
-		    zipFile = new File(EGEConstants.BUFFER_TEMP_PATH
-				       + File.separator + newTemp + EZP_EXT);
-		    fos = new FileOutputStream(zipFile);
-		    ior.compressData(buffDir, fos);
-		    ins = new FileInputStream(zipFile);
-		    File szipFile = new File(EGEConstants.BUFFER_TEMP_PATH
-					     + File.separator + newTemp + ZIP_EXT);
-		    fos = new FileOutputStream(szipFile);
-		    try {
-			try {
-			    ege.performConversion(ins, fos, cpath);
-			} finally {
-			    fos.close();
+		else
+		    {
+			FileItemIterator iter = null;
+			String inputData = rr.getRequest().getParameter("input");
+			fname = rr.getRequest().getParameter("filename");
+			if (inputData == null || inputData.trim().isEmpty()) {
+			    response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+			    return;
 			}
-			boolean isComplex = EGEIOUtils
-			    .isComplexZip(szipFile);
-			response.setContentType(APPLICATION_OCTET_STREAM);
-			if (isComplex) {
-			    String fileExt;
-			    if (cpath.getOutputDataType().getMimeType()
-				.equals(APPLICATION_MSWORD)) {
-				fileExt = DOCX_EXT;
-			    } else if (cpath.getOutputDataType().getMimeType()
-				       .equals(APPLICATION_EPUB)) {
-				fileExt = EPUB_EXT; 
-			    } else if (cpath.getOutputDataType().getMimeType()
-				       .equals(APPLICATION_ODT)) {
-				fileExt = ODT_EXT; 
-			    }else {
-				fileExt = ZIP_EXT;
-			    }
-			    response.setHeader("Content-Disposition",
-					       "attachment; filename=\"" + fN + fileExt + "\"");
-			    FileInputStream fis = new FileInputStream(
-								      szipFile);
-			    os = response.getOutputStream();
-			    try {
-				EGEIOUtils.copyStream(fis, os);
-			    } finally {
-				fis.close();
-			    }
-			} else {
-			    String fileExt = getMimeExtensionProvider()
-				.getFileExtension(cpath.getOutputDataType().getMimeType());
-			    response.setHeader("Content-Disposition",
-					       "attachment; filename=\"" + fN + fileExt + "\"");
-			    os = response.getOutputStream();
-			    EGEIOUtils.unzipSingleFile(new ZipFile(szipFile), os);
-			}
-		    } finally {
-			ins.close();
-			if (os != null) {
-			    os.flush();
-			    os.close();
-			}
+			is = new ByteArrayInputStream(inputData.getBytes());
+			DataBuffer buffer = new DataBuffer(0, EGEConstants.BUFFER_TEMP_PATH);
+			String alloc = buffer.allocate(is);
+			InputStream ins = buffer.getDataAsStream(alloc);
+			is.close();
+			File bDir = new File(buffer.getDataDir(alloc));
+			doConvert(response, rr, ege, cpath, ins, fname, iter, bDir);
 			buffer.clear(true);
-			szipFile.delete();
-			if (zipFile != null) {
-			    zipFile.delete();
-			}
 		    }
-		      
-		    
+
 		}
 	}
 
+	private void doConvert(HttpServletResponse response,
+			       ConversionRequestResolver rr, 
+			       EGE ege, 
+			       ConversionsPath cpath, 
+			       InputStream ins, 
+			       String fname, 
+			       FileItemIterator iter, 
+			       File buffDir)
+			throws FileUploadException, IOException, RequestResolvingException,
+			EGEException, FileNotFoundException, ConverterException,
+			ZipException {
+	    applyConversionsProperties(rr.getConversionProperties(), cpath, fname);
+	    OutputStream os = null;
+	    File zipFile = null;
+	    FileOutputStream fos = null;
+	    String newTemp = UUID.randomUUID().toString();
+	    IOResolver ior = EGEConfigurationManager.getInstance().getStandardIOResolver();
+	    // Check if there are any images to copy
+	    if(iter!=null && iter.hasNext()) {
+		// Create directory for images
+		File images = new File(buffDir + File.separator + imagesDirectory + File.separator);
+		images.mkdir();
+		File saveTo = null;
+		FileItemStream imageItem = null;
+		do { // Save all images to that directory
+		    imageItem = iter.next();
+		    // when input form for images is not empty, save images
+		    if(imageItem.getName()!=null && imageItem.getName().length()!=0) {
+			saveTo = new File(images + File.separator + imageItem.getName());
+			InputStream imgis = imageItem.openStream();
+			OutputStream imgos = new FileOutputStream(saveTo);
+			byte[] buf = new byte[1024];
+			int len; 
+			while ((len = imgis.read(buf)) > 0) { 
+			    imgos.write(buf, 0, len); 
+			} 
+			imgis.close(); 
+			imgos.close(); 
+		    }
+		} while(iter.hasNext());
+	    }
+	    zipFile = new File(EGEConstants.BUFFER_TEMP_PATH
+			       + File.separator + newTemp + EZP_EXT);
+	    fos = new FileOutputStream(zipFile);
+	    ior.compressData(buffDir, fos);
+	    ins = new FileInputStream(zipFile);
+	    File szipFile = new File(EGEConstants.BUFFER_TEMP_PATH
+				     + File.separator + newTemp + ZIP_EXT);
+	    fos = new FileOutputStream(szipFile);
+	    try {
+		try {
+		    ege.performConversion(ins, fos, cpath);
+		} finally {
+		    fos.close();
+		}
+		boolean isComplex = EGEIOUtils
+		    .isComplexZip(szipFile);
+		response.setContentType(APPLICATION_OCTET_STREAM);
+		if (isComplex) {
+		    String fileExt;
+		    if (cpath.getOutputDataType().getMimeType()
+			.equals(APPLICATION_MSWORD)) {
+			fileExt = DOCX_EXT;
+		    } else if (cpath.getOutputDataType().getMimeType()
+			       .equals(APPLICATION_EPUB)) {
+			fileExt = EPUB_EXT; 
+		    } else if (cpath.getOutputDataType().getMimeType()
+			       .equals(APPLICATION_ODT)) {
+			fileExt = ODT_EXT; 
+		    }else {
+			fileExt = ZIP_EXT;
+		    }
+		    response.setHeader("Content-Disposition",
+				       "attachment; filename=\"" + fname + fileExt + "\"");
+		    FileInputStream fis = new FileInputStream(
+							      szipFile);
+		    os = response.getOutputStream();
+		    try {
+			EGEIOUtils.copyStream(fis, os);
+		    } finally {
+			fis.close();
+		    }
+		} else {
+		    String fileExt = getMimeExtensionProvider()
+			.getFileExtension(cpath.getOutputDataType().getMimeType());
+		    response.setHeader("Content-Disposition",
+				       "attachment; filename=\"" + fname + fileExt + "\"");
+		    os = response.getOutputStream();
+		    EGEIOUtils.unzipSingleFile(new ZipFile(szipFile), os);
+		}
+	    } finally {
+		ins.close();
+		if (os != null) {
+		    os.flush();
+		    os.close();
+		}
+		szipFile.delete();
+		if (zipFile != null) {
+		    zipFile.delete();
+		}
+	    }
+	}
 
 	private void applyConversionsProperties(String properties, ConversionsPath cP, String fileName) 
 					throws RequestResolvingException {
