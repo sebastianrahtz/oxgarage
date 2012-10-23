@@ -20,8 +20,8 @@ public enum Format {
 	ODT("odt","application/vnd.oasis.opendocument.text","odt","TEI", "TEI P5 XML Document", "text", "OpenOffice Text (.odt)", "text", true, 8),
 	RDF("rdf","application/rdf+xml","rdf","TEI", "TEI P5 XML Document", "text", "RDF XML", "text", true, 5),
 	RELAXNG("relaxng","application/xml-relaxng","relaxng","ODDC", "Compiled TEI ODD", "text", "RELAXNG schema created from ODD", "text", false, 10),
-	TEXT("txt","text/plain","txt","TEI", "TEI P5 XML Document", "text", "Plain text", "text", true, 5),
-	XML("xml","application/xml","xml","XML", "XML Document", "text", "TEI P5 XML Document", "text", true, 5),
+	TEXT("txt","text/plain",    "txt","TEI", "TEI P5 XML Document", "text", "Plain text",   "text", true, 5),
+ 	XML("xml","application/xml","xml","TEI", "TEI P5 XML Document", "text", "XML Document", "text", true, 5),
 	XHTML("xhtml","application/xhtml+xml","html","TEI", "TEI P5 XML Document", "text", "xHTML", "text", true, 9);
 
 

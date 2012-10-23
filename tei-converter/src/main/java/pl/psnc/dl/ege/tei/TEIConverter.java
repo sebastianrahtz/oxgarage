@@ -283,6 +283,18 @@ public class TEIConverter implements Converter {
 			performXsltTransformation(inputStream, outputStream, Format.TEXT
 					.getProfile(), profile, properties);
 		}
+		// to identity XML
+		else if (Format.XML.getMimeType().equals(toMimeType)
+			 && fromDataType.getFormat().equals(Format.XML.getFormatName())) {
+			if (!ConverterConfiguration.checkProfile(profile, Format.XML
+					.getProfile())) {
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				profile = EGEConstants.DEFAULT_PROFILE;
+			}
+			properties.put("extension", "xml");
+			performXsltTransformation(inputStream, outputStream, Format.XML
+					.getProfile(), profile, properties);
+		}
 		// to RDF
 		else if (Format.RDF.getMimeType().equals(toMimeType)
 			 && fromDataType.getFormat().equals(Format.RDF.getFormatName())) {
