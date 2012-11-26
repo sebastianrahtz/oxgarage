@@ -21,7 +21,7 @@ public enum Format {
 	RDF("rdf","application/rdf+xml","rdf","TEI", "TEI P5 XML Document", "text", "RDF XML", "text", true, 5),
 	RELAXNG("relaxng","application/xml-relaxng","relaxng","ODDC", "Compiled TEI ODD", "text", "RELAX NG schema", "text", true, 10),
 	TEXT("txt","text/plain",    "txt","TEI", "TEI P5 XML Document", "text", "Plain text",   "text", true, 5),
-	RNC("rnc","application/relaxng-compact","rnc","ODDC", "Compiled TEI ODD", "text", "RELAX NG compact schema", "text", true, 10),
+	RNC("rnc","application/relaxng-compact","rnc","ODDC", "Compiled TEI ODD", "text", "RELAX NG compact schema", "text", false, 10),
 	XSD("xsd","application/xml-xsd","xsd","ODDC", "Compiled TEI ODD", "text", "XSD schema", "text", false, 10),
  	XML("xml","application/xml","xml","TEI", "TEI P5 XML Document", "text", "XML Document", "text", true, 5),
 	XHTML("xhtml","application/xhtml+xml","html","TEI", "TEI P5 XML Document", "text", "xHTML", "text", true, 9);

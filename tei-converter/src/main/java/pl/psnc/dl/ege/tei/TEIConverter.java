@@ -271,9 +271,32 @@ public class TEIConverter implements Converter,ErrorHandler {
 				profile = EGEConstants.DEFAULT_PROFILE;
 			}
 			properties.put("extension", "rnc");
-			performXsltTransformationThenTrang(inputStream, outputStream, Format.RELAXNG
-					.getProfile(), profile, properties);
+			try {
+			    generateRngThenTrang(inputStream, outputStream, Format.RELAXNG
+							       .getProfile(), profile, properties);
+			}
+			catch (Exception e) {
+				throw new IOException("to RNG then Trang failed: " + e.toString());
+			}
 		}
+		// To XSD
+		else if (Format.XSD.getMimeType().equals(toMimeType)
+			 && fromDataType.getFormat().equals(Format.XSD.getFormatName())) {
+			if (!ConverterConfiguration.checkProfile(profile, Format.RELAXNG
+					.getProfile())) {
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				profile = EGEConstants.DEFAULT_PROFILE;
+			}
+			properties.put("extension", "xsd");
+			try {
+			    generateRngThenTrang(inputStream, outputStream, Format.RELAXNG
+							       .getProfile(), profile, properties);
+			}
+			catch (Exception e) {
+				throw new IOException("to RNG then Trang failed: " + e.toString());
+			}
+		}
+
 		// to DTD
 		else if (Format.DTD.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.DTD
@@ -376,13 +399,7 @@ public class TEIConverter implements Converter,ErrorHandler {
 			performXsltTransformation(inputStream, outputStream, Format.RDF
 					.getProfile(), profile, properties);
 		}
-		// to XSD
-		else if (Format.XSD.getMimeType().equals(toMimeType)
-			 && fromDataType.getFormat().equals(Format.XSD.getFormatName())) {
-			properties.put("extension", "xsd");
-			performXsltTransformation(inputStream, outputStream, Format.XSD
-					.getProfile(), profile, properties);
-		}
+       
 	}
 
 	/*
@@ -529,10 +546,10 @@ public class TEIConverter implements Converter,ErrorHandler {
 	}
 
 	/*
-	 * Performs transformation over XSLT to make schema, then runs trang
+	 * Performs transformation over XSLT to make RNG schema, then runs trang
 	 */
-	private void performXsltTransformationThenTrang(InputStream inputStream,
-			OutputStream outputStream, String id, String profile, Map<String, String> properties)
+	private void generateRngThenTrang(InputStream inputStream,
+							OutputStream outputStream, String id, String profile, Map<String, String> properties)
 	    throws IOException, SaxonApiException, ConverterException, InputFailedException, SAXException, OutputFailedException, InvalidParamsException {
 		FileOutputStream fos = null;
 		InputStream is = null;
@@ -540,7 +557,6 @@ public class TEIConverter implements Converter,ErrorHandler {
 		File outTempDir = null;
 		File outputDir = null;
 		try {
-			LOGGER.info("gooing for RNC");
 			inTmpDir = prepareTempDir();
 			ior.decompressStream(inputStream, inTmpDir);
 			File inputFile = searchForData(inTmpDir, "^.*");
@@ -552,8 +568,9 @@ public class TEIConverter implements Converter,ErrorHandler {
 			XdmNode initialNode = getImages(inTmpDir.toString(), outTempDir.toString(), "media" + File.separator, 
 							"media" + File.separator, inputFile, proc, is, "Xslt", properties);
 			String extension = properties.get("extension");
-			File resFile = new File(outTempDir + File.separator + "document." + extension);
-			fos = new FileOutputStream(resFile);
+			File inFile = new File(outTempDir + File.separator + "document.rng");
+			File outFile = new File(outTempDir + File.separator + "document." + extension);
+			fos = new FileOutputStream(inFile);
 			XsltExecutable exec = comp.compile(resolveConfiguration(id, comp, profile));
 			XsltTransformer transformer = exec.load();
 			if(properties.get(ConverterConfiguration.LANGUAGE_KEY)!=null) 
@@ -569,27 +586,35 @@ public class TEIConverter implements Converter,ErrorHandler {
 			result.setOutputStream(fos);
 			transformer.setDestination(result);
 			transformer.transform();
-			LOGGER.info("got an RNG " + resFile);
 			InputFormat inFormat = new SAXParseInputFormat();
 			OutputFormat of;
-			String outputType="rnc";
 			of = new RncOutputFormat();
-			if (outputType.equalsIgnoreCase("rnc"))
-			    of = new RncOutputFormat();
-			else if (outputType.equalsIgnoreCase("xsd"))
-			    of = new XsdOutputFormat();
 			String[] inputParamArray = new String[]{};
 			String[] outputParamArray = new String[]{};
-			SchemaCollection sc =  inFormat.load(UriOrFile.toUri(resFile.getAbsolutePath()), inputParamArray, "rnc", this);
+			if (extension.equalsIgnoreCase("xsd")) {
+			    of = new XsdOutputFormat();
+			    outputParamArray = new String[]{"disable-abstract-elements"};
+			}
+			SchemaCollection sc =  inFormat.load(UriOrFile.toUri(inFile.getAbsolutePath()), inputParamArray, extension, this);
 			OutputDirectory od = new LocalOutputDirectory( 
 								      sc.getMainUri(),
-								      new File(resFile + ".rnc"),
-								      "rnc",
+								      outFile,
+								      "." + extension,
 								      "UTF-8",
 								      72,
 								      2
 								       );
 			of.output(sc, od, outputParamArray, "rng", this);
+			try{			    			    
+			    if(! inFile.delete()){
+				LOGGER.info("Delete operation failed on " + inFile);
+			    }
+			    
+			}catch(Exception e){
+			    
+			    e.printStackTrace();
+			    
+			}
 			ior.compressData(outTempDir, outputStream);
 		} finally {
 			try {
