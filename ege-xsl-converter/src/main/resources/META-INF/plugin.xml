@@ -91,7 +91,7 @@
 		<parameter id="xsluri" value="odds2/extract-isosch.xsl" />
 		<parameter id="iMimeType" value="text/xml" />
 		<parameter id="iFormat" value="ODDC" />
-		<parameter id="iDescription" value="Compiled TEI ODD Document" />
+		<parameter id="iDescription" value="Compiled TEI ODD" />
 		<parameter id="iType" value="text" />		
 		<parameter id="oMimeType" value="text/xml" />
 		<parameter id="oFormat" value="isosch" />
@@ -107,7 +107,7 @@
 		<parameter id="xsluri" value="odds2/extract-sch.xsl" />
 		<parameter id="iMimeType" value="text/xml" />
 		<parameter id="iFormat" value="ODDC" />
-		<parameter id="iDescription" value="Compiled TEI ODD Document" />
+		<parameter id="iDescription" value="Compiled TEI ODD" />
 		<parameter id="iType" value="text" />		
 		<parameter id="oMimeType" value="text/xml" />
 		<parameter id="oFormat" value="sch" />
@@ -147,4 +147,21 @@
 		<parameter id="visibility" value="true" />
 		<parameter id="cost" value="11" />
 	</extension>
+<!--
+	<extension plugin-id="pl.psnc.dl.ege.root"
+		   point-id="XslConverter" id="RNGtoRNCConverter">
+		<parameter id="class" value="pl.psnc.dl.ege.tei.TEIConverter"/>
+		<parameter id="name" value="RELAX NG Compact"/>
+		<parameter id="iMimeType" value="application/xml-relaxng" />
+		<parameter id="iFormat" value="relaxng" />
+		<parameter id="iDescription" value="RELAX NG schema" />
+		<parameter id="iType" value="text" />		
+		<parameter id="oMimeType" value="application/relaxng-compact-syntax" />
+		<parameter id="oFormat" value="rnc" />
+		<parameter id="oDescription" value="RELAX NG compact schema" />		
+		<parameter id="oType" value="text" />
+		<parameter id="visibility" value="false" />
+		<parameter id="cost" value="10" />
+	</extension>
+-->
 </plugin>

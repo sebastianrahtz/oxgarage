@@ -31,6 +31,8 @@ import net.sf.saxon.s9api.XsltExecutable;
 import net.sf.saxon.s9api.XsltTransformer;
 import net.sf.saxon.s9api.XdmNode;
 
+import org.xml.sax.ErrorHandler;
+
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.tei.exceptions.ConfigurationException;
@@ -46,6 +48,27 @@ import pl.psnc.dl.ege.types.DataType;
 import pl.psnc.dl.ege.utils.EGEIOUtils;
 import pl.psnc.dl.ege.utils.IOResolver;
 
+
+import com.thaiopensource.relaxng.edit.SchemaCollection;
+import com.thaiopensource.relaxng.input.InputFailedException;
+import com.thaiopensource.relaxng.input.InputFormat;
+import com.thaiopensource.relaxng.input.parse.sax.SAXParseInputFormat;
+import com.thaiopensource.relaxng.output.LocalOutputDirectory;
+import com.thaiopensource.relaxng.output.OutputDirectory;
+import com.thaiopensource.relaxng.output.OutputFailedException;
+import com.thaiopensource.relaxng.output.OutputFormat;
+import com.thaiopensource.relaxng.output.rnc.RncOutputFormat;
+import com.thaiopensource.relaxng.output.xsd.XsdOutputFormat;
+import com.thaiopensource.relaxng.translate.util.InvalidParamsException;
+import com.thaiopensource.util.UriOrFile;
+
+import javax.xml.transform.ErrorListener;
+import javax.xml.transform.SourceLocator;
+import javax.xml.transform.TransformerException;
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
+
 /**
  * <p>
  * EGE Converter interface implementation
@@ -59,8 +82,8 @@ import pl.psnc.dl.ege.utils.IOResolver;
  * @author mariuszs
  * 
  */
-public class TEIConverter implements Converter {
-
+public class TEIConverter implements Converter,ErrorHandler {
+	
 	private static final String EX_NO_FILE_DATA_WAS_FOUND = "No file data was found for conversion";
 
 	// List of directories which might contain images for input type
@@ -73,6 +96,40 @@ public class TEIConverter implements Converter {
 	private IOResolver ior = EGEConfigurationManager.getInstance()
 			.getStandardIOResolver();
 
+
+	public void error(TransformerException exception)
+			throws TransformerException {
+		LOGGER.info("Error: " + exception.getMessage());
+	}
+
+
+	public void fatalError(TransformerException exception)
+			throws TransformerException {
+		LOGGER.info("Fatal Error: " + exception.getMessage());
+		throw exception;
+	}
+
+
+	public void warning(TransformerException exception)
+			throws TransformerException {
+		LOGGER.info("Warning: " + exception.getMessage());	
+	}
+
+
+	public void error(SAXParseException exception) throws SAXException {
+		LOGGER.info("Error: " + exception.getMessage());
+	}
+
+
+	public void fatalError(SAXParseException exception) throws SAXException {
+		LOGGER.info("Fatal Error: " + exception.getMessage());
+		throw exception;
+	}
+
+
+	public void warning(SAXParseException exception) throws SAXException {
+		LOGGER.info("Warning: " + exception.getMessage());
+	}
 	public void convert(InputStream inputStream, OutputStream outputStream,
 			final ConversionActionArguments conversionDataTypes)
 			throws ConverterException, IOException {
@@ -205,6 +262,18 @@ public class TEIConverter implements Converter {
 			performXsltTransformation(inputStream, outputStream, Format.RELAXNG
 					.getProfile(), profile, properties);
 		}
+		// to RNC
+		else if (Format.RNC.getMimeType().equals(toMimeType)
+			 && fromDataType.getFormat().equals(Format.RNC.getFormatName())) {
+			if (!ConverterConfiguration.checkProfile(profile, Format.RELAXNG
+					.getProfile())) {
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				profile = EGEConstants.DEFAULT_PROFILE;
+			}
+			properties.put("extension", "rnc");
+			performXsltTransformationThenTrang(inputStream, outputStream, Format.RELAXNG
+					.getProfile(), profile, properties);
+		}
 		// to DTD
 		else if (Format.DTD.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.DTD
@@ -305,6 +374,13 @@ public class TEIConverter implements Converter {
 			}
 			properties.put("extension", "rdf");
 			performXsltTransformation(inputStream, outputStream, Format.RDF
+					.getProfile(), profile, properties);
+		}
+		// to XSD
+		else if (Format.XSD.getMimeType().equals(toMimeType)
+			 && fromDataType.getFormat().equals(Format.XSD.getFormatName())) {
+			properties.put("extension", "xsd");
+			performXsltTransformation(inputStream, outputStream, Format.XSD
 					.getProfile(), profile, properties);
 		}
 	}
@@ -432,6 +508,88 @@ public class TEIConverter implements Converter {
 			result.setOutputStream(fos);
 			transformer.setDestination(result);
 			transformer.transform();
+			ior.compressData(outTempDir, outputStream);
+		} finally {
+			try {
+				is.close();
+			} catch (Exception ex) {
+				// do nothing
+			}
+			try {
+				fos.close();
+			} catch (Exception ex) {
+				// do nothing
+			}
+			if (outTempDir != null && outTempDir.exists())
+				EGEIOUtils.deleteDirectory(outTempDir);
+			if (inTmpDir != null && inTmpDir.exists())
+				EGEIOUtils.deleteDirectory(inTmpDir);
+		}
+
+	}
+
+	/*
+	 * Performs transformation over XSLT to make schema, then runs trang
+	 */
+	private void performXsltTransformationThenTrang(InputStream inputStream,
+			OutputStream outputStream, String id, String profile, Map<String, String> properties)
+	    throws IOException, SaxonApiException, ConverterException, InputFailedException, SAXException, OutputFailedException, InvalidParamsException {
+		FileOutputStream fos = null;
+		InputStream is = null;
+		File inTmpDir = null;
+		File outTempDir = null;
+		File outputDir = null;
+		try {
+			LOGGER.info("gooing for RNC");
+			inTmpDir = prepareTempDir();
+			ior.decompressStream(inputStream, inTmpDir);
+			File inputFile = searchForData(inTmpDir, "^.*");
+			outTempDir = prepareTempDir();
+			is = prepareInputData(inputStream, inTmpDir, inputFile);
+			Processor proc = SaxonProcFactory.getProcessor();
+			XsltCompiler comp = proc.newXsltCompiler();
+			// get images and correct graphics tags
+			XdmNode initialNode = getImages(inTmpDir.toString(), outTempDir.toString(), "media" + File.separator, 
+							"media" + File.separator, inputFile, proc, is, "Xslt", properties);
+			String extension = properties.get("extension");
+			File resFile = new File(outTempDir + File.separator + "document." + extension);
+			fos = new FileOutputStream(resFile);
+			XsltExecutable exec = comp.compile(resolveConfiguration(id, comp, profile));
+			XsltTransformer transformer = exec.load();
+			if(properties.get(ConverterConfiguration.LANGUAGE_KEY)!=null) 
+			    {
+				XdmAtomicValue doclang = new XdmAtomicValue(properties.get(ConverterConfiguration.LANGUAGE_KEY));
+				transformer.setParameter(new QName("lang"), doclang);
+				transformer.setParameter(new QName("doclang"), doclang);
+				transformer.setParameter(new QName("documentationLanguage"), doclang);
+			    }
+			setTransformationParameters(transformer, id);
+			transformer.setInitialContextNode(initialNode);
+			Serializer result = new Serializer();
+			result.setOutputStream(fos);
+			transformer.setDestination(result);
+			transformer.transform();
+			LOGGER.info("got an RNG " + resFile);
+			InputFormat inFormat = new SAXParseInputFormat();
+			OutputFormat of;
+			String outputType="rnc";
+			of = new RncOutputFormat();
+			if (outputType.equalsIgnoreCase("rnc"))
+			    of = new RncOutputFormat();
+			else if (outputType.equalsIgnoreCase("xsd"))
+			    of = new XsdOutputFormat();
+			String[] inputParamArray = new String[]{};
+			String[] outputParamArray = new String[]{};
+			SchemaCollection sc =  inFormat.load(UriOrFile.toUri(resFile.getAbsolutePath()), inputParamArray, "rnc", this);
+			OutputDirectory od = new LocalOutputDirectory( 
+								      sc.getMainUri(),
+								      new File(resFile + ".rnc"),
+								      "rnc",
+								      "UTF-8",
+								      72,
+								      2
+								       );
+			of.output(sc, od, outputParamArray, "rng", this);
 			ior.compressData(outTempDir, outputStream);
 		} finally {
 			try {
