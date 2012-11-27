@@ -61,6 +61,7 @@ import com.thaiopensource.relaxng.output.rnc.RncOutputFormat;
 import com.thaiopensource.relaxng.output.xsd.XsdOutputFormat;
 import com.thaiopensource.relaxng.translate.util.InvalidParamsException;
 import com.thaiopensource.util.UriOrFile;
+import com.thaiopensource.resolver.Resolver;
 
 import javax.xml.transform.ErrorListener;
 import javax.xml.transform.SourceLocator;
@@ -588,6 +589,7 @@ public class TEIConverter implements Converter,ErrorHandler {
 			transformer.transform();
 			InputFormat inFormat = new SAXParseInputFormat();
 			OutputFormat of;
+			Resolver resolver =null;
 			of = new RncOutputFormat();
 			String[] inputParamArray = new String[]{};
 			String[] outputParamArray = new String[]{};
@@ -595,7 +597,7 @@ public class TEIConverter implements Converter,ErrorHandler {
 			    of = new XsdOutputFormat();
 			    outputParamArray = new String[]{"disable-abstract-elements"};
 			}
-			SchemaCollection sc =  inFormat.load(UriOrFile.toUri(inFile.getAbsolutePath()), inputParamArray, extension, this);
+			SchemaCollection sc =  inFormat.load(UriOrFile.toUri(inFile.getAbsolutePath()), inputParamArray, extension, this,resolver);
 			OutputDirectory od = new LocalOutputDirectory( 
 								      sc.getMainUri(),
 								      outFile,
