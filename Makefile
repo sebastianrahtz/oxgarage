@@ -33,9 +33,7 @@ deb: debversion
 setup:
 	mvn install:install-file -DgroupId=jpf -DartifactId=jpf -Dversion=1.5.1 -Dpackaging=jar -Dfile=jpf-1.5.1.jar 
 	mvn install:install-file -DgroupId=jpf-tools -DartifactId=jpf-tools -Dversion=1.5.1 -Dpackaging=jar -Dfile=jpf-tools.jar
-	mvn install:install-file -DgroupId=org.tei.vesta -DartifactId=Vesta -Dversion=1.0.8 -Dpackaging=jar -Dfile=Vesta-1.0.8.jar 
 	mvn install:install-file -DgroupId=org.apache.commons.compress -DartifactId=commons-compress -Dversion=20050911 -Dpackaging=jar -Dfile=commons-compress-20050911.jar 
-	mvn install:install-file -DgroupId=net.sf.saxon -DartifactId=saxon9 -Dversion=9.2.0 -Dpackaging=jar -Dfile=saxon9he.jar 
 	mvn install:install-file -DgroupId=org.apache.commons.io -DartifactId=commons-io -Dversion=1.4 -Dpackaging=jar -Dfile=commons-io-1.4.jar
 	mvn install:install-file -DgroupId=com.artofsolving -DartifactId=jodconverter -Dversion=3.0-beta-3 -Dpackaging=jar -Dfile=jod-lib/jodconverter-core-3.0-beta-3.jar
 	mvn install:install-file -DgroupId=com.sun.star -DartifactId=jurt -Dversion=3.1.0 -Dpackaging=jar -Dfile=jod-lib/jurt-3.1.0.jar

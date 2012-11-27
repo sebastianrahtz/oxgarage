@@ -74,7 +74,7 @@
     <developer>
       <id>sebastian.rahtz</id>
       <name>Sebastian Rahtz</name>
-      <email>sebastian.rahtz@oucs.ox.ac.uk</email>
+      <email>sebastian.rahtz@it.ox.ac.uk</email>
       <roles>
         <role>Stakeholder</role>
       </roles>
@@ -95,10 +95,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
+	<version>2.3</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
+	<version>2.9</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

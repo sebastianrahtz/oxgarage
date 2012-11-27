@@ -70,8 +70,9 @@
       </developer>
    </developers>
   <modules>
-	<module>ege-api</module>
-	<module>tei-converter</module>
+    <module>ege-api</module>
+    <module>tei-javalib</module>
+    <module>tei-converter</module>
     <module>ege-xsl-converter</module>
     <module>oo-converter</module>
     <module>ege-validator</module>
@@ -95,6 +96,7 @@
 <plugin>
 <groupId>org.apache.maven.plugins</groupId>
 <artifactId>maven-compiler-plugin</artifactId>
+<version>2.3.2</version>
    <configuration>
      <compilerArgument>-verbose </compilerArgument>
      <source>1.5</source>
