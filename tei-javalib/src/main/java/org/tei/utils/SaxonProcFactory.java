@@ -20,7 +20,6 @@ public class SaxonProcFactory {
 	public static Processor getProcessor(){
 		if(null == processor){
 			processor = new Processor(false);
-			processor.setConfigurationProperty(FeatureKeys.XINCLUDE, true);
 		}
 		return processor; 
 	}
