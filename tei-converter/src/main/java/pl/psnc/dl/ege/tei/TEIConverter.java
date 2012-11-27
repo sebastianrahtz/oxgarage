@@ -287,7 +287,7 @@ public class TEIConverter implements Converter,ErrorHandler {
 				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
 				profile = EGEConstants.DEFAULT_PROFILE;
 			}
-			properties.put("extension", "xsd");
+			properties.put("extension", "zip");
 			try {
 			    generateRngThenTrang(inputStream, outputStream, Format.RELAXNG
 							       .getProfile(), profile, properties);

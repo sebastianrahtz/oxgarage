@@ -5,7 +5,10 @@
 	<mime-ext mime="application/xhtml+xml" ext=".html" />
 	<mime-ext mime="application/x-latex" ext=".tex" />
 	<mime-ext mime="application/xml-dtd" ext=".dtd" />
+	<mime-ext mime="application/xml" ext=".xml" />
+	<mime-ext mime="application/xml-xsd" ext=".xsd" />
 	<mime-ext mime="application/xml-relaxng" ext=".rng" />
+	<mime-ext mime="application/relaxng-compact" ext=".rnc" />
 	<mime-ext mime="application/zip" ext=".zip" />
 	<mime-ext mime="application/epub+zip" ext=".epub" />
 	<mime-ext mime="application/vnd.oasis.opendocument.text" ext=".odt" />
