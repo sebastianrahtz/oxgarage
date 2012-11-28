@@ -1,6 +1,5 @@
 package org.tei.utils;
 
-import net.sf.saxon.FeatureKeys;
 import net.sf.saxon.s9api.Processor;
 
 /**

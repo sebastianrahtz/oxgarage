@@ -6,7 +6,7 @@ import java.net.URISyntaxException;
 
 import javax.xml.transform.Result;
 
-import net.sf.saxon.event.StandardOutputResolver;
+import net.sf.saxon.lib.StandardOutputResolver;
 import net.sf.saxon.trans.XPathException;
 
 /**

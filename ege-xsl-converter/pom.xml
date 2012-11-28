@@ -159,20 +159,14 @@
     </dependency>
     <dependency>
       <groupId>net.sf.saxon</groupId>
-      <artifactId>saxon9</artifactId>
-      <version>9.2.0</version>
+      <artifactId>Saxon-HE</artifactId>
+      <version>9.4</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.apache.commons.io</groupId>
+      <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>1.4</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.commons.compress</groupId>
-      <artifactId>commons-compress</artifactId>
-      <version>20050911</version>
+      <version>2.4</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>

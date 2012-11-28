@@ -151,8 +151,7 @@
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>1.4</version>
-      <scope>compile</scope>
+      <version>2.4</version>
     </dependency>
     <dependency>
       <groupId>commons-logging</groupId>
@@ -161,14 +160,20 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>jpf</groupId>
+      <groupId>net.sf.jpf</groupId>
       <artifactId>jpf</artifactId>
-      <version>1.5.1</version>
+      <version>1.5</version>
       <scope>compile</scope>
-    </dependency><dependency>
+    </dependency>
+    <dependency>
       <groupId>jpf-tools</groupId>
       <artifactId>jpf-tools</artifactId>
       <version>1.5.1</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.jpf</groupId>
+      <artifactId>jpf-boot</artifactId>
+      <version>1.5</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
