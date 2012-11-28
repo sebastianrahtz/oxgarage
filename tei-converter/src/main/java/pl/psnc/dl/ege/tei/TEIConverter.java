@@ -593,7 +593,7 @@ public class TEIConverter implements Converter,ErrorHandler {
 			of = new RncOutputFormat();
 			String[] inputParamArray = new String[]{};
 			String[] outputParamArray = new String[]{};
-			if (extension.equalsIgnoreCase("xsd")) {
+			if (extension.equalsIgnoreCase("xsd") || extension.equalsIgnoreCase("zip")) {
 			    of = new XsdOutputFormat();
 			    outputParamArray = new String[]{"disable-abstract-elements"};
 			}
