@@ -147,6 +147,21 @@
 		<parameter id="visibility" value="true" />
 		<parameter id="cost" value="11" />
 	</extension>
+	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="HTMLtoTEIconverter">
+		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
+		<parameter id="name" value="XHTML to TEI"/>
+		<parameter id="xsluri" value="html/html2tei.xsl" />
+		<parameter id="iMimeType" value="application/xhtml+xml" />
+		<parameter id="iFormat" value="XHTML" />
+		<parameter id="iDescription" value="xHTML" />
+		<parameter id="iType" value="text" />		
+		<parameter id="oMimeType" value="text/xml" />
+		<parameter id="oFormat" value="TEI" />
+		<parameter id="oDescription" value="TEI P5 XML Document" />		
+		<parameter id="oType" value="text" />
+		<parameter id="visibility" value="true" />
+		<parameter id="cost" value="5" />
+	</extension>
 <!--
 	<extension plugin-id="pl.psnc.dl.ege.root"
 		   point-id="XslConverter" id="RNGtoRNCConverter">
