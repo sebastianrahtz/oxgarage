@@ -10,6 +10,8 @@ test:
 	curl -s -o conversions.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions
 	rm -rf temp-results
 	mkdir  temp-results
+	echo To DocX
+	curl -s  -o temp-results/result.docx -F upload=@test.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document
 	echo ODD to JSON
 	curl -s  -F upload=@test.odd  -o temp-results/test.js http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/oddjson%3Aapplication%3Ajson/
 	echo TCP to TEI P5
@@ -24,8 +26,6 @@ test:
 	diff temp-results/result2.tex expected-results/result2.tex
 	echo To ePub
 	curl -s  -o temp-results/result.epub -F upload=@test.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/epub%3Aapplication%3Aepub%2Bzip
-	echo To DocX
-	curl -s  -o temp-results/result.docx -F upload=@test.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document
 	curl -s  -F upload=@test.xml -o temp-results/result2.docx  http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document?properties=$(P)
 	curl  -s -F upload=@test8.xml  -F upload=@portrait.jpg -F upload=@lessing.jpg -o temp-results/result.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document
 	echo To HTML

@@ -769,8 +769,7 @@ In the following example, the use of a distinct typeface for the subheading and 
 Alternatively, where the cause for the highlighting can be identified with confidence, a number of other, more specific, elements are available. \par
 Some features (notably quotations and glosses) may be found in a text either marked by highlighting, or with quotation marks.  In either case, the elements \texttt{<q>} and \texttt{<gloss>} (as discussed in the following section) should be used. If the rendition is to be recorded, use the global \textit{@rend} attribute.\par
 As an example of the elements defined here, consider the following sentence: 
-\begin{quote}
-On the one hand the \textit{Nibelungenlied} is associated with the new rise of romance of twelfth-century France, the \textit{romans d'antiquité}, the romances of Chrétien de Troyes, and the German adaptations of these works by Heinrich van Veldeke, Hartmann von Aue, and Wolfram von Eschenbach.\end{quote}
+\begin{quote}On the one hand the \textit{Nibelungenlied} is associated with the new rise of romance of twelfth-century France, the \textit{romans d'antiquité}, the romances of Chrétien de Troyes, and the German adaptations of these works by Heinrich van Veldeke, Hartmann von Aue, and Wolfram von Eschenbach.\end{quote}
  Interpreting the role of the highlighting, the sentence might look like this: \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}{<\textbf{p}>}On the one hand the {<\textbf{title}>}Nibelungenlied{</\textbf{title}>} is associated\mbox{}\newline 
  with the new rise of romance of twelfth-century France, the\mbox{}\newline 
 {<\textbf{foreign}>}romans d'antiquité{</\textbf{foreign}>}, the romances of\mbox{}\newline 
@@ -1155,8 +1154,7 @@ Lists of bibliographic items should be tagged using the \texttt{<listBibl>} elem
 \DivI[Bibliographic Citations]{Bibliographic Citations}\label{U5-bibls}\par
 It is often useful to distinguish bibliographic citations where they occur within texts being transcribed for research, if only so that they will be properly formatted when the text is printed out. The element \texttt{<bibl>} is provided for this purpose.  Where the components of a bibliographic reference are to be distinguished, the following elements may be used as appropriate. It is generally useful to mark at least those parts (such as the titles of articles, books, and journals) which will need special formatting.  The other elements are provided for cases where particular interest attaches to such details. \par
 For example, the following editorial note might be transcribed as shown: 
-\begin{quote}
-He was a member of Parliament for Warwickshire in 1445, and died March 14, 1470 (according to Kittredge, \textit{Harvard Studies} 5. 88ff).\end{quote}
+\begin{quote}He was a member of Parliament for Warwickshire in 1445, and died March 14, 1470 (according to Kittredge, \textit{Harvard Studies} 5. 88ff).\end{quote}
  \par\bgroup\ttfamily\small\selectfont \begin{shaded}\noindent\mbox{}He was a member of Parliament for Warwickshire in 1445, and died\mbox{}\newline 
  March 14, 1470 (according to {<\textbf{bibl}>}\mbox{}\newline 
 \hspace*{6pt}{<\textbf{author}>}Kittredge{</\textbf{author}>},\mbox{}\newline 

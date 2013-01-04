@@ -1,8 +1,8 @@
 
 <!--
 DTD
-Edition: 2.1.0. Last updated on 17th June 2012.
-Edition Location: http://www.tei-c.org/Vault/P5/2.1.0/
+Edition: 2.0.2. Last updated on 2nd February 2012.
+Edition Location: http://www.tei-c.org/Vault/P5/2.0.2/
 
 -->
 
@@ -40,9 +40,9 @@ inapplicable | true | false)' >
 
 <!ENTITY % data.version ' CDATA' >
 
-<!ENTITY % data.word ' CDATA' >
+<!ENTITY % data.key ' CDATA' >
 
-<!ENTITY % data.text ' CDATA' >
+<!ENTITY % data.word ' CDATA' >
 
 <!ENTITY % data.code ' CDATA' >
 
@@ -70,10 +70,10 @@ who CDATA  #IMPLIED'>
 <!ENTITY % att.ascribed.attribute.who '
 who CDATA  #IMPLIED'>
 <!ENTITY % att.canonical.attributes '
-key %data.text;  #IMPLIED
+key %data.key;  #IMPLIED
 ref CDATA  #IMPLIED'> 
 <!ENTITY % att.canonical.attribute.key '
-key %data.text;  #IMPLIED'>
+key %data.key;  #IMPLIED'>
 
 <!ENTITY % att.canonical.attribute.ref '
 ref CDATA  #IMPLIED'>
@@ -474,12 +474,11 @@ versionDate %data.temporal.w3c;  #IMPLIED'>
 <!ENTITY % model.divPart_sequenceOptional "%model.lLike;?, %model.pLike;?, lg?, sp?"> 
 <!ENTITY % model.divPart_sequenceOptionalRepeatable "%model.lLike;*, %model.pLike;*, lg*, sp*"> 
 <!ENTITY % model.divPart_sequenceRepeatable "%model.lLike;+, %model.pLike;+, lg+, sp+"> 
-<!ENTITY % model.personPart "bibl |
- idno"> 
-<!ENTITY % model.personPart_sequence "bibl, idno"> 
-<!ENTITY % model.personPart_sequenceOptional "bibl?, idno?"> 
-<!ENTITY % model.personPart_sequenceOptionalRepeatable "bibl*, idno*"> 
-<!ENTITY % model.personPart_sequenceRepeatable "bibl+, idno+"> 
+<!ENTITY % model.personPart "bibl"> 
+<!ENTITY % model.personPart_sequence "bibl"> 
+<!ENTITY % model.personPart_sequenceOptional "bibl?"> 
+<!ENTITY % model.personPart_sequenceOptionalRepeatable "bibl*"> 
+<!ENTITY % model.personPart_sequenceRepeatable "bibl+"> 
 <!ENTITY % model.publicationStmtPart "address |
  date |
  publisher |
@@ -1111,7 +1110,8 @@ scheme %data.pointer;  #IMPLIED >
  %att.datable.attributes;
  %att.docStatus.attributes;
  %att.global.attributes;
- %att.typed.attributes; >
+ %att.typed.attributes;
+target CDATA  #IMPLIED >
 <!--doc:groups a number of alternative encodings for the same point in
         a text. [3.4. ] -->
 <!ELEMENT choice (%model.choicePart; |
@@ -1216,9 +1216,9 @@ method (silent|markup) "silent"  >
 <!ATTLIST distinct
  %att.global.attributes;
 type %data.enumerated;  #IMPLIED
-time %data.text;  #IMPLIED
-space %data.text;  #IMPLIED
-social %data.text;  #IMPLIED >
+time %data.key;  #IMPLIED
+space %data.key;  #IMPLIED
+social %data.key;  #IMPLIED >
 <!--doc:supplies the name of a person or other agency responsible for the
 distribution of a text. [2.2.4. ] -->
 <!ELEMENT distributor %macro.phraseSeq;>
@@ -1718,7 +1718,8 @@ with either the creation of a source text or the revision of an encoded text.  -
 <!ATTLIST listChange xmlns CDATA "http://www.tei-c.org/ns/1.0">
 <!ATTLIST listChange
  %att.global.attributes;
- %att.sortable.attributes; >
+ %att.sortable.attributes;
+ordered %data.truthValue;  "true"  >
 <!--doc:contains a word or phrase referring to some quantity of an object or commodity, usually
         comprising a number, a unit, and a commodity name. [3.5.3. ] -->
 <!ELEMENT measure %macro.phraseSeq;>
@@ -2045,7 +2046,7 @@ scope %data.enumerated;  #IMPLIED >
 <!ATTLIST rs
  %att.global.attributes;
  %att.naming.attributes;
- %att.typed.attributes; >
+type %data.enumerated;  #IMPLIED >
 <!--doc:(speech or thought) indicates passages thought or spoken aloud, whether explicitly indicated in the source or
     not, whether directly or indirectly reported, whether by real people or fictional characters. [3.3.3. ] -->
 <!ELEMENT said %macro.specialPara;>

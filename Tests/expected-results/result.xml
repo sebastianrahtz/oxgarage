@@ -74,18 +74,22 @@
             <p>, and rules governing their appearance within a text. The TEI's use of XML is ambitious in its complexity and generality, but it is fundamentally no different from that of any other XML markup scheme, and so any general-purpose XML-aware software is able to process TEI-conformant texts.</p>
             <p>The TEI was sponsored by the Association for Computers and the Humanities, the Association for Computational Linguistics, and the Association for Literary and Linguistic Computing, and is now maintained and developed by an independent membership consortium, hosted by four major Universities. Funding has been provided in part from the U.S. National Endowment for the Humanities, Directorate General XIII of the Commission of the European Communities, the Andrew W. Mellon Foundation, and the Social Science and Humanities Research Council of Canada. The Guidelines were first published in May 1994, after six years of development involving many hundreds of scholars from different academic disciplines worldwide. During the years that followed, the Guidelines were increasingly influential in the development of the digital library, in the language industries, and even in the development of the World Wide Web itself. The TEI consortium was set up in January 2001, and a year later produced an edition of the Guidelines entirely revised for XML compatibility. In 2004, it set about a major revision of the Guidelines to take full advantage of new schema languages, the first release of which appeared in 2005. This revision of the TEI Lite manual conforms to version 0.3 of this most recent edition of the Guidelines, TEI P5.</p>
             <p>At the outset of its work, the overall goals of the TEI were defined by the closing statement of a planning conference held at Vassar College, N.Y., in November, 1987; these <hi rend="italic">Poughkeepsie Principles</hi> were further elaborated in a series of design documents. The Guidelines, say these design documents, should: </p>
-            <p>suffice to represent the textual features needed for research;</p>
-            <p>be simple, clear, and concrete;</p>
-            <p>be easy for researchers to use without special-purpose software;</p>
-            <p>allow the rigorous definition and efficient processing of texts;</p>
-            <p>provide for user-defined extensions;</p>
-            <p>conform to existing and emergent standards.</p>
+            <list type="unordered">
+               <item>suffice to represent the textual features needed for research;</item>
+               <item>be simple, clear, and concrete;</item>
+               <item>be easy for researchers to use without special-purpose software;</item>
+               <item>allow the rigorous definition and efficient processing of texts;</item>
+               <item>provide for user-defined extensions;</item>
+               <item>conform to existing and emergent standards.</item>
+            </list>
             <p>The world of scholarship is large and diverse. For the Guidelines to have wide acceptability, it was important to ensure that: </p>
-            <p>the common core of textual features be easily shared;</p>
-            <p>additional specialist features be easy to add to (or remove from) a text;</p>
-            <p>multiple parallel encodings of the same feature should be possible;</p>
-            <p>the richness of markup should be user-defined, with a very small minimal requirement;</p>
-            <p>adequate documentation of the text and its encoding should be provided.</p>
+            <list type="ordered">
+               <item>the common core of textual features be easily shared;</item>
+               <item>additional specialist features be easy to add to (or remove from) a text;</item>
+               <item>multiple parallel encodings of the same feature should be possible;</item>
+               <item>the richness of markup should be user-defined, with a very small minimal requirement;</item>
+               <item>adequate documentation of the text and its encoding should be provided.</item>
+            </list>
             <p>The present document describes a manageable selection from the extensive set of elements and recommendations resulting from those design goals, which is called <hi rend="italic">TEI Lite</hi>.</p>
             <p>In selecting from the several hundred elements defined by the full TEI scheme, we have tried to identify a useful <hi rend="italic">starter set</hi>, comprising the elements which almost every user should know about. Experience working with TEI Lite will be invaluable in understanding the full TEI scheme and in knowing how to integrate specialized parts of it into the general TEI framework.</p>
             <p>Our goals in defining this subset may be summarized as follows: </p>
@@ -104,18 +108,22 @@
                <lb/> JANE EYRE 475<lb/>
                <lb/>Mary approved the step unreservedly. Diana announced that she<lb/>would just give me time to get over the honeymoon, and then she<lb/>would come and see me.<lb/> 'She had better not wait till then, Jane,' said Mr Rochester, when I<lb/>read her letter to him; 'if she does, she will be too late, for our honey-<lb/>moon will shine our life long: its beams will only fade over your<lb/>grave or mine.'<lb/> How St John received the news I don't know: he never answered<lb/>the letter in which I communicated it: yet six months after he wrote<lb/>to me, without, however, mentioning Mr Rochester's name or allud-<lb/>ing to my marriage. His letter was then calm, and though very serious,<lb/>kind. He has maintained a regular, though not very frequent correspond-<lb/>ence ever since: he hopes I am happy, and trusts I am not of those who<lb/>live without God in the world, and only mind earthly<lb/>things.</p>
             <p>This transcription suffers from a number of shortcomings: </p>
-            <p>the page numbers and running titles are intermingled with the text in a way which makes it difficult for software to disentangle them;</p>
-            <p>no distinction is made between single quotation marks and apostrophe, so it is difficult to know exactly which passages are in direct speech;</p>
-            <p>the preservation of the copy text's hyphenation means that simple-minded search programs will not find the broken words;</p>
-            <p>the accented letter in faàl and the long dash have been rendered by ad hoc keying conventions which follow no standard pattern and will be processed correctly only if the transcriber remembers to mention them in the documentation;</p>
-            <p>paragraph divisions are marked only by the use of white space, and hard carriage returns have been introduced at the end of each line. Consequently, if the size of type used to print the text changes, reformatting will be problematic.</p>
+            <list type="unordered">
+               <item>the page numbers and running titles are intermingled with the text in a way which makes it difficult for software to disentangle them;</item>
+               <item>no distinction is made between single quotation marks and apostrophe, so it is difficult to know exactly which passages are in direct speech;</item>
+               <item>the preservation of the copy text's hyphenation means that simple-minded search programs will not find the broken words;</item>
+               <item>the accented letter in faàl and the long dash have been rendered by ad hoc keying conventions which follow no standard pattern and will be processed correctly only if the transcriber remembers to mention them in the documentation;</item>
+               <item>paragraph divisions are marked only by the use of white space, and hard carriage returns have been introduced at the end of each line. Consequently, if the size of type used to print the text changes, reformatting will be problematic.</item>
+            </list>
             <p>We now present the same passage, as it might be encoded using the TEI Guidelines. As we shall see, there are many ways in which this encoding could be extended, but as a minimum, the TEI approach allows us to represent the following distinctions: </p>
-            <p>Paragraph and chapter divisions are now marked explicitly.</p>
-            <p>Apostrophes are distinguished from quotation marks; direct speech is explicitly marked.</p>
-            <p>The accented letter and the long dash are correctly represented.</p>
-            <p>Page divisions have been marked with an empty &lt;pb&gt; element alone.</p>
-            <p>The lineation of the original has not been retained and words broken by typographic accident at the end of a line have been re-assembled without comment.</p>
-            <p>For convenience of proof reading, a new line has been introduced at the start of each paragraph, but the indentation is removed.</p>
+            <list type="unordered">
+               <item>Paragraph and chapter divisions are now marked explicitly.</item>
+               <item>Apostrophes are distinguished from quotation marks; direct speech is explicitly marked.</item>
+               <item>The accented letter and the long dash are correctly represented.</item>
+               <item>Page divisions have been marked with an empty &lt;pb&gt; element alone.</item>
+               <item>The lineation of the original has not been retained and words broken by typographic accident at the end of a line have been re-assembled without comment.</item>
+               <item>For convenience of proof reading, a new line has been introduced at the start of each paragraph, but the indentation is removed.</item>
+            </list>
             <p>&lt;<hi rend="bold">pb</hi> <hi rend="bold">n</hi>="474"/&gt;<lb/>&lt;<hi rend="bold">div</hi> <hi rend="bold">type</hi>="chapter" <hi rend="bold">n</hi>="38"&gt;<lb/> &lt;<hi rend="bold">p</hi>&gt;Reader, I married him. A quiet wedding we had: he and I,<lb/>   the parson and clerk, were alone present. When we got back<lb/>   from church, I went into the kitchen of the manor-house,<lb/>   where Mary was cooking the dinner, and John cleaning the<lb/>   knives, and I said —&lt;/<hi rend="bold">p</hi>&gt;<lb/> &lt;<hi rend="bold">p</hi>&gt;<lb/>  &lt;<hi rend="bold">q</hi>&gt;Mary, I have been married to Mr Rochester this<lb/>     morning.&lt;/<hi rend="bold">q</hi>&gt; The housekeeper and her husband were of that<lb/>   decent, phlegmatic order of people, to whom one may at any<lb/>   time safely communicate a remarkable piece of news without<lb/>   incurring the danger of having one's ears pierced by some<lb/>   shrill ejaculation and subsequently stunned by a torrent of<lb/>   wordy wonderment. Mary did look up, and she did stare at<lb/>   me; the ladle with which she was basting a pair of chickens<lb/>   roasting at the fire, did for some three minutes hang<lb/>   suspended in air, and for the same space of time John's<lb/>   knives also had rest from the polishing process; but Mary,<lb/>   bending again over the roast, said only —&lt;/<hi rend="bold">p</hi>&gt;<lb/> &lt;<hi rend="bold">p</hi>&gt;<lb/>  &lt;<hi rend="bold">q</hi>&gt;Have you, miss? Well, for sure!&lt;/<hi rend="bold">q</hi>&gt;<lb/> &lt;/<hi rend="bold">p</hi>&gt;<lb/> &lt;<hi rend="bold">p</hi>&gt;A short time after she pursued, &lt;<hi rend="bold">q</hi>&gt;I seed you go out with<lb/>     the master, but I didn't know you were gone to church to be<lb/>     wed&lt;/<hi rend="bold">q</hi>&gt;; and she basted away. John, when I turned to him,<lb/>   was grinning from ear to ear. &lt;<hi rend="bold">q</hi>&gt;I telled Mary how it would<lb/>     be,&lt;/<hi rend="bold">q</hi>&gt; he said: &lt;<hi rend="bold">q</hi>&gt;I knew what Mr Edward&lt;/<hi rend="bold">q</hi>&gt; (John was an<lb/>   old servant, and had known his master when he was the cadet<lb/>   of the house, therefore he often gave him his Christian<lb/>   name) — &lt;<hi rend="bold">q</hi>&gt;I knew what Mr Edward would do; and I was<lb/>     certain he would not wait long either: and he's done right,<lb/>     for aught I know. I wish you joy, miss!&lt;/<hi rend="bold">q</hi>&gt; and he politely<lb/>   pulled his forelock.&lt;/<hi rend="bold">p</hi>&gt;<lb/> &lt;<hi rend="bold">p</hi>&gt;<lb/>  &lt;<hi rend="bold">q</hi>&gt;Thank you, John. Mr Rochester told me to give you and<lb/>     Mary this.&lt;/<hi rend="bold">q</hi>&gt;<lb/> &lt;/<hi rend="bold">p</hi>&gt;<lb/> &lt;<hi rend="bold">p</hi>&gt;I put into his hand a five-pound note. Without waiting<lb/>   to hear more, I left the kitchen. In passing the door of<lb/>   that sanctum some time after, I caught the words —&lt;/<hi rend="bold">p</hi>&gt;<lb/> &lt;<hi rend="bold">p</hi>&gt;<lb/>  &lt;<hi rend="bold">q</hi>&gt;She'll happen do better for him nor ony o' t' grand<lb/>     ladies.&lt;/<hi rend="bold">q</hi>&gt; And again, &lt;<hi rend="bold">q</hi>&gt;If she ben't one o' th'<lb/>     handsomest, she's noan faàl, and varry good-natured;<lb/>     and i' his een she's fair beautiful, onybody may see<lb/>     that.&lt;/<hi rend="bold">q</hi>&gt;<lb/> &lt;/<hi rend="bold">p</hi>&gt;<lb/> &lt;<hi rend="bold">p</hi>&gt;I wrote to Moor House and to Cambridge immediately, to<lb/>   say what I had done: fully explaining also why I had thus<lb/>   acted. Diana and &lt;<hi rend="bold">pb</hi> <hi rend="bold">n</hi>="475"/&gt; Mary approved the step<lb/>   unreservedly. Diana announced that she would just give me<lb/>   time to get over the honeymoon, and then she would come and<lb/>   see me.&lt;/<hi rend="bold">p</hi>&gt;<lb/> &lt;<hi rend="bold">p</hi>&gt;<lb/>  &lt;<hi rend="bold">q</hi>&gt;She had better not wait till then, Jane,&lt;/<hi rend="bold">q</hi>&gt; said Mr<lb/>   Rochester, when I read her letter to him; &lt;<hi rend="bold">q</hi>&gt;if she does,<lb/>     she will be too late, for our honeymoon will shine our life<lb/>     long: its beams will only fade over your grave or mine.&lt;/<hi rend="bold">q</hi>&gt;<lb/> &lt;/<hi rend="bold">p</hi>&gt;<lb/> &lt;<hi rend="bold">p</hi>&gt;How St John received the news I don't know: he never<lb/>   answered the letter in which I communicated it: yet six<lb/>   months after he wrote to me, without, however, mentioning Mr<lb/>   Rochester's name or alluding to my marriage. His letter was<lb/>   then calm, and though very serious, kind. He has maintained<lb/>   a regular, though not very frequent correspondence ever<lb/>   since: he hopes I am happy, and trusts I am not of those who<lb/>   live without God in the world, and only mind earthly things.&lt;/<hi rend="bold">p</hi>&gt;<lb/>&lt;/<hi rend="bold">div</hi>&gt;</p>
             <p>This particular encoding represents a set of choices or priorities. The decision to focus on Brontë's text, rather than on the printing of it in this particular edition, is an instance of the fundamental <hi rend="italic">selectivity</hi> of any encoding. An encoding makes explicit only those textual features of importance to the encoder. It is not difficult to think of ways in which the encoding of even this short passage might readily be extended. For example: </p>
             <p>a regularized form of the passages in dialect could be provided;</p>
@@ -686,9 +694,11 @@
             <p>Every TEI text has a header which provides information analogous to that provided by the title page of printed text. The header is introduced by the element &lt;teiHeader&gt; and has four major parts: </p>
             <p> A corpus or collection of texts, which share many characteristics, may have one header for the corpus and individual headers for each component of the corpus. In this case the <hi rend="italic">type</hi> attribute indicates the type of header. &lt;teiHeader type="corpus"&gt; introduces the header for corpus-level information.</p>
             <p>Some of the header elements contain running prose which consists of one or more &lt;p&gt;s. Others are grouped: </p>
-            <p>Elements whose names end in Stmt(for statement) usually enclose a group of elements recording some structured information.</p>
-            <p>Elements whose names end in Decl (for declaration) enclose information about specific encoding practices.</p>
-            <p>Elements whose names end in Desc (for description) contain a prose description.</p>
+            <list type="unordered">
+               <item>Elements whose names end in Stmt(for statement) usually enclose a group of elements recording some structured information.</item>
+               <item>Elements whose names end in Decl (for declaration) enclose information about specific encoding practices.</item>
+               <item>Elements whose names end in Desc (for description) contain a prose description.</item>
+            </list>
             <p>The File Description</p>
             <p>The &lt;fileDesc&gt; element is mandatory. It contains a full bibliographic description of the file with the following elements: </p>
             <p> A minimal header has the following structure: </p>
@@ -780,3 +790,4 @@
       </body>
    </text>
 </TEI>
+
