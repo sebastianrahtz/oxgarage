@@ -310,6 +310,12 @@ public class DocX {
 			File newCore = new File(directoryName + File.separator + "docProps" + File.separator + "newcore.xml");
 			newCore.renameTo(oldCore);
 
+			// delete app.xml and copy new file
+			File oldApp = new File(directoryName + File.separator + "docProps" + File.separator + "app.xml");
+			oldApp.delete();
+			File newApp = new File(directoryName + File.separator + "docProps" + File.separator + "newapp.xml");
+			newApp.renameTo(oldCore);
+
 	       
 		} catch (SaxonApiException e) {
 			e.printStackTrace();
