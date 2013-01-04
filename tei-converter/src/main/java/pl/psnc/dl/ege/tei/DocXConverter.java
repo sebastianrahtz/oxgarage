@@ -141,5 +141,9 @@ public class DocXConverter extends ComplexConverter {
 		return "media" + File.separator;
 	}
 
-
+	@Override
+	public void mergeTEI(XdmNode teiDoc) throws SaxonApiException,
+			FileNotFoundException, IOException {
+		super.mergeTEI(teiDoc);
+	}
 }
