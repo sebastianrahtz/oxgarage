@@ -150,6 +150,7 @@ public class DocXConverter extends ComplexConverter {
 		File orgCoreFile = new File(tempDirectoryName + File.separator + "docProps"
 				+ File.separator + "core.xml");
 		orgCoreFile.delete();
+
 		// move new core.xml
 		File newCoreFile = new File(tempDirectoryName + File.separator + "docProps"
 				+ File.separator + "newcore.xml");
@@ -159,9 +160,20 @@ public class DocXConverter extends ComplexConverter {
 		File orgCustomFile = new File(tempDirectoryName + File.separator + "docProps"
 				+ File.separator + "custom.xml");
 		orgCustomFile.delete();
+
 		// move new custom.xml
 		File newCustomFile = new File(tempDirectoryName + File.separator + "docProps"
 				+ File.separator + "newcustom.xml");
 		newCustomFile.renameTo(orgCustomFile);
+
+		// remove original app.xml file
+		File orgAppFile = new File(tempDirectoryName + File.separator + "docProps"
+				+ File.separator + "app.xml");
+		orgAppFile.delete();
+
+		// move new app.xml
+		File newAppFile = new File(tempDirectoryName + File.separator + "docProps"
+				+ File.separator + "newapp.xml");
+		newAppFile.renameTo(orgAppFile);
 	}
 }
