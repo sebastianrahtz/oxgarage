@@ -717,7 +717,11 @@ public class TEIConverter implements Converter,ErrorHandler {
 			XdmNode initialNode = getImages(inTmpDir.toString(), docX.getDirectoryName(), docX.getImagesDirectoryName(), 
 						docX.getImagesDirectoryNameRelativeToDocument(), inputFile, proc, inputStream, "toDocx", properties);
 			// perform conversion
+			// remove files
 			docX.mergeTEI(initialNode);
+			File killFile = new File(outTmpDir + File.separator + "word"
+						 + File.separator + "webSettings.xml");
+			killFile.delete();
 			File oDocXFile = new File(outTmpDir.getAbsolutePath() + File.separator + "result.docx");
 			fos = new FileOutputStream(oDocXFile);
 			// pack directory to final DocX file
