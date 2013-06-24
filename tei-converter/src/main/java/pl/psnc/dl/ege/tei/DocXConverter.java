@@ -1,16 +1,33 @@
 package pl.psnc.dl.ege.tei;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.io.Writer;
 
 import javax.xml.transform.stream.StreamSource;
 
+import net.sf.saxon.s9api.Processor;
+import net.sf.saxon.s9api.SaxonApiException;
+import net.sf.saxon.s9api.DocumentBuilder;
+import net.sf.saxon.s9api.Serializer;
+import net.sf.saxon.s9api.XsltCompiler;
+import net.sf.saxon.s9api.XsltExecutable;
+import net.sf.saxon.s9api.XsltTransformer;
 import net.sf.saxon.s9api.XdmAtomicValue;
 import net.sf.saxon.s9api.QName;
+
+import org.xml.sax.SAXNotRecognizedException;
+import org.xml.sax.SAXNotSupportedException;
+import net.sf.saxon.s9api.XdmAtomicValue;
 import net.sf.saxon.s9api.XdmNode;
-import net.sf.saxon.s9api.SaxonApiException;
-import net.sf.saxon.s9api.XsltTransformer;
+import org.tei.utils.SaxonProcFactory;
+import org.tei.utils.FileUtils;
+import org.tei.utils.XMLUtils;
 
 import org.tei.exceptions.ConfigurationException;
 
@@ -40,6 +57,80 @@ public class DocXConverter extends ComplexConverter {
 	public DocXConverter (String profile)
 			throws IOException, ConfigurationException {
 		super(profile);
+		File killFile = new File(tempDirectoryName + File.separator + "word"
+						 + File.separator + "webSettings.xml");
+		killFile.delete();
+
+		// mangle styles.xml file
+		try {
+		File oldStyles = new File (tempDirectoryName + File.separator + "word" + File.separator + "styles.xml");
+		File newStyles = new File (tempDirectoryName + File.separator + "word" + File.separator + "newstyles.xml");
+		Processor proc = SaxonProcFactory.getProcessor();
+		XsltCompiler comp = proc.newXsltCompiler();
+		String stylesheet = new File(ConverterConfiguration.STYLESHEETS_PATH).toString() + File.separator   + "docx" + File.separator + "tools" + File.separator   + "fixstyle.xsl";
+		XsltExecutable exec = comp.compile(new StreamSource(stylesheet));
+		XsltTransformer transformer = exec.load();
+		DocumentBuilder documentBuilder = proc.newDocumentBuilder();
+		FileInputStream fis = new FileInputStream(oldStyles);
+		transformer.setInitialContextNode(documentBuilder.build(new StreamSource(fis)));
+		Serializer result = new Serializer();
+		Writer writer = new BufferedWriter(new OutputStreamWriter(
+				new FileOutputStream(newStyles), "UTF-8"));
+		result.setOutputWriter(writer);
+		transformer.setDestination(result);
+		transformer.transform();
+		writer.close();
+		oldStyles.delete();
+		newStyles.renameTo(oldStyles);		
+		} catch (Exception ex) {
+		    
+		    LOGGER.info("EXCEPTION " + ex);
+		}
+
+		// mangle _rels/.rels.xml file
+		try {
+		File oldDotrels = new File (tempDirectoryName + File.separator + "_rels" + File.separator + ".rels");
+		File newDotrels = new File (tempDirectoryName + File.separator + "_rels" + File.separator + "newdotrels");
+		Processor proc = SaxonProcFactory.getProcessor();
+		XsltCompiler comp = proc.newXsltCompiler();
+		String stylesheet = new File(ConverterConfiguration.STYLESHEETS_PATH).toString() + File.separator   + "docx" + File.separator + "tools" + File.separator   + "fixdotrels.xsl";
+		XsltExecutable exec = comp.compile(new StreamSource(stylesheet));
+		XsltTransformer transformer = exec.load();
+		DocumentBuilder documentBuilder = proc.newDocumentBuilder();
+		FileInputStream fis = new FileInputStream(oldDotrels);
+		transformer.setInitialContextNode(documentBuilder.build(new StreamSource(fis)));
+		Serializer result = new Serializer();
+		Writer writer = new BufferedWriter(new OutputStreamWriter(
+				new FileOutputStream(newDotrels), "UTF-8"));
+		result.setOutputWriter(writer);
+		transformer.setDestination(result);
+		transformer.transform();
+		writer.close();
+		oldDotrels.delete();
+		newDotrels.renameTo(oldDotrels);		
+
+
+		/* show files, debug
+		String files;
+		File folder = new File(tempDirectoryName + File.separator + "word" );
+		File[] listOfFiles = folder.listFiles(); 
+		
+		for (int i = 0; i < listOfFiles.length; i++) 
+		    {
+			
+			if (listOfFiles[i].isFile()) 
+			    {
+				files = listOfFiles[i].getName();
+				LOGGER.info(files);
+			    }
+		    }
+		*/
+		} catch (Exception ex) {
+		    
+		    LOGGER.info("EXCEPTION " + ex);
+		}
+
+
 	}
 
 	/**
