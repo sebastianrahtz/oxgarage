@@ -144,7 +144,7 @@ public class OOConverter implements Converter {
 			inTmpFile.renameTo(inputFile);
 			String outputExt = OOConfiguration.getExtension(output);
 			File outputFile = new File(outTmpDir + File.separator + "result." + outputExt);
-			LOGGER.debug("OOCONVERTER: Converting from: " + inputFile.getName() + " to: " + outputFile.getName());
+			LOGGER.debug("OOCONVERTER: " + OOConfiguration.PATHTOOFFICE + ": Converting from: " + inputFile.getName() + " to: " + outputFile.getName());
 			int portNum = -2;
 			try {
 				synchronized (this) {
