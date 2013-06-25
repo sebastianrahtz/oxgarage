@@ -167,22 +167,22 @@
     <dependency>
       <groupId>com.sun.star</groupId>
       <artifactId>ridl</artifactId>
-      <version>3.1.0</version>
+      <version>3.2.1</version>
     </dependency>
     <dependency>
       <groupId>com.sun.star</groupId>
       <artifactId>unoil</artifactId>
-      <version>3.1.0</version>
+      <version>3.2.1</version>
     </dependency>
     <dependency>
       <groupId>com.sun.star</groupId>
       <artifactId>juh</artifactId>
-      <version>3.1.0</version>
+      <version>3.2.1</version>
     </dependency>
     <dependency>
       <groupId>com.sun.star</groupId>
       <artifactId>jurt</artifactId>
-      <version>3.1.0</version>
+      <version>3.2.1</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons.cli</groupId>
@@ -202,7 +202,7 @@
     <dependency>
       <groupId>com.artofsolving</groupId>
       <artifactId>jodconverter</artifactId>
-      <version>3.0-beta-3</version>
+      <version>3.0-beta-4</version>
     </dependency>
     <dependency>
       <groupId>org.tei</groupId>
