@@ -32,11 +32,11 @@ deb: debversion
 
 setup:
 	mvn install:install-file -DgroupId=jpf-tools -DartifactId=jpf-tools -Dversion=1.5.1 -Dpackaging=jar -Dfile=jpf-tools.jar
-	mvn install:install-file -DgroupId=com.artofsolving -DartifactId=jodconverter -Dversion=3.0-beta-3 -Dpackaging=jar -Dfile=jod-lib/jodconverter-core-3.0-beta-3.jar
-	mvn install:install-file -DgroupId=com.sun.star -DartifactId=jurt  -Dversion=3.1.0 -Dpackaging=jar -Dfile=jod-lib/jurt-3.1.0.jar
-	mvn install:install-file -DgroupId=com.sun.star -DartifactId=juh   -Dversion=3.1.0 -Dpackaging=jar -Dfile=jod-lib/juh-3.1.0.jar
-	mvn install:install-file -DgroupId=com.sun.star -DartifactId=unoil -Dversion=3.1.0 -Dpackaging=jar -Dfile=jod-lib/unoil-3.1.0.jar
-	mvn install:install-file -DgroupId=com.sun.star -DartifactId=ridl  -Dversion=3.1.0 -Dpackaging=jar -Dfile=jod-lib/ridl-3.1.0.jar
+	mvn install:install-file -DgroupId=com.artofsolving -DartifactId=jodconverter -Dversion=3.0-beta-4 -Dpackaging=jar -Dfile=jod-lib/jodconverter-core-3.0-beta-4.jar
+	mvn install:install-file -DgroupId=com.sun.star -DartifactId=jurt  -Dversion=3.2.0 -Dpackaging=jar -Dfile=jod-lib/jurt-3.2.0.jar
+	mvn install:install-file -DgroupId=com.sun.star -DartifactId=juh   -Dversion=3.2.0 -Dpackaging=jar -Dfile=jod-lib/juh-3.2.0.jar
+	mvn install:install-file -DgroupId=com.sun.star -DartifactId=unoil -Dversion=3.2.0 -Dpackaging=jar -Dfile=jod-lib/unoil-3.2.0.jar
+	mvn install:install-file -DgroupId=com.sun.star -DartifactId=ridl  -Dversion=3.2.0 -Dpackaging=jar -Dfile=jod-lib/ridl-3.2.0.jar
 	mvn install:install-file -DgroupId=org.apache.commons.cli -DartifactId=commons-cli -Dversion=1.1 -Dpackaging=jar -Dfile=jod-lib/commons-cli-1.1.jar
 
 test:
