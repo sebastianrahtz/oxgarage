@@ -304,7 +304,7 @@ public class MultiXslConverter implements ConfigurableConverter {
 				transformer.setParameter(new QName("directory"), new XdmAtomicValue(tempDir.toString() + File.separator));
 			} catch(SaxonApiException ex) {
 				// document is not an xml document - used for csv to tei conversion
-				ex.printStackTrace();
+				// ex.printStackTrace();
 				transformer.setInitialTemplate(new QName("main"));
 				transformer.setParameter(new QName("input-uri"), new XdmAtomicValue(inputFile.toString()));
 			}
