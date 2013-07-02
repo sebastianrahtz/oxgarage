@@ -569,8 +569,12 @@ public class TEIConverter implements Converter,ErrorHandler {
 			XdmNode initialNode = getImages(inTmpDir.toString(), outTempDir.toString(), "media" + File.separator, 
 							"media" + File.separator, inputFile, proc, is, "Xslt", properties);
 			String extension = properties.get("extension");
+			String realextension = properties.get("extension");
+			if (extension.equalsIgnoreCase("zip"))  {
+				realextension = "xsd";
+			}
 			File inFile = new File(outTempDir + File.separator + "document.rng");
-			File outFile = new File(outTempDir + File.separator + "document." + extension);
+			File outFile = new File(outTempDir + File.separator + "document." + realextension);
 			fos = new FileOutputStream(inFile);
 			XsltExecutable exec = comp.compile(resolveConfiguration(id, comp, profile));
 			XsltTransformer transformer = exec.load();
