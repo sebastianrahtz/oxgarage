@@ -601,11 +601,11 @@ public class TEIConverter implements Converter,ErrorHandler {
 			    of = new XsdOutputFormat();
 			    outputParamArray = new String[]{"disable-abstract-elements"};
 			}
-			SchemaCollection sc =  inFormat.load(UriOrFile.toUri(inFile.getAbsolutePath()), inputParamArray, extension, this,resolver);
+			SchemaCollection sc =  inFormat.load(UriOrFile.toUri(inFile.getAbsolutePath()), inputParamArray, realextension, this,resolver);
 			OutputDirectory od = new LocalOutputDirectory( 
 								      sc.getMainUri(),
 								      outFile,
-								      "." + extension,
+								      "." + realextension,
 								      "UTF-8",
 								      72,
 								      2
