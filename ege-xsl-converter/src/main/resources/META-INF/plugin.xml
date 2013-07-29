@@ -72,7 +72,7 @@
 	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="ODDToCompiledODD">
 		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
 		<parameter id="name" value="ODD to Compiled ODD"/>
-		<parameter id="xsluri" value="odds2/odd2odd.xsl" />
+		<parameter id="xsluri" value="odds/odd2odd.xsl" />
 		<parameter id="iMimeType" value="text/xml" />
 		<parameter id="iFormat" value="ODD" />
 		<parameter id="iDescription" value="ODD Document" />		
@@ -88,7 +88,7 @@
 	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="ODDCtoISOSCHconverter">
 		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
 		<parameter id="name" value="ODDC to ISO Schematron"/>
-		<parameter id="xsluri" value="odds2/extract-isosch.xsl" />
+		<parameter id="xsluri" value="odds/extract-isosch.xsl" />
 		<parameter id="iMimeType" value="text/xml" />
 		<parameter id="iFormat" value="ODDC" />
 		<parameter id="iDescription" value="Compiled TEI ODD" />
@@ -104,7 +104,7 @@
 	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="ODDCtoSCHconverter">
 		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
 		<parameter id="name" value="ODDC to Schematron"/>
-		<parameter id="xsluri" value="odds2/extract-sch.xsl" />
+		<parameter id="xsluri" value="odds/extract-sch.xsl" />
 		<parameter id="iMimeType" value="text/xml" />
 		<parameter id="iFormat" value="ODDC" />
 		<parameter id="iDescription" value="Compiled TEI ODD" />
