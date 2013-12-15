@@ -17,7 +17,7 @@
 		<servlet-class>pl.psnc.dl.ege.webapp.servlet.ConversionServlet</servlet-class>
 		<init-param>
 		  <param-name>oxgarageproperties</param-name>
-		  <param-value>WEB-INF/oxgarage.properties</param-value>
+		  <param-value>WEB-INF/lib/oxgarage.properties</param-value>
 		</init-param>	
 	</servlet>
 	<servlet>
@@ -31,7 +31,7 @@
 		pl.psnc.dl.ege.webapp.servlet.ValidationServlet</servlet-class>
 		<init-param>
 		  <param-name>oxgarageproperties</param-name>
-		  <param-value>WEB-INF/oxgarage.properties</param-value>
+		  <param-value>WEB-INF/lib/oxgarage.properties</param-value>
 		</init-param>	
 	</servlet>
 	<servlet-mapping>
