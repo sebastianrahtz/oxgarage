@@ -13,14 +13,13 @@ Packages are available from the TEI's continuous integration (CI) server at http
 
  * If you  have a Debian or Ubuntu system, you can subscribe to TEI-related packages at http://tei.it.ox.ac.uk/teideb/, or download the .deb file directly from the CI server; these packages have a dependency on Apache Tomcat and the TEI (packages tei-xsl, tei-p5-source, and tomcat6)
  * If you have a running Tomcat (or similar container), you can download  two WAR files from the CI server and install them in the normal way. in this case, you will need to do some configuration manually
+ 
  1.   copy the file  `ege-webservice/WEB-INF/lib/oxgarage.properties` to `/etc/oxgarage.properties`
  2.   create a directorory `/var/cache/oxgarage` and copy the file `log4j.xml` to there
  3.   make the directory owned by the Tomcat user, so that it can create files there: eg `chown -R tomcat6:tomcat6 /var/cache/oxgarage`
  4.   edit the file `webapps/ege-webclient/WEB-INF/web.xml` so that it has the hostname of the server set. eg 
-
     perl -p -i -e "s/localhost/`hostname -f`/" /var/lib/tomcat6/webapps/ege-webclient/WEB-INF/web.xml
-
- 5.  make sure the TEI stylesheets and source are installed at `/usr/share/xml/tei` using the Debian file hierarchy standard
+ 5.  make sure the TEI stylesheets and source are installed at `/usr/share/xml/tei` using the Debian file hierarchy standard; the distribution file at https://sourceforge.net/projects/tei/files/Stylesheets/ is in the right layout.
 
 You'll probably need to restart your servlet container to make sure these changes take effect.
 
@@ -36,7 +35,7 @@ Check the working system by visiting /ege-webclient/ on your Tomcat (or similar)
 Building
 ------
 
-OxGarage is built using Maven, so the command
+OxGarage is written in Java and built using Maven, so the command
 
     mvn install
 
