@@ -500,15 +500,14 @@ public class TEIConverter implements Converter,ErrorHandler {
 		try {
 			inTmpDir = prepareTempDir();
 			ior.decompressStream(inputStream, inTmpDir);
-			//File inputFile = searchForData(inTmpDir, "^.*");
-			File inputFile = searchForData(inTmpDir, "^.*\\.((?i)(xml|tex|dtd|rng|rnc|xsd|rdf|odd))$");
+			// avoid processing files ending in .bin
+			File inputFile = searchForData(inTmpDir, "^.*(?<!bin)$");
 			if(inputFile!=null) {
 			outTempDir = prepareTempDir();
 			is = prepareInputData(inputStream, inTmpDir, inputFile);
 			Processor proc = SaxonProcFactory.getProcessor();
 			XsltCompiler comp = proc.newXsltCompiler();
 			// get images and correct graphics tags
-
 			XdmNode initialNode = getImages(inTmpDir.toString(), outTempDir.toString(), "media" + File.separator, 
 							"media" + File.separator, inputFile, proc, is, "Xslt", properties);
 			String extension = properties.get("extension");

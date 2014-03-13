@@ -6,6 +6,9 @@ O="<conversions><conversion%20index='0'><property%20id='pl.psnc.dl.ege.tei.profi
 L="<conversions><conversion%20index='1'><property%20id='oxgarage.lang'>fr</property></conversion></conversions>" 
 
 
+clean:
+	rm -rf temp-results
+	rm -f about-equations.html  about-equations.html  about-equations.zip about-equations.xml
 test:
 	curl -s -o conversions.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions
 	rm -rf temp-results
@@ -14,10 +17,11 @@ test:
 	curl -s  -o temp-results/result.docx -F upload=@test.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document
 	echo ODD to JSON
 	curl -s  -F upload=@test.odd  -o temp-results/test.js http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/oddjson%3Aapplication%3Ajson/
+	perl -p -i -e 's/"date":"20.*Z"/"date":""/' temp-results/test.js
+	diff temp-results/test.js expected-results/test.js
 	echo TCP to TEI P5
-	curl -s  -F upload=@A00005.xml -F upload=@A00005.hdr http://$(SERVER):$(PORT)/ege-webservice/Conversions/TCP%3Atext%3Axml/TEI%3Atext%3Axml/
-
-next:
+	curl -s -o temp-results/A00005.xml -F upload=@A00005.xml -F upload=@A00005.hdr http://$(SERVER):$(PORT)/ege-webservice/Conversions/TCP%3Atext%3Axml/TEI%3Atext%3Axml/
+	diff temp-results/A00005.xml expected-results/A00005.xml
 	echo ODD to DTD
 	curl -s  -F upload=@test.odd  -o temp-results/result4.dtd http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/dtd%3Aapplication%3Axml-dtd/
 	perl -p -i -e 's/DTD generated.*/DTD/' temp-results/result4.dtd
@@ -35,7 +39,7 @@ next:
 	curl -s  -F upload=@test.xml  -o temp-results/result2.html http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/?properties=$(P)
 	echo From DocX
 	curl -s  -o temp-results/result.xml -F upload=@test.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml
-	perl -p -i -e 's/.LastChangedDate[^<]*//' temp-results/result.xml
+	perl -p -i -e 's+date>.*</date+date/+' temp-results/result.xml
 	diff temp-results/result.xml expected-results/result.xml
 	echo ODD to RELAXNG
 	curl -s  -F upload=@test.odd  -o temp-results/result.rng http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/relaxng%3Aapplication%3Axml-relaxng/
@@ -45,11 +49,6 @@ next:
 	curl -s  -o temp-results/result2.epub -F upload=@test.doc http://$(SERVER):$(PORT)/ege-webservice/Conversions/doc%3Aapplication%3Amsword/odt%3Aapplication%3Avnd.oasis.opendocument.text/TEI%3Atext%3Axml/epub%3Aapplication%3Aepub%2Bzip/
 	echo TEI To ODT
 	curl -s  -F upload=@test.xml  -o temp-results/result.odt http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/oo%3Aapplication%3Avnd.oasis.opendocument.text
-	echo xls to TEI XML
-	curl -s  -F upload=@test.xls  -o temp-results/result2.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/xls%3Aapplication%3Avnd.ms-excel/csv%3Atext%3Acsv/TEI%3Atext%3Axml/
-	diff temp-results/result2.xml expected-results/result2.xml
-	echo xls to PDF
-	curl -s  -F upload=@test.xls  -o temp-results/result2.pdf http://$(SERVER):$(PORT)/ege-webservice/Conversions/xls%3Aapplication%3Avnd.ms-excel/pdf%3Aapplication%3Apdf/
 	echo TEI XML to Text via HTML
 	curl -s  -F upload=@test.xml  -o temp-results/result.txt http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/txt%3Atext%3Aplain//
 	diff temp-results/result.txt expected-results/result.txt
@@ -81,14 +80,14 @@ next:
 	curl -s  -F upload=@test.odd  -o temp-results/result3.html http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/
 	echo TITE to ePUB
 	curl -s  -F upload=@test.tite  -o temp-results/test10.epub http://$(SERVER):$(PORT)/ege-webservice/Conversions/Tite%3Atext%3Axml/TEI%3Atext%3Axml/epub%3Aapplication%3Aepub%2Bzip/
-	diff -x .svn -r temp-results expected-results
-
-foo:
+	curl  -s  -o about-equations.zip -F upload=@about-equations.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/
 	echo P4 to P5
 	curl -s  -F upload=@testp4.xml  -o temp-results/result.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/P4%3Atext%3Axml/TEI%3Atext%3Axml/
+	echo xls to TEI XML
+	curl -s  -F upload=@test.xls  -o temp-results/result2.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/xls%3Aapplication%3Avnd.ms-excel/csv%3Atext%3Acsv/TEI%3Atext%3Axml/
+	echo xls to PDF
+	curl -s  -F upload=@test.xls  -o temp-results/result2.pdf http://$(SERVER):$(PORT)/ege-webservice/Conversions/xls%3Aapplication%3Avnd.ms-excel/pdf%3Aapplication%3Apdf/
 
-ole:
-	curl  -s  -o about-equations.zip -F upload=@about-equations.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/
 
 ole2:
 	curl -s  -o about-equations.zip -F upload=@about-equations.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml/

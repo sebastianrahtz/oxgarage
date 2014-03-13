@@ -1,3 +1,9 @@
+tei-oxgarage (2.3) natty; urgency=low
+
+  * new release from upstream
+
+ -- Sebastian Rahtz     <Sebastian.Rahtz@oucs.ox.ac.uk>  Thu, 13 Mar 2014 20:15:48 +0000
+
 tei-oxgarage (2.1.0) natty; urgency=low
 
   * new release from upstream
