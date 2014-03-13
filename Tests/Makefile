@@ -16,9 +16,11 @@ test:
 	curl -s  -F upload=@test.odd  -o temp-results/test.js http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/oddjson%3Aapplication%3Ajson/
 	echo TCP to TEI P5
 	curl -s  -F upload=@A00005.xml -F upload=@A00005.hdr http://$(SERVER):$(PORT)/ege-webservice/Conversions/TCP%3Atext%3Axml/TEI%3Atext%3Axml/
+
+next:
 	echo ODD to DTD
 	curl -s  -F upload=@test.odd  -o temp-results/result4.dtd http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/dtd%3Aapplication%3Axml-dtd/
-	perl -p -i -e 's/DTD Generated.*/DTD/' temp-results/result4.dtd
+	perl -p -i -e 's/DTD generated.*/DTD/' temp-results/result4.dtd
 	diff temp-results/result4.dtd expected-results/result4.dtd
 	echo To LaTeX
 	curl -s  -F upload=@test.xml  -o temp-results/result2.tex http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/latex%3Aapplication%3Ax-latex
@@ -85,5 +87,11 @@ foo:
 	echo P4 to P5
 	curl -s  -F upload=@testp4.xml  -o temp-results/result.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/P4%3Atext%3Axml/TEI%3Atext%3Axml/
 
-plos:
-	curl -v -s  -o about-equations.zip -F upload=@about-equations.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/
+ole:
+	curl  -s  -o about-equations.zip -F upload=@about-equations.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/
+
+ole2:
+	curl -s  -o about-equations.zip -F upload=@about-equations.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml/
+
+ole3:
+	curl -s  -o about-equations.zip -F upload=@about-equations.xml -F upload=@media.zip http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/

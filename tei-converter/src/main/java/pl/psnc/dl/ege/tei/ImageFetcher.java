@@ -64,9 +64,13 @@ public class ImageFetcher {
 	/**
 	 * Changes the graphics in TEI so that the images have width and height information included and also copies the images into new directory, changing their names.
 	 */
-	public static XdmNode getChangedNode(File inputFile, String imgDir, String imgDirRelativeToDoc, 
-							File inputDir, File outputDir, String conversion,
-							Map<String,String> properties) 
+	public static XdmNode getChangedNode(File inputFile, 
+					     String imgDir, 
+					     String imgDirRelativeToDoc, 							
+					     File inputDir, 
+					     File outputDir, 
+					     String conversion,
+					     Map<String,String> properties) 
 		throws IOException, ConverterException {
 		try {
 			boolean copy = true;
@@ -80,6 +84,7 @@ public class ImageFetcher {
 				if(properties.get(ConverterConfiguration.TEXTONLY_KEY)!=null) 
 					textOnly = properties.get(ConverterConfiguration.TEXTONLY_KEY).equals("true");
 			}
+
 			Document dom = XMLUtils.readInputFileIntoJAXPDoc(inputFile);
 	
 			if(conversion.equals("toEpub")) {
@@ -163,7 +168,6 @@ public class ImageFetcher {
 		} catch(ConverterException e) {
 			throw e;
 		} catch(Exception e) {
-			LOGGER.debug("Exception: " + e.toString());
 			e.printStackTrace();
 			throw new ConverterException("Something went wrong with copying and downloading images. Please try again and if the problem persists, contact support or try converting your document with option \"Convert text only\"");
 		}

@@ -500,12 +500,15 @@ public class TEIConverter implements Converter,ErrorHandler {
 		try {
 			inTmpDir = prepareTempDir();
 			ior.decompressStream(inputStream, inTmpDir);
-			File inputFile = searchForData(inTmpDir, "^.*");
+			//File inputFile = searchForData(inTmpDir, "^.*");
+			File inputFile = searchForData(inTmpDir, "^.*\\.((?i)(xml|tex|dtd|rng|rnc|xsd|rdf|odd))$");
+			if(inputFile!=null) {
 			outTempDir = prepareTempDir();
 			is = prepareInputData(inputStream, inTmpDir, inputFile);
 			Processor proc = SaxonProcFactory.getProcessor();
 			XsltCompiler comp = proc.newXsltCompiler();
 			// get images and correct graphics tags
+
 			XdmNode initialNode = getImages(inTmpDir.toString(), outTempDir.toString(), "media" + File.separator, 
 							"media" + File.separator, inputFile, proc, is, "Xslt", properties);
 			String extension = properties.get("extension");
@@ -527,6 +530,7 @@ public class TEIConverter implements Converter,ErrorHandler {
 			transformer.setDestination(result);
 			transformer.transform();
 			ior.compressData(outTempDir, outputStream);
+			}
 		} finally {
 			try {
 				is.close();
@@ -542,9 +546,9 @@ public class TEIConverter implements Converter,ErrorHandler {
 				EGEIOUtils.deleteDirectory(outTempDir);
 			if (inTmpDir != null && inTmpDir.exists())
 				EGEIOUtils.deleteDirectory(inTmpDir);
-		}
-
+			}
 	}
+
 
 	/*
 	 * Performs transformation over XSLT to make RNG schema, then runs trang
