@@ -85,3 +85,5 @@ foo:
 	echo P4 to P5
 	curl -s  -F upload=@testp4.xml  -o temp-results/result.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/P4%3Atext%3Axml/TEI%3Atext%3Axml/
 
+plos:
+	curl -v -s  -o about-equations.zip -F upload=@about-equations.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/

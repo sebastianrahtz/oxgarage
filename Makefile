@@ -2,7 +2,7 @@ PREFIX=/usr/local
 SERVER=localhost
 SUDO=sudo
 PORT=8080
-APACHE=apache-tomcat-7.0.32
+APACHE=apache-tomcat-7.0.52
 LIB=$(PREFIX)/$(APACHE)/webapps/ege-webservice/WEB-INF/lib/
 
 default: build

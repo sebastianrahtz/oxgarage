@@ -163,6 +163,7 @@ public class ImageFetcher {
 		} catch(ConverterException e) {
 			throw e;
 		} catch(Exception e) {
+			LOGGER.debug("Exception: " + e.toString());
 			e.printStackTrace();
 			throw new ConverterException("Something went wrong with copying and downloading images. Please try again and if the problem persists, contact support or try converting your document with option \"Convert text only\"");
 		}
