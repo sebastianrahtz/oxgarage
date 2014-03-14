@@ -26,11 +26,11 @@ install: build
 	dh_testroot
 	dh_prep
 	dh_installdirs
-	mkdir -p $(DESTDIR)/var/lib/tomcat6/webapps
+	mkdir -p $(DESTDIR)/var/lib/tomcat7/webapps
 	mkdir -p $(DESTDIR)/var/cache/oxgarage
 	mkdir -p $(DESTDIR)/etc
-	cp -r ../ege-webclient/target/ege-webclient $(DESTDIR)/var/lib/tomcat6/webapps
-	cp -r ../ege-webservice/target/ege-webservice $(DESTDIR)/var/lib/tomcat6/webapps
+	cp -r ../ege-webclient/target/ege-webclient $(DESTDIR)/var/lib/tomcat7/webapps
+	cp -r ../ege-webservice/target/ege-webservice $(DESTDIR)/var/lib/tomcat7/webapps
 	cp ../ege-webservice/target/ege-webservice/WEB-INF/lib/oxgarage.properties $(DESTDIR)/etc
 	mkdir -p $(DESTDIR)/var/cache/oxgarage
 	cp ../log4j.xml $(DESTDIR)/var/cache/oxgarage
