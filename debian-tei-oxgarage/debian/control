@@ -8,6 +8,6 @@ Standards-Version: 3.9.1
 Package: tei-oxgarage
 Architecture: all
 Pre-Depends: openjdk-6-jre
-Depends: tei-xsl,tei-p5-source,tomcat6
+Depends: tei-xsl,tei-p5-source,tomcat7 | tomcat6
 Description: Web, and RESTful, service to manage the transformation of TEI-related  documents
     Oxgarage deals with a vareity of input and output formats, with the majority of transformations using the Text Encoding Initiative format as a pivot format
