@@ -6,9 +6,6 @@ O="<conversions><conversion%20index='0'><property%20id='pl.psnc.dl.ege.tei.profi
 L="<conversions><conversion%20index='1'><property%20id='oxgarage.lang'>fr</property></conversion></conversions>" 
 
 
-clean:
-	rm -rf temp-results
-	rm -f about-equations.html  about-equations.html  about-equations.zip about-equations.xml
 test:
 	curl -s -o conversions.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions
 	rm -rf temp-results
@@ -94,3 +91,6 @@ ole2:
 
 ole3:
 	curl -s  -o about-equations.zip -F upload=@about-equations.xml -F upload=@media.zip http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/
+clean:
+	rm -rf temp-results
+	rm -f about-equations.html  about-equations.html  about-equations.zip about-equations.xml

@@ -4,9 +4,9 @@
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
 Schema 
-Edition: Version 2.6.1alpha. Last updated on
-	15th February 2014, revision 12847
-Edition Location: http://www.tei-c.org/Vault/P5/Version 2.6.1alpha./
+Edition: Version 2.6.0. Last updated on
+	20th January 2014, revision 12801
+Edition Location: http://www.tei-c.org/Vault/P5/Version 2.6.0/
   
 --><!----><define name="macro.paraContent">
       <zeroOrMore>
