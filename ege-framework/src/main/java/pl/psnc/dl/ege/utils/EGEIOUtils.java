@@ -131,7 +131,7 @@ public final class EGEIOUtils {
 			out.putNextEntry(mimetype);
 			out.write(bytes);
 			out.closeEntry();
-			mime.close();
+			scan.close();
 			mime.delete();
 			constructZip(file, out, dir);
 		} catch (Exception e) {
