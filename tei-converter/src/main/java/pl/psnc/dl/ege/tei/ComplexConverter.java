@@ -160,6 +160,7 @@ public abstract class ComplexConverter {
 		try {
 			InputStream in = new FileInputStream(templateFile);
 			unzipData(in);
+			in.close();
 		} catch (FileNotFoundException e) {
 			ConfigurationException ic = new ConfigurationException(
 					"Could not load template at: " + getTemplateFile());
