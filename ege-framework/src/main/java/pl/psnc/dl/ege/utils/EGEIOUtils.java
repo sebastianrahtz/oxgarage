@@ -83,7 +83,7 @@ public final class EGEIOUtils {
 					try {
 						fi.close();
 					} catch (IOException ex) {
-						// do nothing
+						LOGGER.error(ex.getMessage());
 					}
 				}
 				if (origin != null) {
@@ -131,6 +131,7 @@ public final class EGEIOUtils {
 			out.putNextEntry(mimetype);
 			out.write(bytes);
 			out.closeEntry();
+			mime.close();
 			mime.delete();
 			constructZip(file, out, dir);
 		} catch (Exception e) {
