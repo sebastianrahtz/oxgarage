@@ -882,9 +882,14 @@ public class TEIConverter implements Converter,ErrorHandler {
 			ZipOutputStream zipOs = new ZipOutputStream(
 				new BufferedOutputStream(fos));
 			// zip it with mimetype on first position and uncompressed
-			File mimetype = new File(outTempDir + File.separator + "mimetype");
-			EGEIOUtils.constructZip(outTempDir, zipOs, "", mimetype);
-			zipOs.close();
+			try {
+			    File mimetype = new File(outTempDir + File.separator + "mimetype");
+			    EGEIOUtils.constructZip(outTempDir, zipOs, "", mimetype);
+			}
+			finally 
+			    {
+				zipOs.close();
+			    }
 			// double compress epub file anyway
 			ior.compressData(outputDir, outputStream);
 			// clean temporary files
