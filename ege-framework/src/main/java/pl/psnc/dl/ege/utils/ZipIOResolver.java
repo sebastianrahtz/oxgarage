@@ -39,9 +39,9 @@ public class ZipIOResolver implements IOResolver {
 	public void compressData(File sourceDir, OutputStream os)
 			throws IOException {
 
-	    try {
-		ZipOutputStream zipOs = new ZipOutputStream(
+	    ZipOutputStream zipOs = new ZipOutputStream(
 				new BufferedOutputStream(os));
+	    try {
 		zipOs.setLevel(level);
 		EGEIOUtils.constructZip(sourceDir, zipOs, "");}
 	    finally {

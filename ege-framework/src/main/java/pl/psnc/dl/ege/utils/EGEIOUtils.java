@@ -118,8 +118,8 @@ public final class EGEIOUtils {
 	 */
 	public static void constructZip(File file, ZipOutputStream out, String dir, File mime)
 			throws IOException {
-		try {
 			Scanner scan = new Scanner(mime);
+		try {
 			byte[] bytes = scan.nextLine().trim().getBytes("UTF-8");
 			ZipEntry mimetype = new ZipEntry(mime.getName());
 			mimetype.setMethod(ZipOutputStream.STORED);
@@ -256,7 +256,6 @@ public final class EGEIOUtils {
 					dir.mkdirs();
 				continue;
 			}
-			try {
 			// create directories if necessary
 			new File(new File(directoryName + File.separator + entry.getName())
 					.getParent()).mkdirs();
@@ -267,9 +266,10 @@ public final class EGEIOUtils {
 			FileOutputStream fos = new FileOutputStream(directoryName
 					+ File.separator + entry.getName());
 			dest = new BufferedOutputStream(fos, BUFFER);
-			while ((count = zis.read(data, 0, BUFFER)) != -1) {
+			try {
+			    while ((count = zis.read(data, 0, BUFFER)) != -1) {
 				dest.write(data, 0, count);
-			}
+			    }
 			}
 			finally {
 			    dest.flush();

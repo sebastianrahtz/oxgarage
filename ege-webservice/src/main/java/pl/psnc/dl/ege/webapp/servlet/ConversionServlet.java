@@ -235,8 +235,8 @@ public class ConversionServlet extends HttpServlet {
 	protected void printConversionPossibilities(HttpServletResponse response,
 			RequestResolver rr, Set<DataType> inputDataTypes)
 			throws IOException {
-	    try {
 		PrintWriter out = response.getWriter();
+	    try {
 		response.setContentType("text/xml");
 		out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 		out.println("<input-data-types xmlns:xlink=\"http://www.w3.org/1999/xlink\">");
@@ -322,7 +322,6 @@ public class ConversionServlet extends HttpServlet {
 			while (iter.hasNext()) {
 			    FileItemStream item = iter.next();
 			    if (!item.isFormField()) {
-				try {
 				is = item.openStream();
 				int dotIndex = item.getName().lastIndexOf(".");					
 				fname = null;						
@@ -332,10 +331,7 @@ public class ConversionServlet extends HttpServlet {
 				DataBuffer buffer = new DataBuffer(0, EGEConstants.BUFFER_TEMP_PATH);
 				String alloc = buffer.allocate(is);
 				InputStream ins = buffer.getDataAsStream(alloc);
-				}
-				finally {
-				    is.close();
-				}
+				is.close();
 				// input validation - print result if fatal error
 				// occurs.
 				try {
@@ -416,14 +412,14 @@ public class ConversionServlet extends HttpServlet {
 		    // when input form for images is not empty, save images
 		    if(imageItem.getName()!=null && imageItem.getName().length()!=0) {
 			saveTo = new File(images + File.separator + imageItem.getName());
-			try {
 			InputStream imgis = imageItem.openStream();
 			OutputStream imgos = new FileOutputStream(saveTo);
-			byte[] buf = new byte[1024];
-			int len; 
-			while ((len = imgis.read(buf)) > 0) { 
-			    imgos.write(buf, 0, len); 
-			} 
+			try {
+			    byte[] buf = new byte[1024];
+			    int len; 
+			    while ((len = imgis.read(buf)) > 0) { 
+				imgos.write(buf, 0, len); 
+			    } 
 			}
 			finally {
 			    imgis.close(); 
