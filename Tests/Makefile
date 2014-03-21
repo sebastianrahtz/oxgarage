@@ -46,7 +46,7 @@ test:
 	curl -s  -o temp-results/result2.epub -F upload=@test.doc http://$(SERVER):$(PORT)/ege-webservice/Conversions/doc%3Aapplication%3Amsword/odt%3Aapplication%3Avnd.oasis.opendocument.text/TEI%3Atext%3Axml/epub%3Aapplication%3Aepub%2Bzip/
 	echo TEI To ODT
 	curl -s  -F upload=@test.xml  -o temp-results/result.odt http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/oo%3Aapplication%3Avnd.oasis.opendocument.text
-	echo TEI XML to Text via HTML
+	echo TEI XML to Text 
 	curl -s  -F upload=@test.xml  -o temp-results/result.txt http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/txt%3Atext%3Aplain//
 	diff temp-results/result.txt expected-results/result.txt
 	echo ODT to TEI

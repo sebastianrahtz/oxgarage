@@ -131,11 +131,13 @@ public final class EGEIOUtils {
 			out.putNextEntry(mimetype);
 			out.write(bytes);
 			out.closeEntry();
-			scan.close();
 			mime.delete();
 			constructZip(file, out, dir);
 		} catch (Exception e) {
 			LOGGER.debug("Error in storing mimetype: " + e.toString());
+		}
+		finally {
+			scan.close();
 		}
 	}
 
@@ -254,7 +256,7 @@ public final class EGEIOUtils {
 					dir.mkdirs();
 				continue;
 			}
-
+			try {
 			// create directories if necessary
 			new File(new File(directoryName + File.separator + entry.getName())
 					.getParent()).mkdirs();
@@ -268,8 +270,11 @@ public final class EGEIOUtils {
 			while ((count = zis.read(data, 0, BUFFER)) != -1) {
 				dest.write(data, 0, count);
 			}
-			dest.flush();
-			dest.close();
+			}
+			finally {
+			    dest.flush();
+			    dest.close();
+			}
 		}
 
 	}
@@ -298,7 +303,7 @@ public final class EGEIOUtils {
 			return false;
 
 		} finally {
-			zis.close();
+		    zis.close();
 		}
 	}
 

@@ -158,6 +158,8 @@ public class ConversionServlet extends HttpServlet {
 			response.setStatus(HttpServletResponse.SC_NO_CONTENT);
 			return;
 		}
+
+		try {
 		StringBuffer resp = new StringBuffer();
 		StringBuffer sbpath = new StringBuffer();
 		StringBuffer pathopt = new StringBuffer();
@@ -221,7 +223,10 @@ public class ConversionServlet extends HttpServlet {
 		}
 		resp.append("</conversions-paths>");
 		out.print(resp.toString());
-		out.close();
+		}
+		finally {
+		    out.close();
+		}
 	}
 
 	/*
@@ -230,6 +235,7 @@ public class ConversionServlet extends HttpServlet {
 	protected void printConversionPossibilities(HttpServletResponse response,
 			RequestResolver rr, Set<DataType> inputDataTypes)
 			throws IOException {
+	    try {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/xml");
 		out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -243,7 +249,10 @@ public class ConversionServlet extends HttpServlet {
 					+ "/\" />");
 		}
 		out.println("</input-data-types>");
+	    }
+	    finally {
 		out.close();
+	    }
 	}
 
 	/**
@@ -313,6 +322,7 @@ public class ConversionServlet extends HttpServlet {
 			while (iter.hasNext()) {
 			    FileItemStream item = iter.next();
 			    if (!item.isFormField()) {
+				try {
 				is = item.openStream();
 				int dotIndex = item.getName().lastIndexOf(".");					
 				fname = null;						
@@ -322,7 +332,10 @@ public class ConversionServlet extends HttpServlet {
 				DataBuffer buffer = new DataBuffer(0, EGEConstants.BUFFER_TEMP_PATH);
 				String alloc = buffer.allocate(is);
 				InputStream ins = buffer.getDataAsStream(alloc);
-				is.close();
+				}
+				finally {
+				    is.close();
+				}
 				// input validation - print result if fatal error
 				// occurs.
 				try {
@@ -403,6 +416,7 @@ public class ConversionServlet extends HttpServlet {
 		    // when input form for images is not empty, save images
 		    if(imageItem.getName()!=null && imageItem.getName().length()!=0) {
 			saveTo = new File(images + File.separator + imageItem.getName());
+			try {
 			InputStream imgis = imageItem.openStream();
 			OutputStream imgos = new FileOutputStream(saveTo);
 			byte[] buf = new byte[1024];
@@ -410,8 +424,11 @@ public class ConversionServlet extends HttpServlet {
 			while ((len = imgis.read(buf)) > 0) { 
 			    imgos.write(buf, 0, len); 
 			} 
-			imgis.close(); 
-			imgos.close(); 
+			}
+			finally {
+			    imgis.close(); 
+			    imgos.close(); 
+			}
 		    }
 		} while(iter.hasNext());
 	    }

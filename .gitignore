@@ -5,6 +5,7 @@ Tests/conversions.xml
 
 Tests/about-equations.zip
 
+temp-results
 ege-api/target
 ege-framework/target
 ege-validator/target

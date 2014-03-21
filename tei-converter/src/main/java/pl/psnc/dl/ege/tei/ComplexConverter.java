@@ -160,12 +160,14 @@ public abstract class ComplexConverter {
 		try {
 			InputStream in = new FileInputStream(templateFile);
 			unzipData(in);
-			in.close();
 		} catch (FileNotFoundException e) {
 			ConfigurationException ic = new ConfigurationException(
 					"Could not load template at: " + getTemplateFile());
 			ic.initCause(e);
 			throw ic;
+		}
+		finally {
+			in.close();
 		}
 	}
 
@@ -265,6 +267,7 @@ public abstract class ComplexConverter {
 	public void mergeTEI(XdmNode tei) throws SaxonApiException,
 			FileNotFoundException, IOException {
 		// prepare transformation
+	    try {
 		Processor proc = SaxonProcFactory.getProcessor();
 		XsltCompiler comp = proc.newXsltCompiler();
 		XsltExecutable exec = comp.compile(getStylesheetFromTEI());
@@ -279,7 +282,10 @@ public abstract class ComplexConverter {
 		transformer.setInitialContextNode(tei);
 		transformer.setDestination(result);
 		transformer.transform();
+	    }
+	    finally {
 		writer.close();
+	    }
 	}
 
 	/**
