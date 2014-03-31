@@ -1,10 +1,6 @@
-
 TAGS
-
 Tests/conversions.xml
-
 Tests/about-equations.zip
-
 ege-api/target
 ege-framework/target
 ege-validator/target
@@ -14,3 +10,4 @@ ege-xsl-converter/target
 oo-converter/target
 tei-converter/target
 tei-javalib/target
+Tests/temp-results
