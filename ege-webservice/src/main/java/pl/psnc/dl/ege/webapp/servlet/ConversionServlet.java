@@ -158,6 +158,8 @@ public class ConversionServlet extends HttpServlet {
 			response.setStatus(HttpServletResponse.SC_NO_CONTENT);
 			return;
 		}
+
+		try {
 		StringBuffer resp = new StringBuffer();
 		StringBuffer sbpath = new StringBuffer();
 		StringBuffer pathopt = new StringBuffer();
@@ -221,7 +223,10 @@ public class ConversionServlet extends HttpServlet {
 		}
 		resp.append("</conversions-paths>");
 		out.print(resp.toString());
-		out.close();
+		}
+		finally {
+		    out.close();
+		}
 	}
 
 	/*
@@ -231,6 +236,7 @@ public class ConversionServlet extends HttpServlet {
 			RequestResolver rr, Set<DataType> inputDataTypes)
 			throws IOException {
 		PrintWriter out = response.getWriter();
+	    try {
 		response.setContentType("text/xml");
 		out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 		out.println("<input-data-types xmlns:xlink=\"http://www.w3.org/1999/xlink\">");
@@ -243,7 +249,10 @@ public class ConversionServlet extends HttpServlet {
 					+ "/\" />");
 		}
 		out.println("</input-data-types>");
+	    }
+	    finally {
 		out.close();
+	    }
 	}
 
 	/**
@@ -405,13 +414,17 @@ public class ConversionServlet extends HttpServlet {
 			saveTo = new File(images + File.separator + imageItem.getName());
 			InputStream imgis = imageItem.openStream();
 			OutputStream imgos = new FileOutputStream(saveTo);
-			byte[] buf = new byte[1024];
-			int len; 
-			while ((len = imgis.read(buf)) > 0) { 
-			    imgos.write(buf, 0, len); 
-			} 
-			imgis.close(); 
-			imgos.close(); 
+			try {
+			    byte[] buf = new byte[1024];
+			    int len; 
+			    while ((len = imgis.read(buf)) > 0) { 
+				imgos.write(buf, 0, len); 
+			    } 
+			}
+			finally {
+			    imgis.close(); 
+			    imgos.close(); 
+			}
 		    }
 		} while(iter.hasNext());
 	    }

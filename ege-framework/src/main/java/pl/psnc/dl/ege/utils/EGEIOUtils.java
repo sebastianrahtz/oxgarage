@@ -118,8 +118,8 @@ public final class EGEIOUtils {
 	 */
 	public static void constructZip(File file, ZipOutputStream out, String dir, File mime)
 			throws IOException {
-		try {
 			Scanner scan = new Scanner(mime);
+		try {
 			byte[] bytes = scan.nextLine().trim().getBytes("UTF-8");
 			ZipEntry mimetype = new ZipEntry(mime.getName());
 			mimetype.setMethod(ZipOutputStream.STORED);
@@ -131,11 +131,13 @@ public final class EGEIOUtils {
 			out.putNextEntry(mimetype);
 			out.write(bytes);
 			out.closeEntry();
-			scan.close();
 			mime.delete();
 			constructZip(file, out, dir);
 		} catch (Exception e) {
 			LOGGER.debug("Error in storing mimetype: " + e.toString());
+		}
+		finally {
+			scan.close();
 		}
 	}
 
@@ -254,7 +256,6 @@ public final class EGEIOUtils {
 					dir.mkdirs();
 				continue;
 			}
-
 			// create directories if necessary
 			new File(new File(directoryName + File.separator + entry.getName())
 					.getParent()).mkdirs();
@@ -265,11 +266,15 @@ public final class EGEIOUtils {
 			FileOutputStream fos = new FileOutputStream(directoryName
 					+ File.separator + entry.getName());
 			dest = new BufferedOutputStream(fos, BUFFER);
-			while ((count = zis.read(data, 0, BUFFER)) != -1) {
+			try {
+			    while ((count = zis.read(data, 0, BUFFER)) != -1) {
 				dest.write(data, 0, count);
+			    }
 			}
-			dest.flush();
-			dest.close();
+			finally {
+			    dest.flush();
+			    dest.close();
+			}
 		}
 
 	}
@@ -298,7 +303,7 @@ public final class EGEIOUtils {
 			return false;
 
 		} finally {
-			zis.close();
+		    zis.close();
 		}
 	}
 

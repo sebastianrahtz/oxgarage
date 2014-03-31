@@ -157,15 +157,17 @@ public abstract class ComplexConverter {
 	protected void initTemplate() throws IOException, ConfigurationException {
 		// copy template somewhere
 		File templateFile = new File(getTemplateFile());
+		InputStream in = new FileInputStream(templateFile);
 		try {
-			InputStream in = new FileInputStream(templateFile);
 			unzipData(in);
-			in.close();
 		} catch (FileNotFoundException e) {
 			ConfigurationException ic = new ConfigurationException(
 					"Could not load template at: " + getTemplateFile());
 			ic.initCause(e);
 			throw ic;
+		}
+		finally {
+			in.close();
 		}
 	}
 
@@ -275,11 +277,15 @@ public abstract class ComplexConverter {
 		Serializer result = new Serializer();
 		Writer writer = new BufferedWriter(new OutputStreamWriter(
 				new FileOutputStream(contentsFile), "UTF-8"));
+	    try {
 		result.setOutputWriter(writer);
 		transformer.setInitialContextNode(tei);
 		transformer.setDestination(result);
 		transformer.transform();
+	    }
+	    finally {
 		writer.close();
+	    }
 	}
 
 	/**
