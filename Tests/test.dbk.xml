@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <head>Simulation of Energy Loss Straggling</head>
+            <author>
+               <name>
+                  <surname>Physicist</surname>
+  Maria</name>
+            </author>
+         </titleStmt>
+         <editionStmt>
+            <edition>
+               <date>2004-03-11</date>
+            </edition>
+         </editionStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Converted from a Docbook original</p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+   
+         <div>
+            <head>Chapter 1</head>
+            <p>Hello world!</p>
+            <p>I hope that your day is proceeding <hi>splendidly</hi>!</p>
+         </div>
+         <div>
+            <head>Chapter 2</head>
+            <p>Hello again, world!</p>
+         </div>
+      </body>
+   </text>
+</TEI>
