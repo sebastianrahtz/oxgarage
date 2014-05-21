@@ -161,7 +161,7 @@ public class XMLUtils {
 			serializer = TransformerFactory.newInstance().newTransformer();
 			serializer.setOutputProperty(OutputKeys.METHOD, "xml");
 			serializer.setOutputProperty(OutputKeys.ENCODING, "utf-8");
-			serializer.setOutputProperty(OutputKeys.INDENT, "yes");
+			serializer.setOutputProperty(OutputKeys.INDENT, "no");
 			serializer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 			serializer.transform(new DOMSource(node), new StreamResult(writer));
 		} catch (TransformerConfigurationException e) {
@@ -189,7 +189,7 @@ public class XMLUtils {
 			serializer = TransformerFactory.newInstance().newTransformer();
 			serializer.setOutputProperty(OutputKeys.METHOD, "xml");
 			serializer.setOutputProperty(OutputKeys.ENCODING, "utf-8");
-			serializer.setOutputProperty(OutputKeys.INDENT, "yes");
+			serializer.setOutputProperty(OutputKeys.INDENT, "no");
 			serializer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 			
 			serializer.transform(node.asSource(), new StreamResult(writer));
