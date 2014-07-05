@@ -4,12 +4,14 @@ PORT=8080
 P="<conversions><conversion%20index='0'><property%20id='pl.psnc.dl.ege.tei.profileNames'>iso</property></conversion></conversions>" 
 O="<conversions><conversion%20index='0'><property%20id='pl.psnc.dl.ege.tei.profileNames'>ota</property></conversion></conversions>" 
 L="<conversions><conversion%20index='1'><property%20id='oxgarage.lang'>fr</property></conversion></conversions>" 
+TEXTONLY="<conversions><conversion%20index='0'><property%20id='oxgarage.textOnly'>true</property><property%20id='pl.psnc.dl.ege.tei.profileNames'>sciencejournal</property></conversion><conversion%20index='1'><property%20id='oxgarage.textOnly'>true</property><property%20id='pl.psnc.dl.ege.tei.profileNames'>sciencejournal</property></conversion></conversions>"
 
-
-test:
-	curl -s -o conversions.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions
+prep:
 	rm -rf temp-results
 	mkdir  temp-results
+
+test: prep
+	curl -s -o conversions.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions
 	echo To DocX
 	curl -s  -o temp-results/result.docx -F upload=@test.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document
 	echo ODD to JSON
@@ -35,8 +37,8 @@ test:
 	curl -s  -F upload=@test.xml  -o temp-results/result.html http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/
 	curl -s  -F upload=@test.xml  -o temp-results/result2.html http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/?properties=$(P)
 	echo From DocX
-	curl -s  -o temp-results/result.xml -F upload=@test.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml
-	perl -p -i -e 's+date>.*</date+date/+' temp-results/result.xml
+	curl -s  -F upload=@test.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml | xmllint --format --encode utf-8 - > temp-results/result.xml 
+	perl -p -i -e 's+date>.[^<]*</date+date/+' temp-results/result.xml
 	diff temp-results/result.xml expected-results/result.xml
 	echo ODD to RELAXNG
 	curl -s  -F upload=@test.odd  -o temp-results/result.rng http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/relaxng%3Aapplication%3Axml-relaxng/
@@ -84,13 +86,18 @@ test:
 	curl -s  -F upload=@test.xls  -o temp-results/result2.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/xls%3Aapplication%3Avnd.ms-excel/csv%3Atext%3Acsv/TEI%3Atext%3Axml/
 	echo xls to PDF
 	curl -s  -F upload=@test.xls  -o temp-results/result2.pdf http://$(SERVER):$(PORT)/ege-webservice/Conversions/xls%3Aapplication%3Avnd.ms-excel/pdf%3Aapplication%3Apdf/
-
+	echo HTML to TEI
+	curl -s  -o temp-results/result.xml -F upload=@test.html http://$(SERVER):$(PORT)/ege-webservice/Conversions/xhtml%3Aapplication%3Axhtml+xml/TEI%3Atext%3Axml
 
 ole2:
 	curl -s  -o about-equations.zip -F upload=@about-equations.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml/
 
 ole3:
 	curl -s  -o about-equations.zip -F upload=@about-equations.xml -F upload=@media.zip http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/
+
+extra:
+	curl -F upload=@test-image.docx http://localhost:8080/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/?properties=$(TEXTONLY)
+
 clean:
 	rm -rf temp-results
 	rm -f about-equations.html  about-equations.html  about-equations.zip about-equations.xml

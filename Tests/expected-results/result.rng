@@ -4,9 +4,9 @@
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
 Schema 
-Edition: Version 2.6.0. Last updated on
-	20th January 2014, revision 12801
-Edition Location: http://www.tei-c.org/Vault/P5/Version 2.6.0/
+Edition: Version 2.6.1alpha. Last updated on
+	15th February 2014, revision 12847
+Edition Location: http://www.tei-c.org/Vault/P5/Version 2.6.1alpha./
   
 --><!----><define name="macro.paraContent">
       <zeroOrMore>
@@ -324,7 +324,7 @@ Edition Location: http://www.tei-c.org/Vault/P5/Version 2.6.0/
       </optional>
    </define>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="calendar-constraint-calendar">
+            id="testminimal-att.datable-calendar-calendar-constraint-1">
       <sch:rule xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -696,7 +696,7 @@ Sample values include: 1] approved; 2] candidate; 3] cleared; 4] deprecated; 5] 
       <optional>
          <attribute name="unit">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the units used for the measurement, usually using the standard symbol for the desired units.
-Suggested values include: 1] m; 2] kg; 3] s; 4] Hz; 5] Pa; 6] Ω; 7] L; 8] t; 9] ha; 10] Å; 11] mL; 12] cm; 13] dB; 14] kbit; 15] Kibit; 16] kB; 17] KiB; 18] MB; 19] MiB</a:documentation>
+Suggested values include: 1] m(metre) ; 2] kg(kilogram) ; 3] s(second) ; 4] Hz(hertz) ; 5] Pa(pascal) ; 6] Ω(ohm) ; 7] L(litre) ; 8] t(tonne) ; 9] ha(hectare) ; 10] Å(ångström) ; 11] mL(millilitre) ; 12] cm(centimetre) ; 13] dB(decibel) ; 14] kbit(kilobit) ; 15] Kibit(kibibit) ; 16] kB(kilobyte) ; 17] KiB(kibibyte) ; 18] MB(megabyte) ; 19] MiB(mebibyte) </a:documentation>
             <choice>
                <value>m</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(metre) SI base unit of length</a:documentation>
@@ -845,7 +845,7 @@ Suggested values include: 1] below; 2] bottom; 3] margin; 4] top; 5] opposite; 6
       </optional>
    </define>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="att.typed-constraint-subtypeTyped">
+            id="testminimal-att.typed-subtypeTyped-constraint-2">
       <sch:rule xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -868,7 +868,7 @@ Suggested values include: 1] below; 2] bottom; 3] margin; 4] top; 5] opposite; 6
       </optional>
    </define>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="targetLang-constraint-targetLang">
+            id="testminimal-att.pointing-targetLang-targetLang-constraint-3">
       <sch:rule xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -954,7 +954,7 @@ Suggested values include: 1] below; 2] bottom; 3] margin; 4] top; 5] opposite; 6
       </optional>
    </define>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="spanTo-constraint-spanTo-2">
+            id="testminimal-att.spanning-spanTo-spanTo-2-constraint-4">
       <sch:rule xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -994,7 +994,7 @@ The element indicated by @spanTo (<sch:value-of select="@spanTo"/>) must follow 
       </optional>
    </define>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="schemeVersion-constraint-schemeVersionRequiresScheme">
+            id="testminimal-att.styleDef-schemeVersion-schemeVersionRequiresScheme-constraint-5">
       <sch:rule xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                 xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -1421,6 +1421,27 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
          <ref name="binaryObject"/>
       </choice>
    </define>
+   <define name="model.offsetLike">
+      <notAllowed/>
+   </define>
+   <define name="model.offsetLike_alternation">
+      <notAllowed/>
+   </define>
+   <define name="model.offsetLike_sequence">
+      <empty/>
+   </define>
+   <define name="model.offsetLike_sequenceOptional">
+      <empty/>
+   </define>
+   <define name="model.offsetLike_sequenceOptionalRepeatable">
+      <empty/>
+   </define>
+   <define name="model.offsetLike_sequenceRepeatable">
+      <notAllowed/>
+   </define>
+   <define name="model.pPart.msdesc">
+      <notAllowed/>
+   </define>
    <define name="model.pPart.editorial">
       <choice>
          <ref name="choice"/>
@@ -1585,6 +1606,9 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
          <ref name="ref"/>
       </choice>
    </define>
+   <define name="model.lPart">
+      <notAllowed/>
+   </define>
    <define name="model.global.meta">
       <choice>
          <ref name="index"/>
@@ -1600,6 +1624,30 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
       </choice>
    </define>
    <define name="model.gLike">
+      <notAllowed/>
+   </define>
+   <define name="model.oddDecl">
+      <notAllowed/>
+   </define>
+   <define name="model.oddDecl_alternation">
+      <notAllowed/>
+   </define>
+   <define name="model.oddDecl_sequence">
+      <empty/>
+   </define>
+   <define name="model.oddDecl_sequenceOptional">
+      <empty/>
+   </define>
+   <define name="model.oddDecl_sequenceOptionalRepeatable">
+      <empty/>
+   </define>
+   <define name="model.oddDecl_sequenceRepeatable">
+      <notAllowed/>
+   </define>
+   <define name="model.phrase.xml">
+      <notAllowed/>
+   </define>
+   <define name="model.specDescLike">
       <notAllowed/>
    </define>
    <define name="model.biblLike">
@@ -1867,6 +1915,52 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
          <ref name="sp"/>
       </choice>
    </define>
+   <define name="model.placeNamePart">
+      <notAllowed/>
+   </define>
+   <define name="model.placeNamePart_alternation">
+      <notAllowed/>
+   </define>
+   <define name="model.placeNamePart_sequence">
+      <empty/>
+   </define>
+   <define name="model.placeNamePart_sequenceOptional">
+      <empty/>
+   </define>
+   <define name="model.placeNamePart_sequenceOptionalRepeatable">
+      <empty/>
+   </define>
+   <define name="model.placeNamePart_sequenceRepeatable">
+      <notAllowed/>
+   </define>
+   <define name="model.placeStateLike">
+      <choice>
+         <ref name="model.placeNamePart"/>
+      </choice>
+   </define>
+   <define name="model.placeStateLike_alternation">
+      <choice>
+         <ref name="model.placeNamePart_alternation"/>
+      </choice>
+   </define>
+   <define name="model.placeStateLike_sequence">
+      <ref name="model.placeNamePart_sequence"/>
+   </define>
+   <define name="model.placeStateLike_sequenceOptional">
+      <optional>
+         <ref name="model.placeNamePart_sequenceOptional"/>
+      </optional>
+   </define>
+   <define name="model.placeStateLike_sequenceOptionalRepeatable">
+      <zeroOrMore>
+         <ref name="model.placeNamePart_sequenceOptionalRepeatable"/>
+      </zeroOrMore>
+   </define>
+   <define name="model.placeStateLike_sequenceRepeatable">
+      <oneOrMore>
+         <ref name="model.placeNamePart_sequenceRepeatable"/>
+      </oneOrMore>
+   </define>
    <define name="model.publicationStmtPart.agency">
       <choice>
          <ref name="publisher"/>
@@ -2041,6 +2135,9 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
          <ref name="model.divTopPart"/>
       </choice>
    </define>
+   <define name="model.frontPart.drama">
+      <notAllowed/>
+   </define>
    <define name="model.pLike.front">
       <choice>
          <ref name="head"/>
@@ -2150,6 +2247,8 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
    <define name="model.nameLike">
       <choice>
          <ref name="model.nameLike.agent"/>
+         <ref name="model.offsetLike"/>
+         <ref name="model.placeStateLike"/>
          <ref name="rs"/>
          <ref name="idno"/>
       </choice>
@@ -2157,18 +2256,28 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
    <define name="model.nameLike_alternation">
       <choice>
          <ref name="model.nameLike.agent_alternation"/>
+         <ref name="model.offsetLike_alternation"/>
+         <ref name="model.placeStateLike_alternation"/>
          <ref name="rs"/>
          <ref name="idno"/>
       </choice>
    </define>
    <define name="model.nameLike_sequence">
       <ref name="model.nameLike.agent_sequence"/>
+      <ref name="model.offsetLike_sequence"/>
+      <ref name="model.placeStateLike_sequence"/>
       <ref name="rs"/>
       <ref name="idno"/>
    </define>
    <define name="model.nameLike_sequenceOptional">
       <optional>
          <ref name="model.nameLike.agent_sequenceOptional"/>
+      </optional>
+      <optional>
+         <ref name="model.offsetLike_sequenceOptional"/>
+      </optional>
+      <optional>
+         <ref name="model.placeStateLike_sequenceOptional"/>
       </optional>
       <optional>
          <ref name="rs"/>
@@ -2182,6 +2291,12 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
          <ref name="model.nameLike.agent_sequenceOptionalRepeatable"/>
       </zeroOrMore>
       <zeroOrMore>
+         <ref name="model.offsetLike_sequenceOptionalRepeatable"/>
+      </zeroOrMore>
+      <zeroOrMore>
+         <ref name="model.placeStateLike_sequenceOptionalRepeatable"/>
+      </zeroOrMore>
+      <zeroOrMore>
          <ref name="rs"/>
       </zeroOrMore>
       <zeroOrMore>
@@ -2191,6 +2306,12 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
    <define name="model.nameLike_sequenceRepeatable">
       <oneOrMore>
          <ref name="model.nameLike.agent_sequenceRepeatable"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="model.offsetLike_sequenceRepeatable"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="model.placeStateLike_sequenceRepeatable"/>
       </oneOrMore>
       <oneOrMore>
          <ref name="rs"/>
@@ -2222,6 +2343,7 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
    </define>
    <define name="model.frontPart">
       <choice>
+         <ref name="model.frontPart.drama"/>
          <ref name="divGen"/>
          <ref name="titlePage"/>
       </choice>
@@ -2246,6 +2368,7 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
    <define name="model.inter">
       <choice>
          <ref name="model.egLike"/>
+         <ref name="model.oddDecl"/>
          <ref name="model.biblLike"/>
          <ref name="model.labelLike"/>
          <ref name="model.listLike"/>
@@ -2264,8 +2387,12 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
          <ref name="model.segLike"/>
          <ref name="model.highlighted"/>
          <ref name="model.graphicLike"/>
+         <ref name="model.pPart.msdesc"/>
          <ref name="model.pPart.edit"/>
          <ref name="model.ptrLike"/>
+         <ref name="model.lPart"/>
+         <ref name="model.phrase.xml"/>
+         <ref name="model.specDescLike"/>
          <ref name="model.pPart.data"/>
       </choice>
    </define>
@@ -2273,8 +2400,10 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
       <choice>
          <ref name="model.hiLike"/>
          <ref name="model.emphLike"/>
+         <ref name="model.pPart.msdesc"/>
          <ref name="model.pPart.editorial"/>
          <ref name="model.ptrLike"/>
+         <ref name="model.phrase.xml"/>
          <ref name="model.pPart.data"/>
       </choice>
    </define>
@@ -3010,7 +3139,8 @@ Suggested values include: 1] cardinal; 2] ordinal; 3] fraction; 4] percentage</a
       <element name="ptr">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(pointer) defines a pointer to another location. [3.6.  16.1. ]</a:documentation>
          <empty/>
-         <pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="ptr-constraint-ptrAtts">
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="testminimal-ptr-ptrAtts-constraint-1">
             <rule context="tei:ptr">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0" test="@target and @cRef">Only one of the
 attributes @target and @cRef may be supplied on <name/>.</report>
@@ -3029,7 +3159,8 @@ attributes @target and @cRef may be supplied on <name/>.</report>
       <element name="ref">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reference) defines a reference to another location, possibly modified by additional text or comment. [3.6.  16.1. ]</a:documentation>
          <ref name="macro.paraContent"/>
-         <pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="ref-constraint-refAtts">
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  id="testminimal-ref-refAtts-constraint-2">
             <rule context="tei:ref">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0" test="@target and @cRef">Only one of the
 	attributes @target' and @cRef' may be supplied on <name/>
@@ -3535,7 +3666,7 @@ Suggested values include: 1] ordered; 2] bulleted; 3] simple; 4] gloss</a:docume
          <optional>
             <attribute name="type">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">classifies the title according to some convenient typology.
-Sample values include: 1] main; 2] sub; 3] alt; 4] short; 5] desc</a:documentation>
+Sample values include: 1] main; 2] sub(subordinate) ; 3] alt(alternate) ; 4] short; 5] desc(descriptive) </a:documentation>
                <ref name="data.enumerated"/>
             </attribute>
          </optional>
@@ -3616,7 +3747,7 @@ Sample values include: 1] main; 2] sub; 3] alt; 4] short; 5] desc</a:documentati
          <optional>
             <attribute name="type">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">identifies the type of information conveyed by the element, e.g. columns, pages, volume.
-Suggested values include: 1] vol; 2] issue; 3] pp; 4] ll; 5] chap; 6] part</a:documentation>
+Suggested values include: 1] vol(volume) ; 2] issue; 3] pp(pages) ; 4] ll(lines) ; 5] chap(chapter) ; 6] part</a:documentation>
                <choice>
                   <value>vol</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(volume) the element contains a volume number.</a:documentation>
@@ -3742,7 +3873,7 @@ Suggested values include: 1] vol; 2] issue; 3] pp; 4] ll; 5] chap; 6] part</a:do
             </choice>
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="relatedItem-constraint-targetorcontent11">
+                  id="testminimal-relatedItem-targetorcontent1-constraint-3">
             <rule context="tei:relatedItem">
                <sch:report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                            xmlns="http://www.tei-c.org/ns/1.0"
@@ -3753,7 +3884,7 @@ relatedItem element must be empty</sch:report>
             </rule>
          </pattern> 
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="relatedItem-constraint-targetorcontent12">
+                  id="testminimal-relatedItem-targetorcontent1-constraint-6">
             <rule context="tei:relatedItem">
                <sch:assert xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                            xmlns="http://www.tei-c.org/ns/1.0"
@@ -3817,7 +3948,7 @@ relatedItem element must be empty</sch:report>
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="lg-constraint-atleast1oflggapl">
+                  id="testminimal-lg-atleast1oflggapl-constraint-7">
             <rule context="tei:lg">
                <sch:assert xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                            xmlns="http://www.tei-c.org/ns/1.0"
@@ -4453,7 +4584,7 @@ Sample values include: 1] text; 2] corpus</a:documentation>
             <ref name="model.pLike"/>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="quotation-constraint-quotationContents">
+                  id="testminimal-quotation-quotationContents-constraint-4">
             <rule context="tei:quotation">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        test="not(@marks) and not (tei:p)">
@@ -4804,7 +4935,7 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
                        name="datum"
                        a:defaultValue="WGS84">
                <a:documentation>supplies a commonly used code name for the datum employed.
-Suggested values include: 1] WGS84; 2] MGRS; 3] OSGB36; 4] ED50</a:documentation>
+Suggested values include: 1] WGS84(World Geodetic System) ; 2] MGRS(Military Grid Reference System) ; 3] OSGB36(ordnance survey great britain) ; 4] ED50(European Datum coordinate system) </a:documentation>
                <choice>
                   <value>WGS84</value>
                   <a:documentation>(World Geodetic System) a pair of numbers to be interpreted as latitude followed by longitude according to the World Geodetic System.</a:documentation>
@@ -6002,7 +6133,7 @@ Suggested values include: 1] WGS84; 2] MGRS; 3] OSGB36; 4] ED50</a:documentation
                        name="type"
                        a:defaultValue="main">
                <a:documentation>specifies the role of this subdivision of the title.
-Suggested values include: 1] main; 2] sub; 3] alt; 4] short; 5] desc</a:documentation>
+Suggested values include: 1] main; 2] sub(subordinate) ; 3] alt(alternate) ; 4] short; 5] desc(descriptive) </a:documentation>
                <choice>
                   <value>main</value>
                   <a:documentation>main title of the work</a:documentation>
