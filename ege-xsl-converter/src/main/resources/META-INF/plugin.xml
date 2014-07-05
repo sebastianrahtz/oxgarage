@@ -147,6 +147,7 @@
 		<parameter id="visibility" value="true" />
 		<parameter id="cost" value="11" />
 	</extension>
+<!--
 	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="HTMLtoTEIconverter">
 		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
 		<parameter id="name" value="XHTML to TEI"/>
@@ -162,6 +163,7 @@
 		<parameter id="visibility" value="true" />
 		<parameter id="cost" value="5" />
 	</extension>
+-->
 <!--
 	<extension plugin-id="pl.psnc.dl.ege.root"
 		   point-id="XslConverter" id="RNGtoRNCConverter">

@@ -99,7 +99,7 @@ final class ConverterConfiguration
 							format.getOutputDescription(), EGEConstants.getType(format.getOutputType())),
 						sbParams.toString(), format.getVisible(), format.getCost());
 				CONVERSIONS.add(caa);
-				if (format.equals(Format.DOCX) || format.equals(Format.ODT)) {
+				if (format.equals(Format.XHTML) || format.equals(Format.DOCX) || format.equals(Format.ODT)) {
 					ConversionActionArguments caa2 = new ConversionActionArguments(
 							new DataType(format.getId(), format.getMimeType(), 
 								format.getOutputDescription(), EGEConstants.TEXTFAMILY),
