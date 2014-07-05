@@ -23,6 +23,7 @@ public enum Format {
     RNC("rnc","application/relaxng-compact","rnc","ODDC", "Compiled TEI ODD", "text", "RELAX NG compact schema", "text", false, 10),
     TEXT("txt","text/plain",    "txt","TEI", "TEI P5 XML Document", "text", "Plain text",   "text", true, 5),
     XHTML("xhtml","application/xhtml+xml","html","TEI", "TEI P5 XML Document", "text", "xHTML", "text", true, 9),
+    XLSX("xlsx","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","xlsx","TEI", "TEI P5 XML Document", "text", "Microsoft Excel (.xlsx)", "spreadsheet", true, 9),
     XML("xml","application/xml","xml","TEI", "TEI P5 XML Document", "text", "XML Document", "text", true, 5),
     XSD("xsd","application/xml-xsd","xsd","ODDC", "Compiled TEI ODD", "text", "XSD schema", "text", false, 10);
 

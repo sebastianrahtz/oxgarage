@@ -90,6 +90,8 @@ test: prep
 	curl -s  -F upload=@test.xls  -o temp-results/result2.pdf http://$(SERVER):$(PORT)/ege-webservice/Conversions/xls%3Aapplication%3Avnd.ms-excel/pdf%3Aapplication%3Apdf/
 	echo HTML to TEI
 	curl -s  -o temp-results/result.xml -F upload=@test.html http://$(SERVER):$(PORT)/ege-webservice/Conversions/xhtml%3Aapplication%3Axhtml+xml/TEI%3Atext%3Axml
+	echo Excel to TEI and then to CSV
+	curl -F upload=@test.xlsx http://localhost:8080/ege-webservice/Conversions/xlsx%3Aapplication%3Avnd.openxmlformats-officedocument.spreadsheetml.sheet/TEI%3Atext%3Axml/csv%3Atext%3Acsv/
 
 ole2:
 	curl -s  -o about-equations.zip -F upload=@about-equations.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml/

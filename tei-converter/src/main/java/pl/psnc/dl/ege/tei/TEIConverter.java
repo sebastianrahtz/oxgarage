@@ -196,8 +196,19 @@ public class TEIConverter implements Converter,ErrorHandler {
 			}
 			transformFromDocX(inputStream, outputStream, profile, properties);
 		}
+		// from XlSX to TEI
+		else if (ConverterConfiguration.XML_MIME.equals(toMimeType)
+				&& toDataType.getFormat().equals(ConverterConfiguration.TEI)
+				&& fromDataType.getFormat().equals(Format.XLSX.getId())) {
+			if (!ConverterConfiguration.checkProfile(profile, Format.XLSX
+					.getProfile())) {
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				profile = EGEConstants.DEFAULT_PROFILE;
+			}
+			transformFromXlsX(inputStream, outputStream, profile, properties);
+		}
 		// from HTML to TEI
-		if (ConverterConfiguration.XML_MIME.equals(toMimeType)
+		else if (ConverterConfiguration.XML_MIME.equals(toMimeType)
 				&& toDataType.getFormat().equals(ConverterConfiguration.TEI)
 				&& fromDataType.getFormat().equals(Format.XHTML.getId())) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.XHTML
@@ -677,6 +688,45 @@ public class TEIConverter implements Converter,ErrorHandler {
 		}
 	}
 	
+
+	/*
+	 * Performs from XlsX to TEI transformation
+	 */
+	private void transformFromXlsX(InputStream is, OutputStream os,
+			String profile, Map<String, String> properties) throws IOException, SaxonApiException,
+			ConfigurationException, ConverterException {
+		File tmpDir = prepareTempDir();
+		InputStream fis = null;
+		String fileName = properties.get("fileName");
+		ComplexConverter xlsX = new XlsXConverter(profile, fileName);
+		try {
+			ior.decompressStream(is, tmpDir);
+			// should contain only single file
+			File xlsXFile = searchForData(tmpDir, "^.*\\.((?i)xlsx)$");
+			if (xlsXFile == null) {
+				xlsXFile = searchForData(tmpDir, "^.*");
+				if (xlsXFile == null) {
+					throw new ConverterException(EX_NO_FILE_DATA_WAS_FOUND);
+				}
+			}
+			fis = new FileInputStream(xlsXFile);
+			xlsX.toTEI(fis, os);
+		} finally {
+			if(fis != null){
+				try{
+					fis.close();
+				}catch(Exception ex){
+					// do nothing
+				}
+			}
+			if (tmpDir != null) {
+				EGEIOUtils.deleteDirectory(tmpDir);
+			}
+			if(xlsX != null){
+				xlsX.cleanUp();
+			}
+		}
+	}
 	/*
 	 * Performs from DocX to TEI transformation
 	 */

@@ -35,9 +35,9 @@ import org.apache.log4j.Logger;
 
 /**
  * <p>
- * Class specifying the .odt document transformation operations.
+ * Class specifying the .docx document transformation operations.
  * </p>
- * Performs transformation from .odt to TEI XML format and vice versa.
+ * Performs transformation from .docx to TEI XML format and vice versa.
  * 
  * @author Lukas Platinsky based on code written by mariuszs
  * 
