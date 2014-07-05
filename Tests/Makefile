@@ -6,6 +6,8 @@ O="<conversions><conversion%20index='0'><property%20id='pl.psnc.dl.ege.tei.profi
 L="<conversions><conversion%20index='1'><property%20id='oxgarage.lang'>fr</property></conversion></conversions>" 
 TEXTONLY="<conversions><conversion%20index='0'><property%20id='oxgarage.textOnly'>true</property><property%20id='pl.psnc.dl.ege.tei.profileNames'>sciencejournal</property></conversion><conversion%20index='1'><property%20id='oxgarage.textOnly'>true</property><property%20id='pl.psnc.dl.ege.tei.profileNames'>sciencejournal</property></conversion></conversions>"
 
+default: test
+
 prep:
 	rm -rf temp-results
 	mkdir  temp-results
