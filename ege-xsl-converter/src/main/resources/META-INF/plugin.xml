@@ -4,26 +4,6 @@
 	<requires>
 		<import plugin-id="pl.psnc.dl.ege.root"/>
 	</requires>
-<!--
-	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="MasterToEnrichConverter">
-		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
-		<parameter id="name" value="MASTER to Enrich Converter"/>
-		<parameter id="xsluri" value="http://tei.oucs.ox.ac.uk/ENRICH/XSLT/xsl/master2enrich.xsl" />
-		<parameter id="iMimeType" value="text/xml" />
-		<parameter id="iFormat" value="MASTER" />
-		<parameter id="oMimeType" value="text/xml" />
-		<parameter id="oFormat" value="ENRICH TEI P5" />
-	</extension>
-	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="EadToEnrichConverter">
-		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
-		<parameter id="name" value="EAD to Enrich Converter"/>
-		<parameter id="xsluri" value="http://tei.oucs.ox.ac.uk/ENRICH/XSLT/xsl/ead2enrich.xsl" />
-		<parameter id="iMimeType" value="text/xml" />
-		<parameter id="iFormat" value="EAD" />
-		<parameter id="oMimeType" value="application/zip" />
-		<parameter id="oFormat" value="ENRICH TEI P5" />
-	</extension>
--->
 	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="DocbookToTEIConverter">
 		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
 		<parameter id="name" value="Docbook to TEI"/>
@@ -147,38 +127,4 @@
 		<parameter id="visibility" value="true" />
 		<parameter id="cost" value="11" />
 	</extension>
-<!--
-	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="HTMLtoTEIconverter">
-		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
-		<parameter id="name" value="XHTML to TEI"/>
-		<parameter id="xsluri" value="html/html2tei.xsl" />
-		<parameter id="iMimeType" value="application/xhtml+xml" />
-		<parameter id="iFormat" value="XHTML" />
-		<parameter id="iDescription" value="xHTML" />
-		<parameter id="iType" value="text" />		
-		<parameter id="oMimeType" value="text/xml" />
-		<parameter id="oFormat" value="TEI" />
-		<parameter id="oDescription" value="TEI P5 XML Document" />		
-		<parameter id="oType" value="text" />
-		<parameter id="visibility" value="true" />
-		<parameter id="cost" value="5" />
-	</extension>
--->
-<!--
-	<extension plugin-id="pl.psnc.dl.ege.root"
-		   point-id="XslConverter" id="RNGtoRNCConverter">
-		<parameter id="class" value="pl.psnc.dl.ege.tei.TEIConverter"/>
-		<parameter id="name" value="RELAX NG Compact"/>
-		<parameter id="iMimeType" value="application/xml-relaxng" />
-		<parameter id="iFormat" value="relaxng" />
-		<parameter id="iDescription" value="RELAX NG schema" />
-		<parameter id="iType" value="text" />		
-		<parameter id="oMimeType" value="application/relaxng-compact-syntax" />
-		<parameter id="oFormat" value="rnc" />
-		<parameter id="oDescription" value="RELAX NG compact schema" />		
-		<parameter id="oType" value="text" />
-		<parameter id="visibility" value="false" />
-		<parameter id="cost" value="10" />
-	</extension>
--->
 </plugin>

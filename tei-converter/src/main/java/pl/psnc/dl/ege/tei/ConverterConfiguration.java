@@ -58,7 +58,7 @@ final class ConverterConfiguration
 				sbParams.append("<entry key=\"");
 				sbParams.append(LANGUAGE_KEY);
 				sbParams.append("\">");
-				sbParams.append("en,de,es,fr,kr,ja,zh-tw");
+				sbParams.append("en,de,es,fr,it,kr,ja,zh-tw");
 				sbParams.append("</entry>");
 				sbParams.append("<entry key=\"" + LANGUAGE_KEY + ".type\">array</entry>");
 				sbParams.append("<entry key=\"");

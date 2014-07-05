@@ -289,7 +289,7 @@ public class TEIConverter implements Converter,ErrorHandler {
 							       .getProfile(), profile, properties);
 			}
 			catch (Exception e) {
-				throw new IOException("to RNG then Trang failed: " + e.toString());
+				throw new IOException("to RNG then Trang to make RNC failed: " + e.toString());
 			}
 		}
 		// TEI to XSD
@@ -306,7 +306,7 @@ public class TEIConverter implements Converter,ErrorHandler {
 							       .getProfile(), profile, properties);
 			}
 			catch (Exception e) {
-				throw new IOException("to RNG then Trang failed: " + e.toString());
+				throw new IOException("to RNG then Trang to make XSD failed: " + e.toString());
 			}
 		}
 
