@@ -105,9 +105,12 @@ public class ImageFetcher {
 
 			int multiplier = 1;
 			if(conversion.equals("toDocx")) {	
-				multiplier = 3;
+				multiplier = 9144;
 			}
-			multiplier = 1428 * multiplier;
+			else
+			    {
+				multiplier = 1428;
+			    }
 			if (copy || download || textOnly) {
 				for (int i = 0; i < graphics.getLength(); i++) {
 	      				Element graphic = (Element) graphics.item(i);
@@ -116,7 +119,7 @@ public class ImageFetcher {
 						i--;
 					} else {
 						String graphicUrl = graphic.getAttribute("url");
-						File imageFile = fetchImage(graphicUrl, inputDir, outputDir, i, copy, download);
+						File imageFile = fetchImage(graphicUrl, inputDir, outputDir, i + 1, copy, download);
 						if(imageFile!=null){
 							graphic.setAttribute("url", imgDirRelativeToDoc + imageFile.getName());
 
@@ -144,12 +147,10 @@ public class ImageFetcher {
 							else {
 							*/
 							BufferedImage img = javax.imageio.ImageIO.read(imageFile);			
-							width = img.getWidth();
-							height = img.getHeight();
 							/* } */
-							height = (height / 72) * multiplier;
-							width = (width / 72) * multiplier;
-							graphic.setAttributeNS("http://www.tei-c.org/ns/teidocx/1.0", "teidocx:width", "" + width);
+							height = (img.getHeight() * multiplier) / 72;
+							width =  (img.getWidth() * multiplier) / 72;
+							graphic.setAttributeNS("http://www.tei-c.org/ns/teidocx/1.0", "teidocx:width",  "" + width);
 							graphic.setAttributeNS("http://www.tei-c.org/ns/teidocx/1.0", "teidocx:height", "" + height);
 							
 						}
@@ -178,7 +179,7 @@ public class ImageFetcher {
 					throws IOException, ConverterException {
 		File imageFile = null;
 		try {
-			String output = outputDir + File.separator + "image" + imageIndex + url.substring(url.lastIndexOf('.'));
+			String output = outputDir + File.separator + "resource" + imageIndex + url.substring(url.lastIndexOf('.'));
 			if(url.substring(0, 4).equals("http")) {
 				if(download) {
 					downloadFile(url, output);

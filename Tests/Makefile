@@ -16,6 +16,7 @@ test: prep
 	curl -s -o conversions.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions
 	echo To DocX
 	curl -s  -o temp-results/result.docx -F upload=@test.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document
+	curl -s  -o temp-results/demo.docx -F upload=@demo.xml -Fupload=@pics.zip http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document
 	echo ODD to JSON
 	curl -s  -F upload=@test.odd  -o temp-results/test.js http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/oddjson%3Aapplication%3Ajson/
 	perl -p -i -e 's/"date":"20.*Z"/"date":""/' temp-results/test.js
@@ -102,6 +103,7 @@ ole3:
 extra:
 	curl -F upload=@test-image.docx http://localhost:8080/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml/xhtml%3Aapplication%3Axhtml%2Bxml/?properties=$(TEXTONLY)
 
+upload=@test.xml
 clean:
 	rm -rf temp-results
 	rm -f about-equations.html  about-equations.html  about-equations.zip about-equations.xml
