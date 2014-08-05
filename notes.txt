@@ -1,0 +1,11 @@
+CSS regions for pagination
+
+headless webkit? PhantomJS?  http://wkhtmltopdf.org/
+
+meTypeset on github Martin
+
+native Word to HTML
+
+mediawiki XML format
+
+what do we do with        <w:tab/> ?
