@@ -11,8 +11,6 @@ public enum InputSpreadsheetFormat {
 	ODS("ods", "application/vnd.oasis.opendocument.spreadsheet", "OpenOffice (.ods)", "ods", true, 4),
 	SXC("sxc", "application/vnd.sun.xml.calc", "OpenOffice.org 1.0 (.sxc)", "sxc", true, 4),
 	XLS("xls", "application/vnd.ms-excel", "Microsoft Excel (.xls)", "xls", true, 5),
-	XLSX("xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Microsoft Excel (.xlsx)", "xlsx", true, 5),
-	CSV("csv", "text/csv", "Comma-Separated Values (.csv)", "csv", true, 5),
 	TSV("tsv", "text/tsv", "Tab-Separated Values (.tsv)", "tsv", true, 5);
 
 

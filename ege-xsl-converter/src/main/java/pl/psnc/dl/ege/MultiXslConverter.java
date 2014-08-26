@@ -313,6 +313,7 @@ public class MultiXslConverter implements ConfigurableConverter {
 			result.setOutputStream(fos);
 			transformer.setDestination(result);
 			transformer.transform();
+			fos.close();
 			if(standXml.length()==0) standXml.delete();
 			return tempDir;
 		} finally {

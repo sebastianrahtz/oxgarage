@@ -196,7 +196,30 @@ public class TEIConverter implements Converter,ErrorHandler {
 			}
 			transformFromDocX(inputStream, outputStream, profile, properties);
 		}
-		// to DOCX
+		// from XlSX to TEI
+		else if (ConverterConfiguration.XML_MIME.equals(toMimeType)
+				&& toDataType.getFormat().equals(ConverterConfiguration.TEI)
+				&& fromDataType.getFormat().equals(Format.XLSX.getId())) {
+			if (!ConverterConfiguration.checkProfile(profile, Format.XLSX
+					.getProfile())) {
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				profile = EGEConstants.DEFAULT_PROFILE;
+			}
+			transformFromXlsX(inputStream, outputStream, profile, properties);
+		}
+		// from HTML to TEI
+		else if (ConverterConfiguration.XML_MIME.equals(toMimeType)
+				&& toDataType.getFormat().equals(ConverterConfiguration.TEI)
+				&& fromDataType.getFormat().equals(Format.XHTML.getId())) {
+			if (!ConverterConfiguration.checkProfile(profile, Format.XHTML
+					.getProfile())) {
+				LOGGER.debug(ConverterConfiguration.PROFILE_NOT_FOUND_MSG);
+				profile = EGEConstants.DEFAULT_PROFILE;
+			}
+			properties.put("extension", "xml");
+			performXsltTransformation(inputStream, outputStream, Format.XHTML.getProfile(), profile, "from", properties);
+		}
+		// from TEI to DOCX
 		else if (Format.DOCX.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.DOCX
 					.getProfile())) {
@@ -218,7 +241,7 @@ public class TEIConverter implements Converter,ErrorHandler {
 			}
 			transformFromOdt(inputStream, outputStream, profile, properties);
 		}
-		// to ODT
+		// from TEI to ODT
 		else if (Format.ODT.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.ODT
 					.getProfile())) {
@@ -229,7 +252,7 @@ public class TEIConverter implements Converter,ErrorHandler {
 			XsltCompiler comp = proc.newXsltCompiler();
 			transformToOdt(inputStream, outputStream, proc, comp, profile, properties);
 		}
-		// to HTML for ODD
+		// TEI to HTML for ODD
 		else if (Format.ODDHTML.getMimeType().equals(toMimeType)
 			 && fromDataType.getFormat().equals(Format.ODDHTML.getFormatName())) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.ODDHTML
@@ -239,9 +262,9 @@ public class TEIConverter implements Converter,ErrorHandler {
 			}
 			properties.put("extension", "html");
 			performXsltTransformation(inputStream, outputStream, Format.ODDHTML
-					.getProfile(), profile, properties);
+					.getProfile(), profile,"to", properties);
 		}
-		// to XHTML
+		// TEI to XHTML
 		else if (Format.XHTML.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.XHTML
 					.getProfile())) {
@@ -250,9 +273,9 @@ public class TEIConverter implements Converter,ErrorHandler {
 			}
 			properties.put("extension", "html");
 			performXsltTransformation(inputStream, outputStream, Format.XHTML
-					.getProfile(), profile, properties);
+					.getProfile(), profile,"to", properties);
 		}
-		// to RELAXNG
+		// TEI to RELAXNG
 		else if (Format.RELAXNG.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.RELAXNG
 					.getProfile())) {
@@ -261,9 +284,9 @@ public class TEIConverter implements Converter,ErrorHandler {
 			}
 			properties.put("extension", "rng");
 			performXsltTransformation(inputStream, outputStream, Format.RELAXNG
-					.getProfile(), profile, properties);
+					.getProfile(), profile,"to", properties);
 		}
-		// to RNC
+		// TEI to RNC
 		else if (Format.RNC.getMimeType().equals(toMimeType)
 			 && fromDataType.getFormat().equals(Format.RNC.getFormatName())) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.RELAXNG
@@ -277,10 +300,10 @@ public class TEIConverter implements Converter,ErrorHandler {
 							       .getProfile(), profile, properties);
 			}
 			catch (Exception e) {
-				throw new IOException("to RNG then Trang failed: " + e.toString());
+				throw new IOException("to RNG then Trang to make RNC failed: " + e.toString());
 			}
 		}
-		// To XSD
+		// TEI to XSD
 		else if (Format.XSD.getMimeType().equals(toMimeType)
 			 && fromDataType.getFormat().equals(Format.XSD.getFormatName())) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.RELAXNG
@@ -294,11 +317,11 @@ public class TEIConverter implements Converter,ErrorHandler {
 							       .getProfile(), profile, properties);
 			}
 			catch (Exception e) {
-				throw new IOException("to RNG then Trang failed: " + e.toString());
+				throw new IOException("to RNG then Trang to make XSD failed: " + e.toString());
 			}
 		}
 
-		// to DTD
+		// TEI to DTD
 		else if (Format.DTD.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.DTD
 					.getProfile())) {
@@ -307,9 +330,9 @@ public class TEIConverter implements Converter,ErrorHandler {
 			}
 			properties.put("extension", "dtd");
 			performXsltTransformation(inputStream, outputStream, Format.DTD
-					.getProfile(), profile, properties);
+					.getProfile(), profile,"to", properties);
 		}
-		// to LITE
+		// TEI to LITE
 		else if (Format.LITE.getMimeType().equals(toMimeType) 
 			 && fromDataType.getFormat().equals(Format.LITE.getFormatName())) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.LITE
@@ -319,9 +342,9 @@ public class TEIConverter implements Converter,ErrorHandler {
 			}
 			properties.put("extension", "xml");
 			performXsltTransformation(inputStream, outputStream, Format.LITE
-					.getProfile(), profile, properties);
+					.getProfile(), profile,"to", properties);
 		}
-		// to LATEX
+		// TEI to LATEX
 		else if (Format.LATEX.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.LATEX
 					.getProfile())) {
@@ -330,9 +353,9 @@ public class TEIConverter implements Converter,ErrorHandler {
 			}
 			properties.put("extension", "tex");
 			performXsltTransformation(inputStream, outputStream, Format.LATEX
-					.getProfile(), profile, properties);
+					.getProfile(), profile,"to", properties);
 		}
-		// to ODDJSON
+		// TEI to ODDJSON
 		else if (Format.ODDJSON.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.ODDJSON
 					.getProfile())) {
@@ -341,9 +364,9 @@ public class TEIConverter implements Converter,ErrorHandler {
 			}
 			properties.put("extension", "json");
 			performXsltTransformation(inputStream, outputStream, Format.ODDJSON
-					.getProfile(), profile, properties);
+					.getProfile(), profile,"to", properties);
 		}
-		// to FO
+		// TEI to FO
 		else if (Format.FO.getMimeType().equals(toMimeType)) {
 				//&& Format.FO.getFormatName().equals(dataType.getFormat())) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.FO
@@ -353,9 +376,9 @@ public class TEIConverter implements Converter,ErrorHandler {
 			}
 			properties.put("extension", "fo");
 			performXsltTransformation(inputStream, outputStream, Format.FO
-					.getProfile(), profile, properties);
+					.getProfile(), profile,"to", properties);
 		}
-		// to EPUB
+		// TEI to EPUB
 		else if (Format.EPUB.getMimeType().equals(toMimeType)) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.EPUB
 					.getProfile())) {
@@ -364,7 +387,7 @@ public class TEIConverter implements Converter,ErrorHandler {
 			}
 			transformToEpub(inputStream, outputStream, profile, Format.EPUB.getProfile(), properties);
 		}
-		// to TEXT
+		// TEI to TEXT
 		else if (Format.TEXT.getMimeType().equals(toMimeType)
 			 && fromDataType.getFormat().equals(Format.TEXT.getFormatName())) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.TEXT
@@ -374,9 +397,9 @@ public class TEIConverter implements Converter,ErrorHandler {
 			}
 			properties.put("extension", "txt");
 			performXsltTransformation(inputStream, outputStream, Format.TEXT
-					.getProfile(), profile, properties);
+					.getProfile(), profile,"to", properties);
 		}
-		// to identity XML
+		// TEI to identity XML
 		else if (Format.XML.getMimeType().equals(toMimeType)
 			 && fromDataType.getFormat().equals(Format.XML.getFormatName())) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.XML
@@ -386,9 +409,9 @@ public class TEIConverter implements Converter,ErrorHandler {
 			}
 			properties.put("extension", "xml");
 			performXsltTransformation(inputStream, outputStream, Format.XML
-					.getProfile(), profile, properties);
+					.getProfile(), profile,"to", properties);
 		}
-		// to RDF
+		// TEI to RDF
 		else if (Format.RDF.getMimeType().equals(toMimeType)
 			 && fromDataType.getFormat().equals(Format.RDF.getFormatName())) {
 			if (!ConverterConfiguration.checkProfile(profile, Format.RDF
@@ -398,7 +421,7 @@ public class TEIConverter implements Converter,ErrorHandler {
 			}
 			properties.put("extension", "rdf");
 			performXsltTransformation(inputStream, outputStream, Format.RDF
-					.getProfile(), profile, properties);
+					.getProfile(), profile,"to", properties);
 		}
        
 	}
@@ -487,10 +510,10 @@ public class TEIConverter implements Converter,ErrorHandler {
 	}
 
 	/*
-	 * Performs transformation over XSLT 
+	 * Performs transformation with XSLT 
 	 */
 	private void performXsltTransformation(InputStream inputStream,
-			OutputStream outputStream, String id, String profile, Map<String, String> properties)
+					       OutputStream outputStream, String id, String profile, String direction, Map<String, String> properties)
 			throws IOException, SaxonApiException, ConverterException {
 		FileOutputStream fos = null;
 		InputStream is = null;
@@ -513,7 +536,7 @@ public class TEIConverter implements Converter,ErrorHandler {
 			String extension = properties.get("extension");
 			File resFile = new File(outTempDir + File.separator + "document." + extension);
 			fos = new FileOutputStream(resFile);
-			XsltExecutable exec = comp.compile(resolveConfiguration(id, comp, profile));
+			XsltExecutable exec = comp.compile(resolveConfiguration(id, comp, profile, direction));
 			XsltTransformer transformer = exec.load();
 			if(properties.get(ConverterConfiguration.LANGUAGE_KEY)!=null) 
 			    {
@@ -579,7 +602,7 @@ public class TEIConverter implements Converter,ErrorHandler {
 			File inFile = new File(outTempDir + File.separator + "document.rng");
 			File outFile = new File(outTempDir + File.separator + "document." + realextension);
 			fos = new FileOutputStream(inFile);
-			XsltExecutable exec = comp.compile(resolveConfiguration(id, comp, profile));
+			XsltExecutable exec = comp.compile(resolveConfiguration(id, comp, profile, "to"));
 			XsltTransformer transformer = exec.load();
 			if(properties.get(ConverterConfiguration.LANGUAGE_KEY)!=null) 
 			    {
@@ -665,6 +688,45 @@ public class TEIConverter implements Converter,ErrorHandler {
 		}
 	}
 	
+
+	/*
+	 * Performs from XlsX to TEI transformation
+	 */
+	private void transformFromXlsX(InputStream is, OutputStream os,
+			String profile, Map<String, String> properties) throws IOException, SaxonApiException,
+			ConfigurationException, ConverterException {
+		File tmpDir = prepareTempDir();
+		InputStream fis = null;
+		String fileName = properties.get("fileName");
+		ComplexConverter xlsX = new XlsXConverter(profile, fileName);
+		try {
+			ior.decompressStream(is, tmpDir);
+			// should contain only single file
+			File xlsXFile = searchForData(tmpDir, "^.*\\.((?i)xlsx)$");
+			if (xlsXFile == null) {
+				xlsXFile = searchForData(tmpDir, "^.*");
+				if (xlsXFile == null) {
+					throw new ConverterException(EX_NO_FILE_DATA_WAS_FOUND);
+				}
+			}
+			fis = new FileInputStream(xlsXFile);
+			xlsX.toTEI(fis, os);
+		} finally {
+			if(fis != null){
+				try{
+					fis.close();
+				}catch(Exception ex){
+					// do nothing
+				}
+			}
+			if (tmpDir != null) {
+				EGEIOUtils.deleteDirectory(tmpDir);
+			}
+			if(xlsX != null){
+				xlsX.cleanUp();
+			}
+		}
+	}
 	/*
 	 * Performs from DocX to TEI transformation
 	 */
@@ -859,7 +921,7 @@ public class TEIConverter implements Converter,ErrorHandler {
 			// get images and correct graphics tags
 			XdmNode initialNode = getImages(inTmpDir.toString(), outTempDir.toString(), "OPS" + File.separator + "media" + 
 							File.separator, "media" + File.separator, inputFile, proc, is, "toEpub", properties);
-			XsltExecutable exec = comp.compile(resolveConfiguration(id, comp, profile));
+			XsltExecutable exec = comp.compile(resolveConfiguration(id, comp, profile,"to"));
 			XsltTransformer transformer = exec.load();
 			String dirname = outTempDir.toURI().toString();
 			transformer.setParameter(new QName("directory"), new XdmAtomicValue(dirname));
@@ -952,15 +1014,15 @@ public class TEIConverter implements Converter,ErrorHandler {
 	 * Setups new URIResolver for XSLT compiler and returns StreamSource of XSL
 	 * transform scheme.
 	 */
-	private StreamSource resolveConfiguration(final String id,
-			XsltCompiler comp, String profile) throws IOException {
+	private StreamSource resolveConfiguration(final String id, 
+						  XsltCompiler comp, String profile, String direction) throws IOException {
 		comp.setURIResolver(TEIConverterURIResolver
 				.newInstance(ConverterConfiguration.STYLESHEETS_PATH + File.separator + "profiles" + File.separator
 						+ profile + File.separator + id));
 		return new StreamSource(new FileInputStream(new File(
 				ConverterConfiguration.STYLESHEETS_PATH + File.separator + "profiles"
 						+ File.separator + profile + File.separator + id
-						+ File.separator + "to.xsl")));
+						+ File.separator + direction + ".xsl")));
 	}
 
 	public List<ConversionActionArguments> getPossibleConversions() {

@@ -48,4 +48,4 @@ clean:
 	rm -f tei*oxgarage*_*changes
 	rm -f tei*oxgarage*_*build
 	-rm -rf debian-tei-oxgarage/debian/tei-oxgarage
-	-rm -rf Tests/temp-results
+	(cd Tests; make clean)

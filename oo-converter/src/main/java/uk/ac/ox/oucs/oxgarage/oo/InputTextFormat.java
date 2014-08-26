@@ -10,11 +10,9 @@ public enum InputTextFormat {
      */
 	ODT("odt", "application/vnd.oasis.opendocument.text", "OpenOffice Text (.odt)", "odt", true, 4),
 	DOC("doc", "application/msword", "Microsoft Word (.doc)", "doc", true, 7),
-	DOCX("docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "Microsoft Word (.docx)", "docx", true, 7),
 	RTF("rtf", "application/rtf", "Rich Text Format (.rtf)", "rtf", true, 6),
 	TXT("txt", "text/plain", "Plain Text (.txt)", "txt", true, 5),
 	SXW("sxw", "application/vnd.sun.xml.writer", "OpenOffice 1.0 Text (.sxw)", "sxw", true, 4),
-	HTML("xhtml", "application/xhtml+xml", "xHTML", "html", true, 9),  
 	WPD("wpd", "application/wordperfect", "WordPerfect (.wpd)", "wpd", true, 5);
 
 	private String name;

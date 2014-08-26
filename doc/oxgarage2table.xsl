@@ -104,7 +104,7 @@
                         <title>OxGarage Conversion Matrix</title>
                     </titleStmt>
                     <publicationStmt>
-                        <authority>infodev@oucs.ox.ac.uk</authority>
+                        <authority>Sebastian.Rahtz@it.ox.ac.uk</authority>
                         <date
                             when="{format-date(current-date(),'[Y]-[M02]-[D02]')}"/>
                     </publicationStmt>
