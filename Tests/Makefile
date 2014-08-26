@@ -85,6 +85,9 @@ test:
 	echo xls to PDF
 	curl -s  -F upload=@test.xls  -o temp-results/result2.pdf http://$(SERVER):$(PORT)/ege-webservice/Conversions/xls%3Aapplication%3Avnd.ms-excel/pdf%3Aapplication%3Apdf/
 
+x:
+	curl  -s -F upload=@test8.xml  -F upload=@portrait.jpg -F upload=@lessing.jpg -o temp-results/result.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/TEI%3Atext%3Axml/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/
+
 
 ole2:
 	curl -s  -o about-equations.zip -F upload=@about-equations.docx http://$(SERVER):$(PORT)/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml/
