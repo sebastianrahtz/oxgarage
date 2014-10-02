@@ -496,13 +496,19 @@ public class EGEConfigurationManager
 	 * Search for specified by regex file 
 	 */
 	private void searchForData(File dir, String regex, List<File> files) {
-		for (File f : dir.listFiles()) {
+		try {
+		    for (File f : dir.listFiles()) {
 			if (!f.isDirectory() && Pattern.matches(regex, f.getName())) {
-				files.add(f);
+			    files.add(f);
 			} else if (f.isDirectory()) {
-				searchForData(f, regex, files);
+			    searchForData(f, regex, files);
 			}
+		    }
 		}
+		catch (Exception e) {
+			LOGGER.error(e.getMessage(), e);
+		}
+
 	}
 
 	private static class PluginWrapper
