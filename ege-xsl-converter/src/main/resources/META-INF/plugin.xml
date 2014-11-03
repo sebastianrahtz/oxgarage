@@ -4,6 +4,21 @@
 	<requires>
 		<import plugin-id="pl.psnc.dl.ege.root"/>
 	</requires>
+	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="TEItoDocbookConverter">
+		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
+		<parameter id="name" value="TEI to Docbook"/>
+		<parameter id="xsluri" value="docbook/teitodocbook.xsl" />
+		<parameter id="iMimeType" value="text/xml" />
+		<parameter id="iFormat" value="TEI" />
+		<parameter id="oDescription" value="DocBook Document" />
+		<parameter id="iType" value="text" />
+		<parameter id="oMimeType" value="text/xml" />
+		<parameter id="oFormat" value="DBK" />
+		<parameter id="iDescription" value="TEI P5 XML Document" />
+		<parameter id="oType" value="text" />
+		<parameter id="visibility" value="true" />
+		<parameter id="cost" value="10" />
+	</extension>
 	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="DocbookToTEIConverter">
 		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
 		<parameter id="name" value="Docbook to TEI"/>
