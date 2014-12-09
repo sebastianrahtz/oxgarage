@@ -65,6 +65,7 @@ test:
 	curl -s  -F upload=@test.odd  -o temp-results/result2.rng http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/relaxng%3Aapplication%3Axml-relaxng/?properties=$(L)
 	echo TEI to NLM
 	curl -s  -F upload=@test.xml  -o temp-results/result.nlm http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/NLM%3Atext%3Axml
+	curl -s  -F upload=@test.docx  -o temp-results/result2.nlm http://$(SERVER):$(PORT)/ege-webservice/Conversions/docx%3Aapplication%3Avnd.openxmlformats-officedocument.wordprocessingml.document/TEI%3Atext%3Axml/NLM%3Atext%3Axml/
 	echo Docbook to TEI
 	curl -s  -F upload=@test.dbk  -o temp-results/result4.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/DBK%3Atext%3Axml/TEI%3Atext%3Axml
 	echo TEI to NLM
