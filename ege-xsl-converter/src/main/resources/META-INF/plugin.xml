@@ -142,4 +142,20 @@
 		<parameter id="visibility" value="true" />
 		<parameter id="cost" value="11" />
 	</extension>
+
+	<extension plugin-id="pl.psnc.dl.ege.root" point-id="XslConverter" id="TEItoSimpleconverter">
+		<parameter id="class" value="pl.psnc.dl.ege.MultiXslConverter"/>
+		<parameter id="name" value="TEI to Simple"/>
+		<parameter id="xsluri" value="simple/teitosimple.xsl" />
+		<parameter id="iMimeType" value="text/xml" />
+		<parameter id="iFormat" value="Simple" />
+		<parameter id="iDescription" value="TEI P5 XML Document" />
+		<parameter id="iType" value="text" />		
+		<parameter id="oMimeType" value="text/xml" />
+		<parameter id="oFormat" value="TEI" />
+		<parameter id="oDescription" value="TEI Simple XML Document" />		
+		<parameter id="oType" value="text" />
+		<parameter id="visibility" value="true" />
+		<parameter id="cost" value="11" />
+	</extension>
 </plugin>
