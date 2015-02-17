@@ -5,7 +5,7 @@ perl -p -i -e "s/localhost/`hostname -f`/" /var/lib/tomcat7/webapps/ege-webclien
 if which invoke-rc.d >/dev/null 2>&1; then
   invoke-rc.d tomcat7 restart
 else
-  /etc/init.d/tomcat7 restart
+  test -f  /etc/init.d/tomcat7 && /etc/init.d/tomcat7 restart
 fi
 
 
