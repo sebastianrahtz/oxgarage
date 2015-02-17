@@ -1,6 +1,11 @@
 #!/bin/sh
 chown -R tomcat7:tomcat7 /var/cache/oxgarage
 perl -p -i -e "s/localhost/`hostname -f`/" /var/lib/tomcat7/webapps/ege-webclient/WEB-INF/web.xml
-/etc/init.d/tomcat7 restart
+
+if which invoke-rc.d >/dev/null 2>&1; then
+  invoke-rc.d tomcat7 restart
+else
+  /etc/init.d/tomcat7 restart
+fi
 
 
