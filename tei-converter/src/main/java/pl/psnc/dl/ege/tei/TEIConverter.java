@@ -89,6 +89,8 @@ public class TEIConverter implements Converter,ErrorHandler {
 
 	// List of directories which might contain images for input type
 	private static final List<String> imagesInputDirectories = Arrays.asList(new String[] {"media", "Pictures"});
+	// List of directories which might contain fonts
+	private static final List<String> fontsInputDirectories = Arrays.asList(new String[] {"fonts"});
 
 	private static final Logger LOGGER = Logger.getLogger(TEIConverter.class);
 
@@ -467,7 +469,9 @@ public class TEIConverter implements Converter,ErrorHandler {
 		for (File f : dir.listFiles()) {
 			if (!f.isDirectory() && Pattern.matches(regex, f.getName())) {
 				return f;
-			} else if (f.isDirectory() && !imagesInputDirectories.contains(f.getName())) {
+			} else if (f.isDirectory() &&
+				!imagesInputDirectories.contains(f.getName()) &&
+				!fontsInputDirectories.contains(f.getName())) {
 				File sf = searchForData(f, regex);
 				if (sf != null) {
 					return sf;
