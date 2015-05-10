@@ -47,14 +47,12 @@ test:
 	echo TEI To ODT
 	curl -s  -F upload=@test.xml  -o temp-results/result.odt http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/oo%3Aapplication%3Avnd.oasis.opendocument.text
 	echo TEI XML to Text 
-	curl -s  -F upload=@test.xml  -o temp-results/result.txt http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/txt%3Atext%3Aplain//
+	curl -s  -F upload=@test.xml  -o temp-results/result.txt http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/txt%3Atext%3Aplain/
 	diff temp-results/result.txt expected-results/result.txt
 	echo ODT to TEI
-	curl -s  -F upload=@test.odt  -o temp-results/result3.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/oo%3Aapplication%3Avnd.oasis.opendocument.text/TEI%3Atext%3Axml
-	echo TEI To PDF via ODT
-	curl -s  -F upload=@test.xml  -o temp-results/result.pdf http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/oo%3Aapplication%3Avnd.oasis.opendocument.text/pdf%3Aapplication%3Apdf/
+	curl -s  -F upload=@test.odt  -o temp-results/result3.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/odt%3Aapplication%3Avnd.oasis.opendocument.text/TEI%3Atext%3Axml/
 	echo TEI To ODT with pictures
-	curl  -s -F upload=@test8.xml  -F upload=@portrait.jpg -F upload=@lessing.jpg -o temp-results/result.odt http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/oo%3Aapplication%3Avnd.oasis.opendocument.text
+	curl  -s -F upload=@test8.xml  -F upload=@portrait.jpg -F upload=@lessing.jpg -o temp-results/result.odt http://$(SERVER):$(PORT)/ege-webservice/Conversions/TEI%3Atext%3Axml/odt%3Aapplication%3Avnd.oasis.opendocument.text
 	echo ODD to Lite
 	curl -s  -F upload=@test.odd  -o temp-results/result5.xml http://$(SERVER):$(PORT)/ege-webservice/Conversions/ODD%3Atext%3Axml/ODDC%3Atext%3Axml/TEI%3Atext%3Axml/
 	echo ODD to Compiled
