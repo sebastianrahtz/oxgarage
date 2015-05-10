@@ -1,0 +1,168 @@
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+    <properties>
+        <title>Introduction to the EGE Web Client</title>
+    </properties>
+    <body>
+        <section name="Introduction to the EGE Web Client">
+
+            <p> The ENRICH EGE Web Client gives an easy to use front end for exploiting the
+                abilities of the ENRICH EGE. The ENRICH EGE is responsible for the management of
+                conversions, transformations and validations of data performed by the ENRICH Garage.
+                Conversions, transformations and validations are performed by a set of plug-ins
+                compatible with the EGE plug-in specification. The software was initially created by
+                the PSNC and OUCS as a part of the ENRICH project funded by the European Commission.
+                EGE is distributed under an open-source license. It is straightforward and intuitive
+                for users and has a clear progression through the steps needed to transform a
+                document from one format to another. The EGE Web Client is a user-friendly frontend
+                for the EGE Web Service but if one was converting many files, or doing so
+                automatically as part of another process, it might be more appropriate to use the
+                web service instead.</p>
+
+            <subsection name="Using the EGE Web Client">
+                <p>Main page of the EGE Web Client</p>
+				<img src="images/ege-webclient1.png" alt="Main page of EGE Web Client"/>
+				<p>The EGE Web Client should already have been set up and running as a web
+                    application, all interaction with the EGE Web Client is through a web browser,
+                    no extra software should be needed, however javascript must be enabled. To use
+                    the EGE Web Client you go to the appropriate URL. In the case of the ENRICH
+                    project this is: <a href="http://dlibra.psnc.pl/ege-webclient/"
+                        >http://dlibra.psnc.pl/ege-webclient/</a> for the time being. If this has
+                    not been set up, please go to the <a href="download.html">Download page</a>.
+                    This webpage contains three tabs 'Conversion', 'Validation' and 'Help'. The last
+                    of these links through to the help documentation, while the first two are where
+                    one can undertake to use the main functions of the EGE Web Client.</p>
+			</subsection>
+
+            <subsection name="Converting Files with the EGE Web Client">
+				<p>Sample EGE conversion panel </p>
+				<img src="images/ege-webclient2.png" alt="Sample EGE conversion panel"/>
+                <p>The EGE Web Client allows you to convert documents from one format to another,
+                    possibly using an intermediate format before a second conversion. To know what
+                    forms of document it can convert to, the EGE Web Client needs to establish what
+                    format the input document is in. Once it knows this it can offer a conversion
+                    path, and allow a choice between multiple conversion profiles, before converting
+                    your file.</p>
+
+                <h4>Selecting Input Type</h4>
+                <p>The EGE Web Client allows you to specify an input document's type from a list of
+                    choices predefined by the conversions that have been installed into that
+                    instance of the EGE Web Client. In the case of the ENRICH EGE Web Client
+                    conversion service these are: </p>
+                <ul>
+                    <li>TEI,text/xml</li>
+                    <li>TEI,application/msword</li>
+                    <li>MASTER,text/xml</li>
+                    <li>EAD,text/xml</li>
+                </ul>
+                <p> This takes the format of:<br/>
+                    <b>
+                        <source>FORMAT,INTERNET MIME TYPE (IMT)</source>
+                    </b><br/> So in the case of the ENRICH EGE Web Client conversion service there
+                    are three formats TEI, MASTER, and EAD, and only two different IMT's text/xml
+                    and application/msword that it knows how to handle as input types. The EGE will
+                    test and validate your document after uploading it against its definition for
+                    the format you select.</p>
+                <p>
+                    <b>Please note that the MS Word format referred to here is the DOCX format.
+                        Earlier word formats will cause an error.</b>
+                </p>
+
+
+                <h4>Selecting Conversion Path</h4>
+                <p>The conversion path is the route through which the EGE can transform your
+                    documents to other formats. This may simply be a single conversion or involve
+                    more than one steps. For example, having chosen 'TEI,text/xml' as the input
+                    type, one of the options available to us for conversion is: <br/>
+                    <b>
+                        <source>I:TEI,text/xml/O:TEI,application/msword(TEI Converter) </source>
+                    </b><br/> The 'I:' section of this path indicates the IMT input type of the
+                    document to be converted. In this case it is "TEI,text/xml". This is followed by
+                    the output format indicated by 'O:'. In this case that format is:
+                    "TEI,application/msword(TEI Converter)". This shows that our input document
+                    which is in TEI XML will be converted to MS Word using the TEI converter (which
+                    transforms TEI files to the docx format). The reverse of this would be from MS
+                    Word to TEI: <br/>
+                    <b>
+                        <source>I:TEI,application/msword/O:TEI,text/xml(TEI Converter)</source>
+                    </b><br/>
+                </p>
+
+                <p>One of the great strengths of the EGE is that it allows multiple transformations
+                    through a variety of formats. For example, the following path: <br/>
+                    <b>
+                        <source> I:TEI,application/msword/O:TEI,text/xml(TEI Converter)->I:TEI,text/xml/O:TEI,application/xhtml+xml(TEI Converter)  </source>
+                    </b><br/> details the conversion path from an MS Word document to TEI XML, and
+                    then (after the arrow '->' indicating a second step in the path), the XML that
+                    results from the first transformation becomes the input to a conversion from TEI
+                    XML to XHTML. </p>
+
+                <h4>Conversion Profiles</h4>
+                <p>Beneath the selection of a conversion the EGE Web Client gives you the
+                    opportunity to modify the conversion path parameters through the selection of a
+                    predefined conversion profile. In the ENRICH EGE Web Client this gives you a
+                    choice between 'default', 'enrich' and 'iso' conversion profiles. One drop-down
+                    selection box for a profile will appear for each major step in the chosen
+                    conversion path. If you have not set up any conversion profiles for your own
+                    project, then using 'default' is probably the most sensible. </p>
+
+                <h4>Converting Your File</h4>
+                <p> Underneath where you select the conversion profiles you are prompted to "Specify
+                    file to convert:" and there is a 'Browse' but to look through your computer's
+                    file system to find a file of the selected input type to convert. Make sure that
+                    the document you select is in the correct format, and click on the 'Convert'
+                    button. </p>
+                <p>If your file has been converted successfully, you will be prompted to download
+                    it. If it has failed to convert and error message will be displayed. Make a note
+                    of this error message for any bug report you want to submit before trying again
+                    after ensure the correct input format has been chosen.</p>
+
+            </subsection>
+
+            <subsection name="Validating Files with the EGE Web Client">
+				<p>EGE validation panel </p>
+				<img src="images/ege-webclient3.png" alt="EGE validation panel"/>
+                <p>In addition to converting your files, the EGE can simply be used to validate your
+                    files to ensure they are the correct input format. This takes place
+                    automatically when you upload your files for conversion, but it is also
+                    available as a separate feature on a second tab in the EGE Web Client.</p>
+
+                <h4>Selecting Input Type</h4>
+                <p>Similar to the 'Conversion' tab, the EGE Web Client validation service allows you
+                    to specify an input document's type from a list of choices predefined by the
+                    conversions that have been installed into that instance of the EGE Web Client.
+                    In the case of the ENRICH EGE Web Client these are: </p>
+                <ul>
+                    <li>TEI,text/xml</li>
+                    <li>MASTER,text/xml</li>
+                    <li>EAD,text/xml</li>
+                </ul>
+                <p>Note that MS Word is not an option for validation because the validation method
+                    deails with 'text/xml' files. So in the case of the ENRICH EGE Web Client
+                    validation service there are three formats TEI, MASTER, and EAD, and only one
+                    IMT's "text/xml" that it knows how to handle as input types. The EGE will test
+                    and validate your document after uploading it against its definition for the
+                    format you select.</p>
+
+                <h4>Validating Your File</h4>
+                <p> Underneath where you select the conversion profiles you are prompted to "Select
+                    file:" to validate and there is a 'Browse' but to look through your computer's
+                    file system to find a file of the selected input type to validate. Make sure
+                    that the document you select is in the correct format, and click on the
+                    'Validate' button. </p>
+                <p>If your file has been validated successfully a message will appear indicating
+                    this success. If it has failed to validate the error message will be displayed.
+                    Make a note of this error message for any bug report you want to submit and
+                    correcting whatever the error is before trying again after ensuring the correct
+                    input format has been chosen.</p>
+
+            </subsection>
+
+
+
+
+        </section>
+    </body>
+</document>
+

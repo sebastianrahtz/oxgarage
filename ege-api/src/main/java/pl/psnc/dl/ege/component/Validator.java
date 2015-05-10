@@ -12,10 +12,10 @@ import pl.psnc.dl.ege.types.ValidationResult;
 /**
  * <p>Main EGE validator interface.</p> 
  * 
- * Validator – this component is responsible for validation of the input data. For example it may
+ * Validator: this component is responsible for validation of the input data. For example it may
  * be used to validate the ENRICH TEI 5 data in particular Internet Media Type (e.g. text/xml)
  * either received from end user or created by one of the converters. We will assume the
- * following notation: ENRICH TEI 5 (text/xml) – it means that validator is able to validate
+ * following notation: ENRICH TEI 5 (text/xml) - it means that validator is able to validate
  * ENRICH TEI 5 format encoded in text/xml Internet Media Type.
  * 
  * @author mariuszs

@@ -1,0 +1,98 @@
+﻿<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+  <properties>
+    <title>Internal mechanism</title>
+  </properties>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="Internal mechanism">
+      <!-- Within sections, any XHTML can be used -->
+      <p>Having read the overview of the EGE it is now possible to proceed with the idea of the internal
+        mechanism. This will lead to specification of the EGE API which is available for use in
+        external applications. This will also show the potential possibilities of the EGE in case,
+        when there will be a number of implementations of particular components types. Below you
+        will find a simple case study illustrating EGE internal mechanism.</p>
+      <p>Let us assume that: </p>
+      <ol>
+        <li>Initially we have recognizers which are able to recognize text/xml, application/pdf and
+          application/msword. Recognizers allow us to recognize the Internet MIME Type (IMT) of the input data.</li>
+        <li>We assume that we have the following validators: MASTER (text/xml), TEI P5 (text/xml),
+          ENRICH TEI P5 (text/xml), ENRICH TEI P5 (application/pdf), ENRICH TEI P5
+          (application/msword), EAD (text/xml). Validators allow us to validate recognized data and
+          therefore state the format of the input data.</li>
+        <li>The available set of converters is described in the table below. The X mark in the table
+          means that we have converter which is able to convert from the format specified in the row
+          name to the format specified in the column name.</li>
+      </ol>
+
+      <img src="images/tabela.jpg" alt="Table of connections"/>
+
+      <p>Therefore with the above set of converters it is, for example, possible to convert from
+        MASTER (text/xml) to TEI P5 (text/xml) and from ENRICH TEI P5 (application/msword) to ENRICH
+        TEI P5 (application/pdf), but it is not possible to convert from EAD (text/xml) to ENRICH
+        TEI P5 (application/pdf) or from TEI P5 (text/xml) to ENRICH TEI P5 (application/pdf).
+        Additionally, we may imagine a converter from TEI P5 (text/xml) to TEI P5 (text/xml) which
+        could simply clean  the given input data of redundant information or restructure it in some pre-determined manner. Moreover, we could
+        imagine a converter which will be independent of the format and will focus only on the IMT,
+        e.g. converter which converts everything from (application/msword) to (application/pdf),
+        although at this moment such feature is not supported.</p>
+      <p>Based on these three assumptions, let us build a directed graph of possible conversion,
+        just as it is being built in the EGE. The nodes in the graph indicate the converters (with input
+        format, action and output format specified) and the directed edges (arcs) will connect
+        the converters between each other. The arc from converter A to converter B exists if and only if
+        the output data format and IMT of the converter A is identical as the input data format and
+        IMT of the converter B. Based on that we have the following graph:</p>
+
+      <img src="images/graf.jpg" alt="Graph of conversions"/>
+
+      <p> With the above graph and the format and IMT of the input data (recognized by one of the
+        recognizers and then validated or given by the end user directly) we may determine the
+        possible conversion paths for the input data. The simplest version of the algorithm to
+        determine possible paths is as follows: </p>
+      <ol>
+        <li>Find all the nodes that accept given input data format and IMT.</li>
+        <li>For each found node search for all the paths leading from the node (traverse the
+          processing graph);</li>
+        <li>Found paths (and also their sub-paths) are the conversion possibilities for the given
+          input data format and IMT.</li>
+      </ol>
+
+      <p> There are some issues that the algorithm (and the EGE user to a certain degree) has to
+        take into account: </p>
+      <ul>
+        <li>Loops - it is possible that a node has the same input format and output format (e.g.
+          [TEI P5 (text/xml) > TEI P5 (text/xml)]). This may for example indicate a cleaning or restructuring 
+          converter.</li>
+        <li>Cycles - it is important to be aware of the fact that a cycle may appear, and it cannot
+          (and will not) break the algorithm. For example: [ENRICH TEI P5 (text/xml) > ENRICH TEI P5
+          (application/msword)], [ENRICH TEI P5 (application/msword) > ENRICH TEI P5 (text/xml)]. We
+          assume that there is no sense to use the cycle in the resulting paths, e.g. convert from
+          ENRICH TEI P5 (text/xml) to ENRICH TEI P5 (application/msword) and then convert back from
+          ENRICH TEI P5 (application/msword) to ENRICH TEI P5 (text/xml).</li>
+        <li>It is possible that there will be two different paths that lead from input format and
+          IMT A to output format and IMT B. In our example there are two paths leading from EAD
+          (text/xml) to ENRICH TEI P5 (application/msword): [EAD (text/xml) > ENRICH TEI P5
+          (text/xml)], [ENRICH TEI P5 (text/xml) > ENRICH TEI P5 (application/msword)] [EAD
+          (text/xml) > MASTER (text/xml)] [MASTER (text/xml) > ENRICH TEI P5 (text/xml)] [ENRICH TEI
+          P5 (text/xml) > ENRICH TEI P5 (application/msword)]</li>
+      </ul>
+
+
+      <p><b>Summarizing:</b> in the EGE each converter provides a set of conversion actions with specified
+        input and output data, e.g. an action in which converter can use to convert from ENRICH TEI
+        P5 format in text/xml IMT to ENRICH TEI P5 format in application/msword IMT. All
+        conversion actions are connected through their input and output formats and forms convert
+        graph. That representation enables the provision of a mechanism for converting data in a specified
+        format to other another supported format in multiple ways - by searching paths in graph. Paths of
+        conversion can be then be chosen by users through an implemented interface (e.g. GUI or web
+        application forms).</p>
+
+      <p>Before converting each input data its IMT may be recognized by Recognizer component. Its
+        format (e.g. ENRICH TEI P5) may then be validated by the Validator component. Alternatively the
+        application which uses EGE may ask the user directly for the input IMT and data
+        format.</p>
+    </section>
+  </body>
+</document>
+

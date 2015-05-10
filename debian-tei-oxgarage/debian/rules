@@ -34,6 +34,8 @@ install: build
 	cp ../ege-webservice/target/ege-webservice/WEB-INF/lib/oxgarage.properties $(DESTDIR)/etc
 	mkdir -p $(DESTDIR)/var/cache/oxgarage
 	cp ../log4j.xml $(DESTDIR)/var/cache/oxgarage
+	mv ../target/site $(DESTDIR)/share/doc/tei-oxgarage
+
 
 # Build architecture-independent files here.
 binary-indep: build install

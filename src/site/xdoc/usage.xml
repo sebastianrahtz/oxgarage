@@ -1,0 +1,215 @@
+﻿<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+  <properties>
+    <title>API Overview</title>
+  </properties>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="API Overview">
+      <p>The EGE API is a Java based framework that provides basic implementation and interfaces of
+        mechanisms mentioned in the introduction to EGE. The EGE API is written in Java 1.5 (5.0). It
+        directly uses three external libraries:</p>
+      <ul>
+        <li>JPF ver. 0.12 (<a href="http://jpf.sourceforge.net/">http://jpf.sourceforge.net/</a>)
+          for plug-in management.</li>
+        <li>JUNG ver. 2.0.1-SNAPSHOT (<a href="http://jung.sourceforge.net/"
+            >http://jung.sourceforge.net/</a>) for conversion graph operations.</li>
+        <li>Log4j ver. 1.2.12 (<a href="http://logging.apache.org/log4j/"
+            >http://logging.apache.org/log4j/</a>) for logging.</li>
+      </ul>
+      <p> EGE API contains the following Java packages: </p>
+      <ul>
+        <li><b>pl.psnc.dl.ege</b> - main package with the implementation of the EGE logic.</li>
+        <li><b>pl.psnc.dl.ege.component</b> - contains the interfaces describing the three main EGE
+          components.</li>
+        <li><b>pl.psnc.dl.ege.exception</b> - contains the EGE exceptions.</li>
+        <li><b>pl.psnc.dl.ege.types</b> - contains the EGE data types used by the components and conversion
+          graph. </li>
+      </ul>
+
+      <subsection name="EGE API specific data types (pl.psnc.dlteam.ege.types)">
+        <p>Format and MIME type - both are represented as standard String data type. Format
+          represents a name of format, like: ENRICH TEI P5 or EAD. MIME type can be for example:
+          text/xml, application/pdf or application/msword. The values of format and MIME type are
+          not validated in any way. This is intentional, because the internal EGE mechanisms are
+          designed to be very general. If one would like to use the EGE in a context different than
+          the original context connected with the ENRICH project, this should also be possible.</p>
+        <p> The pl.psnc.dl.ege.types includes the following classes:</p>
+        <ul>
+          <li><b>DataType</b> - contains both format and MIME type information; instances of this
+            class are used to describe both input and output data types in EGE.<br/></li>
+          <li><b>ConversionAction</b> - every instance of this class describes one particular
+            conversion operation, which can be performed by specified converter component on
+            concrete input/output data types. A particular converter A can perform conversion of a
+            data in X DataType to Y DataType. The information about X and Y DataTypes is stored in
+            ConversionActionArguments class instance. ConversionAction is also a base object class
+            for a node in conversion graph. Each conversion action can be dynamically configured
+            through properties provided with ConversionActionArguments class instances.<br/></li>
+          <li><b>ConversionActionArguments </b>- describes input and output data types for a
+            conversion action. Input and output data types are instances of a DataType class. Each
+            instance provides also arguments for dynamic parameterization of conversion.<br/></li>
+          <li><b>ConversionsPath</b> - each instance of this class contains a list (a sequence) of a
+            ConversionAction objects; this list represents path of chained conversion where: input
+            data type from first element of sequence is a source data type and output data type from
+            last element of sequence is a result data type. Adjacent elements of such path have its
+            input/output data types compatible - this is assured during the process of conversion
+            graph construction.</li>
+          <li><b>ValidationResult</b> - instances of this class are returned by validation methods.
+            Each instance contains status of validation result (ERROR,SUCCESS or FATAL) and
+            messages.</li>
+        </ul>
+        <p>The UML diagram below shows described relationships between classes.</p>
+        <img src="images/uml.gif" alt="UML Diagram of EGE"/>
+        <p>Each instance of ConversionsPath contains sequence of ConversionAction instances.
+          ConversionAction instance references instance of a class that implements Converter
+          interface (loaded by the JPF at EGE start-up) and also specifies conversion action data
+          types (through the instance of the ConversionActionArguments class).
+          ConversionActionArguments contains information about input and output data types, so each
+          instance of this class references two instances of DataType class. DataType is a
+          elementary class that contains information about format and MIME type, both kept as
+          String. </p>
+        <p>Conversion process can be dynamically parameterised with properties described within
+          ConversionActionArguments instances. ConversionActionArguments contains properties
+          definitions written as String. Each definition of property should contain at least :
+          unique id of property and its data type. Syntax of properties definitions should be
+          properly described in converter documentation. With documented syntax client application
+          can translate available properties in order to provide e.g. user interface for conversion
+          configuration. Properties configured through default client application interface can be
+          transferred to converter using map argument of ConversionActionArguments instance, where :
+          key in map is a unique "id" of property and value is value assigned to property.
+          Validation of properties and default settings should be a converters task.</p>
+      </subsection>
+      <subsection name="Components interfaces">
+        <p>Each component in the EGE (validator, converter or recognizer) can have multiple
+          implementations provided through the extension mechanism of JPF. In order to provide this
+          extensibility in the EGE API the three above interfaces were defined in the
+          pl.psnc.dl.ege.component package: </p>
+        <ul>
+          <li><b>Recognizer</b> - declares major functions of the EGE recognizer, has to be implemented
+            by every external recognizer.<br/></li>
+          <li><b>Validator</b> - declares major functions of the EGE validator, has to be implemented by
+            every external validator.<br/></li>
+          <li><b>Converter</b> - declares major functions of the EGE converter, has to be implemented by
+            every external converter.<br/></li>
+          <li><b>ConfigurableConverter</b> - extends the standard Converter interface with one
+            additional function of configure().</li>
+        </ul>
+        <p>The description of the methods declared in these three interfaces is presented in following
+          sections.</p>
+      </subsection>
+      <subsection name="Recognizer">
+        <p>Recognizers are responsible for the recognition of the MIME type of data. MIME types are media
+          types identifiers registered by IANA (Internet Assigned Number Authority), the EGE however
+          intentionally does not provide any checking mechanism of this standardization. Therefore
+          the MIME types are just instances of the String type.</p>
+        <p>Declared methods: </p>
+        <ul>
+          <li><b>getRecognizeableMimeTypes(): List&lt;String&gt; </b> - should return a list
+            of MIME types recognized by this recognizer.<br/></li>
+          <li><b>recognize(InputStream inputData) : String </b>- for provided input data a
+            particular recognizer implementation tries to recognize the input MIME type and returns
+            it or throws an exception if the input MIME type was not recognized.</li>
+        </ul>
+      </subsection>
+
+      <subsection name="Validator">
+        <p>Validators are responsible for validating the input data with respect to its format, e.g. if
+          sent data is in ENRICH TEI P5 format.</p>
+        <p> Declared methods:</p>
+        <ul>
+          <li><b>getSuportedValidationTypes() : List&lt;DataType&gt; </b> - method returns
+            data types that the implemented validator is able to validate.<br/></li>
+          <li><b>validate(InputStream inputData, DataType inputDataType) : ValidationResult </b> -
+            method returns instances of the <b>ValidationResult</b> type. Every result contains a status
+            (whether the validation ended with success, error or fatal error) and validation
+            messages (about errors or warnings). If <b>inputDataType</b> is not supported by
+            Validator implementation, method should throw ValidatorException.</li>
+        </ul>
+
+      </subsection>
+
+      <subsection name="Converter">
+        <p>Converters perform conversion of given input stream and store the result of conversion
+          into the given output stream.</p>
+        <p> Declared methods:</p>
+        <ul>
+          <li><b>getPossibleConversions() : List&lt;ConversionActionArguments&gt; </b> -
+            should return list of arguments with pairs of input/output data types supported by
+            the converter implementation and the properties definitions associated with those
+            pairs.<br/></li>
+          <li><b>convert(InputStream inputData, OutputStream outputData, ConversionActionArguments
+              conversionArguments) : void </b> - performs conversion of input data contained within
+            given input stream and puts the converted data into the given output stream. Both the expected input
+            data type and the output data type are contained within the conversionArguments parameter and
+            they should be compatible with the particular converter possibilities. With the basic
+            input/output arguments method can receive conversion parameters filled according to
+            the parameters definitions syntax (also contained within the ConversionActionArguments
+            instance).</li>
+        </ul>
+      </subsection>
+
+      <subsection name="ConfigurableConverter">
+        <p>This extends the standard Converter interface with additional configure() method.</p>
+        <p>Declared methods:</p>
+        <ul>
+          <li><b>configure(Map&lt;String,String&gt; params) : void </b> - converters that
+            implements this interface can receive additional parameters from JPF plugin descriptor.
+            The method is executed from the EGE configuration manager which translates taken parameters into
+            the map argument. The converter is responsible for reading the map and setting up
+            the configuration. The converter can inform EGE configuration manager about configuration errors
+            by throwing an EGEException; improperly configured converter will be disconnected from EGE
+            . <br/></li>
+        </ul>
+      </subsection>
+
+
+      <subsection name="EGE interface and implementation">
+        <p>The main EGE interface is the <b>pl.psnc.dl.ege.EGE</b>. It describes functionality for
+          complex and multiple conversions of data. The intention of the EGE is to construct a graph of
+          conversions, where every possibility of conversion is describes by graph paths. The graph
+          structure and its basic algorithms are implemented through external JUNG library by the <b>EGE
+            framework</b> class - <b>pl.psnc.dl.ege.EGEImpl</b> which is also the main implementation of
+          the EGE interface.</p>
+        <p>The main methods of <b>pl.psnc.dl.ege.EGE</b> interface are: </p>
+        <ul>
+          <li><b>findConversionPaths(DataType sourceDataType) :
+              List&lt;ConversionsPath&gt;</b> - finds all possible ways of conversion for
+            the given data type; all those ways (conversion paths), are returned as a List of
+            ConversionsPath instances. ConversionsPath instances received from this method can be
+            used as the input parameter of a performConversion() method.<br/></li>
+          <li><b>findConversionPaths(DataType sourceDataType, DataType resultDataType) :
+              List&lt;ConversionsPath&gt;</b> - finds all possible ways of conversion from
+            the specified sourceDataType to resultDataType. Depending on the set of loaded converters,
+            there can be several parallel paths.<br/></li>
+          <li><b>performConversion(InputStream inputData, OutputStream outputStream, ConversionsPath
+            path) : void </b> - performs multiple conversions described by the ConversionsPath
+            parameter. Converted input data - provided through the given input stream is written to
+            the output described by the given output stream.<br/></li>
+          <li><b>performValidation(InputStream inputData, DataType inputDataType) : ValidationResult
+            </b> - this method performs validation using all loaded through the extension mechanism Validator
+            interface implementations. The method returns ValidationResult instance which contains
+            the status of a result and the validation messages. If no validator recognizes inputDataType as
+            supported then an exception will occur.<br/></li>
+          <li><b>performRecognition(InputStream inputData) : String </b> - This method performs
+            the recognition of the MIME type of an input data using all loaded EGE recognizers. If any
+            of the loaded EGE recognizers decodes the MIME type of the input data, the method returns the String
+            value of the MIME type, otherwise the method throws an exception.</li>
+        </ul>
+
+        <p>The EGE interface methods are implemented by the EGEImpl class of the EGE framework. Internally
+          the conversion graph is initialized in the EGEImpl constructor from the loaded external plugins -
+          implementations of the Converter interface. JPF extensions are managed through an instance of
+            <b>pl.psnc.dl.ege.EGEConfigurationManager</b> class. From each loaded converter its
+          supported ConversionActionArguments are read and used for the creation of nodes for
+          the conversion graph. During the graph construction the nodes are connected with the directed edge by
+          rule: an arc from node A to node B can only be added if at least one of the node A output data
+          types is compatible with at least one of the node B input data types. For each compatible
+          input/output pair an arc in the graph is added. </p>
+		  <p><b>Important: </b>EGE API assumes conversion of the data by usage of the streams - one input stream for the input data and one output stream for the output data. In order to make it possible to provide input data and output data consisting of multiple files/directories, EGE implementation requires that every EGE converter accepts data and outputs data by means of a ZIP archive. This requirement is crucial not only for appropriate conversion of data consisting of multiple files/directories, but also for conversion results consisting of multiple files/directories. To have a simple rules for EGE converter creation, EGE implementation requires <u>every</u> converter to obey this requirement. Additionally, for developers' convenience EGE implementation provides functionality for compressing multiple files into a ZIP archive and decompressing ZIP archive. These functions are provided by the ZipIOResolver class. An instance of this class is returned by the <i>getStandardIOResolver()</i> method of the <i>EGEConfigurationManager</i> instance.
+Please, note that this requirement is stated by this specific EGE implementation and not by the EGE API itself.</p>
+      </subsection>
+    </section>
+  </body>
+</document>
+

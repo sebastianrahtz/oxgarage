@@ -9,7 +9,7 @@ import pl.psnc.dl.ege.exception.RecognizerException;
 /**
  * <p>Main EGE Recognizer interface.</p>
  * 
- * Recognizer – this component is responsible for the recognition of the Internet Media Type
+ * Recognizer: this component is responsible for the recognition of the Internet Media Type
  * (MIME type) of the given input data. For example, it will receive the input data and state
  * that the input data has text/xml Internet Media Type (IMT). The recognized data may be
  * further validated to check the format of the data.

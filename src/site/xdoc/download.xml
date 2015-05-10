@@ -1,0 +1,39 @@
+﻿<document xmlns="http://maven.apache.org/XDOC/2.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+  <properties>
+    <title>Download</title>
+  </properties>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="Download">
+      <!-- Within sections, any XHTML can be used -->
+		<p>Download the EGE web package (EGE web service with web client):</p> 
+			<ul><li><a href="http://dl.psnc.pl/software/EGE/ege-webapp-0.4.3-dist.zip">EGE ver 0.4.3 (2009.12.03)</a>
+			</li></ul>
+    	<p>Download the older EGE versions:</p> 
+			<ul>
+			<li><a href="http://dl.psnc.pl/software/EGE/ege-webapp-0.4.2.zip">EGE ver 0.4.2 (2009.11.05)</a>
+			</li>
+			<li><a href="http://dl.psnc.pl/software/EGE/ege-webapp-0.4.1.zip">EGE ver 0.4.1 (2009.11.02)</a>
+			</li>
+			<li><a href="http://dl.psnc.pl/software/EGE/ege-webapp-0.3.zip">EGE ver 0.3 (2009.10.01)</a>
+			</li>
+			<li><a href="http://dl.psnc.pl/software/EGE/ege-webapp-0.2.zip">EGE ver 0.2 (2009.08.24)</a>
+			</li>
+			<li><a href="http://dl.psnc.pl/software/EGE/ege-webapp-0.1.zip">EGE ver 0.1 (2009.07.09)</a>
+			</li>
+			</ul>
+		<subsection name="Installing and configuring EGE web package - Apache Tomcat">
+			<p>Step 1 : Download the Servlet/JSP container Apache Tomcat (version 5.5 and 6.x supported) from this page - <a href="http://tomcat.apache.org/" target="_blank">Apache Tomcat</a>
+				and install it. Or install it through another method depending upon your operating system. 
+			</p>
+			<p>Step 2 : Unzip the downloaded <b>ege-webapp.zip</b>. Copy both "ege-webservice" and "ege-webclient" directories into the <i>'APACHE_TOCMAT_HOME/webapps/'</i> folder.</p>
+			<p>Step 3 : Configure the EGE web client - instructions can be found at : <a href="multiprojects/ege-webclient/download.html" target="_blank">Download the EGE web client</a></p>
+			<p>Step 4 : Start Apache Tomcat from command line by typing <b>'startup'</b> from the <i>'APACHE_TOMCAT_HOME/bin/'</i> folder.</p>
+			<p>Step 5 : Run the EGE RESTful client application in your browser by going to the following URL: http://localhost:[port]/ege-webclient/, where [port] is your configured tomcat HTTP port
+			(8080 by default).</p>
+		</subsection>
+    </section>
+  </body>
+</document>

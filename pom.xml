@@ -6,7 +6,7 @@
   <packaging>pom</packaging>
   <version>0.5.0</version>
   <name>Enrich Garage Engine</name>
-  <url>http://dl.psnc.pl/software/EGE/</url>
+  <url>http://oxgarage.oucs.ox.ac.uk:8080/</url>
   <licenses>
     <license>
       <name>GPL</name>
@@ -35,7 +35,7 @@
     <developer>
       <id>james.cummings</id>
       <name>James Cummings</name>
-      <email>james.cummings@oucs.ox.ac.uk</email>
+      <email>james.cummings@it.ox.ac.uk</email>
       <roles>
         <role>Stakeholder</role>
       </roles>
@@ -44,7 +44,7 @@
     <developer>
       <id>lou.burnard</id>
       <name>Lou Burnard</name>
-      <email>lou.burnard@oucs.ox.ac.uk</email>
+      <email>lou.burnard@retired.ox.ac.uk</email>
       <roles>
         <role>Stakeholder</role>
       </roles>
@@ -53,7 +53,7 @@
     <developer>
       <id>sebastian.rahtz</id>
       <name>Sebastian Rahtz</name>
-      <email>sebastian.rahtz@oucs.ox.ac.uk</email>
+      <email>sebastian.rahtz@it.ox.ac.uk</email>
       <roles>
         <role>Stakeholder</role>
       </roles>

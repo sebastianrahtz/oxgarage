@@ -1,0 +1,129 @@
+﻿<document xmlns="http://maven.apache.org/XDOC/2.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+	<properties>
+		<title>XSL converter configuration</title>
+	</properties>
+	<body>
+		<!-- The body of the document contains a number of sections -->
+		<section name="XSL converter configuration">
+
+			<subsection name="Introduction ">
+				<p>The standard EGE API implementation includes two extensions by default:</p>
+				<ul>
+					<li><b>TEI</b> format converter; </li>
+					<li><b>XSL</b> converter.</li>
+				</ul>
+				<p>The XSL converter is able to transform an XML file using a given XSL
+					transformation file. By default there are 2 XSL transformation files defined in
+					the XSL converter plugin descriptor (see below) :</p>
+				<source>
+&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;!DOCTYPE plugin PUBLIC &quot;-//JPF//Java Plug-in Manifest 0.4&quot; &quot;http://jpf.sourceforge.net/plugin_0_7.dtd&quot;&gt;
+&lt;plugin id=&quot;pl.psnc.dl.ege.xsl.converter&quot; version=&quot;1.0&quot;&gt;
+	&lt;requires&gt;
+		&lt;import plugin-id=&quot;pl.psnc.dl.ege.root&quot;/&gt;
+	&lt;/requires&gt;
+	&lt;extension plugin-id=&quot;pl.psnc.dl.ege.root&quot; point-id=&quot;XslConverter&quot; id=&quot;MasterToEnrichConverter&quot;&gt;
+		&lt;parameter id=&quot;class&quot; value=&quot;pl.psnc.dl.ege.MultiXslConverter&quot;/&gt;
+		&lt;parameter id=&quot;name&quot; value=&quot;MASTER to Enrich Converter&quot;/&gt;
+		&lt;parameter id=&quot;xsluri&quot; value=&quot;http://tei.oucs.ox.ac.uk/ENRICH/XSLT/xsl/master2enrich.xsl&quot;/&gt;
+		&lt;parameter id=&quot;iMimeType&quot; value=&quot;text/xml&quot; /&gt;
+		&lt;parameter id=&quot;iFormat&quot; value=&quot;MASTER&quot; /&gt;
+		&lt;parameter id=&quot;oMimeType&quot; value=&quot;text/xml&quot; /&gt;
+		&lt;parameter id=&quot;oFormat&quot; value=&quot;ENRICH TEI P5&quot; /&gt;
+	&lt;/extension&gt;
+	&lt;extension plugin-id=&quot;pl.psnc.dl.ege.root&quot; point-id=&quot;XslConverter&quot; id=&quot;EadToEnrichConverter&quot;&gt;
+		&lt;parameter id=&quot;class&quot; value=&quot;pl.psnc.dl.ege.MultiXslConverter&quot;/&gt;
+		&lt;parameter id=&quot;name&quot; value=&quot;EAD to Enrich Converter&quot;/&gt;
+		&lt;parameter id=&quot;xsluri&quot; value=&quot;http://tei.oucs.ox.ac.uk/ENRICH/XSLT/xsl/ead2enrich.xsl&quot; /&gt;
+		&lt;parameter id=&quot;iMimeType&quot; value=&quot;text/xml&quot; /&gt;
+		&lt;parameter id=&quot;iFormat&quot; value=&quot;EAD&quot; /&gt;
+		&lt;parameter id=&quot;oMimeType&quot; value=&quot;application/zip&quot; /&gt;
+		&lt;parameter id=&quot;oFormat&quot; value=&quot;ENRICH TEI P5&quot; /&gt;
+	&lt;/extension&gt;
+&lt;/plugin&gt;
+	</source>
+				<p>In order to add additional XSL transformations you have to modify the XSL converter
+					plugin descriptor - 'plugin.xml' file located in the META-INF directory of the
+					ege-xsl-converter.jar.</p>
+				<p>To add a new XSL transformation, please follow these 3 steps: </p>
+				<ol>
+					<li>Unzip the <b>ege-xsl-converter.jar</b>.</li>
+					<li>Modify the <b>'plugin.xml'</b> file located in the META-INF directory.</li>
+					<li>Repack the files back to <b>ege-xsl-converter.jar</b>.</li>
+				</ol>
+			</subsection>
+			<subsection
+				name="Modifying the 'plugin.xml' descriptor file (adding a new XSL transformation).">
+				<p>In order to add a new XSL transformation, you have to add a new extension to the
+					'plugin.xml' descriptor file.</p>
+				<p>There are 5 required properties of the extension that have to be provided for an
+					XSL transformation :</p>
+				<ul>
+					<li><b>xsluri</b> where the converter developer can specify URI address of xsl
+						transformation scheme;</li>
+					<li><b>iMimeType</b> - defines the mime type of input data; </li>
+					<li><b>iFormat</b> - defines the format of input data;</li>
+					<li><b>oMimeType</b> - defines the mime type of output data;</li>
+					<li><b>oFormat</b> - defines the format of output data.</li>
+				</ul>
+				<p>For instance, in order to add an XSL transformation that transforms data from
+					FOO(text/xml) format to BAR(text/xml) format using foobar.xsl transformation
+					scheme, available under http://pl.psnc.ege.pl/foobar.xsl, the following
+					definition of an additional extension have to be included into the 'plugin.xml'
+					descriptor file: </p>
+				<source>
+&lt;extension plugin-id=&quot;pl.psnc.dl.ege.root&quot; point-id=&quot;XslConverter&quot; id=&quot;FooToBarConverter&quot;&gt;
+		&lt;parameter id=&quot;class&quot; value=&quot;pl.psnc.dl.ege.FooToBarConverter&quot;/&gt;
+		&lt;parameter id=&quot;name&quot; value=&quot;FOO to BAR converter&quot;/&gt;
+		&lt;parameter id=&quot;xsluri&quot; value=&quot;http://pl.psnc.ege.pl/foobar.xsl&quot; /&gt;
+		&lt;parameter id=&quot;iMimeType&quot; value=&quot;text/xml&quot; /&gt;
+		&lt;parameter id=&quot;iFormat&quot; value=&quot;FOO&quot; /&gt;
+		&lt;parameter id=&quot;oMimeType&quot; value=&quot;text/xml&quot; /&gt;
+		&lt;parameter id=&quot;oFormat&quot; value=&quot;BAR&quot; /&gt;
+&lt;/extension&gt;
+</source>
+				<p>Finally, the <b>'plugin.xml'</b> file would look like this: </p>
+				<source>
+&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;!DOCTYPE plugin PUBLIC &quot;-//JPF//Java Plug-in Manifest 0.4&quot; &quot;http://jpf.sourceforge.net/plugin_0_7.dtd&quot;&gt;
+&lt;plugin id=&quot;pl.psnc.dl.ege.xsl.converter&quot; version=&quot;1.0&quot;&gt;
+	&lt;requires&gt;
+		&lt;import plugin-id=&quot;pl.psnc.dl.ege.root&quot;/&gt;
+	&lt;/requires&gt;
+	&lt;extension plugin-id=&quot;pl.psnc.dl.ege.root&quot; point-id=&quot;XslConverter&quot; id=&quot;MasterToEnrichConverter&quot;&gt;
+		&lt;parameter id=&quot;class&quot; value=&quot;pl.psnc.dl.ege.MultiXslConverter&quot;/&gt;
+		&lt;parameter id=&quot;name&quot; value=&quot;MASTER to Enrich Converter&quot;/&gt;
+		&lt;parameter id=&quot;xsluri&quot; value=&quot;http://tei.oucs.ox.ac.uk/ENRICH/XSLT/xsl/master2enrich.xsl&quot;/&gt;
+		&lt;parameter id=&quot;iMimeType&quot; value=&quot;text/xml&quot; /&gt;
+		&lt;parameter id=&quot;iFormat&quot; value=&quot;MASTER&quot; /&gt;
+		&lt;parameter id=&quot;oMimeType&quot; value=&quot;text/xml&quot; /&gt;
+		&lt;parameter id=&quot;oFormat&quot; value=&quot;ENRICH TEI P5&quot; /&gt;
+	&lt;/extension&gt;
+	&lt;extension plugin-id=&quot;pl.psnc.dl.ege.root&quot; point-id=&quot;XslConverter&quot; id=&quot;EadToEnrichConverter&quot;&gt;
+		&lt;parameter id=&quot;class&quot; value=&quot;pl.psnc.dl.ege.MultiXslConverter&quot;/&gt;
+		&lt;parameter id=&quot;name&quot; value=&quot;EAD to Enrich Converter&quot;/&gt;
+		&lt;parameter id=&quot;xsluri&quot; value=&quot;http://tei.oucs.ox.ac.uk/ENRICH/XSLT/xsl/ead2enrich.xsl&quot; /&gt;
+		&lt;parameter id=&quot;iMimeType&quot; value=&quot;text/xml&quot; /&gt;
+		&lt;parameter id=&quot;iFormat&quot; value=&quot;EAD&quot; /&gt;
+		&lt;parameter id=&quot;oMimeType&quot; value=&quot;application/zip&quot; /&gt;
+		&lt;parameter id=&quot;oFormat&quot; value=&quot;ENRICH TEI P5&quot; /&gt;
+	&lt;/extension&gt;
+	&lt;!-- new FOO to BAR converter plugin declaration --&gt;
+	&lt;extension plugin-id=&quot;pl.psnc.dl.ege.root&quot; point-id=&quot;XslConverter&quot; id=&quot;FooToBarConverter&quot;&gt;
+		&lt;parameter id=&quot;class&quot; value=&quot;pl.psnc.dl.ege.FooToBarConverter&quot;/&gt;
+		&lt;parameter id=&quot;name&quot; value=&quot;FOO to BAR converter&quot;/&gt;
+		&lt;parameter id=&quot;xsluri&quot; value=&quot;http://pl.psnc.ege.pl/foobar.xsl&quot; /&gt;
+		&lt;parameter id=&quot;iMimeType&quot; value=&quot;text/xml&quot; /&gt;
+		&lt;parameter id=&quot;iFormat&quot; value=&quot;FOO&quot; /&gt;
+		&lt;parameter id=&quot;oMimeType&quot; value=&quot;text/xml&quot; /&gt;
+		&lt;parameter id=&quot;oFormat&quot; value=&quot;BAR&quot; /&gt;
+	&lt;/extension&gt;
+&lt;/plugin&gt;
+</source>
+			</subsection>
+		</section>
+	</body>
+</document>
+

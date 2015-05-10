@@ -1,0 +1,80 @@
+﻿<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+  <properties>
+    <title>Introduction to the EGE framework</title>
+  </properties>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="Introduction to the EGE framework">
+      <!-- Within sections, any XHTML can be used -->
+      <p>The EGE is a major part of the ENRICH Garage system; its implementation is responsible for
+        the management of conversions, transformations and validations of data performed by the
+        ENRICH Garage. Conversions, transformations and validations are performed by a set of
+        plug-ins compatible with the EGE plug-in specification. The software was initially created
+        by the PSNC and OUCS as a part of the ENRICH project funded by the European Commission. EGE is
+        distributed under an open-source license.</p>
+      <p>The EGE is a framework. It provides definitions of plug-ins (building blocks) which can be
+        used in combination to perform a series of operations. There is also the API that can be used
+        by other applications utilizing EGE. The image below presents the overview of the EGE
+        architecture.</p>
+      <img src="images/ege-overview.png" alt="EGE Overview"/>
+
+      <p>The use of the EGE is possible via the EGE API, which allows a program to:</p>
+      <ul>
+        <li>discover the functionality available for a particular data format that EGE provides with a current
+          set of plug-ins;</li>
+        <li>perform those available operations (e.g. conversion).</li>
+      </ul>
+      <p>There are three basic types of EGE plug-ins: Recognizer, Converter and Validator. </p>
+      <ul>
+        <li><b>Recognizer</b> - this plug-in is responsible for the recognition of the Internet
+          Media Type (MIME type) of the given input data. For example, it will receive the input
+          data and state that the input data has text/xml MIME type. The recognized data may then be
+          further validated to check the format of the data.</li>
+        <li><b>Validator</b> - this plug-in is responsible for validation of the input data. For
+          example it may be used to validate the ENRICH TEI P5 data stored in a MIME type (e.g.
+          text/xml) either received from end user or created by one of the converters. The following
+          notation is assumed: ENRICH TEI P5 (text/xml) - it means that validator is able to
+          validate ENRICH TEI P5 format encoded in text/xml.</li>
+        <li><b>Converter</b> - this plug-in is responsible for converting the input data. It may be,
+          for example, conversion from XML to Word, conversion from Word to PDF, conversion of the
+          XML from one form to another (e.g. MASTER -> ENRICH TEI P5) or even cleaning the input
+          data (e.g. removing redundant information).</li>
+      </ul>
+      <p>The idea is that there may be a number of implementations for each particular plug-in type
+        (e.g. two recognizers, five converters and three validators) connected to EGE instance.
+        Plug-ins are connected to the EGE automatically at the start time and can be combined to perform
+        complex iterative operations. The extensions mechanism is based on the Java Plugin Framework
+        (http://jpf.sourceforge.net/) library. Thanks to this approach it is possible for other interested parties to extend the
+        EGE if desired. </p>
+      <subsection name="EGE Projects">
+        <p>Currently EGE consists of the following projects : </p>
+        <ul>
+          <li>
+            <a href="multiprojects/ege-api/index.html">EGE API</a>
+          </li>
+          <li>
+            <a href="multiprojects/ege-framework/index.html">EGE framework</a>
+          </li>
+          <li>
+            <a href="multiprojects/ege-xsl-converter/index.html">EGE XSL converter</a>
+          </li>
+          <li>
+            <a href="multiprojects/tei-converter/index.html">EGE TEI converter</a>
+          </li>
+          <li>
+            <a href="multiprojects/ege-validator/index.html">EGE validator</a>
+          </li>
+          <li>
+            <a href="multiprojects/ege-webservice/index.html">EGE RESTful web service</a>
+          </li>
+          <li>
+            <a href="multiprojects/ege-webclient/index.html">EGE web client</a>
+          </li>
+        </ul>
+      </subsection>
+    </section>
+  </body>
+</document>
+

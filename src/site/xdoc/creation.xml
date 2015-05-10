@@ -1,0 +1,213 @@
+﻿<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+  <properties>
+    <title>Creating EGE extensions</title>
+  </properties>
+  <body>
+    <!-- The body of the document contains a number of sections -->
+    <section name="Creating EGE extensions">
+      <p>The extension mechanism used in EGE is based on the Java Plugin Framework (JPF). More
+        information about which can be found at: <a href="http://jpf.sourceforge.net"
+          >http://jpf.sourceforge.net</a>. This section explains how to create sample implementation
+        of a converter.</p>
+	  <p>Currently the EGE project has to offer implementations of extensions : </p>
+	  <ul>
+	  <li><a href="mutliprojects/tei-converter/index.html">EGE TEI Converter</a> - conversion of TEI format to other formats.</li>
+	  <li><a href="mutliprojects/ege-xsl-converter/index.html">EGE XSL Converter</a> - conversion based on XSLT.</li>
+	  <li><a href="mutliprojects/ege-validator/index.html">EGE Validator</a> - validator of XML based formats.</li>
+	  </ul>
+	 <p><b>Important: </b>EGE API assumes conversion of the data by usage of the streams - one input stream for the input data and one output stream for the output data. In order to make it possible to provide input data and output data consisting of multiple files/directories, EGE implementation requires that every EGE converter accepts data and outputs data by means of a ZIP archive. This requirement is crucial not only for appropriate conversion of data consisting of multiple files/directories, but also for conversion results consisting of multiple files/directories. To have a simple rules for EGE converter creation, EGE implementation requires <u>every</u> converter to obey this requirement. Additionally, for developers convenience EGE implementation provides functionality for compressing multiple files into a ZIP archive and decompressing ZIP archive. These functions are provided by the ZipIOResolver class. An instance of this class is returned by the <i>getStandardIOResolver()</i> method of the <i>EGEConfigurationManager</i> instance.
+Please, note that this requirement is stated by this specific EGE implementation and not by the EGE API itself.</p>
+      <subsection name="Step 1: Java code">
+        <p>Each extension project has to import at least the <b>EGE API and EGE framework libraries
+            (ege-api-X.jar,ege-framework-x.jar where X is the library version)</b> in order to be
+          able to use the EGE interfaces, data types and extensions mechanism.</p>
+        <p>In this case the implemented class, named SampleConverter, will implement the 
+            <b>pl.psnc.dl.ege.Converter</b> interface. Implementing every method of this interface
+          should result in code that looks like this:</p>
+        <source>
+package com.myapp.converter;
+
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import pl.psnc.dl.ege.component.Converter;
+import pl.psnc.dl.ege.exception.ConverterException;
+import pl.psnc.dl.ege.types.ConversionActionArguments;
+import pl.psnc.dl.ege.types.DataType;
+
+public class SampleConverter implements Converter
+{
+	
+	public void convert(InputStream input, OutputStream output, ConversionActionArguments conversionArguments) throws ConverterException, IOException 	
+{
+	// if conversionArguments are correct
+		// perform proper conversion:
+		// handle properties (if they were defined) taken from conversionArguments
+		// read data from input stream
+		// transform data according to implemented logic
+		// write data into output stream
+	}
+
+	public List&lt;ConversionActionArguments&gt; getPossibleConversions() 
+{
+		// return the list of ConversionActionArguments 
+		// that describes possibilities
+		// of this particular converter implementation.
+		return .........;
+	}
+	
+}
+	</source>
+        <p>Through the <b>getPossibleConversions()</b> method the converter informs the external
+          application in which it is embedded about the possibilities of the converter. It is done by
+          returning a list of pairs of data types and conversion properties definitions (instances of
+          ConversionActionArguments). Method <b>convert()</b> should contain the necessary conversion
+          logic, which checks the specific ConversionActionArguments, handles received parameters,
+          performs conversion on data from the input stream and writes the result of conversion to a given
+          output stream.</p>
+        <p><b>
+            <i>IMPORTANT:</i>
+          </b> The input and output streams will be opened and closed by EGE. Therefore the plug-in
+          code should not try to open or close those streams.</p>
+		<p><b>Creating converter with input and output data compression.</b></p>
+			<p>EGE implementation requires that every EGE converter accepts data and outputs data in form of a ZIP archive. In order to obey this requirement EGE converter may use functions available in the EGE implementation package. These functions are provided by the ZipIOResolver class. An instance of this class is returned by the <i>getStandardIOResolver()</i> method of the <i>EGEConfigurationManager</i> instance. IOResolver provides two simple methods for compression and decompression of data :</p>
+			<ul>
+				<li>decompressStream(InputStream is, File dir) : void - unpacks ZIP archive transferred through the given InputStream to a target 'dir' folder.</li>
+				<li>compressData(File dir, OutputStream os) : void - packs specified source 'dir' to a ZIP archive and sends it to the OutputStream.</li>
+			</ul>
+			<p>Example code showing the usage of EGE IOResolver is presented below: </p>
+			        <source>
+package com.myapp.converter;
+
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import pl.psnc.dl.ege.component.Converter;
+import pl.psnc.dl.ege.exception.ConverterException;
+import pl.psnc.dl.ege.types.ConversionActionArguments;
+import pl.psnc.dl.ege.types.DataType;
+
+public class SampleConverter implements Converter
+{
+	private final IOResolver ior = EGEConfigurationManager.getInstance().getStandardIOResolver();
+	
+	public void convert(InputStream input, OutputStream output, ConversionActionArguments conversionArguments) throws ConverterException, IOException 	
+	{
+		File inputTempDir = new File("in_foobar");
+		File outputTempDir = new File("out_foobar");
+		try{
+			ior.decompressStream(input, inputTempDir); // unpack transferred data into temporary directory
+			// if conversionArguments are correct
+			// perform proper conversion:
+			// handle properties (if they were defined) taken from conversionArguments
+			// read data from temporary directory
+			// transform data according to implemented logic
+			// write data into output temporary directory
+			ior.compressData(outputTempDir, output); // compress converted data from output temporary directory and transferr it to output stream.
+		}finally{
+			// cleanup temporary data
+		}
+	}
+
+	public List&lt;ConversionActionArguments&gt; getPossibleConversions() 
+	{
+		// return the list of ConversionActionArguments 
+		// that describes possibilities
+		// of this particular converter implementation.
+		return .........;
+	}
+	
+}
+	</source>
+				
+		  
+	  </subsection>
+      <subsection name="Step 2 : JPF Descriptor">
+        <p>Before creating a .jar file with the plug-in, it is necessary to create the JPF plug-in
+          descriptor to mark the converter class as a JPF plug-in. </p>
+        <p>Descriptor file name is <b>plugin.xml</b> and it should look like this: </p>
+        <source>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;!DOCTYPE plugin PUBLIC &quot;-//JPF//Java Plug-in Manifest 0.4&quot; &quot;http://jpf.sourceforge.net/plugin_0_7.dtd&quot;&gt;
+(1) &lt;plugin id=&quot;com.mycompany.converter&quot; version=&quot;1.0&quot;&gt;
+(2)	&lt;requires&gt;
+(3)		&lt;import plugin-id=&quot;pl.psnc.dl.ege.root&quot;/&gt;
+(4)	&lt;/requires&gt;
+(5)	&lt;extension plugin-id=&quot;pl.psnc.dl.ege.root&quot; point-id=&quot;Converter&quot; id=&quot;SampleConverter&quot;&gt;
+(6)		&lt;parameter id=&quot;class&quot; value=&quot;com.myapp.converter.SampleConverter&quot;/&gt;
+(7)		&lt;parameter id=&quot;name&quot; value=&quot;Sample Converter&quot;/&gt;
+(8)	&lt;/extension&gt;
+(9) &lt;/plugin&gt;
+	</source>
+        <p>Every plug-in in JPF has its unique <b>id</b>, which is defined in the <b>plug-in</b> element
+          by an <b>id</b> attribute (in our case it is
+            <b>&quot;com.mycompany.converter&quot;</b>, see line 1). Every JPF extension is
+          connected to a specified extension point, which in this case is
+            <b>&quot;Converter&quot;</b> (described by a point-id attribute of the extension
+          element in line 5, imported in lines 2 to 4). Extension points are defined within the JPF
+          descriptor of EGE API and they are: Converter, Validator and Recognizer. More information
+          about the JPF plug-in descriptors are available at <a href="http://jpf.sourceforge.net"
+            >http://jpf.sourceforge.net</a>.</p>
+        <p>The extension element (lines 5 - 8) contains two additional parameters:</p>
+        <ul>
+          <li>In line 6 the id "class" and the value containing full name of the class that implements
+            Converter interface, in this example it is "com.myapp.converter.SampleConverter".</li>
+          <li>In line 7 the id "name" and value containing the name of the converter.</li>
+        </ul>
+        <p>This descriptor has to be inserted in the root directory of extension .jar file or in its
+          direct sub-directory named <b>"META-INF"</b>. Finally to use the created example converter
+          in EGE client application, its .jar file(s) has to be added to the classpath of the EGE
+          client.</p>
+      </subsection>
+      <subsection name="Creating other extensions">
+        <p>The process of creating Recognizer and Validator extensions is very similar. First of all we
+          need to create a class that implements one of the chosen interfaces - Reconizer or Validator
+          and secondly change few things in the <b>plugin.xml</b> file:</p>
+        <source>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;!DOCTYPE plugin PUBLIC &quot;-//JPF//Java Plug-in Manifest 0.4&quot; &quot;http://jpf.sourceforge.net/plugin_0_7.dtd&quot;&gt;
+(1) &lt;plugin id=&quot;com.mycompany.validator&quot; version=&quot;1.0&quot;&gt;
+(2)	&lt;requires&gt;
+(3)		&lt;import plugin-id=&quot;pl.psnc.dl.ege.root&quot;/&gt;
+(4)	&lt;/requires&gt;
+(5)	&lt;extension plugin-id=&quot;pl.psnc.dl.ege.root&quot; point-id=&quot;Validator&quot; id=&quot;SampleValidator&quot;&gt;
+(6)		&lt;parameter id=&quot;class&quot; value=&quot;com.myapp.validator.SampleValidator&quot;/&gt;
+(7)		&lt;parameter id=&quot;name&quot; value=&quot;Sample Validator&quot;/&gt;
+(8)	&lt;/extension&gt;
+(9) &lt;/plugin&gt;
+	</source>
+        <p>This example shows the extension of Validator. First line shows that the <b>id</b> attribute
+          of <b>plugin</b> element has changed into different name - every plugin must have a unique
+          name. Line (5) shows the differences within extension element : <b>point-id</b> parameter is
+          now of <b>&quot;Validator&quot;</b> value and the <b>id</b> parameter has changed into
+          <b>'SampleValidator'</b>. Finally, it is necessary to change the parameter with id
+          <b>&quot;class&quot;</b> in (6) line, where in the attribute value we have to point to
+          our class name - that implements the Validator interface and also change the value attribute of
+          the next parameter - name in line (7). Creating the Recognizer extension is almost the same. The
+          difference is that we need to create the class that implements the Recognizer interface and
+          particular attributes have to be changed in <b>plugin.xml</b> :</p>
+        <source>&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;!DOCTYPE plugin PUBLIC &quot;-//JPF//Java Plug-in Manifest 0.4&quot; &quot;http://jpf.sourceforge.net/plugin_0_7.dtd&quot;&gt;
+(1) &lt;plugin id=&quot;com.mycompany.recognizer&quot; version=&quot;1.0&quot;&gt;
+(2)	&lt;requires&gt;
+(3)		&lt;import plugin-id=&quot;pl.psnc.dl.ege.root&quot;/&gt;
+(4)	&lt;/requires&gt;
+(5)	&lt;extension plugin-id=&quot;pl.psnc.dl.ege.root&quot; point-id=&quot;Recognizer&quot; id=&quot;SampleRecognizer&quot;&gt;
+(6)		&lt;parameter id=&quot;class&quot; value=&quot;com.myapp.recognizer.SampleRecognizer&quot;/&gt;
+(7)		&lt;parameter id=&quot;name&quot; value=&quot;Sample Recognizer&quot;/&gt;
+(8)	&lt;/extension&gt;
+(9) &lt;/plugin&gt;
+	</source>
+        <p>Once again it is necessary to change the following attributes : </p>
+        <ul>
+          <li><b>id</b> attribute within the plugin element (line 1);</li>
+          <li><b>point-id</b> attribute within the extension element to 'Recognizer' (line 5);</li>
+          <li><b>id</b> attribute of the extension element to a unique value which will identify the
+            extension (line 5);</li>
+          <li><b>value</b> attribute of both the parameter elements (lines 6-7).</li>
+        </ul>
+      </subsection>
+    </section>
+  </body>
+</document>
+

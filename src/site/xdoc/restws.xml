@@ -1,0 +1,463 @@
+﻿<document xmlns="http://maven.apache.org/XDOC/2.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+	<properties>
+		<title>EGE RESTful Web Service</title>
+	</properties>
+	<body>
+		<!-- The body of the document contains a number of sections -->
+		<section name="EGE Conversion and Validation RESTful Web Service interface">
+
+			<subsection name="1. Introduction">
+				<p>EGE RESTful Web Service is a simple web application which exposes the EGE
+					functionality as a set of RESTful online services. </p>
+				<p>Assuming that the EGE RESTful Web Service has been installed under 'ege-webapp'
+					name in the application/servlet container, the following URL syntax should be used to
+					perform operations: </p>
+				<ul>
+					<li>
+						<b>http://[server_adress]:[port]/ege-webapp/[resources]</b>
+					</li>
+				</ul>
+				<p>The EGE RESTful Web Service supports the following operations (request parameters are
+					specified in the [resources] part): </p>
+				<ul>
+					<li>
+						<b>Conversion operations</b>
+						<ol>
+							<li><b>List input data types :</b>
+								http://[server_adress]:[port]/ege-webapp/Conversions/ - lists all
+								the supported input data types. </li>
+							<li><b>List conversion paths:</b>
+								http://[server_adress]:[port]/ege-webapp/Conversions/[input data
+								type] - lists all the possible conversion paths for the given [input
+								data type].</li>
+							<li><b>Convert:</b>
+								http://[server_adress]:[port]/ege-webapp/Conversions/[conversion
+								path] - performs conversion of the given input data according to the
+								given [conversion path]. </li>
+						</ol>
+					</li>
+					<li>
+						<b>Validation operations</b>
+						<ol>
+							<li><b>List input data types :</b>
+								http://[server_adress]:[port]/ege-webapp/Validation/ - lists all
+								the supported input data types. </li>
+							<li><b>Validate:</b>
+								http://[server_adress]:[port]/ege-webapp/Validation/[input data
+								type] - performs validation of the given input data. </li>
+						</ol>
+					</li>
+				</ul>
+
+				<p>The following sections describe in detail the above operations, in particular the
+					syntax of the [input data type] and the [conversion path] parts. </p>
+			</subsection>
+
+			<subsection name="2. Conversion">
+
+				<h4>2.1. 'List input data types' operation</h4>
+				<p>This operation lists all data types (called input data types) which can be
+					converted by this particular instance of the EGE RESTful Web Service. The operation should be invoked using
+					the GET method of the HTTP protocol. In order to invoke this operation, use the
+					following URL (we assume that the EGE RESTful Web Service is installed under
+					'ege-webapp' path of the application/servlet container): </p>
+				<ul>
+					<li>
+						<b>http://[server_address]:[port]/ege-webapp/Conversions/ </b>
+					</li>
+				</ul>
+				<p>where [server_address] is the address of a server on which the EGE RESTful
+					application is running, and the [port] is the port number of the server. </p>
+				<p>The following responses are possible:</p>
+				<ul>
+					<li><b>status code 200</b> - when operation has been performed successfully and
+						there are available conversions (there are certain input data types); </li>
+					<li><b>status code 204</b> - when no input data types are found - there are no
+						conversions available; </li>
+					<li><b>status code 405</b> - 'wrong method' error, when requested URL suggests
+						conversion operation.</li>
+				</ul>
+
+				<p>For example, for the following request:</p>
+				<ul>
+					<li>
+						<b>http://localhost:8080/ege-webapp/Conversions/ </b>
+					</li>
+				</ul>
+
+				<p>the following XML response is provided:</p>
+				<source>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;input-data-types xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+	&lt;input-data-type id=&quot;TEI,text/xml&quot; xlink:href=&quot;http://localhost:8080/ege-webapp/Conversions/TEI%3Atext%3Axml/&quot; /&gt;
+	&lt;input-data-type id=&quot;MASTER,text/xml&quot; xlink:href=&quot;http://localhost:8080/ege-webapp/Conversions/MASTER%3Atext%3Axml/&quot; /&gt;
+	&lt;input-data-type id=&quot;EAD,text/xml&quot; xlink:href=&quot;http://localhost:8080/ege-webapp/Conversions/EAD%3Atext%3Axml/&quot; /&gt;
+&lt;/input-data-types&gt;
+		</source>
+				<p>Response data includes a list of nodes describing each supported input data type.
+					The following attributes are available for each input data type:</p>
+				<ul>
+					<li><b>id</b> - the name of the input data type which should be used in further
+						requests </li>
+					<li><b>xlink:href</b> - reference to the EGE RESTful operation - this operation
+						will list all possible conversion paths for this input data type (identified
+						by the 'id' value). </li>
+				</ul>
+
+
+				<h4>2.2 List conversion paths' operation</h4>
+				<p>This operation provides a list of all conversions paths for the specified input data
+					type. This operation is also invoked by the GET method of the HTTP protocol. To
+					obtain a list of conversions paths use the following URL : </p>
+				<ul>
+					<li>http://[server_address]:[port]/ege-webapp/Conversions/[input_data_type]</li>
+				</ul>
+				<p>where [input_data_type] is the input data type identifier enclosed in the
+					response of the "list input data types" operation.</p>
+				<p><b>Note</b>: the [input_data_type] section of the URL contains code '%3A', which is
+					an encoded ':' - colon sign. Colon sign separates every key part of data type from
+					each other. <br/>For example :</p>
+				<ul>
+					<li> In URL address -
+						http://localhost:8080/ege-webapp/Conversions/TEI%3Atext%3Axml/, we can see
+						that [input_data_type] has data type of TEI(text/xml) in a specially encoded format to
+						fit the URI syntax requirements. First part is the format name, which is in our case
+						'TEI', then we have the first section of the mime type - 'text' and the second section -
+						'xml'. </li>
+				</ul>
+				<p>The following responses are possible :</p>
+				<ul>
+					<li><b>status code 200</b> - when the operation has been performed successfully and
+						there exist conversions paths for a given input data type;</li>
+					<li><b>status code 204</b> - when no conversions paths are found for a given
+						input data type;</li>
+					<li><b>status code 405</b> - 'wrong method' error, when the requested URL suggests
+						"conversion" operation;</li>
+				</ul>
+
+				<p>For example, for the following request:</p>
+				<ul>
+					<li>http://localhost:8080/ege-webapp/Conversions/TEI;text,xml/</li>
+				</ul>
+
+				<p>the following XML could be a response : </p>
+				<source>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;conversions-paths xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+	&lt;conversions-path xlink:href=&quot;http://localhost:8080/ege-webapp/Conversions/TEI%3Atext%3Axml/TEI%3Aapplication%3Ax-latex/&quot; &gt;
+		&lt;path-name&gt;&lt;![CDATA[ 
+			I:TEI,text/xml/O:TEI,application/x-latex(TEI Converter) 
+		]]&gt;&lt;/path-name&gt;
+		&lt;conversion index=&quot;0&quot; &gt;
+			&lt;property id=&quot;pl.psnc.dl.ege.tei.profileNames&quot;&gt;
+				&lt;value&gt;&lt;![CDATA[default,enrich,iso]]&gt;&lt;/value&gt;
+				&lt;type&gt;array&lt;/type&gt;
+				&lt;property-name&gt;Profile&lt;/property-name&gt;
+			&lt;/property&gt;
+		&lt;/conversion&gt;
+	&lt;/conversions-path&gt;
+&lt;/conversions-paths&gt;
+</source>
+				<p>The response contains a list of conversion paths available for a given input data
+					type. Each conversion-path have the following attribute: </p>
+				<ul>
+					<li><b>xlink:href</b> - reference to EGE RESTful operation of conversion,</li>
+				</ul>
+				<p>and additional sub-nodes :</p>
+				<ul>
+					<li><b>path-name</b> - which is a name of a conversion path;</li>
+					<li><b>conversion</b> - which represents one conversion action (being a part of
+						the conversion path). </li>
+				</ul>
+
+				<p>Each 'conversion' node (that represents conversion action) contains attribute
+					'index' - which is a number of the conversion action in sequence of conversions. </p>
+				<p>Additionally, every 'conversion' node can have one or more sub-nodes named
+					'property' which describe the possible parameters for a conversion action. Each
+					'property' node contains an attribute 'id' which identifies the property, and the
+					following sub-nodes:</p>
+				<ul>
+					<li><b>definition</b> - possible parameters, e.g. accepted property values;</li>
+					<li><b>type</b> - data type of the property;</li>
+					<li><b>property-name</b> - label of the property.</li>
+				</ul>
+				<h4>2.3. 'Convert' operation.</h4>
+				<p>This operation performs the conversion of a given file using the selected conversion
+					path. This operation can be executed only through the POST method of the HTTP
+					protocol. To perform the conversion of a file the client application has to send the
+					POST request using the URL:</p>
+				<ul>
+					<li>
+						<b>http://[server_address]:[port]/ege-webapp/Conversions/[conversion
+							path]</b>
+					</li>
+				</ul>
+				<p>where [conversion path] is a sequence of data types (the first one is the input
+					data type), so</p>
+				<ul>
+					<li>
+						<b>[conversion path]=[input data
+							type]/[data_type_1]/[data_type_2]/.../[data_type_N]/ .</b>
+					</li>
+				</ul>
+				<p>The request has to enclose the file for conversion and the optional request parameter
+					named 'properties' which specifies the properties for concrete conversion actions in
+					the conversion path. The [conversion path] should be understood as a sequence of
+					conversion actions. For instance, the following conversion path:</p>
+				<ul>
+					<li> TEI%3Atext%3Axml/TEI%3Aapplication%3Amsword/ </li>
+				</ul>
+				<p>defines one conversion action - conversion of the file in the TEI(text/xml) data
+					type into a file in the TEI(application/msword) data type which is the result of
+					the conversion operation. </p>
+				<p>Another example : </p>
+				<ul>
+					<li> EAD%3Atext%3Axml/TEI%3Aapplication%3Amsword/TEI%3Aapplication%3Apdf/ </li>
+				</ul>
+				<p>defines two conversion actions: the first one converts the EAD(text/xml) input file 
+					into a TEI(application/msword) file, the second one converts the resulting
+					TEI(application/msword) file into a TEI(application/pdf) file
+					which is the final result of the conversion operation. </p>
+				<p>Basically, each pair of data type elements in the conversion path is a conversion
+					action to be performed on the given file. </p>
+				<p>Optional parameter 'properties' should contain XML data similar to the following: </p>
+				<source>
+&lt;conversions&gt;
+	&lt;conversion index=&quot;[position of conversion action]&quot; &gt;
+			&lt;property id=&quot;[id of property]&quot;&gt;
+				[assigned value of this property]
+			&lt;/property&gt;
+	&lt;/conversion&gt;
+&lt;/conversions&gt;
+</source>
+				<p>where every 'conversion' node has the attribute 'index' - which represents
+					the number of the conversion action within the conversion sequence. </p>
+				<p>Each 'conversion' node can contain sub-nodes named 'property' with the attribute 'id'
+					and the value assigned to it. All possible properties for particular conversion
+					action can be obtained from the "list conversion paths" operation. </p>
+				<p>For the 'conversion' operation, the following responses are possible: </p>
+				<ul>
+					<li><b>200 status code</b> - conversion was performed without any problems and
+						converted file was returned;</li>
+					<li><b>400 status code</b> - returned when requested conversion path does not
+						exist;</li>
+					<li><b>405 status code</b> - 'wrong method' error, when trying to perform
+						conversion operation over GET method of HTTP protocol;</li>
+				</ul>
+				<h4>2.4. Example use case.</h4>
+				<p>Let us assume that:</p>
+				<ul>
+					<li>[server_addres] is 'localhost',</li>
+					<li>[port] is 8080,</li>
+				</ul>
+
+				<p>and we want to perform conversion of a file from TEI(text/xml) to
+					TEI(application/msword) format using the default conversion profile. </p>
+				<p>To achieve our goal we have to :</p>
+				<ul>
+					<li>
+						<p><b>Step 1</b> : list of data types - perform "list of data types"
+							operation by sending HTTP request with GET method on URL :
+							http://localhost:8080/ege-webapp/Conversions/ .</p>
+						<p>In response we receive the following XML data : </p>
+						<source>
+	&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+	&lt;input-data-types xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+		&lt;input-data-type id=&quot;TEI,text/xml&quot; xlink:href=&quot;http://localhost:8080/ege-webapp/Conversions/TEI%3Atext%3Axml/&quot; /&gt;
+		&lt;input-data-type id=&quot;MASTER,text/xml&quot; xlink:href=&quot;http://localhost:8080/ege-webapp/Conversions/MASTER%3Atext%3Axml/&quot; /&gt;
+		&lt;input-data-type id=&quot;EAD,text/xml&quot; xlink:href=&quot;http://localhost:8080/ege-webapp/Conversions/EAD%3Atext%3Axml/&quot; /&gt;
+	&lt;/input-data-types&gt;
+	</source>
+						<p>Please note, that there is one node named 'input-data-type' which matches
+							the input file data type - "TEI(text/xml)". </p>
+					</li>
+
+					<li>
+						<p><b>Step 2</b> : list conversions paths for the input data type which
+							matched with our input file data type: </p>
+						<p> From the previous response we have to select the 'xlink:href' attribute
+							(http://localhost:8080/ege-webapp/Conversions/TEI%3Atext%3Axml/) of the
+							'TEI,text/xml' input data type and use it to obtain the conversion
+							paths. </p>
+						<p> In order to receive the list of conversion paths, we perform 'list
+							conversion paths' operation of the EGE RESTful Web Service by sending
+							HTTP request with GET method on the extracted URL :
+							http://localhost:8080/ege-webapp/Conversions/TEI%3Atext%3Axml/. </p>
+					</li>
+
+					<li>
+						<p><b>Step 3</b> : handling "list of conversions paths" response.</p>
+						<p>In the response we will receive the following XML data : </p>
+						<source>
+	
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;conversions-paths xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+	&lt;conversions-path xlink:href=&quot;http://localhost:8080/ege-webapp/Conversions/TEI%3Atext%3Axml/TEI%3Aapplication%3Amsword/&quot; &gt;
+		&lt;path-name&gt;&lt;![CDATA[ 
+			I:TEI,text/xml/O:TEI,application/msword(TEI Converter) 
+		]]&gt;&lt;/path-name&gt;
+		&lt;conversion index=&quot;0&quot; &gt;
+			&lt;property id=&quot;pl.psnc.dl.ege.tei.profileNames&quot;&gt;
+				&lt;definition&gt;&lt;![CDATA[default,enrich,iso, ]]&gt;&lt;/definition&gt;
+				&lt;type&gt;array&lt;/type&gt;
+				&lt;property-name&gt;Profile&lt;/property-name&gt;
+			&lt;/property&gt;
+		&lt;/conversion&gt;
+	&lt;/conversions-path&gt;
+&lt;/conversions-paths&gt;
+	</source>
+						<p> XML contains only one conversion path, represented by 'conversions-path'
+							node that gives us the possibility to perform conversion from TEI(text/xml)
+							format to TEI(application/msword) format. </p>
+					</li>
+
+					<li>
+						<p><b>Step 4</b> : setting conversion properties. </p>
+						<p> XML response returned by the "list conversions paths" operation contains a
+							list of conversions. In the above case there is only one conversion
+							node. Each conversion node defines the properties for the conversion action it
+							represents. In our example we have the 'pl.psnc.dl.ege.tei.profileNames'
+							property with three possible values : default, enrich and iso. We will
+							use 'default' value for the 'pl.psnc.dl.ege.tei.profileNames' parameter
+							by setting the 'properties' parameter (for the 'convert' operation) to the
+							following value: </p>
+						<source>
+	&lt;conversions&gt;
+		&lt;conversion index=&quot;0&quot; &gt;
+			&lt;property id=&quot;pl.psnc.dl.ege.tei.profileNames&quot;&gt;
+				default
+			&lt;/property&gt;
+		&lt;/conversion&gt;
+	&lt;/conversions&gt;
+	</source>
+					</li>
+					<li>
+						<p>
+							<b>Step 5</b> : performing conversion. </p>
+						<p>We have to perform POST request on the the following URL:
+							http://localhost:8080/ege-webapp/Conversions/TEI%3Atext%3Axml/TEI%3Aapplication%3Amsword/
+							, with a filled request parameter 'properties' and an input file to convert. </p>
+						<p> As a result we will receive the converted file (in the
+							TEI(application/msword) format - '.docx' extension). </p>
+					</li>
+				</ul>
+			</subsection>
+
+			<subsection name="3. Validation">
+
+				<h4>3.1. 'List input data types' operation</h4>
+				<p>This operation lists all the data types which can be validated by EGE RESTful Web
+					Service. The operation should be invoked using the GET method of the HTTP
+					protocol. In order to invoke this operation, use the following URL (we assume
+					that the EGE RESTful Web Service is installed under 'ege-webapp' path of the
+					application/servlet container): </p>
+				<ul>
+					<li>
+						<b>http://[server_address]:[port]/ege-webapp/Validation/ </b>
+					</li>
+				</ul>
+				<p>where [server_address] is the address of a server on which the EGE RESTful
+					application is running, and the [port] is the port number of the server. </p>
+				<p>The following responses are possible:</p>
+				<ul>
+					<li><b>status code 200</b> - when operation has been performed successfully and
+						there are available data types for validation; </li>
+					<li><b>status code 204</b> - when there is no supported data types; </li>
+					<li><b>status code 405</b> - 'wrong method' error, when requested URL suggests
+						validation operation.</li>
+				</ul>
+				<p>For example, for the following request:</p>
+				<ul>
+					<li>
+						<b>http://localhost:8080/ege-webapp/Validation/ </b>
+					</li>
+				</ul>
+				<p>the following XML is received as a response:</p>
+				<source>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;validations xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+	&lt;input-data-type id=&quot;TEI,text/xml&quot; xlink:href=&quot;http://localhost:8080/ege-webapp/Validation/TEI%3Atext%3Axml/&quot; /&gt;
+	&lt;input-data-type id=&quot;MASTER,text/xml&quot; xlink:href=&quot;http://localhost:8080/ege-webapp/Validation/MASTER%3Atext%3Axml/&quot; /&gt;
+	&lt;input-data-type id=&quot;EAD,text/xml&quot; xlink:href=&quot;http://localhost:8080/ege-webapp/Validation/EAD%3Atext%3Axml/&quot; /&gt;
+&lt;/validations&gt;
+		</source>
+				<p>The response data includes a list of nodes describing each supported data type. The
+					following attributes are available for each data type:</p>
+				<ul>
+					<li><b>id</b> - the name of the data type which should be used in further
+						requests;</li>
+					<li><b>xlink:href</b> - reference to the operation of validation.</li>
+				</ul>
+				<h4>3.2. 'Validation' operation</h4>
+				<p>This operation performs the validation of a given file using the selected conversion data
+					type. This operation can only be executed through the POST method of the HTTP
+					protocol. To perform the validation of a file the client application has to send the
+					POST request using the URL: </p>
+				<ul>
+					<li>
+						<b>http://[server_address]:[port]/ege-webapp/Validation/[input data
+							type]</b>
+					</li>
+				</ul>
+				<p>where [input_data_type] is the input data type identifier enclosed in the
+					response of the "list input data types" operation.</p>
+				<p>The request has to enclose the file for validation.</p>
+				<p>For the 'conversion' operation, the following responses are possible : </p>
+				<ul>
+					<li><b>200 status code</b> - validation was performed without any problems and
+						response XML was returned;</li>
+					<li><b>400 status code</b> - returned when either request was formed unproperly
+						or provided data type is not supported by any of the EGE validators;</li>
+				</ul>
+				<p>With code '200' of result client application receives validation result encoded
+					in XML format.</p>
+				<p>For example, for the following request:</p>
+				<ul>
+					<li>
+						<b>http://localhost:8080/ege-webapp/Validation/EAD%3Atext%3Axml</b>
+					</li>
+				</ul>
+				<p>the following XML response is provided: </p>
+				<source>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+	&lt;validation-result&gt;
+		&lt;status&gt;ERROR&lt;/status&gt;
+		&lt;messages&gt;
+			&lt;message&gt;
+				&lt;![CDATA[ 
+					1) Error in line (3), column (8) : Document root element &quot;TEI.2&quot;, must match DOCTYPE root &quot;ead&quot;.
+				]]&gt;
+			&lt;/message&gt;
+		&lt;/messages&gt;
+&lt;/validation-result&gt;
+</source>
+				<p>Response data contains one "validation-result" section with :</p>
+				<ul>
+					<li><b>status</b> - which may take one of three values : ERROR - when validator
+						found some errors, SUCCESS - when no errors were found (warnings possible),
+						FATAL - when fatal errors occured;</li>
+					<li><b>messages</b> - which contains multiple "message" sections, each with
+						text values : error or warning messages. </li>
+				</ul>
+
+
+			</subsection>
+			<subsection name="4. Error response">
+				<p> During any operation an unexpected error may occur which will result in 500
+					status code of HTTP response, in that case application should also return xml
+					data:</p>
+				<source>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;error msg=&quot;sample error message&quot; exclass=&quot;com.my.SampleException&quot;&gt;part of stack trace&lt;/error&gt;
+</source>
+				<p>The response contains only one 'error' element with part of a stack trace as content
+					and with the following attributes : </p>
+				<ul>
+					<li><b>msg</b> - which contains the exception message;</li>
+					<li><b>exclass</b> - which contains the exception class.</li>
+				</ul>
+			</subsection>
+		</section>
+	</body>
+</document>
+

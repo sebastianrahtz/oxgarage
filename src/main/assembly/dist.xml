@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly>
+   <id>dist</id>
+   <formats>
+       <format>zip</format>
+   </formats>
+   <fileSets>
+       <fileSet>
+           <directory>${project.basedir}</directory>
+		   <outputDirectory></outputDirectory>
+		   <includes>
+               <include>LICENSE.txt</include>
+           </includes>
+       </fileSet>
+	   <fileSet>
+           <directory>${project.basedir}/ege-webclient${subproject.relativeDir}target/ege-webclient/</directory>
+		   <outputDirectory>ege-webclient</outputDirectory>
+	   </fileSet>
+       <fileSet>
+           <directory>${project.basedir}/ege-webservice${subproject.relativeDir}target/ege-webservice/</directory>
+		   <outputDirectory>ege-webservice</outputDirectory>
+	   </fileSet>
+	   <!--<fileSet>
+           <directory>${project.basedir}/tei-converter/src/main/templates/tei-config/</directory>
+		   <outputDirectory>ege-webservice/WEB-INF/lib/tei-config</outputDirectory>
+	   </fileSet> -->
+   </fileSets>
+</assembly>

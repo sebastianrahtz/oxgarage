@@ -11,7 +11,7 @@ import pl.psnc.dl.ege.types.ConversionActionArguments;
 /**
  * <p>Main interface of EGE Converter.</p> 
  * 
- * <p>Converter – this component is responsible for converting the input data. It may be, for
+ * <p>Converter: this component is responsible for converting the input data. It may be, for
  * example, conversion from XML to Word, conversion from Word to PDF, conversion of the
  * XML from one form to another (e.g. TEI P4/MASTER -> ENRICH TEI P5) or even cleaning the input data
  * (e.g. removing redundant information).</p>
